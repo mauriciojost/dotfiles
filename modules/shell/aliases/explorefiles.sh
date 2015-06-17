@@ -13,8 +13,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # Some more ls aliases
-alias l='ls -lhtr'
-alias ll='ls -lahtr'
+alias l='ls -lhtr --time-style="+%Y-%m-%d %H:%M"'
+alias ll='ls -lahtr --time-style="+%Y-%m-%d %H:%M"'
 alias la='ls -A'
 
 ##################### 
