@@ -1,0 +1,627 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<base href="http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html"><div style="background:#fff;border:1px solid #999;margin:-1px -1px 0;padding:0;"><div style="background:#ddd;border:1px solid #999;color:#000;font:13px arial,sans-serif;font-weight:normal;margin:12px;padding:8px;text-align:left">This is Google&#39;s cache of <a href="http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html" style="text-decoration:underline;color:#00c">http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html</a>. It is a snapshot of the page as it appeared on 22 Oct 2014 03:10:12 GMT. The <a href="http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html" style="text-decoration:underline;color:#00c">current page</a> could have changed in the meantime. <a href="http://support.google.com/websearch/bin/answer.py?hl=en&amp;p=cached&amp;answer=1687222" style="text-decoration:underline;color:#00c">Learn more</a><br>Tip: To quickly find your search term on this page, press <b>Ctrl+F</b> or <b>⌘-F</b> (Mac) and use the find bar.<br><br><div style="float:right"><a href="http://webcache.googleusercontent.com/search?q=cache:http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html&strip=0" style="text-decoration:underline;color:#00c">Full version</a></div>
+<div>&nbsp;</div></div></div><div style="position:relative">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" version="XHTML+RDFa 1.0" dir="ltr"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/terms/"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:og="http://ogp.me/ns#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:sioc="http://rdfs.org/sioc/ns#"
+  xmlns:sioct="http://rdfs.org/sioc/types#"
+  xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="Seven Easy Steps To Setting Up An Interal DNS Server On Ubuntu" about="/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html" property="dc:title" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=yes" />
+<meta name="keywords" content="bind9, bind, DNS, ubuntu, linux, server, tutorial, how to, install, configure" />
+<meta name="description" content="In this tutorial we will look at setting up an internal DNS server running bind9 on Ubuntu Linux. Will take it step by step and explain why we are setting things this way." />
+<meta name="Generator" content="Drupal 7 (http://drupal.org)" />
+
+
+  <title>Seven Easy Steps To Setting Up An Interal DNS Server On Ubuntu | mixeduperic.com</title>
+  
+
+
+
+
+<!--[if (lt IE 9)&(!IEMobile)]>
+<link type="text/css" rel="stylesheet" href="http://mixeduperic.com/sites/default/files/css/css_ky0LXwc2Os1jaUPrYWXPwsI7Mkd77vM73cHZRhssiNA.css" media="all" />
+<![endif]-->
+
+<!--[if gte IE 9]><!-->
+
+<!--<![endif]-->
+  
+
+
+
+
+
+
+
+</head>
+<body class="html not-front not-logged-in page-node page-node- page-node-120 node-type-ubuntu context-ubuntu">
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+  <div class="region region-page-top" id="region-page-top">
+  <div class="region-inner region-page-top-inner">
+      </div>
+</div>  <div class="page clearfix" id="page">
+      <div id="section-header" class="section section-header">
+  <div id="zone-branding-wrapper" class="zone-wrapper zone-branding-wrapper clearfix">  
+  <div id="zone-branding" class="zone zone-branding clearfix container-16">
+    <div class="grid-11 region region-branding" id="region-branding">
+  <div class="region-inner region-branding-inner">
+    <div class="branding-data clearfix">
+            <div class="logo-img">
+        <a href="/" rel="home" title=""></a>      </div>
+                </div>
+      </div>
+</div><div class="grid-5 region region-branding-nav" id="region-branding-nav">
+  <div class="region-inner region-branding-nav-inner">
+    <div class="block block-search block-form block-search-form odd block-without-title" id="block-search-form">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  Search 
+ 
+</div>
+<div class="form-actions form-wrapper" id="edit-actions"></div>
+
+</div>
+</div>    </div>
+  </div>
+</div>
+  </div>
+</div>  </div>
+</div><div id="zone-menu-wrapper" class="zone-wrapper zone-menu-wrapper clearfix">  
+  <div id="zone-menu" class="zone zone-menu clearfix container-12">
+    <div class="grid-12 region region-menu" id="region-menu">
+  <div class="region-inner region-menu-inner">
+        <div class="block block-menu block-menu-custom-nav-menu block-menu-menu-custom-nav-menu odd block-without-title" id="block-menu-menu-custom-nav-menu">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <ul class="menu"><li class="first leaf"><a href="/" title="Home Page">Home</a></li>
+<li class="leaf"><a href="/all-how-to-articles.html" title="All tutorials on Linux, Windows and open source software.">Tutorials</a></li>
+<li class="leaf"><a href="/other-resources" title="Other Linux and Open Source Resources">Resources</a></li>
+<li class="last leaf"><a href="/about.html" title="About mixeduperic.com and contact information.">About</a></li>
+</ul>    </div>
+  </div>
+</div>
+  </div>
+</div>
+  </div>
+</div></div>    
+      <div id="section-content" class="section section-content">
+  <div id="zone-content-wrapper" class="zone-wrapper zone-content-wrapper clearfix">  
+  <div id="zone-content" class="zone zone-content clearfix container-12">    
+        
+        <div class="grid-12 region region-content" id="region-content">
+  <div class="region-inner region-content-inner">
+    <a id="main-content"></a>
+                <h1 class="title" id="page-title">Seven Easy Steps To Setting Up An Interal DNS Server On Ubuntu</h1>
+                <div class="tabs clearfix"></div>        <div class="block block-system block-main block-system-main odd block-without-title" id="block-system-main">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <div about="/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html" typeof="sioc:Item foaf:Document" class="node node-ubuntu node-published node-not-promoted node-not-sticky author-thebrok2 odd clearfix" id="node-ubuntu-120">
+    
+    
+    
+  
+  <div class="content clearfix">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p><a href="http://www.bind9.net/">Bind9</a> is used all across the internet for DNS. A survey shows that over <a href="http://dns.measurement-factory.com/surveys/200710.html">70%</a> of DNS servers on the internet use Bind. In this tutorial we will setup a Bind9 DNS server for your home network with caching.</p>
+<p>By running a caching DNS server it will cache DNS locally so sites you visit often will not have to make a DNS query until the DNS record has expired. This will help improve your internet speed as well as reduce bandwidth. I have noticed a huge improvement with my satellite internet connection just by running a local DNS caching server.</p>
+<p>Below you can see the first time I make a DNS request for distrowatch.com the query time is 1698 milliseconds. The second time I make the request after it has been cached, it only takes 4 milliseconds.</p>
+<p> </p>
+<p> </p>
+<p></p><center>
+<p></p></center>
+<p> </p>
+<p>Before:</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="">Example of Bind9 caching server before DNS entry is cached - Query time: 1698 msec</a></p>
+<p> </p>
+<p> </p>
+<p>After:</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="">Example of Bind9 DNS Cache after entry has been cached - query time: 4 Msec</a></p>
+<p> </p>
+<p> </p>
+<p>Now milliseconds doesn't seem like a lot of time. However most website have content that is pulled from multiple locations.  A webpage could have a youtube video embed, some ads, a news feed, images and much more being pulled from other domains. When that page loads, a DNS requests is made for all objects. The more stuff on the site from multiple locations the more DNS request need to be made. </p>
+<p>Another great benefit to running a internal DNS server is you can just type the name of a device like server, firewall, printer, basement-pc, or whatever you want to call your network devices. There is no need to remember the IP addresses of the devices when you can just type the defined name.</p>
+<p>Before we begin I am assuming you have an Ubuntu server running and configured with a static IP address. If you need help with that take a look at some of the following articles.</p>
+<p><a href="http://mixeduperic.com/ubuntu/how-to-install-and-configure-ubuntu-1104-as-a-web-server.html">How To Install Ubuntu Server</a></p>
+<p><a href="http://mixeduperic.com/ubuntu/how-to-set-a-static-ip-address-on-a-ubuntu-server.html">How To Set A Static IP Address On A Ubuntu Server</a></p>
+<p> </p>
+<p>Let's dive in and start setting up an internal DNS server with caching!</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Installing Bind9 on Ubuntu</h2>
+<hr /><p>Installing Bind9 (DNS Server) is a breeze on <a href="http://www.ubuntu.com/">Ubuntu</a>. Three packages will need to be installed: bind9, dnsutils, and bind9-doc.</p>
+<ul><li>
+		bind9:  The DNS service.</li>
+<li>
+		dnsutils:  A set of tools such as dig which can be helpful for testing and trouble shooting. </li>
+<li>
+		bind9-doc:  Local info pages with information about bind and its configuration options. This is optional but recommended. </li>
+</ul><p>You will need to be at the console of your <a href="http://mixeduperic.com/ubuntu/ubuntu-overview-and-screenshots.html">Ubuntu server</a> or have <a href="/ubuntu/how-to-install-open-ssh-server-on-ubuntu-and-linux-mint.html">SSH setup</a> and connected to your soon to be bind9 DNS server. Lets install the packages with the following command:</p>
+<p>sudo apt-get install bind9 dnsutils bind9-doc</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/3-install-bind-dnsutils.png">Install Bind9 On Ubuntu or Linux Mint with the command sudo apt-get install bind9 bind9-doc dnsutils</a></p>
+<p> </p>
+<p> </p>
+<p>Enter your password</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/4-enter-password.png">Enter You password to confirm the install of Bind9</a></p>
+<p> </p>
+<p> </p>
+<p>Enter Y to confirm installing</p>
+<p> </p>
+<p class="rtecenter"> </p>
+<p class="rtecenter"> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/5-enter-y-to-confirm.png">Enter Y to confirm Bind9 DNS server and DNS utilities</a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Basic Bind Configuration</h2>
+<hr /><p>The next step is to configure the forwards addresses for bind. This tell bind where to look if it doesn't know the IP address of a domain. In this example we will use <a href="http://code.google.com/speed/public-dns/">Google's Public DNS</a> servers for the forward DNS servers. Google's DNS servers are fast, free, and have easy to remember IP addresses. If you want you can use your local  internet provider's DNS servers. Another option is to use <a href="http://www.opendns.com/">OpenDNS</a> which gives you the ability to filter content. This can be nice if you have young children on the internet.  </p>
+<p> </p>
+<p>Let's edit /etc/bind/named.conf.options and define the forward addresses. To keep things simple we will use the nano text editor in this tutorial. If you want to use Vim or Emacs instead, feel free to do so. </p>
+<p> </p>
+<p>sudo nano /etc/bind/named.conf.options</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/7-edit-name-conf-options.png">enter the following command: sudo nano /etc/bind/named.conf.options</a></p>
+<p> </p>
+<p> </p>
+<p>Delete the // in front of:</p>
+<p> </p>
+<div>
+	        // forwarders {</div>
+<div>
+	        //      0.0.0.0;</div>
+<div>
+	        // };</div>
+<div>
+	 </div>
+<div>
+	 </div>
+<div>
+	Since we are using Google's Public DNS servers, we will want to replace  0.0.0.0 with Google's DNS server IPs 8.8.8.8 and 8.8.4.4 . Your config file should look similar to the image below. </div>
+<div>
+	 </div>
+<div>
+	 </div>
+<div>
+	 </div>
+<div class="rtecenter">
+	<a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/8-add-google-dns-forward-addresses.png">Example of Bind9 forward addresses - Using Google's Public DNS servers</a></div>
+<div>
+	 </div>
+<div>
+	 </div>
+<div>
+	 </div>
+<p>Exit it out of nano by hitting CTRL + X.</p>
+<p>Enter Y to confirm saving changes.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/9-Enter-Y-to-Confirm-Install.png">Enter Y to confirm changes - Using nano text editor</a></p>
+<p> </p>
+<p> </p>
+<p>Hit Enter to overwrite the file.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/10-confirm-name-hit-enter.png">Confirm the file name has not changed and hit enter to save changes</a></p>
+<p> </p>
+<p> </p>
+<p>The next step is to edit /etc/bind/named.conf.local. This file holds information on what zones to load when Bind9 is started. We will setup two zones files to load, the Forward and Reverse zones.  </p>
+<p>In this example we will setup an internal domain with tne name linux.rocks. If you want to use something else just make sure you replace linux.rocks in the following steps with your internal domain name. The internal domain can be whatever you want. </p>
+<p>The reason I am using linux.rocks instead of something like linux.com, linux.net, linux.org..etc is a real domain on the internet could have this address.  If this was the case I would not be able to access the real domain on the  internet. Instead I would be directed to a device on my internal network.  </p>
+<p>At this time .rocks is not a top level domain on the internet, but it does not mean it won't be tommorow. If you want to be sure there is no way your domain could be used externally, use a reserved top level domain like .test, .example, .invalid or .localhost. So in this example we could use linux.test and not have to worry about that domain every being a real domain on the internet. To learn more about reserved domains check out <a href="http://tools.ietf.org/html/rfc2606" style="font-family: arial; font-size: small; " target="_blank">http://tools.ietf.org/html/rfc2606</a></p>
+<p> </p>
+<p>We will need to figure out our<a href="http://en.wikipedia.org/wiki/IP_address"> IP address</a> range of our internal network so we can build the correct reverse zone lookup file.  </p>
+<p>When looking at our IP address the part we care about is the first three sets of octets (numbers). Then we just reverse them.  So If my IP address is 192.168.1.100 my reverse lookup zone would be 1.168.192.in-addr.arpa. If my IP address is 172.20.16.120 my reverse zone would be 16.20.172.in-addr.arpa . </p>
+<p>Most home networks will have a 192.168.1.X or 192.168.0.X type of IP address. In my case I have a 192.168.96.X IP address network. </p>
+<p> </p>
+<p>If you need help on how to find what your IP address, check out some of the following tutorials. </p>
+<p><a href="http://mixeduperic.com/linux/how-to-find-your-ip-address-in-linux.html">How To Find IP Address in Linux</a></p>
+<p><a href="http://mixeduperic.com/windows/how-to-find-your-ip-address-in-windows.html">How To Find IP Address in Windows</a></p>
+<p> </p>
+<p> </p>
+<p>Let's open up /etc/bind/named.conf.local and define the locations of the forward and reverse zone files. </p>
+<p> </p>
+<p>sudo nano /etc/bind/named.conf.local</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/11-edit-etc-bind-name-conf-local.png">Edit /etc/bind/named.conf.local</a></p>
+<p> </p>
+<p> </p>
+<p>Add The following. </p>
+<p>Note:  Replace linux.rocks with the internal domain name you picked and replace 96.168.192  with your IP address scheme. Adjust the zone file names to fit your setup and make note of the names (db.linux.rocks and db.192) because we will need to build these files in the next few steps.  </p>
+<p> </p>
+<p> </p>
+<div>
+	zone "linux.rocks" {</div>
+<div>
+	             type master;</div>
+<div>
+	             file "/etc/bind/db.linux.rocks";</div>
+<div>
+	        };</div>
+<div>
+	 </div>
+<div>
+	zone "96.168.192.in-addr.arpa" {</div>
+<div>
+	        type master;</div>
+<div>
+	        notify no;</div>
+<div>
+	        file "/etc/bind/db.192";</div>
+<div>
+	};</div>
+<p> </p>
+<p> </p>
+<p>Here is what my named.conf.local file looks like:</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/12-example-name-conf-local-defined-zones.png">Example named.conf.local file - Added forward and reverse zone</a></p>
+<p> </p>
+<p> </p>
+<p>Hit CTRL + X to exit out of nano</p>
+<p>Enter Y to confirm saving changes</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/13-Enter-y-to-save-changes.png">Enter Y to Save Changes in nano</a></p>
+<p> </p>
+<p> </p>
+<p>Confirm the name has not changed and hit Enter to save changes.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/14-confirm-name-hit-enter-to-confirm-save.png">Confirm the name of the file is the same and not something.tmp and hit enter to save the changes</a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p></p><center>
+<p></p></center>
+<p> </p>
+<p> </p>
+<h2>
+	Building Your DNS Forward Zone</h2>
+<hr /><p>Now that we have defined what zone files to load when Bind starts, we need to create these files. The first file we need to build is the forward zone file (db.linux.rocks). We can use a template to help speed things and prevent mistakes. Let's copy  /etc/bind/db.local and name the file to the name we defined above in /etc/bind/named.conf.local . (Example: db.linux.rocks)</p>
+<p> </p>
+<p>sudo cp /etc/bind/db.local /etc/bind/db.linux.rocks</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/15-make-copy-of-db.local.png">Make a copy of db.local to use as a template for your bind9 DNS forward zone</a></p>
+<p> </p>
+<p> </p>
+<p>Let's now edit the new forward zone file and make changes to fit the network.</p>
+<p> </p>
+<p>sudo nano /etc/bind/db.linux.rocks</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/16-edit-forward-zone-you-just-created.png">Edit the forward zone file you just created by coping db.local</a></p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Bind9 forward zone template on Ubuntu system</p>
+<p> </p>
+<p> </p>
+<p>We will need to change a few basic setting in this file and then add our forward lookups.  Below you will find a screenshot with a break down of what these settings do and how to set them to fit your network. </p>
+<p> </p>
+<p>A.) localhost. - This is the fully qualified domain name of the server in charge of the domain we are creating.  Change this to your hostname followed by the domain name. Since my server hostname is ubuntu-server, I will set this to ubuntu-server.linux.rocks. Make sure it ends with the "." . If you need help on how to find or change your hostname take a look at <a href="http://mixeduperic.com/ubuntu/how-to-find-and-change-your-hostname-on-an-ubuntu-system.html">http://mixeduperic.com/ubuntu/how-to-find-and-change-your-hostname-on-an-ubuntu-system.html</a>. </p>
+<p>B.) root.localhost. - This is the email address of the person responsible for managing the DNS server. Here you do not use the @ sign but use a  "." This is really more for human consumption.     Note:  Make sure you have a "." at the end.</p>
+<p>C.) localhost. - This is defining the Name server for the domain (NS). You will want to change this to the fully qualified domain name again. So I would set this to ubuntu-server.linux.rocks. Note:  Make sure you have a "." at the end.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Settings we need to change in bind9 forward zone template on Ubuntu</p>
+<p> </p>
+<p>This is what my forward zone file looks like so far.  (/etc/bind/db.linux.rocks)</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Here is the start of my forward zone lookup file </p>
+<p> </p>
+<p> </p>
+<p>Now for the fun part. we can now start defining our devices on the network.</p>
+<p> </p>
+<p>Let's take a quick look at DNS record types.</p>
+<p>The three most common types of DNS records are Address (A Record), Canonical Name (CNAME), and Mail Exchanger (MX). We will focus on A and CNAME records in this tutorial. </p>
+<p> </p>
+<p>Address (A Record): Defines a mapping of a hostname to an IP address. This is the most common </p>
+<p>Canonical Name (CNAME): Defines that the domain name is an alias of another name. It basically allows you to point a domain name to another. </p>
+<p>Mail exchanger (MX): Defines mail server responsible for accepting email messages.</p>
+<p> </p>
+<p>Below you will see a the basic network layout that we will be defining.  All the devices have a static IP address assigned to them. In a later tutorial we will look at setting up DHCP to update our DNS records but for now we will just setup a basic DNS server. If you need help on setting a static IP address on an ubuntu system check out <a href="http://mixeduperic.com/ubuntu/how-to-set-a-static-ip-address-on-a-ubuntu-server.html">http://mixeduperic.com/ubuntu/how-to-set-a-static-ip-address-on-a-ubuntu-server.html</a> .</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/network-setup.png">Example Network we will be setting up in Bind9 DNS</a></p>
+<p> </p>
+<p> </p>
+<p> So in the example network we will want to be able to connect to all the devices using the name of the device instead of the IP address. We will also use CNAME records to map the name server01 to ubuntu-server and server02 to ubuntu-server2. This will allow us to type in server01 or ubuntu-server and connect to the same machine.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/20-example-of-adding-a-and-cname-bind9-addresses-v2.png">Example of adding A and CNAME records in Bind9 DNS</a></p>
+<p> </p>
+<p> </p>
+<p>Now let's break this down and look at what some of these settings mean. The image below highlights each area by letter to help clear somethings up.  </p>
+<p> </p>
+<p>A.) This is the name that we want to link to an ip address. </p>
+<p>B.) IN Stands for internet. This is one class of data; other classes exist, but none of them is currently in widespread use. </p>
+<p>C.) This is defining it as an A record type (Address).</p>
+<p>D.) This is defining the IP address of the device we want to call firewall.</p>
+<p>E.) This is defining it as a CNAME record type instead of an A, or MX.</p>
+<p>F.) This is defining the fully qualified domain name the CNAME record (Alias) points to.</p>
+<p>Note: When using CNAME records make sure you use the fully qualified domain name followed by a ".".</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/21-example-of-adding-a-and-cname-bind9-addresses-break-down.png">Bind9 Forward Zone Record Breakdown</a></p>
+<p> </p>
+<p> </p>
+<p>Now we just need to save our changes.</p>
+<p>Hit CTRL + X to exit nano.</p>
+<p>Enter "Y" to save the file.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/22-enter-y-to-save-file-in-nano-v2.png">Enter Y to save changes in the bind9 forward zone </a></p>
+<p> </p>
+<p> </p>
+<p>Hit Enter to overwrite the file. </p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="/sites/default/files/ubuntu/internal-bind9-dns-setup/23-hit-enter-to-overwrite-file-v2.png">Hit Enter to overwrite changes to the bind9 forward zone file</a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Building Your Reverse Lookup</h2>
+<hr /><p>Reverse DNS is not a must have but it is very good practice and some services need it. Often times things can act a little goofy if it's not setup. It does the opposite of the forward zone file and maps IP addresses to names. </p>
+<p>You can use nslookup to look up a name by IP address.</p>
+<p>Here is an example of me doing an nslookup on up address 192.168.96.1</p>
+<p>Note: This was done after the reverse zone was setup and running.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Example of using nslookup to lookup the device name by IP address</p>
+<p> </p>
+<p> </p>
+<p>When we setup named.conf.local we defined the name of the reverse zone file. If you are following along it was defined as /etc/bind/db.192. We will create this file by making a copy of another file.  </p>
+<p>sudo cp /etc/bind/db.127 /etc/bind/db.192</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Copy db.127 to use as our template for the reverse zone lookup file</p>
+<p> </p>
+<p> </p>
+<p>Now lets edit that file.</p>
+<p>sudo nano /etc/bind/db.192</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Edit your reverse DNS zone file</p>
+<p class="rtecenter"> </p>
+<p class="rtecenter"> </p>
+<p class="rtecenter">Default bind reverse zone before edited</p>
+<p> </p>
+<p> </p>
+<p>Just like the forward zone file we will need to edit a few basic settings first before adding our addresses. </p>
+<p> </p>
+<p>A.) This should be the fully quilifed name of the server (hostname.domain.name)</p>
+<p>B.) This is the email address of the person responsible for the managing the domain. Remember to use a "." instead of the @ sign.</p>
+<p>C.) Change this to the fully quilified name of your DNS server. Example: (server-ubuntu.linux.rocks.)</p>
+<p>D.) We can delete this line. Since we copied the local host file this was included in it and we don't need it. </p>
+<p>Reminder: Make sure you have a "." at the end of the names. </p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Default Bind9 Reverse file with stuff we need to change highlighted.</p>
+<p> </p>
+<p> </p>
+<p>This is what my reverse zone file looks like so far.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Example of my reverse zone file before adding addresses</p>
+<p> </p>
+<p> </p>
+<p>Let's start adding the reverse DNS records.  </p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Bind Reverse Zone Example File</p>
+<p> </p>
+<p> </p>
+<p>Let's Break this down</p>
+<p> </p>
+<p>A.) This is the last octet (Set up Numers on the IP address of the device. (Example: 192.168.96.01)</p>
+<p>Note: Leave the 0 off the front, so on numbers under ten like 01 would be 1 instead of 01 . Otherwise things may not work correctly.</p>
+<p>B.) IN is defining it as an Internet address.</p>
+<p>C.) <a href="http://en.wikipedia.org/wiki/Reverse_DNS_lookup">PTR</a> is a pointer record. This defines what name will be called when an IP address is looked up. </p>
+<p>D.) This is the fully qualified domain name that will return when doing a nslookup. </p>
+<p> </p>
+<p class="rtecenter">Break Down of entries of Bind Reverse Zone File on Ubuntu System</p>
+<p> </p>
+<p> </p>
+<p>Now lets save our reverse zone file by hitting CTRL + X</p>
+<p>Enter "Y" to confirm saving the file.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Enter Y to confirm saving the reverse zone file</p>
+<p> </p>
+<p> </p>
+<p>Hit Enter to overwrite the file.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Hit Enter to overwrite the reverse zone file</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Starting Your DNS Server</h2>
+<hr /><p>We should have most of our configuration done and can now fire up the bind9 service. </p>
+<p> </p>
+<p>sudo /etc/init.d/bind9 start</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Enter sudo /etc/init.d/bind9 start to start your bind DNS server on Ubuntu Server</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">If Bind started you should see OK</p>
+<p> </p>
+<p> </p>
+<p><u>Other Useful Commands:</u></p>
+<p>Restart bind9 service: sudo /etc/init.d/bind9 restart</p>
+<p>Stop bind9 service: sudo /etc/init.d/bind9 stop     </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Testing Your DNS Server</h2>
+<hr /><p>Let's configure the server to use the Bind9 service that is running locally as its own DNS server. </p>
+<p>sudo nano /etc/resolv.conf</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Configure DNS server to use the bind service for DNS records</p>
+<p> </p>
+<p> </p>
+<p>Add name server, domain, and search option to your resolve.conf file.</p>
+<p>nameserver: This is the IP address of the DNS server to use. You can use the IP address or the loopback address 127.0.0.1</p>
+<p>domain: This will be the domain we just created.</p>
+<p>search: This will be the domain we just created.</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Example of setting up /etc/resolv.conf to use new bind server</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>Now that we have DNS setup we can use ping to test that everything is working.</p>
+<p>Both dig and ping are great tools for troubleshooting and testing. dig is great for checking the time it takes to returen a DNS request as well as see what DNS server filled that request. </p>
+<p> </p>
+<p>dig distrowatch.com</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">use dig to test new bind dns server with caching</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Example of results from dig before dns record is cached</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>You can see that the DNS server that responded was 192.168.96.2 and it took 1579 msec to get a reply. Now 1579 is a really long time but since I have a satalite connection that is the norm. Most networks should be 500 msec or less.</p>
+<p>Let's dig distrowatch.com one more time and see what kind of performance increase we get now that the DNS request for distrowatch.com is cached.   </p>
+<p>dig distrowatch.com</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">dig results after dns record has been cached on bind server</p>
+<p> </p>
+<p> </p>
+<p>You can see a big performance increase. It went from 1579 msec to 3 msec. We now know that the server can query google's DNS server on entries is does not know.   Let's now try and ping one of the internal DNS enties we added. Since I setup the name firewall to IP address 192.168.96.1, I wil try pinging that address and use the -c 4 option at the end of the command to ping it only 4 times. If you leave the -c 4 option off it will keep pinging until you hit CTRL + C to cancel it.  </p>
+<p>ping firewall -c 4</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">ping new dns record</p>
+<p> </p>
+<p> </p>
+<p class="rtecenter">Example of ping results of new dns record - firewall</p>
+<p> </p>
+<p> </p>
+<p>You can see that I am getting replies. Looks like everything is up and working!</p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<h2>
+	Configuring Your PC To Use Your New DNS Server</h2>
+<hr /><p>All that is left is to setup your machines to use your new DNS server. You have a couple options here. You can manually set it on each machine or edit your DHCP server to hand this out with the IP addresses.</p>
+<p> </p>
+<p>How To Manually Set DNS Server(s) On A windows 7 : <a href="http://mixeduperic.com/windows/how-to-manually-set-dns-servers-on-a-windows-7.html">http://mixeduperic.com/windows/how-to-manually-set-dns-servers-on-a-windows-7.html</a></p>
+<p> </p>
+<p> </p>
+<p class="rtecenter"><a href="http://www.amazon.com/gp/product/B0026OR2QS/ref=as_li_ss_il?ie=UTF8&amp;tag=mixedupericco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026OR2QS"></a></p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>If you are looking for some more details on <a href="http://www.amazon.com/gp/product/B0026OR2QS/ref=as_li_ss_il?ie=UTF8&amp;tag=mixedupericco-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=B0026OR2QS">DNS and Bind</a> O'Reilly has a really great book that I recommend. It covers anything from running a internet DNS server to all the details on options and settings. </p>
+<p> </p>
+<p> </p>
+<p> </p>
+<p>If you enjoyed this post, please share it on your favorite social network by clicking on the “Share / Save” bar below.</p>
+</div></div></div><div class="g-plusone-wrapper" style="margin: 0 1em 1em 1em;float:right" ></div>  </div>
+  
+  <div class="clearfix">
+          <div class="links node-links clearfix"><ul class="links inline"><li class="addtoany first last">
+		<a class="da2a_button" href="http://www.addtoany.com/share_save" id="da2a_1">Share/Save</a>
+		
+		</li></ul></div>
+    
+      </div>
+</div>    </div>
+  </div>
+</div>
+      </div>
+</div>  </div>
+</div></div>    
+  
+      <div id="section-footer" class="section section-footer">
+  <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
+  <div id="zone-footer" class="zone zone-footer clearfix container-12">
+    <div class="grid-12 region region-footer-first" id="region-footer-first">
+  <div class="region-inner region-footer-first-inner">
+    <div class="block block-block block-2 block-block-2 odd block-without-title" id="block-block-2">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <p></p><center>
+<table border="1" cellpadding="1" cellspacing="1" style="max-width: 900px;"><tbody><tr><td>
+<p class="rtecenter">Stay up dated on new tutorials by subscribing to MixedUpEric's<a href="http://feeds.feedburner.com/Mixeduperic.com"> RSS Feed</a> and <a href="http://mixeduperic.com/newsletter.html">Monthly Newsletter</a>!</p>
+<p class="rtecenter"><a href="http://feeds.feedburner.com/Mixeduperic.com">Subscribe to MixedUpEric's RSS feed</a> <a href="http://feeds.feedburner.com/Mixeduperic.com">Subscribe to RSS feed</a>           <a href="http://mixeduperic.com/newsletter.html">Sign-up For Monthly News Letter Sign Up for Monthly News Letter</a></p>
+<div class="rtecenter">
+						 </div>
+</td>
+</tr></tbody></table><p></p></center>
+<p> </p>
+<p> </p>
+    </div>
+  </div>
+</div>
+<div class="block block-block block-1 block-block-1 even block-without-title" id="block-block-1">
+  <div class="block-inner clearfix">
+                
+    <div class="content clearfix">
+      <hr /><p class="rteright"><a href="http://mixeduperic.com">Home</a>     <a href="../all-how-to-articles.html">Tutorials</a>     <a href="../other-resources">Resources</a>     <a href="../contact">Contact</a>    <a href="../privacy-policy.html"> Privacy</a></p>
+<p class="rteright"> </p>
+<p class="rteright"> </p>
+    </div>
+  </div>
+</div>
+  </div>
+</div>  </div>
+</div></div>  </div>  <div class="region region-page-bottom" id="region-page-bottom">
+  <div class="region-inner region-page-bottom-inner">
+      </div>
+</div>
+</body>
+</html>

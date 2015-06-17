@@ -1,0 +1,24 @@
+1. Crear las claves con easi-rsa:
+
+Execute generate-all-keys-easy.sh script to generate credential files.
+
+2. Put generated files (see output of previous command) in user@host:/etc/openvpn directories in each corresponding host (server, clients, etc.).
+3. Execute openvpn (note that .ovpn equals .conf).
+sudo openvpn file.conf
+sudo openvpn file.ovpn
+sudo service openvpn start (uses all .conf files in /etc/openvpn)
+
+4. Make internet accessible though the VPN: 
+
+(Routing traffic through the server)
+Append the following to your server's openvpn.conf configuration file:
+   push "dhcp-option DNS 8.8.8.8"
+   push "dhcp-option DNS 8.8.4.4"
+   push "redirect-gateway def1"
+Use an iptable for NAT forwarding:
+   echo 1 > /proc/sys/net/ipv4/ip_forward
+   iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o enp1s0 -j MASQUERADE
+If all is well, make the changes permanent:
+   Edit /etc/conf.d/iptables and change IPTABLES_FORWARD=1
+   sudo iptables-save
+

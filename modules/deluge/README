@@ -1,0 +1,8 @@
+sudo apt-get install deluged deluge-web
+
+Then follow: 
+
+http://www.havetheknowhow.com/Install-the-software/Install-Deluge-Headless.html
+
+Then in the webui go to Preferences -> Daemons -> Allow Remote Connections and enable it.
+Then use the provided web.conf and place it in the shown directory. It is useful so that the web ui uses by default (no asking) the existing daemon. This way Android clients work correctly.

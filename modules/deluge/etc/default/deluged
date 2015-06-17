@@ -1,0 +1,9 @@
+# Defaults for deluged initscript
+# sourced by /etc/init.d/deluged
+
+# change to 1 to enable daemon
+# KEEP IT DISABLED as you will enable all 
+# together by hand using the script
+# deluge-daemon that enables both deluged 
+# and deluge-web
+ENABLE_DELUGED=0

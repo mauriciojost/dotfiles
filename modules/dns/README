@@ -1,0 +1,30 @@
+http://mixeduperic.com/ubuntu/seven-easy-steps-to-setting-up-an-interal-dns-server-on-ubuntu.html
+
+Then you need to change your hostname to:
+<hostname>.<domainname>
+like 
+pepa.marten
+
+Then restart all networking services.
+
+You can verify your changes by doing:
+   defi@pepa:~/.dotfiles/module-dns$ hostname --short
+   pepa
+   defi@pepa:~/.dotfiles/module-dns$ hostname --domain
+   marten
+   defi@pepa:~/.dotfiles/module-dns$ hostname --long
+   pepa.marten
+
+If being in a computer whose domain is X you ping
+ping A 
+then Linux will try to resolve A and A.<your-domain>, 
+i.e. A.X . 
+It means that pinging 
+   ping router
+you will be pinging 
+router.marten which indeed is defined in the forward zone 
+configuration file, reason why the resolution will work (
+and you will successfully be able to ping router.marten).
+
+
+

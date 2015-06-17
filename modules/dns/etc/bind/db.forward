@@ -1,0 +1,36 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+
+; We define the Server and the contact defi@localhost
+; Note the dots at the end.
+@	IN	SOA	pepa.marten. defi.localhost. (
+			      2		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+
+; We define the Name Server NS that is responsible 
+; for the domain 
+; Note the dots at the end.
+@	IN	NS	pepa.marten.
+
+; Other crap
+@	IN	A	127.0.0.1
+@	IN	AAAA	::1
+
+; All these entries are used for forward name resolution
+; To test: 
+;    ping <name>.<domain-name>
+pepa	IN	A	10.0.0.5
+router	IN	A	10.0.0.1
+
+
+; Some aliases (you must use a FQDN/Fully 
+; Quallified Domain Name when using a alias)
+; To test: 
+;    ping <alias>.<domain-name>
+pepen 	IN 	CNAME	pepa.marten.

@@ -1,0 +1,66 @@
+# Nice tutorial video at: 
+#   https://www.youtube.com/watch?v=PmOMc4zfCSw
+
+# Install vagrant and virtualbox
+wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.5_x86_64.deb
+sudo dpkg -i vagrant_1.6.5_x86_64.deb
+sudo apt-get install virtualbox
+
+# Add a boxes to vagrant (VM boxes/images at: https://vagrantcloud.com/discover/featured)
+vagrant box add ubuntu/trusty32
+vagrant box add hashicorp/precise64
+
+# Init a VM (creates a Vagrantfile configuration file)
+vagrant init ubuntu/trusty32
+
+# Start the VM
+vagrant up
+
+# Destroy the VM
+vagrant destroy
+
+# Reload configuration and restart the VM
+vagrant reload
+
+# Create a new vagrant box from an existent VM instance 
+vagrant package --output mynew.box
+
+
+
+About the use of CHEF
+
+# First create the cookbooks directory
+mkdir cookbooks 						# the default path for chef cookbooks
+cd cookbooks
+
+# Clone cookbooks
+git clone https://github.com/opscode-cookbooks/apt.git 		# required by nginx recipe
+git clone https://github.com/phlipper/chef-nginx.git 		# to install nginx
+mv chef-nginx nginx 						# needs to have this folder name, don't know why
+
+# So that at the end we have:
+   ./Vagrantfile
+   ./cookbooks
+   ./cookbooks/apt/...
+   ./cookbooks/apt/README.md
+   ./cookbooks/nginx/...
+   ./cookbooks/nginx/README.md
+
+# Provide cookbooks in the Vagrantfile 
+# Add (or uncomment) the following lines 
+#  - nginx.server is a recipe, it is mentioned in nginx/README.md:
+#       `nginx::server` - Install and configure the `nginx` package.
+#  - nginx.user is an attribute, it is in nginx/README.md:
+#        default["nginx"]["user"]       = "www-data"
+...
+  config.vm.provision "chef_solo" do |chef|
+    chef.add_recipe "nginx::server"
+    chef.json = {
+      "nginx" => {
+        "user" => "vagrant"
+      }
+    }
+  end
+...
+
+

@@ -1,0 +1,88 @@
+<keymap version="1" name="MauriXwin" parent="Default for XWin">
+  <action id="$SelectAll" />
+  <action id="CallHierarchy">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control U" />
+  </action>
+  <action id="ChangesView.Commit">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control C" />
+  </action>
+  <action id="CloseEditor">
+    <keyboard-shortcut first-keystroke="control W" />
+  </action>
+  <action id="Compare.Selected">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="shift control C" />
+  </action>
+  <action id="Diagram.SelectAll" />
+  <action id="ExternalJavaDoc">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control D" />
+  </action>
+  <action id="ExtractMethod">
+    <keyboard-shortcut first-keystroke="control E" second-keystroke="control M" />
+  </action>
+  <action id="FileStructurePopup">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control M" />
+  </action>
+  <action id="FindInPath">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control F" />
+  </action>
+  <action id="FindUsages">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control U" />
+  </action>
+  <action id="Git.Branches">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control B" />
+  </action>
+  <action id="Git.Log">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control L" />
+  </action>
+  <action id="Git.Rebase">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control R" />
+  </action>
+  <action id="Git.Stash">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control S" />
+  </action>
+  <action id="GotoClass">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control C" />
+  </action>
+  <action id="MethodHierarchy">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control H" />
+  </action>
+  <action id="ParameterInfo">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control P" />
+  </action>
+  <action id="QuickJavaDoc">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control D" />
+  </action>
+  <action id="RenameElement">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control R" />
+  </action>
+  <action id="ReplaceInPath">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control R" />
+  </action>
+  <action id="SwitchApply">
+    <keyboard-shortcut first-keystroke="shift alt ENTER" />
+  </action>
+  <action id="SwitchDown">
+    <keyboard-shortcut first-keystroke="shift alt DOWN" />
+  </action>
+  <action id="SwitchLeft">
+    <keyboard-shortcut first-keystroke="shift alt LEFT" />
+  </action>
+  <action id="SwitchRight">
+    <keyboard-shortcut first-keystroke="shift alt RIGHT" />
+  </action>
+  <action id="SwitchUp">
+    <keyboard-shortcut first-keystroke="shift alt UP" />
+  </action>
+  <action id="TypeHierarchy">
+    <keyboard-shortcut first-keystroke="control A" second-keystroke="control H" />
+  </action>
+  <action id="Vcs.ShowHistoryForBlock">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="shift control H" />
+  </action>
+  <action id="Vcs.ShowTabbedFileHistory">
+    <keyboard-shortcut first-keystroke="control G" second-keystroke="control H" />
+  </action>
+  <action id="VimPluginToggle">
+    <keyboard-shortcut first-keystroke="control alt Q" />
+  </action>
+</keymap>

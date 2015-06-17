@@ -1,0 +1,10 @@
+# Load aliases files
+
+HISTORY_FILE=$HOME/.history.log
+
+for f in `ls $DOTFILES/modules/shell/aliases/*`
+do
+	#echo "Loading aliases: `basename $f` ..."
+	source "$f"
+done
+

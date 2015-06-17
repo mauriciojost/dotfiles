@@ -1,0 +1,103 @@
+set nocompatible
+syntax on
+filetype on
+filetype plugin on
+filetype indent on
+colorscheme pablo
+
+set showmatch
+set matchtime=0
+set shortmess=atI
+set ruler
+set showcmd
+
+set sidescroll=1
+set sidescrolloff=3
+
+" Set xterm title
+set title
+
+" Search options
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+
+set visualbell
+set noerrorbells
+set printoptions=paper:letter
+
+" Keep more lines of context
+set scrolloff=3
+
+" Make backspace delete lots of things
+set backspace=indent,eol,start
+fixdel
+:set nocp
+:map <BS> x 
+
+" Auto-backup files and .swp files don't go to pwd
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+
+" Allow switching edited buffers without saving
+set hidden
+
+" Look for the file in the current directory, then south until you reach home.
+set tags=tags;~/
+
+" Change <Leader>
+let mapleader = ","
+
+" Quick timeouts on key combinations.
+set timeoutlen=300
+
+" I honestly hate registers, and never use them... So use always the same register "+ (system clipboard).
+" System clipboard is supported by a few versions of VIM. 
+" Make sure your `vim --version | grep xterm_clipboard` shows " +xterm_clipboard 
+" and not -xterm_clipboard (in this latter case you better install vim-gnome rather than vim-tiny).
+" noremap p "+p
+" noremap P "+P
+" noremap d "+d
+" noremap D "+D
+" noremap y "+y
+" noremap Y "+Y
+" noremap dd "+dd
+" noremap x "+x
+
+" % matches on if/else, html tags, etc.
+runtime macros/matchit.vim
+
+" Bash-like filename completion
+set wildmenu
+set wildmode=list:longest
+set wildignore=*.o,*.fasl
+
+autocmd BufRead *.xfa set filetype=xml
+autocmd BufRead *.xru set filetype=xml
+autocmd BufRead *.xna set filetype=xml
+autocmd BufRead *.qcf set filetype=lisp
+autocmd BufRead qpx.inc set filetype=make
+autocmd BufRead letter* set filetype=mail
+
+autocmd Filetype * set formatoptions-=cro
+autocmd Filetype mail set fo -=l autoindent spell
+autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+autocmd Filetype sh set ts=4 shiftwidth=2 expandtab
+autocmd Filetype lisp,ruby,xml,html set ts=8 shiftwidth=2 expandtab
+autocmd Filetype python set ts=4 shiftwidth=4 expandtab
+autocmd Filetype xml,xslt,diff,ruby color desert
+autocmd Filetype xml,xslt,diff,ruby set expandtab
+autocmd BufReadPre viper,.viper set filetype=lisp
+autocmd BufRead ~/stellar/* set lbr formatoptions=l
+
+autocmd BufRead *.dump set filetype=sql
+
+" a.vim
+nmap <silent> <Leader>h :A<CR>
+
+" Use the mouse in all the modes
+"set mouse=a
+
+
+

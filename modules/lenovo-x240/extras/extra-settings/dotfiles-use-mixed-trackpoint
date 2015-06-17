@@ -1,0 +1,54 @@
+#!/bin/bash
+
+# Check http://www.x.org/archive/X11R7.5/doc/man/man4/synaptics.4.html
+echo Acceleration
+xinput set-prop 11  'Device Accel Constant Deceleration' 1.5
+
+echo Switch off the touchpad. Valid values are: 0   Touchpad is enabled 1   Touchpad is switched off 2   Only tapping and scrolling is switched off
+synclient TouchpadOff=0
+
+echo If clicks , i.e you hear the sound of the click on the touch, are enabled on the pad, no info in the documentation about this parameter but seems to influence the ClickFinger ones
+synclient ClickPad=1
+echo Which mouse button is reported when left-clicking with X fingers. Set to 0 to disable.
+echo Multi finger clicks must be done having fingers really close from each other
+synclient ClickFinger1=0 
+synclient ClickFinger2=3 
+synclient ClickFinger3=2
+
+echo Which mouse button is reported on a non-corner X fingers tap. Set to 0 to disable. 
+echo This is really a X fingers tap, might be a bad idea if unintensionally tapping while typing, I suggest to disable it
+synclient TapButton1=0
+synclient TapButton2=0
+synclient TapButton3=0
+
+echo Makes the driver react faster to a single tap, but also makes double clicks caused by double tapping slower. 
+#synclient FastTaps=1
+echo Which mouse button is reported on a X X corner tap. Set to 0 to disable
+synclient RTCornerButton=0 RBCornerButton=0 
+synclient LTCornerButton=0 LBCornerButton=0 
+
+
+#echo Assign new zones for right and middle clicks with trick to avoid error setting new values
+#middlebuttomarearight=`synclient | grep MiddleButtonAreaRight | awk '{print $3}'`
+#middlebuttomarearight_plusone=`echo 1 + $middlebuttomarearight | bc`
+#synclient RightButtonAreaLeft=$middlebuttomarearight_plusone 
+
+#echo Setting middle button...
+#synclient MiddleButtonAreaBottom=2000
+#synclient MiddleButtonAreaTop=0 
+
+#echo Setting right button...
+#synclient RightButtonAreaTop=0 
+#synclient RightButtonAreaBottom=2000
+#synclient RightButtonAreaBottom=0
+#synclient RightButtonAreaTop=4300 
+
+#echo Top sensitive zone...
+synclient AreaTopEdge=1800
+
+echo Palm...
+synclient PalmDetect=1
+
+echo Not used
+synclient MinSpeed=0 MaxSpeed=0 AccelFactor=0
+

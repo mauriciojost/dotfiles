@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "-------- `date +%s`" 
+acpi | sed "s/Battery /Bat/g" | awk '{print $1,$3}' | sed "s/,//g" | sed "s/%//g"
+echo "Bklt: `xbacklight -d :0.0`" 
+echo "Temp:" `acpi -t | awk '{print $4}'`
+
+

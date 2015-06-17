@@ -1,0 +1,8 @@
+#!/bin/bash
+
+CURRDIR=$(dirname "$0")
+CURRDIR=$(readlink -e "$CURRDIR")
+
+mkdir -p $HOME/.logs/
+
+"$CURRDIR/snapshot-log" &>> $HOME/.logs/followup.log

@@ -1,0 +1,17 @@
+
+sudo apt-get install minidlna
+# uses port 8200
+
+1. At:
+
+   /etc/minidlna.conf
+
+- set user to your user
+- enable automatic discovery of new files
+- set directories of media
+
+2. At: 
+
+   /etc/default/minidlna
+
+- set user and group to your user

@@ -1,0 +1,63 @@
+[user]
+	name = Mauricio Jost
+	email = mauricio.jost@activeeon.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red reverse
+	new = green reverse
+	whitespace = white reverse
+
+[color "branch"]
+	current = yellow reverse
+	local = yellow 
+	remote = green
+
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+
+[core]
+	editor = vim
+[diff]
+	tool = diffuse
+
+[push]
+	default = current
+
+[alias]
+	qtree = !gitk --all
+
+	qlog = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --name-status --full-history --abbrev-commit
+
+	qpush = push origin master
+
+	qdiff = difftool
+
+	qunstage = reset HEAD -- 
+
+	qstage = add -i
+
+	qlogcomplete = log --name-only --full-history
+
+	qcommit = commit -s 
+
+	qcommitamend = commit -s --amend
+
+	qundocommit = reset --soft HEAD^
+
+	qsqueezefromcommit = rebase -i
+
+[gui]
+	editor = vim
+[merge]
+	tool = xxdiff
+[cola]
+	tabwidth = 2

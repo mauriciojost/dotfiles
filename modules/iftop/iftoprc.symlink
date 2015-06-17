@@ -1,0 +1,14 @@
+dns-resolution: no
+port-resolution: no
+show-bars: yes
+promiscuous: yes
+port-display: on
+hide-source: no
+hide-destination: no
+use-bytes: yes
+sort: 40s
+line-display: two-line
+show-totals: no
+log-scale: no
+max-bandwidth: 100M
+

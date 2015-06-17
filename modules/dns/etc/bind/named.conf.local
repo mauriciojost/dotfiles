@@ -1,0 +1,39 @@
+//
+// Do any local configuration here
+//
+
+// Consider adding the 1918 zones here, if they are not used in your
+// organization
+//include "/etc/bind/zones.rfc1918";
+
+// Mauri
+// Set up the forward zone (useful to resolve
+// names into IP addresses). 
+// FYI: forward DNS is configured by setting
+// up A (Address) records. That's what the
+// corresponding file will have.
+
+zone "marten" {
+	type master;
+	file "/etc/bind/db.forward";
+};
+ 
+// Mauri
+// Set up the reverse zone (useful to resolve
+// names into IP addresses).
+// FYI: reverse DNS is configured by setting
+// up PTR (PoinTeR) records. That's what the
+// corresponding file will have.
+
+// When looking at our IP address the part we care about is 
+// the first three sets of octets (numbers). Then we just 
+// reverse them.  So If my IP address is 192.168.1.100 my 
+// reverse lookup zone would be 1.168.192.in-addr.arpa. 
+// If my IP address is 172.20.16.120 my reverse zone would 
+// be 16.20.172.in-addr.arpa . 
+
+zone "0.0.10.in-addr.arpa" {
+	type master;
+	notify no;
+	file "/etc/bind/db.reverse";
+};

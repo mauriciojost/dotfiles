@@ -1,0 +1,6 @@
+#!/bin/bash
+
+CURRDIR=$(dirname "$0")
+CURRDIR=$(readlink -e "$CURRDIR")
+
+octave "$CURRDIR/followup-plot.m"
