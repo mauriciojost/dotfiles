@@ -41,6 +41,12 @@ function qstats-B-paging() {
     qstats-base -B
 }
 function qstats-b-io-transfer-rate-statistics() {
+echo tps: Total num­ber of trans­fers per sec­ond that were issued to the phys­i­cal disk. A trans­fer is an I/O request to the phys­i­cal disk. Mul­ti­ple log­i­cal requests can be com­bined into a sin­gle I/O request to the disk. A trans­fer is of inde­ter­mi­nate size.
+echo rtps: Total num­ber of read requests per sec­ond issued to the phys­i­cal disk.
+echo wtps: Total num­ber of write requests per sec­ond issued to the phys­i­cal disk.
+echo bread/s: Total amount of data read from the drive in blocks per sec­ond. Blocks are equiv­a­lent to sec­tors with 2.4 ker­nels and newer and there­fore have a size of 512 bytes. With older ker­nels, a block is of inde­ter­mi­nate size.
+echo bwrtn/s: Total amount of data writ­ten to the drive in blocks per second.
+
     qstats-base -b
 }
 function qstats-q-queue-and-load-average-statistics() {
