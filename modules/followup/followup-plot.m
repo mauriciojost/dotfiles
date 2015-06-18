@@ -6,16 +6,18 @@ endfunction
 
 function build_plot(samples_labels, samples)
   
-  timeslot_hours = 10;
   plotsize = 800;
   
   times_sec_raw = samples(1,:);
-  times_sec_norm = times_sec_raw - min(times_sec_raw);
-  times_hours_norm = times_sec_norm / 3600;
-  figure('Position',[0,0,plotsize,plotsize]);
+  % times_sec_norm = times_sec_raw - min(times_sec_raw);
+  times_sec_norm = times_sec_raw;
+  % times_hours_norm = times_sec_norm / 3600;
+  times_hours_norm = times_sec_norm;
+  figure('Position',[0,0,plotsize*2,plotsize]);
   xlabel('Time [hours]'); ylabel('Values');
   latest_hour = max(times_hours_norm);
-  axis ([latest_hour - timeslot_hours, latest_hour, 0, 100]);
+  earliest_hour = min(times_hours_norm);
+  axis ([earliest_hour, latest_hour, 0, 100]);
   plot(times_hours_norm, samples([2:rows(samples)],:),'.-')
   legend(samples_labels(2:length(samples_labels)))
   grid

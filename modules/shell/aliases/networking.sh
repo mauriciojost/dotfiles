@@ -14,3 +14,10 @@ function qnetwork-usage-with-mask(){
     sleep 1
     sudo iftop -F $1
 }
+
+function qnetwork-set-gateway(){
+    route -n 
+    sudo route add -net 0.0.0.0 gw 192.18.1.2 wlan0
+    sudo route del -net 0.0.0.0 gw 192.18.1.254
+    route -n 
+}
