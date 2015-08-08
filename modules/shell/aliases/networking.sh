@@ -21,3 +21,7 @@ function qnetwork-set-gateway(){
     sudo route del -net 0.0.0.0 gw 192.18.1.254
     route -n 
 }
+
+function qnetwork-discover-ports-open-in-target(){
+    nmap -P0 $1
+}
