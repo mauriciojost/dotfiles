@@ -16,7 +16,6 @@
         <value type="int" value="7"/>
         <value type="int" value="6"/>
         <value type="int" value="10"/>
-        <value type="int" value="5"/>
         <value type="int" value="8"/>
         <value type="int" value="9"/>
         <value type="int" value="12"/>
@@ -55,6 +54,7 @@
         <value type="string" value="task manager"/>
         <value type="string" value="spotify"/>
         <value type="string" value="blueman-applet"/>
+        <value type="string" value="x-www-browser"/>
         <value type="string" value="xfce4-power-manager"/>
         <value type="string" value="scp-dbus-service.py"/>
         <value type="string" value="notes"/>
@@ -70,6 +70,7 @@
         <value type="string" value="libapplication.so"/>
         <value type="string" value="com.canonical.indicator.sound"/>
         <value type="string" value="com.canonical.indicator.messages"/>
+        <value type="string" value="com.canonical.indicator.power"/>
       </property>
       <property name="single-row" type="bool" value="false"/>
     </property>

@@ -1,8 +1,7 @@
 favorites=exo-web-browser.desktop,exo-mail-reader.desktop,exo-file-manager.desktop,abiword.desktop,gnumeric.desktop,ubuntu-software-center.desktop,exo-terminal-emulator.desktop
-recent=update-manager.desktop,google-chrome.desktop,xfce-display-settings.desktop,software-properties-gtk.desktop,light-locker-settings.desktop,dropbox.desktop,ubuntu-software-center.desktop,xfce-keyboard-settings.desktop,xfce-mouse-settings.desktop,xfce-wmtweaks-settings.desktop
+recent=google-chrome.desktop,gimp.desktop,users.desktop,xfce-display-settings.desktop,jetbrains-idea-ce.desktop,xfce-keyboard-settings.desktop,btsync.desktop,xfce4-screenshooter.desktop,netbeans-8.0.2.desktop,dropbox.desktop
 button-title=Applications Menu
 button-icon=xubuntu-logo-menu
-button-single-row=false
 show-button-title=false
 show-button-icon=true
 launcher-show-name=true
@@ -15,7 +14,6 @@ favorites-in-recent=true
 display-recent-default=true
 position-search-alternate=true
 position-commands-alternate=false
-position-categories-alternate=false
 menu-width=400
 menu-height=500
 command-settings=xfce4-settings-manager

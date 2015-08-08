@@ -8,12 +8,12 @@
     <property name="font" type="string" value="Sans Bold 20"/>
   </property>
   <property name="folders" type="empty">
-    <property name="last-used-media" type="string" value="/home/mjost/topics/kdenlive"/>
+    <property name="last-used-media" type="string" value="/home/mjost/shared/BtSync/all/videos/series/30rock/30 Rock Season 1 Complete HDTV-soagg"/>
   </property>
   <property name="window" type="empty">
     <property name="maximized" type="bool" value="true"/>
-    <property name="width" type="int" value="1916"/>
-    <property name="height" type="int" value="1029"/>
+    <property name="width" type="int" value="1358"/>
+    <property name="height" type="int" value="716"/>
   </property>
   <property name="audio" type="empty">
     <property name="volume" type="int" value="100"/>
