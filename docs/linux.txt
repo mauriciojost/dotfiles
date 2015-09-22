@@ -1145,3 +1145,30 @@ sudo apt-get install yasm
 ./configure 
 make -j
 
+
+
+### Linux quota
+
+
+repquota /
+
+Will show you are not using quota in your mount.
+
+In your /etc/fstab add either usrjquota or usrquota in the options. Mine looked like this: 
+LABEL=cloudimg-rootfs  /   ext4  defaults          0 0
+and after the change looked like this:
+LABEL=cloudimg-rootfs  /   ext4  defaults,usrquota 0 0
+
+mount -o remount /
+touch aquota.user
+chmod 600 aquota.user
+chown root:root aquota.user
+quotacheck -auvm
+# this will recreate the file using quota version vfsv0
+quotacheck -cfmvF vfsv0 /
+
+
+# check disk usage per user
+repquota
+# fix quota potential problems
+quotacheck -avug
