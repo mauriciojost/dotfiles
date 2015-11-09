@@ -1,6 +1,6 @@
 function [sample_label, sample_value] = extract(theLine)
-	splits = strsplit(theLine, ' ');
-	sample_label = strjoin(splits(1));
+  splits = strsplit(theLine, ' ');
+  sample_label = strjoin(splits(1));
   sample_value = str2num(strjoin(splits(2)));
 endfunction
 
