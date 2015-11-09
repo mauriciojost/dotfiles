@@ -1,5 +1,5 @@
 function qquota-get-information(){
-  repquota /
+  repquota -a
 }
 
 function qquota-edit-for-user-X(){
@@ -11,5 +11,6 @@ function qquota-check(){
   echo v Verbose mode
   echo u Check for user disk quota
   echo g Check for group disk quota
-  quotacheck -avug
+  echo m Forced
+  quotacheck -mavug
 }
