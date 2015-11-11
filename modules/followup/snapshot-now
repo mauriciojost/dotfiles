@@ -2,7 +2,16 @@
 
 CURRDIR=$(dirname "$0")
 CURRDIR=$(readlink -e "$CURRDIR")
+TARGET=$HOME/.logs/followup.log
+LOGSCRIPT=$CURRDIR/snapshot-log
 
 mkdir -p $HOME/.logs/
 
-"$CURRDIR/snapshot-log" &>> $HOME/.logs/followup.log
+if [ -f "$TARGET" ] 
+then
+  $LOGSCRIPT INIT &>> $TARGET
+else 
+  $LOGSCRIPT CONT &>> $TARGET
+fi
+
+

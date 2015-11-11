@@ -3,4 +3,6 @@
 CURRDIR=$(dirname "$0")
 CURRDIR=$(readlink -e "$CURRDIR")
 
+cat $HOME/.logs/followup.log | tail -2000 > $HOME/.logs/followup.log.some
+
 octave "$CURRDIR/followup-plot.m"

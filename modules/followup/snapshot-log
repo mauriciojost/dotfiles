@@ -1,7 +1,40 @@
 #!/bin/bash
-echo "-------- `date +%s`" 
-acpi | sed "s/Battery /Bat/g" | awk '{print $1,$3}' | sed "s/,//g" | sed "s/%//g"
-echo "Bklt: `xbacklight -d :0.0`" 
-echo "Temp:" `acpi -t | awk '{print $4}'`
+
+function getdate(){
+  date +%s
+}
+
+function getbattery(){
+  BATNUMBER=$1
+  acpi | grep "Battery $BATNUMBER" | awk '{print $4}' | sed "s/,//g" | sed "s/%//g"
+}
+
+function getbacklight(){
+  BACKL=`xbacklight -d :0.0`
+  if [ "$?" = "0" ]
+  then
+    echo "$BACKL"
+  else
+    echo "-1"
+  fi
+}
+
+function gettemperature(){
+  acpi -t | awk '{print $4}'
+}
+
+DATE=`getdate`
+BAT0=`getbattery 0`
+BAT1=`getbattery 1`
+BAKL=`getbacklight`
+TEMP=`gettemperature`
+
+if [ "$1" == "INIT" ]
+then
+  echo "STATE,IBAT0,IBAT1,DBAKL,DTEMP"
+else
+  echo "$DATE,$BAT0,$BAT1,$BAKL,$TEMP"
+fi
+
 
 
