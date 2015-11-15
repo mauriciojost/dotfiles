@@ -31,9 +31,9 @@ TEMP=`gettemperature`
 
 if [ "$1" == "INIT" ]
 then
-  echo "STATE,IBAT0,IBAT1,DBAKL,DTEMP"
+  printf "TDATE\tIBAT0\tIBAT1\tDBAKL\tDTEMP\n"
 else
-  echo "$DATE,$BAT0,$BAT1,$BAKL,$TEMP"
+  printf "$DATE\t$BAT0\t$BAT1\t$BAKL\t$TEMP\n"
 fi
 
 
