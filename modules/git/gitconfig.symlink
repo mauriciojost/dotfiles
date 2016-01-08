@@ -58,6 +58,6 @@
 [gui]
 	editor = vim
 [merge]
-	tool = xxdiff
+	tool = meld
 [cola]
 	tabwidth = 2
