@@ -6,9 +6,11 @@
 
 alias gc='git-cola'
 
+alias gcp='git cherry-pick'
+
 alias gs='git status -u'
 
-alias gl=qgit-log
+alias gl=qgit-log-extended
 
 alias qgit-stage="git add -i"
 
@@ -39,3 +41,9 @@ alias qgit-tree='git log --oneline --decorate --all --graph'
 alias qgit-bfg="java -jar $HOME/bin/zips/jars/bfg.jar"
 
 alias qgit-push-all-even-tags='git push origin master --tags'
+
+function qgit-bring-branch-from-repo-X-branch-Y(){
+  REPO=$1
+  BRANCH=$2
+  git fetch $REPO $BRANCH:$BRANCH
+}
