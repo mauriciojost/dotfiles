@@ -11,3 +11,9 @@ alias c='cd '
 alias r='readlink -e '
 alias sd='pwd > ~/.last-dir'
 alias gd='cd $(cat ~/.last-dir)'
+
+function qalias() {
+    echo "DEPRECATED: Better use qaliases-edit and once over the aliases directory type :grep <tosearch>"
+    sleep 1
+}
+
