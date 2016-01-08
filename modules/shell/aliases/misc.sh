@@ -1,4 +1,3 @@
-
 function qhelp() {
 	ranger $DOTFILES/docs/
 }
@@ -65,6 +64,18 @@ function qhttp-expose-this-folder-on-port {
     echo "See http://`hostname`:$PORT"
     python -m SimpleHTTPServer $PORT
 }
+
+function qfile-to-unique-line-file() {
+	TARGET=$1
+	cat $TARGET | tr -d '\n'
+}
+
+function qremote() {
+	LOCAL_FILE=/tmp/qremote-local-$RANDOM-$RANDOM-$RANDOM.tmp
+	scp "$1" $LOCAL_FILE
+	echo $LOCAL_FILE
+}
+
 
 
 alias qssh-get-public-key-from-private='ssh-keygen -y -f'
