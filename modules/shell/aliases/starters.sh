@@ -74,7 +74,7 @@ function qvm-kvm-start() {
 }
 
 function qintellij-start() {
-	IDEA=$(find -L $MYBINS -wholename "*/bin/idea.sh")
+	IDEA=$HOME/opt/idea/bin/idea.sh
 	nohup $IDEA &> /tmp/idea.log &
 }
 
