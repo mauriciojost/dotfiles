@@ -34,6 +34,21 @@ sudo ln -s /usr/lib/jvm/java-6-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chro
 
 
 
+# Mount samba filesystem
+sudo apt-get install cifs-utils
+
+mjost@ciccio:/mnt/nas$ sudo cat /root/.smbcredentials
+username=mjost
+password=xxx
+domain=yyy
+mjost@ciccio:/mnt/nas$ sudo cat /etc/fstab
+...
+//10.0.0.12/home /mnt/nas/ cifs credentials=/root/.smbcredentials 0 0
+mjost@ciccio:/mnt/nas$ 
+
+
+
+
 
 Mount android MTP filesystem on Ubuntu 12.04
 http://www.webupd8.org/2012/12/how-to-mount-android-40-ubuntu-go-mtpfs.html
@@ -50,6 +65,7 @@ passwd username                                                           change
 su [userxx]                                                                    change the user to 'userxx'  (if no user specified, uses root)
 sudo                                                                             super user does
 useradd -d HOMEDIR -m -s /bin/bash LOGINNAME         create a new user (to add password/ssh you do '# passwd LOGINNAME')
+useradd -G {group-name} username               add user to group
 chmod +x +r +w file_name                                             change the attributes of a file for this user, eXecution, Readable, Writable
 chmod 777 file_name                                                     change the attributes of a file for all users
 chmod ogua=xwr file_name                                            o others, g group, u owner, a all mentioned before
@@ -67,6 +83,17 @@ gpg file.txt.gpg                                                            decr
 learning webdav: 
 mount locally a webdav filesystem 
 mount -t davfs https://novaforge.bull.com/alfresco-default/alfresco/webdav/sites/ /mnt/datascale
+
+
+
+mount using credentials but putting them outside fstab:
+fstab like: curlftpfs#my-ftp-location.local /mnt/my_ftp fuse allow_other,uid=1000,gid=1000,umask=0022 0 0
+/root/.netrc with 600 and: 
+machine my-ftp-location.local
+login ftp-user
+password ftp-pass
+
+https://linuxconfig.org/mount-remote-ftp-directory-host-locally-into-linux-filesystem
 
 Regarding files search (find)
 updatedb && locate file_name
