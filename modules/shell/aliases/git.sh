@@ -4,7 +4,11 @@
 
 ## Super used ones
 
-alias gc='git-cola'
+function gc(){
+  git --no-pager log -30 --pretty=%s
+  #nohup zenity --info --text="$MSG" &>/dev/null & 
+  git-cola 
+}
 
 alias gcp='git cherry-pick'
 
@@ -34,6 +38,8 @@ alias qgit-commit-undo='git reset --soft HEAD^'
 
 alias qgit-squeeze-from-commit-X='git rebase -i'
 
+alias qgit-squeeze-from-30-ago='git rebase -i HEAD~30'
+
 alias qgit-tree='git log --oneline --decorate --all --graph'
 
 # Useful to rewrite a repository to delete passwords and sensitive information
@@ -47,3 +53,12 @@ function qgit-bring-branch-from-repo-X-branch-Y(){
   BRANCH=$2
   git fetch $REPO $BRANCH:$BRANCH
 }
+
+function qgit-remember-https-credentials(){
+  git config --global credential.helper cache
+  git config --global credential.helper 'cache --timeout=360000'
+}
+
+alias qgit-delete-branch-X='git push origin --delete'
+
+alias qgit-list-remote-branches-in-X="git ls-remote --heads"

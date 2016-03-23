@@ -11,10 +11,12 @@ alias c='cd '
 alias r='readlink -e '
 alias sd='pwd > ~/.last-dir'
 alias gd='cd $(cat ~/.last-dir)'
+alias tree='tree -s -h -f --du'
+alias tree-nohuman='tree -s -f --du'
+alias gopen='thunar'
 
-function qalias() {
-    echo "DEPRECATED: Better use qaliases-edit and once over the aliases directory type :grep <tosearch>"
-    sleep 1
+function qhelp() {
+	ranger $DOTFILES/docs/
 }
 
 function qf(){

@@ -105,6 +105,12 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Load stderred to display stderr in red
+export LD_PRELOAD=$HOME/opt/zips/stderred/build/libstderred.so
+
+# Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
+stty -ixon
+
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
