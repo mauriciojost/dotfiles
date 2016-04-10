@@ -1,5 +1,9 @@
 # Bluetooth
 
+sudo apt-get install pulseaudio-module-bluetooth
+pactl load-module module-bluetooth-discover
+pactl list modules | grep blue
+
 sudo /etc/init.d/bluetooth restart
 pulseaudio -k
 pulseaudio --start
