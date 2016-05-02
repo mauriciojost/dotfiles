@@ -76,9 +76,6 @@ PROMPT_COMMAND="_append_history; history -a;$PROMPT_COMMAND"
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-# shortcut to this dotfiles path is $DOTFILES
-export DOTFILES="$HOME/.dotfiles"
-
 # PATH configuration
 
 # shortcut to this dotfiles path is $DOTFILES
