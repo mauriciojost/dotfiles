@@ -17,3 +17,7 @@ function qalias() {
     sleep 1
 }
 
+function qf(){
+    find | grep $1
+}
+
