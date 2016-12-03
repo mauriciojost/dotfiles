@@ -1,13 +1,15 @@
-### LINUX COMMANDS
+# ROOT ACCESS
 
-ROOT ACCESS
 In some Linux distributions there is something known as Single User mode. In this mode, there is only one user, root. To access this mode, in grub, edit the entry that starts with 
 kernel ... ro ….
 adding 
 kernel … ro … single 
 
 That should lead you to a rooted console where you can do bad stuff... 
-FILESYSTEM & PERMISSIONS
+
+# FILESYSTEM & PERMISSIONS
+
+```
 nautilus
 to see the full path rather than those horrible buttons press ctrl+L    (keywords 
 to see not hidden files press ctrl+a
@@ -16,8 +18,10 @@ cat /proc/cpuinfo         (number of cores running, features of the cores, etc. 
 cat /proc/meminfo       (memory available in the system)
 free                            (available physical memory in the system, -m expreses values in megabytes)
 cat /etc/issue               (distribution name and version)
+```
 
-Torrent
+# Torrent
+```
 deluge (deluge-console, deluge-gtk, deluge-web) client
 has a daemon, to start it : $ deluged
 port for web http://localhost:8112/
@@ -31,10 +35,13 @@ rename 's/^[0-9]*-//;' *
 
 google java chrome plugin install
 sudo ln -s /usr/lib/jvm/java-6-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/plugins/
+```
 
 
 
 # Mount samba filesystem
+
+```
 sudo apt-get install cifs-utils
 
 mjost@ciccio:/mnt/nas$ sudo cat /root/.smbcredentials
@@ -45,22 +52,28 @@ mjost@ciccio:/mnt/nas$ sudo cat /etc/fstab
 ...
 //10.0.0.12/home /mnt/nas/ cifs credentials=/root/.smbcredentials 0 0
 mjost@ciccio:/mnt/nas$ 
+```
 
 
 
 
 
-Mount android MTP filesystem on Ubuntu 12.04
+# Mount android MTP filesystem on Ubuntu 12.04
+
+```
 http://www.webupd8.org/2012/12/how-to-mount-android-40-ubuntu-go-mtpfs.html
 sudo add-apt-repository ppa:webupd8team/unstable
 sudo apt-get update
 sudo apt-get install go-mtpfs
 sudo apt-get install go-mtpfs-unity
 go-mtpfs /tmp/mount
+```
 
 
 
-Regarding users
+# Regarding users
+
+```
 passwd username                                                           change the password of username
 su [userxx]                                                                    change the user to 'userxx'  (if no user specified, uses root)
 sudo                                                                             super user does
@@ -78,15 +91,19 @@ deluser --force username                                               delete th
 finger                                                                          find out who's logged in 
 gpg -c file.txt                                                               encrypt file 
 gpg file.txt.gpg                                                            decrypt file
+```
                                   
 
-learning webdav: 
+# learning webdav: 
+```
 mount locally a webdav filesystem 
 mount -t davfs https://novaforge.bull.com/alfresco-default/alfresco/webdav/sites/ /mnt/datascale
+```
 
 
 
-mount using credentials but putting them outside fstab:
+# mount using credentials but putting them outside fstab:
+```
 fstab like: curlftpfs#my-ftp-location.local /mnt/my_ftp fuse allow_other,uid=1000,gid=1000,umask=0022 0 0
 /root/.netrc with 600 and: 
 machine my-ftp-location.local
@@ -95,20 +112,26 @@ password ftp-pass
 
 https://linuxconfig.org/mount-remote-ftp-directory-host-locally-into-linux-filesystem
 
-Regarding files search (find)
+```
+# Regarding files search (find)
+```
 updatedb && locate file_name
 or
 grep "what to find" file_name
 find / -name "name*" | xargs grep "something inside the file"
 find -wholename "*/smth/name*" | xargs grep "something inside the file"
+```
 
-Regarding disk/filesystem
+# Regarding disk/filesystem
+```
 df -h                                                     view a report of disk space usage per device 
 tree                                                     make a tree of the filesystem
 du -sh *                                                to see a list of files in the current directory and the disk space that they take
 duv                                                      same as above (but better)
+```
 
-### Synchronizing files (rsync command)
+# Synchronizing files (rsync command)
+```
 a archive
 v verbose
 z compress 
@@ -118,16 +141,17 @@ r recursive
 --exclude exclude files from being syncd
 rsync   -vr --exclude “.git”  --delete   /path/to/source   destuser@desthost:/path/to/destination 
 
+```
 
 most useful example
+```
 rsync -avzrP --inplace --delete --exclude ".git/" --exclude ".logs/" --exclude "RM_DB" --exclude "SCHEDULER_DB" --exclude "TEST_SCHEDULER_DB" $CURRDIR/scheduling mjost@vizcacha:~/
 echo "Done."
 
-### Synchronizing files (csync command)
-Install owncloud-csync
-
+```
 
 ### File sudoers 
+```
 Give permissions to one user/group you must use:
 1. su visudo -q     (it is vim specially created for /etc/sudoers file, to edit it with much caution)
 2. Look for something like 
@@ -142,11 +166,13 @@ planete ALL=(ALL)       ALL
 ## Allow mjost to run pm-suspend without password
 mjost ALL=(ALL) NOPASSWD: /usr/sbin/pm-suspend
 
+```
 
 
 The sudoers file is a file that allows non-root users execute root commands. 
 Here you have an example to allow user1 to run tcpdump.
 
+```
 # /etc/sudoers
 #
 # This file MUST be edited with the 'visudo' command as root.
@@ -169,6 +195,7 @@ USERTCPDUMP<tab>ALL = TCPDUMP
 #
 #includedir /etc/sudoers.d
 
+```
 
 
 
@@ -176,8 +203,9 @@ USERTCPDUMP<tab>ALL = TCPDUMP
 
 
 
-Regarding packaging and compression (tar gz)
+# Regarding packaging and compression (tar gz)
 keywords compress or decompress files comprimir descomprimir
+```
 j is for bz2
 z is for bz
 f for file (after any f there must be a file name .tar.x)
@@ -188,8 +216,10 @@ tar -cf archive.tar directory1 directory2  (create file from these directories)
 tar -cjf file.tar.bz2 (-C) directory/   (create compressed file from a directory)
 tar -tvf file.tar (list all files inside this file)
 zcat file.tar.gz (cats all the things from this compressed file)
+```
 
-Regarding modules
+# Regarding modules
+```
 modprobe -r pcspkr           decouples a module (pcspkr) from the kernel
 modprobe    pcspkr           connects a module (pcspkr) to the kernel
 modinfo       pcspkr
@@ -197,9 +227,11 @@ lsmod                              list of modules running (already connected to
 find /lib/modules/$(uname -r) -name *.ko     list all the modules available to load in the system (you will see here the famous pcspkr)
 lspci -v                             list of hardware devices and detailed information about them (including which "kernel driver"/module is being used for it)
 
-Disable GUI mode 
+```
+# Disable GUI mode 
 keywords disable enable gui console text ubuntu boot screen startup login splash 
 
+```
    $ sudo vim /etc/default/grub
 From:
    GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
@@ -210,9 +242,10 @@ Now you must update the grub configs:
 Done! After reboot, to start the gui just login and type:
    startx
 
-NETWORKING
+```
 
-DNS
+# DNS
+```
 sudo vi /etc/resolv.conf and add
 nameserver <ip>
 DNS locally 
@@ -236,7 +269,9 @@ localhost$ ssh -fN -L<localport>:<targethost>:<targetremoteport> <intermediateho
 Connect to host and open port to get connection back
 localhost$ ssh -v -R7777:localhost:22 <remotehost>
 
-Ask for open ports (port scanning) 
+```
+# Ask for open ports (port scanning) 
+```
 keywords find out open ports port open firewall service 
 netstat -ant                check locally which are the open ports (focused on ports)
 lsof -i                         do a mapping between open ports and processes listening to them (focused on processes)
@@ -245,7 +280,8 @@ nmap -P0 target        check from outside which TCP ports are open in target
 nmap -sP 192.168.0.*  list all the ports 
 nmap -sn 10.10.10.0/24 list or discover all available ip addresses in the current lan
 
-States of the ports 
+```
+# States of the ports 
 open
 An application is actively accepting TCP connections, UDP datagrams or SCTP associations on this port. Finding these is often the primary goal of port scanning. Security-minded people know that each open port is an avenue for attack. Attackers and pen-testers want to exploit the open ports, while administrators try to close or protect them with firewalls without thwarting legitimate users. Open ports are also interesting for non-security scans because they show services available for use on the network.
 closed
@@ -260,20 +296,25 @@ closed|filtered
 This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
 
 
-Services
+# Services
+```
 sudo service <servicename> start
 sudo service <servicename> stop
 sudo service <servicename> restart           # restart service
 
+```
 Boot of services (boot, start, services, bootup)
+```
 sudo updte-rc.d <servicename> defaults      # install for boot
 sudo update-rc.d -f <servicename> remove     # remove from boot
 sudo update-rc.d <servicename> disable       # disable boot
 sudo update-rc.d <servicename> enable        # enable at boot
 
+```
 
 Create put this content in file /etc/init.d/foo 
 
+```
 #!/bin/bash
 
 WORK_DIR="/var/lib/foo"
@@ -322,6 +363,7 @@ esac
 
 exit 0
 
+```
 
 Then execute the above described steps to manipulate it. 
 
@@ -332,7 +374,8 @@ Then execute the above described steps to manipulate it.
 
 
 
-Regarding networking
+# Regarding networking
+```
 ifup wlan0                      put up wifi interface
 ifconfig eth0 up              put really up wired interface
 ifdown eth0                    put down ethernet interface
@@ -351,12 +394,16 @@ service start network-manager      if we want the default network manager to wor
 iwlist scan                      scan wifi networks
 once the right network is found, we will use (so install them both with aptitude) ifupdown and wpasupplicant packages.
 
+```
 Normal procedure to get wifi working: 
+```
 sudo wpa_supplicant -iwlan0 -c./mydocs/linux/config/wpa-roam.conf -d
 and paralelly...
 sudo dhclient wlan0
+```
 where in wpa-roam.conf we added (to examples)  
 
+```
 ..........................
 network={
 ssid="anastasias_essid"
@@ -376,17 +423,21 @@ network={
 }
 ..........................
 
+```
 And, to the /etc/network/interfaces add the following:
 
+```
 ..........................
 allow-hotplug wlan0
 iface wlan0 inet manual
        wpa-roam /etc/wpa_supplicant/wpa-roam.conf
 ..........................
 
+```
 Make a script run on ubuntu at boot time
 To make the script run with the start argument at the end of the start sequence, and run with the stop argument at the beginning of the shutdown sequence:
 
+```
 #Example of /etc/init.d/myscript
 #!/bin/bash
 case "$1" in
@@ -403,27 +454,35 @@ esac
 sudo chmod +x /etc/init.d/myscript
 sudo update-rc.d myscript defaults 98 02
 
-Video encoding crop split tool mencoder
+```
+# Video encoding crop split tool mencoder
+```
    $ mencoder $INPUT -ovc x264 -vf crop=$largopx:$anchopx:x:y -frames $amount_of_frames_to_read -o output.mp4
 example
    $ mencoder input.mp4 -ovc x264 -vf crop=960:1080:1920:0 -frames 10000 $OPTS -o output.mp4
+```
 
 
 
-tcpdump-like programs
+# tcpdump-like programs
 
+```
 local interface range of ports, and show them in hexadecimal format
 tcpdump -i eth0 portrange 8080-8090 -A -e | tee result
 ngrep -W byline dst port 443 | tee result
+```
 
-PROGRAMMING
+# PROGRAMMING
+```
 Regarding dependences
 nm (list of symbols)
 ldd (list dependences resolved and unresolved)
 gdbtui executable_file PID          (attach the debugger to a given process)
 
-GENERAL
+```
+# GENERAL
 
+```
 Finding manuals 
 Find help
 man -K keyword1 keyword2 keyword3                     find manuals containing those keywords
@@ -443,7 +502,9 @@ killall process_name                                             kill the proces
 netstat -ntulp                                                        see which processes are listening to which port
 lsof pid                                                                 list of files opened by this process
 
-Re-installing packages
+```
+# Re-installing packages
+```
 keywords install packages package software reinstall install backup re-install safe copy list 
   To make a local copy of the package selection states:
             dpkg --get-selections >myselections
@@ -480,7 +541,9 @@ Set the date properly
 sudo ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 sudo ntpdate pool.ntp.org
 
-Regarding mails
+```
+# Regarding mails
+```
 keywords send email e-mail mail attachment attached file console linux bash 
 apt-get install xmail 
 mail -a filetoattach.txt -s subject address@domain.com < /dev/null
@@ -491,7 +554,9 @@ Logs of mails in: /var/log/maillog
 
 uuencode surfing.jpeg surfing.jpeg | mail sylvia@home.com
 
-Shortcuts
+```
+# Shortcuts
+```
 In general are the same as any browser (like Firefox or Chrome) but you press also Alt:
 Minimize Alt + F9
 Resize Alt + F8
@@ -502,14 +567,18 @@ Pero no anda en muchas máquinas (a pesar de configurarlo) sin ninguna estúpida
 
 http://www.palomatica.info/juckar/linux/resumen/comandos.html
 
+```
 
-Regarding putting processes in background
+# Regarding putting processes in background
+```
 Ctrl-Z pauses the current process in the console
 fg puts back the process in foreground
 bg puts the process in background mode
 
+```
 
-Regarding console-based web browsers
+# Regarding console-based web browsers
+```
 links
 links2
 lynx
@@ -524,8 +593,9 @@ To install and use lynx (yum install lynx or:)
 7. ./lynx -cfg=./lynx.cfg -lss=./samples/lynx.lss http://whatismyipaddress.com/ip-lookup
 where http... you put the webpage you need
 
-
-Linux sources (this case for Debian)
+```
+# Linux sources (this case for Debian)
+```
 All linux sources are told in /etc/apt/sources.list
 format:
 [deb | deb-src ] [options] [repo uri] distribution [component1] [component2] [...] 
@@ -540,21 +610,23 @@ noip        to update automatically one dns server according to the public ip th
 openssh-server      server ssh
 iptables-persistent
             do what you need to to with your iptables and then execute     iptables-save >/etc/iptables/rules
+```
 
-Regarding gnome-session
+# Regarding gnome-session
 If any problem regarding the graphical interface take a look at the file ~/.xsession-errors
 
-Regarding gnome GUI
+# Regarding gnome GUI
 To get it, you only install the packages gnome-core (and maybe gnome-desktop-environment) and then try to go to tty7 to see if it works. 
 
-Regarding bluetooth
+# Regarding bluetooth
 http://wiki.openmoko.org/wiki/Manually_using_Bluetooth
 00:0B:E4:5E:DB:6D
 
 
 
 
-Regarding export (why is it important?)
+# Regarding export (why is it important?)
+```
 $ ./script.sh 
 ALALA is                    #ALALA undefined
 $ ALALA=aa
@@ -563,39 +635,34 @@ ALALA is
 $ export ALALA=aa    
 $ ./script.sh               #ALALA defined and exported to sub-processes
 ALALA is aa     
+```
  
 
-Regarding spoofing on linux (keywords spoof mac address change)
+# Regarding spoofing on linux (keywords spoof mac address change)
+```
 ifconfig eth0 down
 ifconfig eth0 hw ether 00:11:22:33:44:55
 ifconfig eth0 up
 
-Howto free memory in linux
+```
+# Howto free memory in linux
 
+```
 sync
 echo 1 > /proc/sys/vm/drop_caches
 echo 2 > /proc/sys/vm/drop_caches
 echo 3 > /proc/sys/vm/drop_caches
 
-Regarding bash history
+```
+# Regarding bash history
+
+```
 Save history of bash as soon as you type (do not wait until the console closes to do it)
 Put in .bashrc the following: 
-# Add command to the history file as soon as it is typed
-shopt -s histappend
-PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
 
-
-Put in .profile
-
-
-export HISTCONTROL=erasedups
-export HISTSIZE=100000
-export HISTTIMEFORMAT="%D %T "
-export HISTIGNORE="&:ls:exit"
-shopt -s histappend
-
-Modify also HISTSIZE=10000 in .bashrc which is the one that matters everytime you open a console
-CHROOT
+```
+# CHROOT
+```
 keywords jail environment safe test switch 
 http://wiki.debian.org/Debootstrap
 1. To first create the filesystem to later chroot, do: 
@@ -604,9 +671,11 @@ http://wiki.debian.org/Debootstrap
 # chroot ./directory
 
 
+```
 
-Restore GRUB after Windows installation
+# Restore GRUB after Windows installation
 
+```
 Boot using LiveCD, start terminal, and to find out the partition of the linux installation you want in GRUB:
 
 $ sudo fdisk -l
@@ -638,8 +707,10 @@ deb http://old-releases.ubuntu.com/ubuntu/ quantal-security main restricted univ
 deb http://old-releases.ubuntu.com/ubuntu/ quantal-updates main restricted universe multiverse
 
 
-LINUX FILESYSTEM TREE
+```
+# LINUX FILESYSTEM TREE
 
+```
 Directory	Content
 /bin	Common programs, shared by the system, the system administrator and the users.
 /boot	The startup files and the kernel, vmlinuz. In some recent distributions also grub data. Grub is the GRand Unified Boot loader and is an attempt to get rid of the many different boot-loaders we know today.
@@ -667,78 +738,111 @@ Directory	Content
 /var	Storage for all variable files and temporary files created by users, such as log files, the mail queue, the print spooler area, space for temporary storage of files downloaded from the Internet, or to keep an image of a CD before burning it.
 
 
-Learning SSH
+```
+# Learning SSH
 Install SSH server
 Debian
+```
   # aptitude install openssh-server
+```
 Configure SSH server
 
 1. Start SSH daemon/server
+```
   # /etc/init.d/sshd start
   # /etc/init.d/sshd stop
   # /etc/init.d/sshd start
 
+```
 2. Try 'ssh localhost'. If it works continue.
 
 3. Then open port 22 ( SSH ) with iptables:
+```
   # iptables -I INPUT -p TCP --dport 22 -j ACCEPT
+```
 
 Persistent iptables
+```
 # apt-get install iptables-persistent                // Install the service
 # update-rc.d iptables-persistent defaults     // Connect it to the startup hook
 # iptables -I INPUT -p TCP --dport 22 -j ACCEPT
 # iptables-save > /etc/iptables/rules            // save as persistent the current rules
 
+```
 Create pair public and private keys
+```
   # ssh-keygen -t rsa
+```
 Authentication for SSH (pair public/private keys)
 1. In the client do:
  a. Create the pair public / private keys (create generate pair public private key public key private key)
+```
   # ssh-keygen -t rsa
+```
  After it is done you have
+```
  $ ls ~/.ssh/
     id_rsa
     id_rsa.pub
+```
  b. Make sure you change the permissions of .ssh and its content
+```
    $ chmod -R 700 ~/.ssh/
+```
 
 2. In the server do (and troubleshooting):
  a. Append there the content of the client's file  ~/.ssh/id_rsa.pub in the authorized_keys file in the directory ~/.ssh/
     So,
+```
            # vim ~./ssh/authorized_keys      and append
+```
  DO NOT APPEND BY HAND, IT BRINGS PROBLEMS. Better use ssh-copy-id from the client
  b. Then change the permissions of .ssh and its content
+```
   $ chmod -R 700 ~/.ssh/
   $ cd /home && chmod -R 700 userfolder
+```
   To protect it, as usual.
 
 It should be like this:
+```
 from ~/../       : drwx------ 2 user   user   4.0K May 22 11:16 user
 from ~           : drwx------ 2 user   user   4.0K May 22 11:16 .ssh
 from ~/.ssh   : -rw------- 1 user user  381 May 22 11:08 authorized_keys
 from ~/.ssh   : -rwx------ 1 user user  884 May 22 10:54 known_hosts
+```
  c. Set the configuration files to accept RSA Authentication.
 
 Edit /etc/ssh/sshd_config and make sure you have the following lines.
+```
 RSAAuthentication yes
 PubkeyAuthentication yes
+```
 d. Enable or disable password authentication
 
+```
 # TO DISABLE the standard username/password authentication method:
 ChallengeResponseAuthentication no       
 PasswordAuthentication no
 UsePAM no         
+```
+```
 # TO ENABLE the standard username/password authentication method:
 ChallengeResponseAuthentication yes
 PasswordAuthentication yes
 UsePAM yes
+```
 
  d. Then restart the SSH server (one of the two commands below):
+```
    # /etc/init.d/sshd restart
    # service ssh restart
+```
 
  e. Then try from the client to connect:
+```
    ssh -i ~/.ssh/id_rsa user@host
+```
  
 Where user is the owner of the file ~/.ssh/authorized_keys in the server (find out with 'ls -lah ~/.ssh').
  It should work.
@@ -750,18 +854,23 @@ Regarding users that are not loggable through ssh
 /etc/shadow (where passwords are) and check that in the second row (divided by : character) there is no        !!    written
 - Make sure permissions of the .ssh folder and files inside is correct
 Get public key from a private key
+```
 ssh-keygen -y -f ~/.ssh/id_rsa
+```
 
-Ssh-agent
+# Ssh-agent
 If you use a phassphrase to encript your private key (a must do) then you would be asked for this pass everytime you use the key. However ssh-agent alleviates this work, keeping the pass in memory and giving it everytime it’s asked. 
 How to use it? Easy: 
 
+```
    ssh-agent bash                                # start ssh-agent environment
    ssh-add ~/.ssh/new_id_rsa          # add key (pass will be asked once)
 
    ssh my_host                                     # no pass will be asked here
+```
 
-Checking errors (log files)
+# Checking errors (log files)
+```
 # vim /etc/ssh/sshd_config
                                        LogLevel VERBOSE
 
@@ -775,11 +884,12 @@ or
 
 
 cat /var/log/auth /var/log/secure /var/log/messages /var/log/syslog
+```
 
 Eventually there might be something in /var/log/messages and/or /var/log/syslog too.
 
 
-Examples of use (more complete ones)
+# Examples of use (more complete ones)
 scp user@10.10.44.55:/home/user/some_file.tar.gz ./
 ssh user@10.10.44.55
 
@@ -801,7 +911,8 @@ node0.cloud.sophia.inria.fr -> mjost
 
 
 
-SCREEN command
+# SCREEN command
+```
 Keep a session alive even when you close the ssh connection
 
 Normal workflow:  
@@ -812,10 +923,12 @@ $ screen -S SES -r        # re-attach to the session named “SES”
 $ screen -list                  # list current sessions
 $ screen -r -x -S other   # re-attach to a non-detached session (multi display mode)
 
+```
 
 Another more primitive wat to do it is by 'nohup' (is like the operand &, but closing the ssh connection does not kill the process). If that doesn't work, try 'setsid'.
 
 screen commands
+```
 ctrl-a ctrl-w          list windows
 ctrl-a ctrl-n          switch to next window
 ctrl-a ctrl-c          create new window
@@ -829,6 +942,7 @@ ctrl-a ESC          useful to scroll down and up (screen enters into copy mode)
 Store buffer into a file -> "CTRL+A :" + type "hardcopy -h <filename>"
 
 
+```
 
 
 
@@ -838,6 +952,7 @@ Configuration
 
 Put this all in  ~/.screenrc
 
+```
 # An alternative hardstatus to display a bar at the bottom listing the
 # windownames and highlighting the current windowname in blue. (This is only
 # enabled if there is no hardstatus setting for your terminal)
@@ -876,13 +991,15 @@ termcapinfo *xterm*|xterms|xs|rxvt ti@:te@
 
 
 
-wall command
+# wall command
 Notify other users with the same login name, about something you are doing
 
 $ wall message
+```
 
-SSH Tunneling
+# SSH Tunneling
 keywords tunnel tunnels ssh bypass firewall
+```
 ssh -fN -L<localport>:<finalhost>:<finalport> <intermediatehost>
 ssh -fN -L3389:node5.cloud.sophia.inria.fr:3389 node0.cloud.sophia.inria.fr (forwards: localhost:3389 >>> SSH in node0.cloud.sophia.inria.fr >>> node5.cloud.sophia.inria.fr:3389)
 ssh -fN -L3000:localhost:3000 user@remotehost    (in remote host, “localhost”=remotehost so this will map local 3000 with the remote 3000)
@@ -914,13 +1031,17 @@ Host vm-node4
        ProxyCommand ssh -q node4 nc %h %p
 
 
+```
 
 Then if you want the localhost:8888 to node4:80 to work, just login to node4 with 
 
+```
 ssh -v node4
+```
 
 and see in the logs the following: 
 
+```
 ...
 debug1: Local connections to 0.0.0.0:8090 forwarded to remote address localhost:8090
 debug1: Local forwarding listening on 0.0.0.0 port 8090.
@@ -934,15 +1055,19 @@ debug1: channel 2: new [port listener]
 debug1: Local forwarding listening on 127.0.0.1 port 8085.
 ...
 
+```
 
 
-vpn through ssh
+# vpn through ssh
+```
 sshuttle -r <host-that-accesses-10.0.0.X> <mask>
 sshuttle -r root@ae-openstack 10.0.0.0/24
+```
 
 
 
-VPN-like
+# VPN-like
+```
 If you want to access your workstation (at work, so behind a firewall) and you have:
 # a public ip machine
 # your laptop 
@@ -951,9 +1076,11 @@ you just run in your work workstation
 
 while [ 0 -lt 1 ]; do sleep 3600 && ssh -f -N -R 10000:localhost:22 user@public.ip.machine.com ; done
 
+```
 
-Usb bootable stick for linux
+# Usb bootable stick for linux
 
+```
 # Better use (GUI): 
 Ubuntu -> Applications -> Other -> Startup Disk Creator
 # Or (GUI too)
@@ -965,18 +1092,22 @@ Ubuntu -> Applications -> Other -> Startup Disk Creator
    $ sudo sync 
    $ sudo eject /dev/sdb
 
-Create backup of a partition
+```
+# Create backup of a partition
 keywords partition create backup restore linux windows 
 
-Use partimage
+## Use partimage
 
+```
 $ sudo partimage 
 
 if blocked somewhere press ctrl+[
 
+```
 
-Aliases 
+# Aliases 
 
+```
 alias rrr='ls -lah'                                      creates an alias to replace a command
 unalias rrr                                              removes the alias rrr
 alias                                                     shows the current alias
@@ -987,32 +1118,45 @@ Add in .bashrc
 alias gitlog='git log --name-only --full-history'
 alias top='top -c'
 
-Add gateway to host
+```
+# Networking
+## Add gateway to host
 keywords networking add route table gateway 
 
+```
 sudo route add default gw 192.168.1.1 eth0
 
-Add DNS server to host
+```
+## Add DNS server to host
 keywords networking dns domain name server set configure 
 In  /etc/resolv.conf add
+```
 nameserver 192.168.1.16
+```
 
-Reconfiguring IP route
-
-# find out what is your gateway before modifying what DHCP has done. 
+## Find out what is your gateway before modifying what DHCP has done. 
+```
    $ route -n 
+```
 The gateway is shown always with destination 0.0.0.0.
-# add a particular host
+## Add a particular host
+```
    $ sudo route add -host 10.1.244.17 dev tun0
-# add the gateway later
+```
+## Add the gateway later
+```
    $ sudo route add default gw 172.20.10.1 wlan0
+```
 
-# delete a target (can be a host or a network)
+## Delete a target (can be a host or a network)
+```
    $ sudo route del <destination>
+```
 
 
 
 Uso practico, despues de iniciar una VPN (red donde no hay internet) esta es seteada como gateway, cortando el acceso a Internet. Como resolver esto?
+```
 mjost@pepa:~/bin/vpn$ route -n
 Kernel IP routing table
 Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
@@ -1025,20 +1169,26 @@ Destination     Gateway         Genmask         Flags Metric Ref    Use Iface
 mjost@pepa:~/bin/vpn$ sudo route del -net 0.0.0.0 # borrado el GateWay en rojo
 mjost@pepa:~/bin/vpn$ sudo route add -net 0.0.0.0 gw 192.168.0.1 wlan0 # agrega gateway
 
-Virtual machines
+```
+# Virtual machines
+```
 Install kvm
 $ sudo apt-get install qemu-kvm
 
 $ qemu-img create -f qcow2 ./my_image.qcow2 10G
 $ sudo kvm -m 2048 -cdrom debian-6.0.4-amd64-netinst.iso -drive file=./my_image.qcow2,boot=on -boot d -nographic -vnc :1
 
-Open an SSH tunnel with clouding to export VNC output:
+```
+# Open an SSH tunnel with clouding to export VNC output:
+```
 $ ssh -L5901:localhost:5901 clouding
 $ vncviewer localhost:1
+```
 
 
-CUSTOMIZING
+# CUSTOMIZING
 
+```
 Gnome normal, Main 2-consoles 3-browsers 4-Other
 alt+x to switch to the x-<workspace>
 use okular for pdf annotations annotate edit
@@ -1078,8 +1228,10 @@ MOD4+shift+c -> kill client
 MOD4+ctrl+space -> toggle floating client 
 MOD4+left_mouse_button -> resizes (in floating mode)
 
+```
 
-### Installing webfs
+# Installing webfs
+```
 keywords: HTTP file serfer 
   $ sudo apt-get install webfs
   $ usermod -a -G www-data YOURUSER	# add YOURUSER to the webfs group
@@ -1096,7 +1248,9 @@ Or simply use
 python -m SimpleHTTPServer
 
 
-Regarding networking
+```
+# Regarding networking
+```
 ifup wlan0                      put up wifi interface
 ifconfig eth0 up              put really up wired interface
 ifdown eth0                    put down ethernet interface
@@ -1152,7 +1306,8 @@ iface wlan0 inet manual
 ..........................
 
 
-CYGWIN
+```
+# CYGWIN
 Installing cygwin from Windows commandline: 
 setup-x86_64.exe -q -P vim,openssh,wget,unzip,python -s http://box-soft.com
 
@@ -1164,6 +1319,7 @@ keywords cluster static compile standalone screen gcc build executable library
 3. execute: make
 4. that is all folks
 
+```
 ffmpeg compilation
 wget http://ffmpeg.org/releases/ffmpeg-2.3.3.tar.bz2
 tar -xvf http://ffmpeg.org/releases/ffmpeg-2.3.3.tar.bz2
@@ -1173,15 +1329,19 @@ sudo apt-get install yasm
 make -j
 
 
+```
 
-### Linux quota
+# Linux quota
 
 
+```
 repquota /
+```
 
 Will show you are not using quota in your mount.
 
 In your /etc/fstab add either usrjquota or usrquota in the options. Mine looked like this: 
+```
 LABEL=cloudimg-rootfs  /   ext4  defaults          0 0
 and after the change looked like this:
 LABEL=cloudimg-rootfs  /   ext4  defaults,usrquota 0 0
@@ -1194,17 +1354,27 @@ quotacheck -auvm
 # this will recreate the file using quota version vfsv0
 quotacheck -cfmvF vfsv0 /
 
+```
 
 # check disk usage per user
+```
 repquota
+```
 # fix quota potential problems
+```
 quotacheck -avug
+```
 
 #Then you might need to put on the quota to actually limit users disk space:
+```
 quotaon -pguv -F vfsv0 -a
+```
 
 If quota fails you might need to do 
+```
 install linux-image-extra-virtual
 modprobe quota_v2 and modprobe quota_v1
+```
 
 http://askubuntu.com/questions/109585/quota-format-not-supported-in-kernel
+

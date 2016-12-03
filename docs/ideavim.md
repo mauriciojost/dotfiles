@@ -15,6 +15,7 @@ It should be in module-intellij/keymaps/ directory.
 
 ## General
 
+```
 Ctrl-Alt-q 			toggle vim on/off
 
 Ctrl-a + 
@@ -29,9 +30,11 @@ Ctrl-a +
 	Ctrl-p 			show parameters of a method
 	Ctrl-r 			rename a attribute name, or class name, etc.
 	Ctrl-R 			replace in all documents
+```
 
 ## About CVS (and Git)
 
+```
 Ctrl-g +
 	Ctrl-l			logs (may need to point out directory $currProject/.git/logs/)
 	Ctrl-h			show History (may need to enable as CVS: GIT) 
@@ -42,11 +45,14 @@ Ctrl-g +
 	Ctrl-s			stash changes
 	Ctrl-r			rebase
 	Ctrl-b			branches
+```
 
 ## About extracting code
 
+```
 Ctrl-e +
 	Ctrl-m			a method
+```
 
 
 
@@ -54,6 +60,7 @@ Ctrl-e +
 
 ### Basic navigation 
 
+```
 w				next word
 b				previous word
 :b				go to the file
@@ -64,14 +71,18 @@ b				previous word
 :100				goes to the given line
 /word_to_find			find the given word in the current buffer 
 *				go to the next occurence of the word under the cursor
+```
 
 ### Basic file management
 
+```
 :x				save and exit 
 :ls				list opened files
+```
 
 ### Advanced navigation 
 
+```
 ctrl + 6			come back to the last viewed file
 ctrl + o			come backwards to text sections you’ve been in 
 ctrl + i			go ahead to text sections you've come from
@@ -79,9 +90,11 @@ ctrl + i			go ahead to text sections you've come from
 gd 				will take you to the local declaration.
 gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
+```
 
 ### Basic editing
 
+```
 ctrl + n			autocomplete
 v				enter visual mode
 i				insert mode
@@ -95,9 +108,11 @@ ciw				change inner word (delete the word and go to insert mode)
 p				paste after
 P				paste before
 o				create a new line, go to it, and enter insert mode
+```
 
 ### Windows management
 
+```
 Ctrl-W t			makes the first (topleft) window current
 Ctrl-W K			moves the current window to full-width at the very top
 Ctrl-W H			moves the current window to full-height at far left
@@ -115,6 +130,7 @@ ctrl-w ctrl-w 			switches between windows
 
 :reg     - show named registers and what's in them
 "5p      - paste what's in register "5
+```
 
 
 

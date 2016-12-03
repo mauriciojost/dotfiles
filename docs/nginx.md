@@ -1,4 +1,4 @@
-Learning Nginx
+# Learning Nginx
 
 keywords nginx http server redirect request forward proxy firewall open 
 
@@ -12,6 +12,7 @@ configure /etc/nginx/sites-available/afile
 
 # An example of the configuration file: 
 
+```
 server {
     listen      80;
     location / {
@@ -34,10 +35,12 @@ server {
     }
 }
 
+```
 
 
 Make a rebound machine (you contact it and actually you’re contacting a 3rd one) 
 
+```
 # port 8000 directs to https://api2.numergy.com/
 server {
         listen 8000;
@@ -46,6 +49,7 @@ server {
         }
 }
 
+```
 
 HTTPS rebound machine: 
 
@@ -57,6 +61,7 @@ Open VM endpoint TCP:443
 
 2. Create credentials for HTTPS host
 
+```
 sudo mkdir /etc/nginx/ssl
 cd /etc/nginx/ssl
 sudo openssl genrsa -des3 -out server.key 1024
@@ -64,11 +69,15 @@ sudo openssl req -new -key server.key -out server.csr
 sudo cp server.key server.key.org
 sudo openssl rsa -in server.key.org -out server.key
 sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
+```
 
 3. Configure nginx
 
+```
 sudo vim /etc/nginx/sites-available/example
 
+```
+```
 # HTTPS server
 server {
         listen 443;
@@ -81,20 +90,27 @@ server {
         }
 }
 
+```
 4. Restart nginx
  
+```
 service nginx restart
+```
 
 5. Test locally by comparing the output of
 
+```
 curl https://api2.numergy.com | python -mjson.tool
 curl -k https://localhost | python -mjson.tool
+```
 
 5. Test remotelly by comparing the output of
 
+```
 curl https://api2.numergy.com | python -mjson.tool
 curl -k https://109.24.132.213 | python -mjson.tool
 
+```
 
 
 

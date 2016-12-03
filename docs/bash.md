@@ -1,119 +1,112 @@
-### BASH
+# List files 
 
-##Shortcuts
-alt n + alt . 
-insert the n-th argument of the last command in the current command line 
-
-ctrl + /                      undo in the command line
-alt + #                      add to the history the current command 
-alt + <-                     (backspace) delete word backwards 
-ctrl + L                    clear screen 
-
-## Basics 
-Put in variables the output of one process 
-
-variable=’ls’  -> variable=ls
-variable=$(ls) -> variable= . .. /home /etc /var ...
-
-
-## Get values returned by the last command 
-true
-echo $?            >      0
-false 
-echo $?            >      1
-
-
-
-## List files 
-
+```
 for FILE in *
 do
 	echo $FILE
 done
+```
 
-## Using the test command 
+# Using the test command 
 
+```
 mjost:~/Downloads/$ help test
+```
 
-## Comparing strings
+# Comparing strings
 
+```
 if [ "$(ls $FILE)" == 'tocopy' ]
 then
 	echo yes
 else
 	echo no 
 fi
+```
 
-## Checking if an environment variable is empty
+# Checking if an environment variable is empty
 
 keywords exists set variable exist exists check test empty
+```
 if [ "$variable" ]
 then
    echo variable EMPTY OR NOT DEFINED;
 else
    echo variable DEFINED and NOT empty;
 fi
+```
 
-## Checking if a file exists 
+# Checking if a file exists 
 
+```
 if [ -e "$FILE" ]
 then
   echo "$FILE exists"
 else
   echo "$FILE not found"
 fi
+```
 
 
-### Others 
-### Executing a test command 
+# Executing a test command 
 
+```
 test 3 -gt 4 && echo True || echo False
+```
 
-### Reading from file 
+# Reading from file 
+```
 exec<file_to_read     # exec is a reserved word
 while read line
 do
        echo $line
 done
+```
 
-### Read from a  pipe 
-### keywords read reading pipe bash script 
-### It is the same as reading a file, you just remove the exec line
+# Read from a  pipe 
 
+```
 while read line
 do
        echo $line
 done
+```
 
-### Examples 
-### Create a counter 
+# Create a counter 
+
 keywords while for loop bash
 
+```
 linecounter=0
 while true
 do
        linecounter=`expr $linecounter + 1`;
        echo $linecounter
 done
+```
 
+# Simple for
 
-### Simple for
-
+```
 for VARIABLE in `seq 1 10`
 do
   echo $VARIABLE
 done
+```
 
-### Command line arguments 
+# Command line arguments 
 
+```
 for opt in $@
   case $opt in
     -i) input_file=$2 ; shift 2 ;;  # reading $2 grabs the *next* fragment
     -o) output_file=$2 ; shift 2 ;; # shift 2 to get past both the -o and the next
   esac
+```
 
 
-### Write a head-like command 
+# Write a head-like command 
+```
 #!/bin/bash
 linestoprint=$1
 exec<$2
@@ -133,26 +126,35 @@ do
         echo $line : $linecounter : $linestoprint
         echo $line >> $fileoutput
 done
+```
 
-### Fork a process and get its PID
+# Fork a process and get its PID
 
+```
 $ sleep 30 &
 $ process_pid=$!
+```
 
-### Now the PID is in process_pid variable. 
+# Now the PID is in process_pid variable. 
 
 To wait for this process and then perform a different action: 
 
+```
 $ wait $process_pid
+```
 
 Or if the process was not created by you, you can attach a strace to the observed process and wait for the strace. 
 
+```
 strace -s 0 -p PID && echo “TARGET PROCESS FINISHED!”
+```
 
 
-### Catching a SIGINT
-### keywords interrupt interruption bash catching ctrl ctrl-c sigterm kill linux bash script hook 
+# Catching a SIGINT
 
+keywords interrupt interruption bash catching ctrl ctrl-c sigterm kill linux bash script hook 
+
+```
 #!/bin/bash 
 cleanup()
 # example cleanup function
@@ -171,39 +173,34 @@ control_c()
 trap control_c SIGINT
 # main() loop
 while true; do read x; done
+```
 
-### Using extra commands 
-### Use sed 
+# Use sed 
 
 keywords replace substitute text in a file regular expression regex 
+```
 $ sed ‘s/wrong/ok/g’ source_file > destination_file
 s stands for search, and g means global (replace all occurrences, not only the first one)
+```
 
-### Use awk 
+# Use awk 
 
+```
 $ cat text.txt
 lakjdflkajsdfalsdjf mauri adsfkljasdlkjasd 3
 alsfjalskdjflads sandun jdalkdsjflkajsdf 2
 lñajsdñfkjasdfkl san
 lañdsjfasdñljadslfkjasd
-
-
-
-
-
-
-
 $ cat text.txt | awk ' /maur/ {print "echo "$2" > file.txt"}' | bash
 
 
 $ cat file.txt
 mauri
+```
 
-
-EXAMPLES
-EXAMPLE 1
 
 # Script that checks if root, checks if folders are created, 
+```
 #/bin/bash
 
 export PAUSER='proactive'
@@ -739,13 +736,15 @@ assertexists "$PIDFILEABS" "ERROR: the agent is not running."
 
 touch "$PWD/$ALREADYCONFFILE"
 echo "OK: agent running."
+```
 
 
 
 
-Create a self-extracting binary file
+# Create a self-extracting binary file
 
 
+```
 BUILD.sh
 
 
@@ -791,10 +790,12 @@ createbuild(){
 
 	echo "### Created $BUILDFOLDER/$BUILDFILE : OK"
 }
+```
 
 
 self-extracting-installer-header.sh
 
+```
 #!/bin/bash
 
 export DESTDIR=/opt
@@ -861,5 +862,6 @@ exit 0
 
 __ARCHIVE_BELOW__
 
+```
 
 
