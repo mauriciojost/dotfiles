@@ -1,8 +1,8 @@
 #!/usr/bin/gnuplot
 
-set terminal wxt size 1600,600
+#set terminal jpeg size 1600,600
 set datafile separator "\t"
-file="/home/mjost/.logs/followup.tsv"
+file="/home/mjost/.logs/followup-cut.tsv"
 
 set xdata time
 set timefmt "%s"
