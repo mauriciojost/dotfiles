@@ -2,6 +2,11 @@ function qhelp() {
 	ranger $DOTFILES/docs/
 }
 
+function qhelp-search() {
+    TOSEARCH="$1"
+	grep -R "$TOSEARCH" $DOTFILES/docs/
+}
+
 function qaliases-edit() {
     echo "Use v to select the directory and :grep to find the alias to edit..."
     sleep 0.5

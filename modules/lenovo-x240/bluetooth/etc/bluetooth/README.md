@@ -9,12 +9,14 @@ Only once you should do in your Linux PC:
 
 ## Making it work
 
+If the device says something about stream failed just remove it from your list and add it again, then try again:
+
 - sudo /etc/init.d/bluetooth restart
 - pulseaudio -k
 - pulseaudio --start
 
-If the device says something about stream failed just remove it from your list and add it again, then try again.
-
+#- sudo chmod 777 /usr/bin/pulseaudio
+#- sudo pkill pulseaudio
 - Go to the bluetooth icon in the tray bar, choose devices. 
 - Clean all devices. No devices trusted.
 - Turn on your device in discovery mode.
