@@ -1,0 +1,3 @@
+[submodule "modules/stderrred/stderred"]
+	path = modules/stderrred/stderred
+	url = git://github.com/sickill/stderred.git
