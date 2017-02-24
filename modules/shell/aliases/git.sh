@@ -5,7 +5,7 @@
 ## Super used ones
 
 function gc(){
-  git --no-pager log -30 --pretty=%s
+  git --no-pager log --reverse -30 --pretty=%s
   #nohup zenity --info --text="$MSG" &>/dev/null & 
   git-cola 
 }
