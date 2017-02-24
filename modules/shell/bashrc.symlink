@@ -106,7 +106,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Load stderred to display stderr in red
-export LD_PRELOAD=$HOME/opt/zips/stderred/build/libstderred.so
+export LD_PRELOAD=$DOTFILES/modules/stderrred/stderred/build/libstderred.so
 
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
 stty -ixon
