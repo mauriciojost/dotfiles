@@ -20,6 +20,7 @@ Plug 'mileszs/ack.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
+Plug 'derekwyatt/vim-scala'
 call plug#end()
 
 syntax on
