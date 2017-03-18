@@ -1,9 +1,9 @@
 # README
 
-To take advantage of the autocompletion please download Vundle doing the following. The already existent .vimrc file will use Vundle to install plugins.
-
+Execute: 
 ```
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 ```
 
 After this is done please run in `vim` the following command:
@@ -13,5 +13,4 @@ After this is done please run in `vim` the following command:
 ```
 
 And that is all!
-
 
