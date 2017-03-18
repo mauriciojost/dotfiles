@@ -14,9 +14,11 @@ alias gd='cd $(cat ~/.last-dir)'
 alias tree='tree -s -h -f --du'
 alias tree-nohuman='tree -s -f --du'
 alias gopen='thunar'
+alias gedit='mousepad'
+alias notepad='gedit'
 
 function qhelp() {
-	ranger $DOTFILES/docs/
+    ranger $DOTFILES/docs/
 }
 
 function qf(){
