@@ -22,6 +22,7 @@ Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'ayu-theme/ayu-vim'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 " Set up syntax stuff
@@ -95,18 +96,20 @@ set scrolloff=7
 
 set showcmd
 
+set number
+
 set wildmode=longest,list
 
 set noswapfile
 
 set modeline
-
-set cursorline
-highlight CursorLine cterm=NONE ctermbg=234
 set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
 highlight StatusLine ctermfg=7
 autocmd InsertEnter * highlight StatusLine ctermfg=5
 autocmd InsertLeave * highlight StatusLine ctermfg=7
+
+set cursorline
+highlight CursorLine   cterm=NONE ctermbg=white ctermfg=white guibg=white guifg=white
 
 let g:syntastic_scala_checkers=['']
 
@@ -115,16 +118,41 @@ let g:syntastic_scala_checkers=['']
 "let ayucolor="light"  " for light version of theme
 let ayucolor="mirage" " for mirage version of theme
 "let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+colorscheme murphy
 
 " For reference: 
+"   you can type :map to see the current mappings
+
+"   :map  - Display all maps
+"   :nmap - Display normal mode maps
+"   :imap - Display insert mode maps
+"   :vmap - Display visual and select mode maps
+"   :smap - Display select mode maps
+"   :xmap - Display visual mode maps
+"   :cmap - Display command-line mode maps
+"   :omap - Display operator pending mode maps
+"
 "  map (maps a character in normal mode)
 "  imap (maps a character in normal mode)
 "  vmap (maps a character in visual mode)
 
 " Copy and paste
-vmap <C-c> "+y
-vmap <C-x> "+c
-map <C-v> c<ESC>"+p
-map <C-p> c<ESC>"+p
+"   Control-c/x in visual mode to copy/cut
+"   Control-v   in normal mode to paste
+:vmap <C-c> "+y
+:vmap <C-x> "+c
+:map <C-v> c<ESC>"+p
+:map <C-S-v> c<ESC>"+P
+
+" Git configuration
+let g:gitgutter_highlight_lines = 1
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_signs = 1
+highlight link GitGutterAddLine DiffAdd
+highlight link GitGutterChangeLine DiffChange
+highlight link GitGutterDeleteLine DiffDelete
+highlight link GitGutterChangeDeleteLine GitGutterChangeLineDefault
+":map <C-g> :GitGutterSignsToggle<CR>
+":map <C-g> :GitGutterLineHighlightsToggle<CR>
+
 
