@@ -1,35 +1,26 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+let g:plug_shallow = 0
 
-" Vundle
-" set rtp+=~/.vim/bundle/Vundle.vim
-" call vundle#begin()
-
-
-" Plugin 'gmarik/Vundle.vim'
-" Plugin 'tpope/vim-fugitive'
-" Plugin 'godlygeek/tabular'
-" Plugin 'plasticboy/vim-markdown'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'scrooloose/nerdtree'
-" Plugin 'altercation/vim-colors-solarized'
-
-
-
-" All of your Plugins must be added before the following line
-" call vundle#end()            " required
-" filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-" filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#begin()
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-rsi'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-vinegar'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/syntastic'
+Plug 'jiangmiao/auto-pairs'
+Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
+Plug 'mileszs/ack.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'raichoo/purescript-vim'
+Plug 'FrigoEU/psc-ide-vim'
+call plug#end()
 
 syntax on
 filetype on
@@ -68,45 +59,9 @@ fixdel
 :set nocp
 :map <BS> x 
 
-" Auto-backup files and .swp files don't go to pwd
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-
-" Allow switching edited buffers without saving
-set hidden
-
-" Look for the file in the current directory, then south until you reach home.
-set tags=tags;~/
-
-" Change <Leader>
-let mapleader = ","
 
 " Quick timeouts on key combinations.
 set timeoutlen=300
-
-
-let g:vim_markdown_folding_disabled=1
-
-" I honestly hate registers, and never use them... So use always the same register "+ (system clipboard).
-" System clipboard is supported by a few versions of VIM. 
-" Make sure your `vim --version | grep xterm_clipboard` shows " +xterm_clipboard 
-" and not -xterm_clipboard (in this latter case you better install vim-gnome rather than vim-tiny).
-" noremap p "+p
-" noremap P "+P
-" noremap d "+d
-" noremap D "+D
-" noremap y "+y
-" noremap Y "+Y
-" noremap dd "+dd
-" noremap x "+x
-
-" % matches on if/else, html tags, etc.
-runtime macros/matchit.vim
-
-" Bash-like filename completion
-set wildmenu
-set wildmode=list:longest
-set wildignore=*.o,*.fasl
 
 autocmd BufRead *.xfa set filetype=xml
 autocmd BufRead *.xru set filetype=xml
@@ -128,11 +83,30 @@ autocmd BufRead ~/stellar/* set lbr formatoptions=l
 
 autocmd BufRead *.dump set filetype=sql
 
-" a.vim
-nmap <silent> <Leader>h :A<CR>
 
-" Use the mouse in all the modes
-"set mouse=a
+set title
 
+set t_Co=256
+set background=dark
 
+set scrolloff=7
+
+set showcmd
+
+set wildmode=longest,list
+
+set number
+
+set noswapfile
+
+set modeline
+
+set cursorline
+highlight CursorLine cterm=NONE ctermbg=234
+set statusline=%<%f\ %h%m%r%Y%=%-14.(%l,%c%V%)\ %P
+highlight StatusLine ctermfg=7
+autocmd InsertEnter * highlight StatusLine ctermfg=5
+autocmd InsertLeave * highlight StatusLine ctermfg=7
+
+let g:syntastic_scala_checkers=['']
 
