@@ -21,13 +21,14 @@ Plug 'leafgarland/typescript-vim'
 Plug 'raichoo/purescript-vim'
 Plug 'FrigoEU/psc-ide-vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'ayu-theme/ayu-vim'
 call plug#end()
 
+" Set up syntax stuff
 syntax on
 filetype on
 filetype plugin on
 filetype indent on
-colorscheme pablo
 
 set showmatch
 set matchtime=0
@@ -46,13 +47,12 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-
 set visualbell
 set noerrorbells
 set printoptions=paper:letter
 
 " Keep more lines of context
-set scrolloff=3
+set scrolloff=5
 
 " Make backspace delete lots of things
 set backspace=indent,eol,start
@@ -64,6 +64,7 @@ fixdel
 " Quick timeouts on key combinations.
 set timeoutlen=300
 
+" File type specific settings
 autocmd BufRead *.xfa set filetype=xml
 autocmd BufRead *.xru set filetype=xml
 autocmd BufRead *.xna set filetype=xml
@@ -96,8 +97,6 @@ set showcmd
 
 set wildmode=longest,list
 
-set number
-
 set noswapfile
 
 set modeline
@@ -110,4 +109,22 @@ autocmd InsertEnter * highlight StatusLine ctermfg=5
 autocmd InsertLeave * highlight StatusLine ctermfg=7
 
 let g:syntastic_scala_checkers=['']
+
+" Set up colors
+"set termguicolors     " enable true colors support
+"let ayucolor="light"  " for light version of theme
+let ayucolor="mirage" " for mirage version of theme
+"let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
+" For reference: 
+"  map (maps a character in normal mode)
+"  imap (maps a character in normal mode)
+"  vmap (maps a character in visual mode)
+
+" Copy and paste
+vmap <C-c> "+y
+vmap <C-x> "+c
+map <C-v> c<ESC>"+p
+map <C-p> c<ESC>"+p
 
