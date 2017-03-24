@@ -1,7 +1,7 @@
 hardstatus on
 hardstatus alwayslastline
 hardstatus string "%{.bW}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y}%M %d %c"
-defscrollback 1000000000
+defscrollback 50000
 
 # terminfo and termcap for nice 256 color terminal
 # allow bold colors - necessary for some reason
