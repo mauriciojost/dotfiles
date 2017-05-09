@@ -1,3 +1,6 @@
 [submodule "modules/stderrred/stderred"]
 	path = modules/stderrred/stderred
 	url = git://github.com/sickill/stderred.git
+[submodule "modules/dev-shell-essentials"]
+	path = modules/dev-shell-essentials
+	url = https://github.com/kepkin/dev-shell-essentials.git

@@ -108,6 +108,9 @@ fi
 # Load stderred to display stderr in red
 export LD_PRELOAD=$DOTFILES/modules/stderrred/stderred/build/libstderred.so
 
+# Load highlighter module 'highlight red pattern'
+source $DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh
+
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
 stty -ixon
 
