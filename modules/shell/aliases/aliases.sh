@@ -25,3 +25,9 @@ function qf(){
     find | grep $1
 }
 
+function qalias-edit() {
+	export ALIAS=$1
+	FILES=`grep $ALIAS -l -R $DOTFILES/modules/shell/aliases/`
+	vim $FILES
+}
+
