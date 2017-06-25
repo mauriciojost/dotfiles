@@ -3,10 +3,12 @@
 set -e
 set -x
 
-HOME_ROUTER_IP=10.0.0.1
+HOME_NAS_IP=10.0.0.8
 LOG=/tmp/update-nas-mount.bash.log
 
-ping -c 1 $HOME_ROUTER_IP -W 1
+date >> $LOG
+
+ping -c 1 $HOME_NAS_IP -W 1 &>> $LOG
 
 if [ "$?" == "0" ]
 then
@@ -17,3 +19,4 @@ else
   sudo umount -f -l /mnt/nas &>> $LOG
 fi
 
+echo "Done." &>> $LOG
