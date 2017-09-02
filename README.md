@@ -11,6 +11,8 @@ Clone the project in ~/.dotfiles and then:
 $ git clone x ~/.dotfiles
 $ cd ~/.dotfiles
 $ ./install.sh
+
+git submodule update --init --recursive
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
