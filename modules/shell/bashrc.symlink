@@ -106,10 +106,22 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 # Load stderred to display stderr in red
-export LD_PRELOAD=$DOTFILES/modules/stderrred/stderred/build/libstderred.so
+STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
+if [ -e "$STDERRRED_LIB" ] 
+then
+  export LD_PRELOAD="$STDERRRED_LIB"
+else
+  echo "Stderred skipped"
+fi
 
 # Load highlighter module 'highlight red pattern'
-source $DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh
+DEV_SHELL_ESSENTIALS_SCRIPT="$DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh"
+if [ -e "$DEV_SHELL_ESSENTIALS_SCRIPT" ] 
+then
+  source $DEV_SHELL_ESSENTIALS_SCRIPT
+else
+  echo "Dev shell essentials skipped"
+fi
 
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
 stty -ixon
