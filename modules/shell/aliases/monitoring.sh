@@ -95,8 +95,8 @@ function qstress-X-process-switching() {
 
 alias qfiles-opened-by-process-list='lsof -a -i -p'
 
-alias qports-list-listening='lsof -i -n -P | grep LISTEN'
+alias qports-list-listening='sudo lsof -i -n -P | grep LISTEN'
 
-alias qports-list-all='lsof -i -n -P'
+alias qports-list-all='sudo lsof -i -n -P'
 
 
