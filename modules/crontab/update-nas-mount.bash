@@ -3,7 +3,7 @@
 set -e
 set -x
 
-HOME_NAS_IP=10.0.0.8
+HOME_NAS_IP="$1"
 LOG=/tmp/update-nas-mount.bash.log
 
 echo "" >> $LOG
