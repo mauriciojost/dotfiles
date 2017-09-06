@@ -3,16 +3,16 @@
         "recentfiledialog": {
             "y": 25, 
             "x": 0, 
-            "height": 420, 
+            "maximized": false, 
             "width": 1916, 
-            "maximized": false
+            "height": 420
         }, 
         "grep": {
             "y": 25, 
             "x": 626, 
-            "maximized": false, 
+            "height": 420, 
             "width": 666, 
-            "height": 420
+            "maximized": false
         }, 
         "gitdag": {
             "count": 1000, 
@@ -37,16 +37,16 @@
         "preferencesview": {
             "y": 25, 
             "x": 659, 
-            "height": 432, 
+            "maximized": false, 
             "width": 600, 
-            "maximized": false
+            "height": 432
         }, 
         "startupdialog": {
             "y": 181, 
             "x": 315, 
-            "height": 400, 
+            "maximized": false, 
             "width": 640, 
-            "maximized": false
+            "height": 400
         }, 
         "dagview": {
             "count": 1000, 
@@ -61,9 +61,9 @@
         "browser": {
             "y": 329, 
             "x": 598, 
-            "height": 420, 
+            "maximized": false, 
             "width": 720, 
-            "maximized": false
+            "height": 420
         }
     }, 
     "bookmarks": [], 
