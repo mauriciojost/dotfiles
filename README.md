@@ -15,6 +15,5 @@ $ ./install.sh
 git submodule update --init --recursive
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.  The main file you'll want to change right off the bat is `modules/shell/bashrc.symlink`, which sets up a few paths that'll be different on your particular machine.
+This will symlink the appropriate files in `.dotfiles` to your `$HOME` and `$HOME/.config` directories.
 

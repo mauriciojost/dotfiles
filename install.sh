@@ -58,17 +58,21 @@ link_files () {
 install_dotfiles () {
   info 'installing dotfiles'
 
+  local src_file_extension="$1" # symlink
+  local link_directory_dst="$2" # $HOME
+  local prefix_dst="$3" #.
+
   overwrite_all=false
   backup_all=false
   skip_all=false
 
   info "Linking symlink files ..."
-  for source in `find $DOTFILES_ROOT -maxdepth 4 -name \*.symlink`
+  for source in `find $DOTFILES_ROOT -maxdepth 4 -name \*.$src_file_extension`
   do
     echo "Linking $source ..."
-    dest="$HOME/.`basename \"${source%.*}\"`"
+    dest="$link_directory_dst/$prefix_dst`basename \"${source%.*}\"`"
 
-    if [ -f $dest ] || [ -d $dest ]
+    if [ -f "$dest" ] || [ -d "$dest" ]
     then
 
       overwrite=false
@@ -127,7 +131,8 @@ install_dotfiles () {
 info "Base: $DOTFILES_ROOT"
 
 setup_gitconfig
-install_dotfiles
+install_dotfiles "symlink" "$HOME" "."
+install_dotfiles "configlink" "$HOME/.config" ""
 
 # If we are on a mac, lets install and setup homebrew
 if [ "$(uname -s)" == "Darwin" ]
