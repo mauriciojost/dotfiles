@@ -1,0 +1,19 @@
+[global_config]
+  suppress_multiple_term_dialog = True
+  focus = sloppy
+[keybindings]
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    scrollback_lines = 50000
+    scroll_on_output = False
+    background_image = None
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
