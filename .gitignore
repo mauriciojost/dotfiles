@@ -1,2 +1,3 @@
 bin/rclocal/
 module-shell/localrc.symlink
+/modules/plantuml/plantuml.jar
