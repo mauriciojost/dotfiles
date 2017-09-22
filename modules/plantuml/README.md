@@ -17,3 +17,17 @@ Should see something like
 ```
 Installation seems OK. File generation OK
 ```
+
+A valid example of a diagram: 
+```
+@startuml
+Bob->Alice : hello
+@enduml
+```
+
+To create a `.png` image from this file, execute: 
+
+```
+qplantuml -tpng README.md
+```
+

@@ -9,6 +9,7 @@ function qplantuml() {
 	local jarfile="$DOTFILES/modules/plantuml/plantuml.jar"
 	if [ -e "$jarfile" ]
 	then
+		echo "Running java -jar "$jarfile" $@"
 		java -jar "$jarfile" $@
 	else
 		echo "Installation required."
