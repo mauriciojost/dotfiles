@@ -5,7 +5,7 @@ function qimage-crop-in-out-offset() {
 	convert -crop "$how" "$inim" "$outim"   
 }
 
-function qplantuml() {
+function qdiagram-plantuml() {
 	local jarfile="$DOTFILES/modules/plantuml/plantuml.jar"
 	if [ -e "$jarfile" ]
 	then
@@ -14,5 +14,17 @@ function qplantuml() {
 	else
 		echo "Installation required."
 		cat "$DOTFILES/modules/plantuml/README.md"
+	fi
+}
+
+function qdiagram-scala() {
+	local executable="$DOTFILES/modules/scaladiagrams/scaladiagrams/scaladiagrams"
+	if [ -e "$executable" ]
+	then
+		echo "Running $executable $@"
+		"$executable" $@
+	else
+		echo "Installation required."
+		cat "$DOTFILES/modules/scaladiagrams/README.md"
 	fi
 }

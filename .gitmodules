@@ -4,3 +4,6 @@
 [submodule "modules/dev-shell-essentials"]
 	path = modules/dev-shell-essentials
 	url = https://github.com/kepkin/dev-shell-essentials.git
+[submodule "modules/scaladiagrams/scaladiagrams"]
+	path = modules/scaladiagrams/scaladiagrams
+	url = https://github.com/mikeyhu/scaladiagrams.git
