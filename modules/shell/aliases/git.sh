@@ -62,3 +62,17 @@ function qgit-remember-https-credentials(){
 alias qgit-delete-branch-X='git push origin --delete'
 
 alias qgit-list-remote-branches-in-X="git ls-remote --heads"
+
+function qgit-fixup-staged-changes-in-commit-X() {
+  local commit="$1"
+  echo "Staged changes already???"
+  echo "Commit $commit is correct?"
+  git log | grep $commit
+  sleep 2
+  echo "If OK, save and exit."
+  sleep 3
+  git commit -s -m "fixup! $commit"
+  git rebase $commit^ -i --autosquash
+  git log | grep $commit
+  echo "Done"
+}
