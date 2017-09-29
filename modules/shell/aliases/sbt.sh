@@ -20,8 +20,9 @@ function qsbt-dependencies(){
 }
 
 function qsbt-scoverage(){
-  REPORT=target/scala-2.10/scoverage-report/index.html
-  REPORT_URL=file://`readlink -e $REPORT`
+  REPORT=$(find * -name index.html | grep scoverage-report)
+  REPORT_FULL=$(readlink -e $REPORT)
+  REPORT_URL=file://$(readlink -e $REPORT_FULL)
   echo 'Run after: sbt clean "set every coverageEnabled := true" test coverageReport && sbt coverageAggregate'
   echo "Opening $REPORT_URL (this may take a while)..."
   firefox $REPORT_URL

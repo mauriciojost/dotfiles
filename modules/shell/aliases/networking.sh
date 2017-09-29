@@ -23,5 +23,7 @@ function qnetwork-set-gateway(){
 }
 
 function qnetwork-discover-ports-open-in-target(){
-    nmap -P0 $1
+    sudo nmap -O $1
+    sudo nmap -P0 $1
+    sudo nmap -n -PN -sT -sU -p- $1
 }
