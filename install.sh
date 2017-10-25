@@ -146,5 +146,7 @@ then
   fi
 fi
 
+git submodule update --init --recursive
+
 echo ''
 echo '  All installed!'
