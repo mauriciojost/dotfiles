@@ -99,8 +99,9 @@ set scrolloff=7
 
 set showcmd
 
-set number
+"set number
 
+set paste
 set wildmode=longest,list
 
 set noswapfile
@@ -111,7 +112,7 @@ highlight StatusLine ctermfg=7
 autocmd InsertEnter * highlight StatusLine ctermfg=5
 autocmd InsertLeave * highlight StatusLine ctermfg=7
 
-set cursorline
+"set cursorline
 highlight CursorLine   cterm=NONE ctermbg=white ctermfg=white guibg=white guifg=white
 
 let g:syntastic_scala_checkers=['']
