@@ -18,6 +18,6 @@ function qh() {
 }
 
 function qhh() {
-	qh | grep `pwd` | grep "$1"
+	qh | grep "$PWD" | grep "$1"
 }
 
