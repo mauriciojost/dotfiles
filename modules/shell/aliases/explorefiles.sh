@@ -43,3 +43,7 @@ alias qgrep-with-context='grep -C 5'
 alias qgrep-with-context='grep -C 5'
 # Grep with context (showing 5 lines above and 5 lines below the match).
 
+# Highlight with different colors some results
+alias qhl='highlight green'
+alias qhl2='highlight red'
+alias qhl3='highlight yellow'
