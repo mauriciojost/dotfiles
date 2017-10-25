@@ -37,8 +37,6 @@ google java chrome plugin install
 sudo ln -s /usr/lib/jvm/java-6-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/plugins/
 ```
 
-
-
 # Mount samba filesystem
 
 ```
@@ -53,9 +51,6 @@ mjost@ciccio:/mnt/nas$ sudo cat /etc/fstab
 //10.0.0.12/home /mnt/nas/ cifs credentials=/root/.smbcredentials 0 0
 mjost@ciccio:/mnt/nas$ 
 ```
-
-
-
 
 
 # Mount android MTP filesystem on Ubuntu 12.04
