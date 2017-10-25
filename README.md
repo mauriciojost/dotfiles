@@ -1,19 +1,19 @@
 # README 
 
-This is my .dotfiles project. Your dotfiles are how you personalize your system. These are mine. Welcome!
+This is my `.dotfiles` project. 
+
+Your dotfiles define how you personalize your system. 
 
 
 ## Getting started
 
-Clone the project in ~/.dotfiles and then: 
-
 ```
-$ git clone x ~/.dotfiles
-$ cd ~/.dotfiles
-$ ./install.sh
-
-git submodule update --init --recursive
+git clone https://github.com/mauriciojost/dotfiles.git
+mv dotfiles $HOME/.dotfiles
+cd $HOME/.dotfiles
+./install.sh
 ```
 
-This will symlink the appropriate files in `.dotfiles` to your `$HOME` and `$HOME/.config` directories.
+# References
 
+See [these slides](https://mauriciojost.github.io/2017/10/23/dotfiles/presentation.html).
