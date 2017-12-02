@@ -4,3 +4,5 @@ function qswap() {
     mv "$2" "$1"
     mv $TMPFILE "$2"
 }
+
+qlias qfind-dupes=fslint-gui
