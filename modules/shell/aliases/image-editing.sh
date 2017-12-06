@@ -6,13 +6,12 @@ function qimage-crop-in-out-offset() {
 }
 
 function qdiagram-plantuml() {
-	local jarfile="$DOTFILES/modules/plantuml/plantuml.jar"
-	if [ -e "$jarfile" ]
+	local binfile=`which plantuml`
+	if [ -e "$binfile" ]
 	then
-		echo "Running java -jar "$jarfile" $@"
-		java -jar "$jarfile" $@
+		plantuml $@
 	else
-		echo "Installation required."
+		echo "Installation required: sudo apt-get install plantuml"
 		cat "$DOTFILES/modules/plantuml/README.md"
 	fi
 }

@@ -3,13 +3,12 @@
 First install `Graphviz`
 
 ```
-$ sudo apt-get install graphviz
+$ sudo apt-get install graphviz plantuml
 ```
 
-Then download plantuml.jar from [here](http://plantuml.sourceforge.net/download.html). Store it in this directory.
-
 ```
-$ java -jar plantuml.jar -testdot
+plantuml -help
+plantuml -testdot
 ```
 
 Should see something like 
@@ -28,6 +27,6 @@ Bob->Alice : hello
 To create a `.png` image from this file, execute: 
 
 ```
-qplantuml -tpng README.md
+plantuml -tpng README.md
 ```
 
