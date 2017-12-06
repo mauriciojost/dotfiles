@@ -7,8 +7,12 @@ function convert_jpg() {
   echo "Ignore: $1"
 }
 
+function convert_avi() {
+  avconv -i "$1" -c:v libx264 -c:a copy "$1.converted.mp4"
+}
+
 function convert_arw() {
-  rawtherapee -j95 -c "$1"
+  rawtherapee -j95 -o "$1.converted.jpg" -c "$1"
 }
 
 function convert_db() {
