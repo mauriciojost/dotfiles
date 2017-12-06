@@ -7,3 +7,8 @@ function qassertnotempty() {
 	fi
 }
 
+function echoerr() {
+	echo "$@" | perl -ne 'print STDERR'
+}
+
+
