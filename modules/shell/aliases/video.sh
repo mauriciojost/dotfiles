@@ -13,7 +13,11 @@ function qvideo-process-simple-input-output() {
 function qvideo-process-crop-time-input-output-fromtime-untiltime() {
 	echo mencoder $1 -ovc x264 -o $2 -ss $3 -endpos $4
 }
-alias qvideo-downsample-gui=avidemux
+
+function qvideo-downsample-gui() {
+    echo "http://avidemux.sourceforge.net/download.html"
+	avidemux $@
+}
 #function qvideo-downsample-mp4input-screensize() {
 #	FILE="/tmp/video-$RANDOM-$RANDOM.mp4"
 #
