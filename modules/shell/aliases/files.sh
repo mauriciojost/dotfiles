@@ -5,4 +5,10 @@ function qswap() {
     mv $TMPFILE "$2"
 }
 
+
 alias qfind-dupes=fslint-gui
+
+function qfiles-rename-recursive-lowercase() {
+    shopt -s globstar nullglob
+    rename 'y/A-Z/a-z/' **/*
+}
