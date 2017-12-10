@@ -1,8 +1,10 @@
 # README
 
-Use [this](https://github.com/astrada/google-drive-ocamlfuse).
+Use one of these:
+- [drive](https://github.com/odeke-em/drive)
+- [google-drive-ocamlfulse](https://github.com/astrada/google-drive-ocamlfuse).
 
-Then:
+Then (if ocamlfuse):
 
 ```
 crontab -e
