@@ -35,6 +35,10 @@ function qconvert-arw() {
   rawtherapee -j95 -o "$7.jpg" -c "$1"
 }
 
+function qconvert-orf() {
+  rawtherapee -j95 -o "$7.jpg" -c "$1"
+}
+
 function qconvert-db() {
   echo "Ignore: $1"
 }
