@@ -5,6 +5,10 @@ function qimage-crop-in-out-offset() {
 	convert -crop "$how" "$inim" "$outim"   
 }
 
+# If really needed you can use Bloom to upload photos ...
+# http://antaki.ca/bloom/download/3_4_0/Bloom_3_4_0.tar.gz
+alias qphoto-upload-facebook=$HOME/opt/bloom/Bloom
+
 function qdiagram-plantuml() {
 	local binfile=`which plantuml`
 	if [ -e "$binfile" ]
