@@ -39,3 +39,4 @@ function qdiagram-mermaid() {
 	gop $DOTFILES/modules/mermaid/index.html
 }
 
+alias qphoto-edit-linux=rawtherapee
