@@ -9,6 +9,20 @@ configure /etc/nginx/sites-available/afile
    $ ln -s /etc/nginx/sites-available/afile /etc/nginx/sites-enabled/afile
    $ service nginx restart
 
+## About domains
+
+One you bought a domain you can set up the resource records as folows:
+
+**Custom resource records**
+
+```
+--------+------+-----+--------------
+NAME    | TYPE | TTL | DATA
+--------+------+-----+--------------
+@       | A    | 1h  | 193.70.41.112
+jenkins | A    | 1h  | 193.70.41.112
+www     | A    | 1h  | 193.70.41.112
+```
 
 ## Example of the configuration file
 
