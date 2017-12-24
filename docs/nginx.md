@@ -2,15 +2,15 @@
 
 keywords nginx http server redirect request forward proxy firewall open 
 
-# Install nginx-full package
-# Create a rule in the available rules directory
+- Install nginx-full package
+- Create a rule in the available rules directory
 configure /etc/nginx/sites-available/afile
-# Create a link in the enabled rules directory 
+- Create a link in the enabled rules directory 
    $ ln -s /etc/nginx/sites-available/afile /etc/nginx/sites-enabled/afile
    $ service nginx restart
 
 
-# An example of the configuration file: 
+## Example of the configuration file
 
 ```
 server {
@@ -38,7 +38,7 @@ server {
 ```
 
 
-Make a rebound machine (you contact it and actually you’re contacting a 3rd one) 
+## Make a rebound machine
 
 ```
 # port 8000 directs to https://api2.numergy.com/
@@ -51,13 +51,14 @@ server {
 
 ```
 
-HTTPS rebound machine: 
+## Make an HTTPS rebound machine (even locally)
 
 Description: this document explains how to set up NGINX in a rebond host so that api2.numergy.com can be accessed from VMs in Numergy infrastrucutre (which is not the case by default…)
 
 1. Open HTTPS port
 
-Open VM endpoint TCP:443
+Close endpoint port TCP:8080 (or whichever HTTP you want to disable, as now you will have http)
+Open endpoint port TCP:443 (or whichever HTTPS you want to enable from now on)
 
 2. Create credentials for HTTPS host
 
@@ -74,9 +75,12 @@ sudo openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.
 3. Configure nginx
 
 ```
-sudo vim /etc/nginx/sites-available/example
+sudo vim /etc/nginx/sites-available/https
 
 ```
+
+Add this: 
+
 ```
 # HTTPS server
 server {
@@ -86,30 +90,24 @@ server {
         ssl_certificate /etc/nginx/ssl/server.crt;
         ssl_certificate_key /etc/nginx/ssl/server.key;
         location / {
-                proxy_pass https://api2.numergy.com/;
+                proxy_pass http://localhost:8080/;
         }
 }
 
 ```
-4. Restart nginx
+4. Enable the site and restart nginx
  
 ```
+cd /etc/nginx/sites-enabled
+ln -s /etc/nginx/sites-available/https https
 service nginx restart
 ```
 
 5. Test locally by comparing the output of
 
 ```
-curl https://api2.numergy.com | python -mjson.tool
-curl -k https://localhost | python -mjson.tool
-```
-
-5. Test remotelly by comparing the output of
-
-```
-curl https://api2.numergy.com | python -mjson.tool
-curl -k https://109.24.132.213 | python -mjson.tool
-
+curl http://localhost
+curl -k https://localhost
 ```
 
 
