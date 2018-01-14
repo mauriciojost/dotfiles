@@ -1,11 +1,14 @@
 # ROOT ACCESS
 
 In some Linux distributions there is something known as Single User mode. In this mode, there is only one user, root. To access this mode, in grub, edit the entry that starts with 
+
+```
 kernel ... ro ….
 adding 
 kernel … ro … single 
+```
 
-That should lead you to a rooted console where you can do bad stuff... 
+That should lead you to a rooted console.
 
 # FILESYSTEM & PERMISSIONS
 
@@ -53,7 +56,7 @@ mjost@ciccio:/mnt/nas$
 ```
 
 
-# Mount android MTP filesystem on Ubuntu 12.04
+# Mount android MTP filesystem (Ubuntu 12.04)
 
 ```
 http://www.webupd8.org/2012/12/how-to-mount-android-40-ubuntu-go-mtpfs.html
@@ -63,8 +66,6 @@ sudo apt-get install go-mtpfs
 sudo apt-get install go-mtpfs-unity
 go-mtpfs /tmp/mount
 ```
-
-
 
 # Regarding users
 
@@ -146,6 +147,7 @@ echo "Done."
 ```
 
 ### File sudoers 
+
 ```
 Give permissions to one user/group you must use:
 1. su visudo -q     (it is vim specially created for /etc/sudoers file, to edit it with much caution)
@@ -199,7 +201,9 @@ USERTCPDUMP<tab>ALL = TCPDUMP
 
 
 # Regarding packaging and compression (tar gz)
+
 keywords compress or decompress files comprimir descomprimir
+
 ```
 j is for bz2
 z is for bz
@@ -363,13 +367,8 @@ exit 0
 Then execute the above described steps to manipulate it. 
 
 
-
-
-
-
-
-
 # Regarding networking
+
 ```
 ifup wlan0                      put up wifi interface
 ifconfig eth0 up              put really up wired interface
@@ -450,14 +449,14 @@ sudo chmod +x /etc/init.d/myscript
 sudo update-rc.d myscript defaults 98 02
 
 ```
+
 # Video encoding crop split tool mencoder
+
 ```
    $ mencoder $INPUT -ovc x264 -vf crop=$largopx:$anchopx:x:y -frames $amount_of_frames_to_read -o output.mp4
 example
    $ mencoder input.mp4 -ovc x264 -vf crop=960:1080:1920:0 -frames 10000 $OPTS -o output.mp4
 ```
-
-
 
 # tcpdump-like programs
 
@@ -467,7 +466,8 @@ tcpdump -i eth0 portrange 8080-8090 -A -e | tee result
 ngrep -W byline dst port 443 | tee result
 ```
 
-# PROGRAMMING
+# PROGRAMMING C
+
 ```
 Regarding dependences
 nm (list of symbols)
@@ -621,6 +621,7 @@ http://wiki.openmoko.org/wiki/Manually_using_Bluetooth
 
 
 # Regarding export (why is it important?)
+
 ```
 $ ./script.sh 
 ALALA is                    #ALALA undefined
@@ -703,7 +704,9 @@ deb http://old-releases.ubuntu.com/ubuntu/ quantal-updates main restricted unive
 
 
 ```
+
 # LINUX FILESYSTEM TREE
+
 
 ```
 Directory	Content
@@ -1373,3 +1376,17 @@ modprobe quota_v2 and modprobe quota_v1
 
 http://askubuntu.com/questions/109585/quota-format-not-supported-in-kernel
 
+
+# Use alternatives tool 
+
+Maintain symbolic links determining default commands.
+
+```
+update-alternatives
+
+update-alternatives --list java
+  /usr/lib/jvm/java-8-openjdk-amd64/jre/bin/java
+update-alternatives --install /usr/bin/java java  /usr/lib/jvm/zips/jdk1.8.0_151/bin/java 2 # because 1 is taken by openjdk
+update-alternatives --config java 
+
+```
