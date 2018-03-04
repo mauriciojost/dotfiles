@@ -5,7 +5,7 @@ function qhistory-list-consoles () {
 		echo "--------------------------------"
 		echo "$console"
 		echo "--------------------------------"
-		cat $HISTORY_FILE | grep "$console" 
+		cat $HISTORY_FILE | grep -a "$console" 
 	done
 
 }
@@ -14,10 +14,20 @@ alias qexecute-using-local-display="DISPLAY=:0 "
 
 
 function qh() {
-	cat $HISTORY_FILE | grep "$1"
+    if [ -z "$1" ]
+	then
+	    echo "Must provide pattern"
+	else
+	    cat $HISTORY_FILE | grep -a "$1"
+	fi
 }
 
 function qhh() {
-	qh | grep "$PWD" | grep "$1"
+    if [ -z "$1" ]
+	then
+	    echo "Must provide pattern"
+	else
+	    qh | grep "$PWD" | grep -a "$1"
+	fi
 }
 
