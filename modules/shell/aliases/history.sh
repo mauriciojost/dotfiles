@@ -27,7 +27,7 @@ function qhh() {
 	then
 	    echo "Must provide pattern"
 	else
-	    qh | grep "$PWD" | grep -a "$1"
+	    qh | grep -a "$PWD" | grep -a "$1"
 	fi
 }
 
