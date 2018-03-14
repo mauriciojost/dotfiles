@@ -4,9 +4,14 @@
 
 ## Super used ones
 
+# Launches the fantastic git-cola to perform a tidy commit
 function gc(){
+  echo ""
+  echo ""
+  echo "Last commits: "
   git --no-pager log --reverse -30 --pretty=%s
-  #nohup zenity --info --text="$MSG" &>/dev/null & 
+  echo ""
+  echo ""
   git-cola 
 }
 
@@ -46,23 +51,36 @@ alias qgit-tree='git log --oneline --decorate --all --graph'
 
 alias qgit-bfg="java -jar $HOME/bin/zips/jars/bfg.jar"
 
-alias qgit-push-all-even-tags='git push origin master --tags'
+alias qgit-tag-push-master='git push origin master --tags'
 
+alias qgit-tag-push='git push --tags'
+
+alias qgit-tag-delete='git tag --delete'
+
+alias qgit-tag-delete-remote='git push --delete origin'
+
+function qgit-tag-fast(){
+  git tag "$1" -m "$1"
+}
+
+# Copy bring remote branch to local repo
 function qgit-bring-branch-from-repo-X-branch-Y(){
   REPO=$1
   BRANCH=$2
   git fetch $REPO $BRANCH:$BRANCH
 }
 
+# Remember https credentials for 10 hours (remote via https & secured)
 function qgit-remember-https-credentials(){
   git config --global credential.helper cache
-  git config --global credential.helper 'cache --timeout=360000'
+  git config --global credential.helper 'cache --timeout=36000'
 }
 
 alias qgit-delete-branch-X='git push origin --delete'
 
 alias qgit-list-remote-branches-in-X="git ls-remote --heads"
 
+# Put staged changes somewhere in an existent commit via fixup
 function qgit-fixup-staged-changes-in-commit-X() {
   local commit="$1"
   echo "Staged changes already???"
@@ -76,3 +94,4 @@ function qgit-fixup-staged-changes-in-commit-X() {
   git log | grep $commit
   echo "Done"
 }
+
