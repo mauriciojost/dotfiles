@@ -17,7 +17,7 @@ function b() {
   echo "..."
   echo "### At: `pwd`"
   echo ""
-  ls
+  ls --color=always
 }
 
 # Enter a directory
@@ -30,7 +30,7 @@ function c() {
   echo "..."
   echo "### At: `pwd`"
   echo ""
-  ls
+  ls --color=always
 }
 
 alias r='readlink -e '
