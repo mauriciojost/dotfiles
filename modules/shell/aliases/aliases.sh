@@ -27,6 +27,10 @@ function c() {
   echo "###########################################################################"
 }
 
+
+alias cd=c
+complete -d cd
+
 alias r='readlink -e '
 
 # Save and go to last saved directory
