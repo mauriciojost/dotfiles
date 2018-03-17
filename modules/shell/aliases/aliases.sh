@@ -9,28 +9,22 @@ alias cal='cal -3'
 alias octave='octave --force-gui'
 alias grep='grep --color=always'
 
-# Go a level to the toop
-function b() {
-  cd ..
-  echo "### At: `pwd`"
-  tree -L 2 -d -x --filelimit 30
-  echo "..."
-  echo "### At: `pwd`"
-  echo ""
-  ls --color=always
-}
-
 # Enter a directory
 function c() {
   local target="$1"
 
   cd "$target"
-  echo "### At: `pwd`"
+  echo "###########################################################################"
+  echo "##        AT: $PWD" | grep "$PWD"
+  echo "###########################################################################"
+  echo "##"
   tree -L 2 -d -x --filelimit 30
-  echo "..."
-  echo "### At: `pwd`"
-  echo ""
+  echo "#"
+  echo "###########################################################################"
+  echo "##"
   ls --color=always
+  echo "##"
+  echo "###########################################################################"
 }
 
 alias r='readlink -e '
