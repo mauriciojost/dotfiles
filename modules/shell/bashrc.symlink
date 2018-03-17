@@ -56,12 +56,12 @@ esac
 
 TERMINALSESSIONID=`echo $RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM | md5sum`
 
-HISTORY_FILE=~/.history.log
+CUSTOM_HISTORY_FILE=$HOME/.history.log
 _append_history () {
   local LAST_CMD=$(history 1)
   # strip useless entry number from the beginning
   LAST_CMD=${LAST_CMD#*  }
-  echo "$TERMINALSESSIONID>   cd $(pwd);     $LAST_CMD;          # $(date) " >> $HISTORY_FILE
+  echo "$TERMINALSESSIONID>   cd $(pwd);     $LAST_CMD;          # $(date) " >> $CUSTOM_HISTORY_FILE
 }
 
 # Overwrite above settings.
@@ -129,4 +129,5 @@ stty -ixon
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
+echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 

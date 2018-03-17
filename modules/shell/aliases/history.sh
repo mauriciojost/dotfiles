@@ -1,5 +1,5 @@
 function qhistory-list-consoles () {
-	consoles=`cat $HISTORY_FILE | cut -c1-33 | sed 's/ //' | sort -u`
+	consoles=`cat $CUSTOM_HISTORY_FILE | cut -c1-33 | sed 's/ //' | sort -u`
 	for console in $consoles
 	do
 		echo "--------------------------------"
@@ -12,22 +12,12 @@ function qhistory-list-consoles () {
 
 alias qexecute-using-local-display="DISPLAY=:0 "
 
-
 function qh() {
-    if [ -z "$1" ]
-	then
-	    echo "Must provide pattern"
-	else
-	    cat $HISTORY_FILE | grep -a "$1"
-	fi
+    cat "$CUSTOM_HISTORY_FILE" | highlight yellow ';' | highlight green cd
 }
 
 function qhh() {
-    if [ -z "$1" ]
-	then
-	    echo "Must provide pattern"
-	else
-	    qh | grep -a "$PWD" | grep -a "$1"
-	fi
+    bn=$(basename $PWD)
+    qh | grep -a "$PWD" | highlight blue "$bn"
 }
 
