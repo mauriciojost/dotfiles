@@ -317,4 +317,26 @@ __ARCHIVE_BELOW__
 
 ```
 
+## Example of arguments
+```
+function usage() {
+    log "assembly_sbt.sh [ -a airline ] [ -t target1,target2,...,targetn ] [ -s sbtopts ] [ -c ] [ -l ]"
+}
 
+while getopts "a:t:s:p:cdoliz" OPT; do
+    case "$OPT" in
+        a) AIRLINE_CODE="${OPTARG}";;
+        t) TARGETS_STR="${OPTARG}";;
+        s) SBTOPTS="${OPTARG}";;
+        c) COVERAGE="coverage";;
+        d) PUBLISH_DOC="Y";;
+        p) PROJECT_ID="${OPTARG}";;
+        o) OVERRIDE="Y";;
+        l) CROSS_COMPILE="+";;
+        i) IGNORE_TESTS="Y";;
+        z) PUBLISH_ASSEMBLY="N";;
+        *) usage; exit 1;;
+    esac
+done                                                                                                                                
+
+```
