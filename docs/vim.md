@@ -1,8 +1,4 @@
-#########################
-### Basic VIM commands 
-#########################
-
-### IDEAVIM
+# IDEAVIM
 
 For users of Intellij: 
 https://github.com/JetBrains/ideavim
@@ -40,9 +36,9 @@ Ctrl-g +
 Ctrl-e +
 	Ctrl-m			a method
 
-#### REAL VIM 
+# REAL VIM 
 
-### Basic navigation 
+## Basic navigation 
 
 w				next word
 b				previous word
@@ -55,12 +51,12 @@ b				previous word
 /word_to_find			find the given word in the current buffer 
 *				go to the next occurence of the word under the cursor
 
-### Basic file management
+## Basic file management
 
 :x				save and exit 
 :ls				list opened files
 
-### Advanced navigation 
+## Advanced navigation 
 
 ctrl + 6			come back to the last viewed file
 ctrl + o			come backwards to text sections you’ve been in 
@@ -70,7 +66,7 @@ gd 				will take you to the local declaration.
 gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
 
-### Basic editing
+## Basic editing
 
 ctrl + n			autocomplete
 v				enter visual mode
@@ -86,7 +82,7 @@ p				paste after
 P				paste before
 o				create a new line, go to it, and enter insert mode
 
-### Windows management
+## Windows management
 
 Ctrl-W t			makes the first (topleft) window current
 Ctrl-W K			moves the current window to full-width at the very top
