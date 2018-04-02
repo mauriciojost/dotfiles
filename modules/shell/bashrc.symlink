@@ -81,14 +81,6 @@ shopt -s histappend
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-echo "Running .localrc ..."
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -97,6 +89,15 @@ fi
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+echo "Running .localrc ..."
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
