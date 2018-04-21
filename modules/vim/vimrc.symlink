@@ -22,6 +22,7 @@ Plug 'FrigoEU/psc-ide-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
+Plug 'derekwyatt/vim-scala'
 call plug#end()
 
 set colorcolumn=+1        " highlight column after 'textwidth'
