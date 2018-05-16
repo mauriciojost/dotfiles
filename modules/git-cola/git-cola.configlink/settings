@@ -28,7 +28,7 @@
             "lock_layout": false, 
             "show_status_filter": false, 
             "height": 1026, 
-            "windowstate": "AAAA/wAAAAL9AAAAAwAAAAAAAAO8AAAD7/wCAAAAAvsAAAAMAEMAbwBtAG0AaQB0AQAAABMAAAGzAAAAWgD////7AAAACABEAGkAZgBmAQAAAckAAAI5AAAAHwD///8AAAABAAADuwAAA+/8AgAAAAP8AAAAEwAAAsAAAABbAP////oAAAABAQAAAAL7AAAAEgBCAG8AbwBrAG0AYQByAGsAcwAAAAAA/////wAAAAAAAAAA+wAAAAwAUwB0AGEAdAB1AHMBAAADwQAAA70AAACXAP////sAAAAMAFIAZQBjAGUAbgB0AAAAAAD/////AAAAWwD////7AAAAEgBGAGEAdgBvAHIAaQB0AGUAcwEAAALWAAABLAAAAFsA////AAAAAwAAA3AAAAGT/AEAAAAB/AAAAAAAAANwAAAAAAD////6/////wEAAAAC+wAAAA4AQQBjAHQAaQBvAG4AcwAAAAAA/////wAAAHwA////+wAAAA4AQwBvAG4AcwBvAGwAZQAAAAAA/////wAAAH8A////AAAAAAAAA+8AAAAEAAAABAAAAAgAAAAI/AAAAAA=", 
+            "windowstate": "AAAA/wAAAAL9AAAAAwAAAAAAAAO8AAAD7/wCAAAAAvsAAAAMAEMAbwBtAG0AaQB0AQAAABMAAAGzAAAAWgD////7AAAACABEAGkAZgBmAQAAAckAAAI5AAAAHwD///8AAAABAAADuwAAA+/8AgAAAAP8AAAAEwAAAsAAAABbAP////oAAAABAQAAAAL7AAAAEgBCAG8AbwBrAG0AYQByAGsAcwAAAAAA/////wAAAAAAAAAA+wAAAAwAUwB0AGEAdAB1AHMBAAADwQAAA70AAACWAP////sAAAAMAFIAZQBjAGUAbgB0AAAAAAD/////AAAAWwD////7AAAAEgBGAGEAdgBvAHIAaQB0AGUAcwEAAALWAAABLAAAAFsA////AAAAAwAAA3AAAAGT/AEAAAAB/AAAAAAAAANwAAAAAAD////6/////wEAAAAC+wAAAA4AQQBjAHQAaQBvAG4AcwAAAAAA/////wAAAHsA////+wAAAA4AQwBvAG4AcwBvAGwAZQAAAAAA/////wAAAH4A////AAAAAAAAA+8AAAAEAAAABAAAAAgAAAAI/AAAAAA=", 
             "width": 1914, 
             "maximized": true, 
             "y": 22, 
@@ -44,9 +44,9 @@
         "startupdialog": {
             "y": 181, 
             "x": 315, 
+            "height": 400, 
             "maximized": false, 
-            "width": 640, 
-            "height": 400
+            "width": 640
         }, 
         "dagview": {
             "count": 1000, 
@@ -67,13 +67,5 @@
         }
     }, 
     "bookmarks": [], 
-    "recent": [
-        "/home/mjost/.dotfiles", 
-        "/home/mjost/workspace/htop", 
-        "/home/mjost/workspace/scala/mauriciojost.github.io", 
-        "/home/mjost/workspace/eclipse/zino", 
-        "/home/mjost/workspace/eclipse/zino/libs/main4ino-arduino", 
-        "/home/mjost/workspace/eclipse/zino/libs/log4ino-arduino", 
-        "/home/mjost/workspace/eclipse/wifi-arduino"
-    ]
+    "recent": []
 }
