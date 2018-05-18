@@ -161,3 +161,7 @@ highlight link GitGutterChangeDeleteLine GitGutterChangeLineDefault
 ":map <C-g> :GitGutterLineHighlightsToggle<CR>
 
 
+set autoindent
+set cindent
+set shiftwidth=2
+set expandtab
