@@ -9,16 +9,6 @@ alias cal='cal -3'
 alias octave='octave --force-gui'
 alias grep='grep --color=always'
 
-# Enter a directory
-function c() {
-  local target="$1"
-  cd "$target"
-  ls --color=always
-}
-
-alias cd=c
-complete -d cd
-
 alias r='readlink -e '
 
 # Save and go to last saved directory
