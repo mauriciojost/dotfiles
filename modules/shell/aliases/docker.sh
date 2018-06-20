@@ -16,7 +16,10 @@ alias qdock-images="sudo docker images"
 # Copy files to container
 alias qdock-scp="sudo docker cp"
 
-alias qdock-free-disk-space="sudo docker system prune"
+function qdock-free-disk-space() {
+  sudo docker system prune
+  sudo docker image prune -a
+}
 
 
 function qdock-create-container-from-image-X-and-start-it() {
