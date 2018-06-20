@@ -1,45 +1,8 @@
-# IDEAVIM
-
-For users of Intellij: 
-https://github.com/JetBrains/ideavim
-
-Ctrl_Alt_q 			toggle vim on/off
-
-## General
-
-Ctrl-a + 
-	Ctrl-d			show Documentation
-	Ctrl-D			show full Documentation
-	Ctrl-u			show Usages
-	Ctrl-h			show Hierarchy of the type
-	Ctrl-H			show Hierarchy of the method
-	Ctrl-Alt-h		show Hierarchy of the call
-	Ctrl-c 			search Classes by name 
-	Ctrl-f 			Find in all documents
-	Ctrl-p 			show parameters of a method
-	Ctrl-r 			rename a attribute name, or class name, etc.
-	Ctrl-R 			replace in all documents
-
-## About Git
-
-Ctrl-g +
-	Ctrl-h			show History
-	Ctrl-H			show History for selection
-	Ctrl-c			compare with...
-	Ctrl-s			stash changes
-	Ctrl-r			rebase
-	Ctrl-b			branches
-	Ctrl-l			logs
-
-## About extracting
-
-Ctrl-e +
-	Ctrl-m			a method
-
 # REAL VIM 
 
 ## Basic navigation 
 
+```
 w				next word
 b				previous word
 :b				go to the file
@@ -50,14 +13,18 @@ b				previous word
 :100				goes to the given line
 /word_to_find			find the given word in the current buffer 
 *				go to the next occurence of the word under the cursor
+```
 
 ## Basic file management
 
+```
 :x				save and exit 
 :ls				list opened files
+```
 
 ## Advanced navigation 
 
+```
 ctrl + 6			come back to the last viewed file
 ctrl + o			come backwards to text sections you’ve been in 
 ctrl + i			go ahead to text sections you've come from
@@ -65,9 +32,11 @@ ctrl + i			go ahead to text sections you've come from
 gd 				will take you to the local declaration.
 gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
+```
 
 ## Basic editing
 
+```
 ctrl + n			autocomplete
 v				enter visual mode
 i				insert mode
@@ -81,16 +50,22 @@ ciw				change inner word (delete the word and go to insert mode)
 p				paste after
 P				paste before
 o				create a new line, go to it, and enter insert mode
+```
 
 ## Windows management
 
+```
 Ctrl-W t			makes the first (topleft) window current
 Ctrl-W K			moves the current window to full-width at the very top
 Ctrl-W H			moves the current window to full-height at far left
 ctrl-W n			creates new vim window (so two files can be seen simultaneously)
 ctrl-w ctrl-w 			switches between windows
 :q				removes a window
+```
 
+## Miscellaneous
+
+```
 %s/<target>/<new>/<modif>
 :s/foo/bar/g              Change each 'foo' to 'bar' in the current line.
 :%s/foo/bar/g           Change each 'foo' to 'bar' in all lines.
@@ -101,6 +76,53 @@ ctrl-w ctrl-w 			switches between windows
 
 :reg     - show named registers and what's in them
 "5p      - paste what's in register "5
+
+```
+# VIM on Intellij (via vrapper, customized)
+
+For users of Intellij: 
+https://github.com/JetBrains/ideavim
+
+```
+Ctrl_Alt_q 			toggle vim on/off
+```
+
+## General
+
+```
+Ctrl-a + 
+	Ctrl-d			show Documentation
+	Ctrl-D			show full Documentation
+	Ctrl-u			show Usages
+	Ctrl-h			show Hierarchy of the type
+	Ctrl-H			show Hierarchy of the method
+	Ctrl-Alt-h		show Hierarchy of the call
+	Ctrl-c 			search Classes by name 
+	Ctrl-f 			Find in all documents
+	Ctrl-p 			show parameters of a method
+	Ctrl-r 			rename a attribute name, or class name, etc.
+	Ctrl-R 			replace in all documents
+```
+
+## About Git
+
+```
+Ctrl-g +
+	Ctrl-h			show History
+	Ctrl-H			show History for selection
+	Ctrl-c			compare with...
+	Ctrl-s			stash changes
+	Ctrl-r			rebase
+	Ctrl-b			branches
+	Ctrl-l			logs
+```
+
+## About extracting
+
+```
+Ctrl-e +
+	Ctrl-m			a method
+```
 
 
 
