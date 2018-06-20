@@ -51,6 +51,16 @@ p				paste after
 P				paste before
 o				create a new line, go to it, and enter insert mode
 ```
+# Advanced editing
+
+```
+<cursor over word to replace>     replace a word multiple times without typing it
+*
+cgn
+<put new word>
+Ctrl-c
+.
+```
 
 ## Windows management
 
