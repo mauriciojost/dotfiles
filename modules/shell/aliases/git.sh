@@ -41,9 +41,9 @@ alias qgit-commit-with-amend='git commit --amend'
 
 alias qgit-commit-undo='git reset --soft HEAD^'
 
-alias qgit-squeeze-from-commit-X='git rebase -i'
+alias qgit-rebase-interactive-from-commit-X='git rebase -i'
 
-alias qgit-squeeze-from-30-ago='git rebase -i HEAD~30'
+alias qgit-rebase-interactive-from-30-ago='git rebase -i HEAD~30'
 
 alias qgit-tree='git log --oneline --decorate --all --graph'
 
