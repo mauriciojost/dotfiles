@@ -1,0 +1,16 @@
+# KEYBOARD CONFIGURATION FILE
+
+# Consult the keyboard(5) manual page.
+#
+# Run this to make the changes take effect:
+#   sudo dpkg-reconfigure keyboard-configuration
+#
+# This file is /etc/default/keyboard
+#
+
+XKBMODEL="pc105"
+XKBLAYOUT="us"
+XKBVARIANT=""
+XKBOPTIONS="lv3:ralt_alt,compose:menu,ctrl:nocaps"
+
+BACKSPACE="guess"
