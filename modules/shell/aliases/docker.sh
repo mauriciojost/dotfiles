@@ -17,6 +17,9 @@ alias qdock-images="sudo docker images"
 alias qdock-scp="sudo docker cp"
 
 function qdock-free-disk-space() {
+  #https://gist.github.com/bastman/5b57ddb3c11942094f8d0a97d461b430
+  sudo docker volume rm $(sudo docker volume ls -qf dangling=true)
+  sudo docker volume ls -qf dangling=true | xargs -r sudo docker volume rm
   sudo docker system prune
   sudo docker image prune -a
 }
