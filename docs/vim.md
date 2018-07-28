@@ -1,6 +1,6 @@
 # REAL VIM 
 
-## Basic navigation 
+### Basic navigation 
 
 ```
 w				next word
@@ -51,6 +51,7 @@ p				paste after
 P				paste before
 o				create a new line, go to it, and enter insert mode
 ```
+
 # Advanced editing
 
 ```
@@ -93,6 +94,11 @@ ctrl-w ctrl-w 			switches between windows
 For users of Intellij: 
 https://github.com/JetBrains/ideavim
 
+Use the provided .xml file for keymaps configuration.
+
+It should be in module-intellij/keymaps/ directory.
+
+
 ```
 Ctrl_Alt_q 			toggle vim on/off
 ```
@@ -114,10 +120,13 @@ Ctrl-a +
 	Ctrl-R 			replace in all documents
 ```
 
-## About Git
+## About CVS (and Git)
 
 ```
+# You may need to initialize CVS, by pointing out CSV type
+
 Ctrl-g +
+	Ctrl-C			commit 
 	Ctrl-h			show History
 	Ctrl-H			show History for selection
 	Ctrl-c			compare with...
