@@ -11,15 +11,6 @@ alias qyoutube-download=youtube-dl
 alias qmarkdown=haroopad
 alias qmedia-server-xbmc='xbmc -fs'
 
-function qexplore() {
-	ranger $PWD  
-}
-
-function qexplore-gui () {
-	nautilus --no-desktop $PWD &
-}
-
-
 function qyoutube-dropbox-download() {
 	TARGET="$HOME/dropbox"
 	CURRDIR=`readlink -e $PWD`
@@ -73,8 +64,10 @@ function qvm-kvm-start() {
 
 }
 
-function qintellij-start() {
-	IDEA=$HOME/opt/idea/bin/idea.sh
-	nohup $IDEA &> /tmp/idea.log &
+function qlaunch() {
+	local prcs=$1
+	local tmpf=`mktemp`
+	nohup $prcs &> $tmpf &
+	echo "Logging in $tmpf"
 }
 
