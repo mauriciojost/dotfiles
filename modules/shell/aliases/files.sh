@@ -77,6 +77,11 @@ function qf(){
 }
 
 function qcd() {
+  if [ "$1" != "" ]
+  then
+    cd `dirname $1`
+  fi
+  pwd
   ranger --choosedir=$HOME/.rangerdir
   local lastdir=`cat $HOME/.rangerdir`
   cd "$lastdir"
