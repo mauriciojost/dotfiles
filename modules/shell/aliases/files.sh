@@ -2,6 +2,15 @@
 ##################### 
 ### Explore files
 
+function qexplore() {
+	echo "Use better qcd"
+	ranger $PWD  
+}
+
+function qexplore-gui () {
+	nautilus --no-desktop $PWD &
+}
+
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
