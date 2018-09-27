@@ -23,6 +23,7 @@ Plug 'derekwyatt/vim-scala'
 Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
+Plug 'chrisbra/csv.vim'
 call plug#end()
 
 set colorcolumn=+1        " highlight column after 'textwidth'
@@ -165,3 +166,8 @@ set autoindent
 set cindent
 set shiftwidth=2
 set expandtab
+
+
+" CSV variables
+let g:csv_highlight_column = 'y'
+let g:csv_delim='\^'
