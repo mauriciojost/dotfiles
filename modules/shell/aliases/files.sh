@@ -87,6 +87,8 @@ function qcd() {
   cd "$lastdir"
 }
 
+alias q=qcd
+
 # Show tree in a fancy way
 alias tree='tree -s -h -f --du'
 
