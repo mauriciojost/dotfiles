@@ -66,3 +66,5 @@
 	tool = meld
 [cola]
 	tabwidth = 2
+[credential]
+	helper = cache --timeout=360000
