@@ -1,18 +1,24 @@
 {
-    "bookmarks": [], 
+    "bookmarks": [],
     "gui_state": {
         "mainview": {
-            "lock_layout": false, 
-            "show_status_filter": false, 
-            "height": 1026, 
-            "windowstate": "AAAA/wAAAAL9AAAAAwAAAAAAAAO8AAAD7/wCAAAAAvsAAAAMAEMAbwBtAG0AaQB0AQAAABMAAAEWAAAAWgAAIB77AAAACABEAGkAZgBmAQAAASwAAALWAAAAHwD///8AAAABAAADuwAAA+/8AgAAAAP7AAAADABTAHQAYQB0AHUAcwEAAAATAAAB9gAAAFsA////+wAAABIARgBhAHYAbwByAGkAdABlAHMBAAACDAAAAfYAAABbAP////sAAAAMAFIAZQBjAGUAbgB0AAAAAAD/////AAAAWwD///8AAAADAAAAAAAAAAD8AQAAAAH8AAAAAP////8AAAAAAP////r/////AQAAAAL7AAAADgBBAGMAdABpAG8AbgBzAAAAAAD/////AAAAewD////7AAAADgBDAG8AbgBzAG8AbABlAAAAAAD/////AAAAfgD///8AAAAAAAAD7wAAAAQAAAAEAAAACAAAAAj8AAAAAA==", 
-            "width": 1914, 
-            "maximized": true, 
-            "y": 22, 
-            "x": 0
+            "maximized": true,
+            "x": 0,
+            "y": 22,
+            "width": 1914,
+            "height": 1026,
+            "lock_layout": false,
+            "windowstate": "AAAA/wAAAAL9AAAAAwAAAAAAAAO8AAAD7PwCAAAAAvsAAAAMAEMAbwBtAG0AaQB0AQAAABYAAAETAAAAWgD////7AAAACABEAGkAZgBmAQAAASwAAALWAAAAHQD///8AAAABAAADuwAAA+z8AgAAAAT7AAAADABTAHQAYQB0AHUAcwEAAAAWAAABWQAAAGIA////+wAAABIARgBhAHYAbwByAGkAdABlAHMBAAABcgAAAfYAAABiAP////sAAAAMAFIAZQBjAGUAbgB0AAAAAAD/////AAAAYgD////7AAAAEABCAHIAYQBuAGMAaABlAHMBAAADawAAAJcAAABiAP///wAAAAMAAAAAAAAAAPwBAAAAAfwAAAAA/////wAAAAAA////+v////8BAAAAAvsAAAAOAEEAYwB0AGkAbwBuAHMAAAAAAP////8AAABxAP////sAAAAOAEMAbwBuAHMAbwBsAGUAAAAAAP////8AAAB0AP///wAAAAAAAAPsAAAABAAAAAQAAAAIAAAACPwAAAAA",
+            "show_status_filter": false,
+            "show_diff_line_numbers": false,
+            "toolbars": []
         }
-    }, 
+    },
     "recent": [
-        "/home/mjost/.dotfiles"
-    ]
+        {
+            "name": ".dotfiles",
+            "path": "/home/mjost/.dotfiles"
+        }
+    ],
+    "copy_formats": []
 }
