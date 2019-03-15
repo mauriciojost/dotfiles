@@ -63,8 +63,9 @@
 [gui]
 	editor = vim
 [merge]
-	tool = meld
+	tool = diffuse
 [cola]
 	tabwidth = 2
+	spellcheck = false
 [credential]
 	helper = cache --timeout=360000
