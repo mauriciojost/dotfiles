@@ -65,7 +65,7 @@ function qvm-kvm-start() {
 }
 
 function qlaunch() {
-	local prcs=$1
+	local prcs="$@"
 	local tmpf=`mktemp`
 	nohup $prcs &> $tmpf &
 	echo "Logging in $tmpf"
