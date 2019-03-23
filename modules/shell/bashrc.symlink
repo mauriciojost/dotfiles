@@ -105,7 +105,6 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-bind '"\t":menu-complete'
 
 # Load stderred to display stderr in red
 STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
