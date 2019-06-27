@@ -24,6 +24,7 @@ function qps() {
     else
 	cat $tmp1 | grep $filter >> $tmp4
     fi
+    # requires visidata installation
     vd --csv-delimiter ' ' --default-width 10 --filetype csv --header 1 $tmp4
 }
 
