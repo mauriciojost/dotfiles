@@ -11,6 +11,7 @@
         <property name="startup-notify" type="empty"/>
       </property>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="empty"/>
       <property name="XF86Display" type="empty"/>
       <property name="&lt;Super&gt;p" type="empty"/>
       <property name="&lt;Primary&gt;Escape" type="empty"/>
@@ -24,6 +25,7 @@
       <property name="&lt;Super&gt;m" type="empty"/>
       <property name="XF86Explorer" type="empty"/>
       <property name="&lt;Super&gt;f" type="empty"/>
+      <property name="&lt;Super&gt;F1" type="empty"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="empty"/>
       <property name="&lt;Super&gt;t" type="empty"/>
       <property name="&lt;Super&gt;r" type="empty"/>
@@ -56,6 +58,10 @@
       <property name="&lt;Super&gt;s" type="string" value="/home/mjost/bin/sublime/sublime_text"/>
       <property name="&lt;Super&gt;o" type="string" value="octave --force-gui"/>
       <property name="&lt;Super&gt;1" type="string" value="/home/mjost/.dotfiles/modules/lenovo-x240/extras/load-touchpad-settings.sh"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="terminator"/>
+      <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
+      <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -113,6 +119,45 @@
       <property name="&lt;Primary&gt;F11" type="empty"/>
       <property name="&lt;Primary&gt;F12" type="empty"/>
       <property name="&lt;Alt&gt;F5" type="empty"/>
+      <property name="&lt;Super&gt;KP_1" type="empty"/>
+      <property name="&lt;Super&gt;Down" type="empty"/>
+      <property name="&lt;Super&gt;KP_3" type="empty"/>
+      <property name="&lt;Super&gt;Left" type="empty"/>
+      <property name="&lt;Super&gt;Right" type="empty"/>
+      <property name="&lt;Super&gt;KP_7" type="empty"/>
+      <property name="&lt;Super&gt;Up" type="empty"/>
+      <property name="&lt;Super&gt;KP_9" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Down" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Left" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;End" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;Home" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_1" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_2" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_3" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_4" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_5" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_6" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_7" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_8" type="empty"/>
+      <property name="&lt;Alt&gt;&lt;Control&gt;KP_9" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Right" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;d" type="empty"/>
+      <property name="&lt;Control&gt;&lt;Alt&gt;Up" type="empty"/>
+      <property name="&lt;Control&gt;F1" type="empty"/>
+      <property name="&lt;Control&gt;F2" type="empty"/>
+      <property name="&lt;Control&gt;F3" type="empty"/>
+      <property name="&lt;Control&gt;F4" type="empty"/>
+      <property name="&lt;Control&gt;F5" type="empty"/>
+      <property name="&lt;Control&gt;F6" type="empty"/>
+      <property name="&lt;Control&gt;F7" type="empty"/>
+      <property name="&lt;Control&gt;F8" type="empty"/>
+      <property name="&lt;Control&gt;F9" type="empty"/>
+      <property name="&lt;Control&gt;F10" type="empty"/>
+      <property name="&lt;Control&gt;F11" type="empty"/>
+      <property name="&lt;Control&gt;F12" type="empty"/>
     </property>
     <property name="custom" type="empty">
       <property name="Up" type="string" value="up_key"/>
