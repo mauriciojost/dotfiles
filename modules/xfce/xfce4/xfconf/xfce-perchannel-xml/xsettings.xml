@@ -12,6 +12,7 @@
     <property name="SoundThemeName" type="empty"/>
     <property name="EnableEventSounds" type="bool" value="false"/>
     <property name="EnableInputFeedbackSounds" type="bool" value="false"/>
+    <property name="FallbackIconTheme" type="empty"/>
   </property>
   <property name="Xft" type="empty">
     <property name="DPI" type="empty"/>
@@ -25,6 +26,7 @@
     <property name="CanChangeAccels" type="bool" value="true"/>
     <property name="ColorPalette" type="empty"/>
     <property name="FontName" type="empty"/>
+    <property name="MonospaceFontName" type="empty"/>
     <property name="IconSizes" type="empty"/>
     <property name="KeyThemeName" type="empty"/>
     <property name="ToolbarStyle" type="empty"/>
@@ -32,9 +34,9 @@
     <property name="MenuImages" type="bool" value="true"/>
     <property name="ButtonImages" type="bool" value="true"/>
     <property name="MenuBarAccel" type="empty"/>
-    <property name="CursorThemeName" type="string" value="default"/>
-    <property name="CursorThemeSize" type="empty"/>
-    <property name="ColorScheme" type="empty"/>
+    <property name="CursorThemeName" type="string" value="DMZ-Black"/>
+    <property name="CursorThemeSize" type="int" value="25"/>
     <property name="DecorationLayout" type="empty"/>
+    <property name="ColorScheme" type="empty"/>
   </property>
 </channel>
