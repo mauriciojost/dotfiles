@@ -7,3 +7,6 @@
 [submodule "modules/scaladiagrams/scaladiagrams"]
 	path = modules/scaladiagrams/scaladiagrams
 	url = https://github.com/mikeyhu/scaladiagrams.git
+[submodule "modules/xfce/rename-xfce-workspace/rename-xfce-workspace"]
+	path = modules/xfce/rename-xfce-workspace/rename-xfce-workspace
+	url = https://github.com/mauriciojost/rename-xfce-workspace.git
