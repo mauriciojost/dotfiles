@@ -150,3 +150,5 @@ git submodule update --init --recursive
 
 echo ''
 echo '  All installed!'
+echo '  To install custom configs and other submodules (like stderr) execute'
+echo '    install-custom.sh'
