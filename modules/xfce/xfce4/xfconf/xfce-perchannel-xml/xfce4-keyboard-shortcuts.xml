@@ -55,6 +55,8 @@
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xfce4-screenshooter -r -c"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F4" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
