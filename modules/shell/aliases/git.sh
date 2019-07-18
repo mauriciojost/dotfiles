@@ -33,6 +33,8 @@ alias qgit-push='git push origin HEAD'
 
 alias qgit-diff='git difftool'
 
+alias qgit-untrack-tracked-file='git update-index --skip-worktree'
+
 # Git logs 
 
 alias qgit-log-extended='git log --name-only --full-history'

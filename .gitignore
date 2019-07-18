@@ -2,3 +2,6 @@ bin/rclocal/
 module-shell/localrc.symlink
 /modules/plantuml/plantuml.jar
 /modules/plantuml/README.png
+/modules/xfce/xfce4/panel/weather-17.rc
+/modules/xfce/xfce4/panel/netload-19.rc
+/modules/xfce/xfce4/panel/cpugraph-15.rc

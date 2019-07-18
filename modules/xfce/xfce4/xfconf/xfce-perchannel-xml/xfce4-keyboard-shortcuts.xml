@@ -43,15 +43,12 @@
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
       <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="string" value="xflock4"/>
       <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;3" type="string" value="abiword"/>
       <property name="&lt;Super&gt;4" type="string" value="gnumeric"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;e" type="string" value="exo-open --launch FileManager"/>
-      <property name="&lt;Super&gt;e" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Super&gt;c" type="string" value="google-chrome"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;c" type="string" value="google-chrome"/>
       <property name="&lt;Super&gt;i" type="string" value="/home/mjost/bin/idea/bin/idea.sh"/>
@@ -62,6 +59,7 @@
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xfce4-screenshooter -r -c"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
