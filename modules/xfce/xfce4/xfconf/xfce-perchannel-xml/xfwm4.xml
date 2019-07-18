@@ -51,13 +51,13 @@
     <property name="workspace_count" type="int" value="8"/>
     <property name="workspace_names" type="array">
       <value type="string" value="botino"/>
-      <value type="string" value="peperoni"/>
-      <value type="string" value="Workspace 3"/>
-      <value type="string" value="Workspace 4"/>
-      <value type="string" value="Workspace 5"/>
-      <value type="string" value="Workspace 6"/>
-      <value type="string" value="Workspace 7"/>
-      <value type="string" value="Workspace 8"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
+      <value type="string" value="-"/>
     </property>
     <property name="wrap_resistance" type="int" value="10"/>
     <property name="wrap_windows" type="bool" value="true"/>
