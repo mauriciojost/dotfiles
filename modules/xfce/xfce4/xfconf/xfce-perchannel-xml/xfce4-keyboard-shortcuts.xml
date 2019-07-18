@@ -45,21 +45,16 @@
       <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder"/>
       <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Super&gt;3" type="string" value="abiword"/>
-      <property name="&lt;Super&gt;4" type="string" value="gnumeric"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;e" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Super&gt;c" type="string" value="google-chrome"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;c" type="string" value="google-chrome"/>
-      <property name="&lt;Super&gt;i" type="string" value="/home/mjost/bin/idea/bin/idea.sh"/>
-      <property name="&lt;Super&gt;s" type="string" value="/home/mjost/bin/sublime/sublime_text"/>
-      <property name="&lt;Super&gt;o" type="string" value="octave --force-gui"/>
-      <property name="&lt;Super&gt;1" type="string" value="/home/mjost/.dotfiles/modules/lenovo-x240/extras/load-touchpad-settings.sh"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="terminator"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xfce4-screenshooter -r -c"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F4" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -162,15 +157,17 @@
       <property name="Left" type="string" value="left_key"/>
       <property name="&lt;Alt&gt;Tab" type="string" value="cycle_windows_key"/>
       <property name="&lt;Alt&gt;&lt;Shift&gt;Tab" type="string" value="cycle_reverse_windows_key"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_key"/>
       <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_key"/>
       <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
       <property name="Escape" type="string" value="cancel_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_up_key"/>
       <property name="Down" type="string" value="down_key"/>
       <property name="Right" type="string" value="right_key"/>
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Left" type="string" value="move_window_left_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Right" type="string" value="move_window_right_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Left" type="string" value="left_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
     </property>
   </property>
   <property name="providers" type="array">
