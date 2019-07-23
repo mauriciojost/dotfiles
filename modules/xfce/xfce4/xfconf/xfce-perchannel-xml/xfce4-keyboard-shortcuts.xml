@@ -58,6 +58,7 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
       <property name="Super_L" type="string" value="xfce4-appfinder"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;x" type="string" value="xkill"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

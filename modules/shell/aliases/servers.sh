@@ -7,15 +7,18 @@ function qx-display-lightdm-start() {
 }
 
 function qps() {
+    # examples:
+    # qps "-U mjost" java
+    # qps "-U mjost" chrome
+
+    local psargs="$1"
     local tmp1=`mktemp`
     local tmp2=`mktemp`
     echo $tmp1
     echo $tmp2
-    echo $tmp3
-    echo $tmp4
     local cmd_length=80
-    local filter=$1
-    ps -U $USER -k-%cpu -eo pid=PID,comm=BINARY,%cpu=CPU_PERC,thcount=NRO_THREADS,vsz=VIRTUAL_MEM_KB,rss=RESIDENT_MEM_KB,pri=PRIORITY,euser=USER,etime=TIME,cmd=LONG | sed -E 's/^[ ]+//g' | sed -E "s/[ ]+/\^/g"  | sed -E "s/\^/ /10g" > $tmp1
+    local filter=$2
+    ps $psargs -k-%cpu -eo pid=PID,%cpu=CPU_PERC,thcount=NRO_THREADS,vsz=VIRTUAL_MEM_KB,rss=RESIDENT_MEM_KB,pri=PRIORITY,euser=USER,etime=TIME,cmd=LONG | sed -E 's/^[ ]+//g' | sed -E "s/[ ]+/\^/g"  | sed -E "s/\^/ /10g" > $tmp1
 
     if [ -z "$filter" ]
     then

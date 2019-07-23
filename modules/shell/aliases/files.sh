@@ -67,7 +67,7 @@ function gd(){
 
 # Copy creating directory
 function qcp() {
-  mkdir -p `basedir $2`
+  mkdir -p `dirname $2`
   cp $1 $2
 }
 
