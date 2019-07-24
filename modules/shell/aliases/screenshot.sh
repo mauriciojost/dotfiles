@@ -10,10 +10,13 @@ function qscreenshot-region-file() {
    echo "Output file at: $newoutputfile"
 }
 
-# Screenshot
+# Screenshot from a region and put in the clipboard
 function qscreenshot-region-clipboard() {
    echo "Select region using mouse..."
    gnome-screenshot -a -c
    echo "Output is on the clipboard"
 }
+
+# Put whatever is piped to qclip into the clipboard
+alias qclip='xclip -selection clipboard'
 
