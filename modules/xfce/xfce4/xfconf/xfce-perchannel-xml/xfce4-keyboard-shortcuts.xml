@@ -41,8 +41,6 @@
     <property name="custom" type="empty">
       <property name="&lt;Super&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
-      <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder"/>
       <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
@@ -54,11 +52,8 @@
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xfce4-screenshooter -r -c"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;F4" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
-      <property name="Super_L" type="string" value="xfce4-appfinder"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;x" type="string" value="xkill"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
