@@ -21,5 +21,7 @@ cd $DOTFILES_ROOT/modules/stderrred/
 make
 cd $DOTFILES_ROOT
 
+echo "For: ulauncher -> follow the intstructions in the corresponding module"
+
 echo ''
 echo '  All installed!'

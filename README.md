@@ -4,6 +4,8 @@ This is my `.dotfiles` project.
 
 Your dotfiles define how you personalize your system. 
 
+I use mainly Ubuntu Linux with XFCE on it.
+
 
 ## Getting started
 
