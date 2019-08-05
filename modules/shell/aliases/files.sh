@@ -71,6 +71,12 @@ function qcp() {
   cp $1 $2
 }
 
+# Copy creating directory
+function qmv() {
+  mkdir -p `dirname $2`
+  mv $1 $2
+}
+
 # Search a file in the current directory or sub directories
 function qf(){
     find | grep $1
