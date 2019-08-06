@@ -1,6 +1,7 @@
 # SHORTCUTS
 
 ctrl + space                ulauncher
+alt + space                 zazu
 ctrl + shift + f2           clipit
 ctrl + shift + f3           screenshot region and clipboard
 ctrl + alt + arrow          move to workspace
