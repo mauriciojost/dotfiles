@@ -1,5 +1,18 @@
 # README
 
+## Method 1
+
+https://www.addictivetips.com/ubuntu-linux-tips/install-the-ulauncher-quick-launch-app-linux/
+
+```
+sudo add-apt-repository ppa:agornostal/ulauncher
+sudo apt update
+sudo apt install ulauncher
+```
+
+
+## Method 2
+
 1. Go to: https://ulauncher.io/#Download
 2. Download the .deb
 3. Execute:
