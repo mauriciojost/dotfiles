@@ -23,7 +23,5 @@ cd $DOTFILES_ROOT
 
 echo "For: ulauncher -> follow the intstructions in the corresponding module"
 
-echo "For: zazu -> follow the intstructions in the corresponding module"
-
 echo ''
 echo '  All installed!'
