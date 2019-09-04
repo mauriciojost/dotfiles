@@ -17,6 +17,3 @@ function qscreenshot-region-clipboard() {
    echo "Output is on the clipboard"
 }
 
-# Put whatever is piped to qclip into the clipboard
-alias qclip='xclip -selection clipboard'
-
