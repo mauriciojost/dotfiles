@@ -4,8 +4,15 @@ This is my `.dotfiles` project.
 
 Your dotfiles define how you personalize your system. 
 
-I use mainly Ubuntu Linux with XFCE on it.
+It is tuned for Ubuntu Linux with XFCE on it / Xubuntu distro.
 
+I conceived it for: 
+- helping me with commands (and its flags) I often find useful via aliases / functions
+- keeping in hand code snippets I often forget
+- settings of window manager that suit daily life and work (task oriented using workspaces)
+- and more!
+
+![Look](README.look.png)
 
 ## Getting started
 
