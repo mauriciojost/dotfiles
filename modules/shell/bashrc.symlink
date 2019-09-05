@@ -56,7 +56,10 @@ esac
 
 TERMINALSESSIONID=`echo $RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM | md5sum | cut -c 1-10`
 
-CUSTOM_HISTORY_FILE=$HOME/.history.log
+CUSTOM_HISTORY_FILENAME=.history.log
+CUSTOM_HISTORY_FILE=$HOME/$CUSTOM_HISTORY_FILENAME
+CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO_DIR=dotfiles-history-backup
+CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO=git@bitbucket.org:mauriciojost/$CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO_DIR.git
 _append_history () {
   local LAST_CMD=$(history 1)
   xfceworkspaceid=`wmctrl -d | grep '*' | sed 's/.* //g'`
