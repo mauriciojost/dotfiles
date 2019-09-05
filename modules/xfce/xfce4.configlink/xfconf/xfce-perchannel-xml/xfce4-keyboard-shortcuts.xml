@@ -50,10 +50,11 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="terminator"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="gnome-screenshot -a -c"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xfce4-screenshooter -r -c"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value=".dotfiles/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F5" type="string" value="bash -i -c &quot;qwindow-pid&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="bash  -i -c  &quot;qscreenshot-region-clipboard&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="bash  -i -c  &quot;qscreenshot-region-clipboard&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
