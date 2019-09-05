@@ -1,15 +1,3 @@
-function qhistory-list-consoles () {
-	consoles=`cat $CUSTOM_HISTORY_FILE | cut -c1-33 | sed 's/ //' | sort -u`
-	for console in $consoles
-	do
-		echo "--------------------------------"
-		echo "$console"
-		echo "--------------------------------"
-		cat $HISTORY_FILE | grep -a "$console" 
-	done
-
-}
-
 function qhistory-backup() {
     local d=`mktemp --directory`
     cd $d
