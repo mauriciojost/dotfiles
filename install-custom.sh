@@ -8,10 +8,6 @@ DOTFILES_ROOT="`pwd`"
 
 set -e
 
-echo "For: xfce"
-mv $HOME/.config/xfce4 $HOME/.config/xfce4.bkp
-ln -fs `readlink -e $DOTFILES_ROOT/modules/xfce4` $HOME/.config/xfce4
-
 echo "For: rename-xfce-workspace"
 sudo apt-get install wmctrl
 
