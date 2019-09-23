@@ -3,6 +3,7 @@ function qlog-system-list() {
 	echo "Listing syslog..."
 	sleep 2
 	less /var/log/syslog 
+	journalctl
 }
 
 function qstats-base() {
