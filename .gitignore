@@ -17,7 +17,7 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink.bkp/xfconf/xfce-perchannel-xml/*.xml
 /modules/xfce/xfce4.configlink.working-toremove/desktop/*.rc
 /modules/xfce/xfce4.configlink.working-toremove/panel/*
-/modules/xfce/xfce4.configlink/desktop/*.rc
+/modules/xfce/xfce4.configlink/desktop/*
 /modules/xfce/xfce4.configlink.working-toremove/xfconf/xfce-perchannel-xml/*.xml
 /modules/xfce/xfce4.configlink.bkp/terminal/*
 /modules/xfce/xfce4.configlink.bkp/xfce4-notes.gtkrc
