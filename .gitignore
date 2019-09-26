@@ -30,3 +30,4 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/*.xml
 /modules/xfce/xfce4.configlink/xfce4-taskmanager.rc
 /modules/git-cola/git-cola.configlink/settings
+/modules/xfce/xfce4.configlink/terminal/*
