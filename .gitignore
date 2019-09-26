@@ -25,3 +25,8 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink.bkp/xfce4-screenshooter
 /modules/xfce/xfce4.configlink.working-toremove/Verve/history
 /modules/xfce/xfce4.configlink/panel/*
+/modules/xfce/xfce4.configlink/xfce4-notes.rc
+/modules/xfce/xfce4.configlink/xfce4-notes.gtkrc
+/modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/*.xml
+/modules/xfce/xfce4.configlink/xfce4-taskmanager.rc
+/modules/git-cola/git-cola.configlink/settings
