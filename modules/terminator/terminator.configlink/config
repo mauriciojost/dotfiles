@@ -1,34 +1,26 @@
 [global_config]
-  borderless = True
+  dbus = False
   focus = mouse
-  handle_size = 2
-  inactive_color_offset = 0.647887323944
+  inactive_color_offset = 0.507042253521
   scroll_tabbar = True
-  suppress_multiple_term_dialog = True
-  focus = sloppy
 [keybindings]
-[profiles]
-  [[default]]
-    scrollbar_position = hidden
-    scrollback_lines = 50000
-    scroll_on_output = False
-    background_image = None
 [layouts]
   [[default]]
     [[[child1]]]
-      type = Terminal
       parent = window0
+      profile = myprofile
+      type = Terminal
     [[[window0]]]
-      type = Window
       parent = ""
+      type = Window
 [plugins]
 [profiles]
   [[default]]
-    background_darkness = 0.81
+    copy_on_selection = True
+    cursor_color = "#aaaaaa"
+  [[myprofile]]
+    background_darkness = 0.86
     background_type = transparent
+    copy_on_selection = True
     cursor_color = "#aaaaaa"
     scrollback_infinite = True
-    scrollback_lines = 50000
-    scrollbar_position = hidden
-    urgent_bell = True
-    visible_bell = True
