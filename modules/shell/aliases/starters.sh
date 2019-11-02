@@ -5,7 +5,6 @@ alias qconfigure-ubuntu-tweak=ubuntu-tweak
 alias qmonitor='conky'
 alias qconfiguration-gnome-control-center='gnome-control-center'
 alias qusers-configuration-gui='users-admin' # Install gnome-system-tools before
-alias qdisk-usage-analyzer="xdiskusage /"
 alias qwebdav-client=cadaver
 alias qyoutube-download=youtube-dl
 alias qmarkdown=haroopad
@@ -69,5 +68,29 @@ function qlaunch() {
 	local tmpf=`mktemp`
 	nohup $prcs &> $tmpf &
 	echo "Logging in $tmpf"
+}
+
+
+function qdisk-usage-analyzer() {
+    local file_backup_dir=$HOME/.logs/
+    local file_backup_file=$file_backup_dir/$RANDOM-$RANDOM.log
+
+    mkdir -p $file_backup_dir
+
+    # biggest packages
+    dpigs -n 100 -S -H
+    # disk usage
+    xdiskusage /
+    # backup status
+
+    echo "Storing disk usage story in $file_backup_file ..."
+
+    echo "" > $file_backup_file
+    echo "### DPIGS" >> $file_backup_file
+    dpigs -n 1000000 -H >> $file_backup_file
+    echo "### APT LIST" >> $file_backup_file
+    apt list --installed >> $file_backup_file
+    echo "### DF" >> $file_backup_file
+    df >> $file_backup_file
 }
 
