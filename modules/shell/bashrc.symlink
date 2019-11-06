@@ -62,7 +62,12 @@ CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO_DIR=dotfiles-history-backup
 CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO=git@bitbucket.org:mauriciojost/$CUSTOM_HISTORY_FILE_BACKUP_GIT_REPO_DIR.git
 _append_history () {
   local LAST_CMD=$(history 1)
-  xfceworkspaceid=`wmctrl -d | grep '*' | sed 's/.* //g'`
+
+  if xhost >& /dev/null ; then
+    xfceworkspaceid=`wmctrl -d | grep '*' | sed 's/.* //g'`
+  else 
+    xfceworkspaceid="noworkspace"
+  fi
   # strip useless entry number from the beginning
   LAST_CMD=${LAST_CMD#*  }
   echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
