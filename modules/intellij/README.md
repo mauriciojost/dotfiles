@@ -4,6 +4,7 @@
 
 1. Install IdeaVim plugin on Intellij.
 3. After closing Intellij, copy the provided `keymaps/*.xml` into `$HOME/.IdeaXXX/config/keymaps/`
+4. Go to Vim Emulation (Ctrl-Shift-A and choose Vim Emulation) and for Ctrl+O and Ctrl+I choose IDE.
 5. Restart Intellij.
 
 Then you should have a very good keymap working ;)
