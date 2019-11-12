@@ -30,6 +30,11 @@ function qps() {
     vd --csv-delimiter '^' --default-width 10 --filetype csv --header 1 $tmp2
 }
 
+function qhtop-processes-matching-X() {
+    local cmd=$(ps -ef | grep $@ | awk '{print $2}' | paste -sd "," - | xargs -I% echo htop -pids=%)
+    $cmd
+}
+
 function qvpn-over-ssh-using-server-X() {
 	if [ -z "$1" ]
 	then
