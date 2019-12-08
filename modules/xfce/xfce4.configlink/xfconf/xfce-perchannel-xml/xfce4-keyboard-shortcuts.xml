@@ -39,22 +39,20 @@
       <property name="&lt;Super&gt;4" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Super&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="Print" type="string" value="xfce4-screenshooter -f"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="override" type="bool" value="true"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;e" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Super&gt;c" type="string" value="google-chrome"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;c" type="string" value="google-chrome"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="terminator"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="bash  -i -c  &quot;qscreenshot-region-clipboard&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F5" type="string" value="bash -i -c &quot;qwindow-pid&quot;"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="xkill"/>
+      <property name="&lt;Super&gt;t" type="string" value="terminator"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F12" type="string" value="bash  -i -c  &quot;qwindow-kill&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
