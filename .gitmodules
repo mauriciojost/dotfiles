@@ -10,3 +10,6 @@
 [submodule "modules/ttygif/ttygif"]
 	path = modules/ttygif/ttygif
 	url = https://github.com/icholy/ttygif.git
+[submodule "modules/flamegraph"]
+	path = modules/flamegraph
+	url = https://github.com/brendangregg/FlameGraph.git
