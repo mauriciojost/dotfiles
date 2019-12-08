@@ -57,7 +57,8 @@
 
 	# git fetchpr upstream 186
 	# git checkout pull-requests/186
-	fetchpr = "!f() { cmd=\"git fetch $1 refs/pull-requests/$2/from:refs/remotes/$1/pull-requests/$2\"; echo $cmd; eval $cmd; } ;f"
+	fetchpr = "!f() { cmd=\"git fetch -f $1 refs/pull-requests/$2/from:refs/remotes/$1/pull-requests/$2\"; echo $cmd; eval $cmd; } ;f"
+	find = "!git log --color -p -S "
 
 
 [gui]
