@@ -38,5 +38,15 @@
         "is_default_search": false,
         "run_without_argument": true,
         "added": 1574316204.5388362
+    },
+    "3689c420-2f5e-469f-a814-7521651da0b4": {
+        "id": "3689c420-2f5e-469f-a814-7521651da0b4",
+        "name": "launch",
+        "keyword": "l",
+        "cmd": "#!/usr/bin/env bash\nnohup bash -i -c $@ &>> /tmp/ulaunch-launch.txt &",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1577086133.5599096
     }
 }

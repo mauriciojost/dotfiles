@@ -1,1 +1,16 @@
-{}
+{
+    "com.github.iboyperson.ulauncher-system": {
+        "id": "com.github.iboyperson.ulauncher-system",
+        "url": "https://github.com/iboyperson/ulauncher-system",
+        "updated_at": "2019-09-26T16:29:32.505185",
+        "last_commit": "34a4776fcdf8be9b22d524b98631298efe668fb9",
+        "last_commit_time": "2019-09-17T20:03:39"
+    },
+    "com.github.mauriciojost.ulauncher-locate": {
+        "id": "com.github.mauriciojost.ulauncher-locate",
+        "url": "https://github.com/mauriciojost/ulauncher-locate",
+        "updated_at": "2019-09-26T16:29:34.346435",
+        "last_commit": "8e2d2dc7564c98af903c29f0edb67ce98d1aa8bd",
+        "last_commit_time": "2019-09-10T20:53:44"
+    }
+}
