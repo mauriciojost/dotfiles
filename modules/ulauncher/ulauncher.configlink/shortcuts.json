@@ -28,5 +28,15 @@
         "is_default_search": true,
         "run_without_argument": false,
         "added": 1565249038.773855
+    },
+    "f3a3e179-8244-40a8-8ba8-23e202a37451": {
+        "id": "f3a3e179-8244-40a8-8ba8-23e202a37451",
+        "name": "idea",
+        "keyword": "idea",
+        "cmd": "#!/usr/bin/env bash -i\nqlaunch ~/opt/idea/bin/idea.sh",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1574316204.5388362
     }
 }
