@@ -1,0 +1,96 @@
+[
+  {
+    "dbId": {
+      "id": 6971,
+      "creation": 1577989854
+    },
+    "device": {
+      "metadata": {
+        "device": "dev1",
+        "status": "C"
+      },
+      "actors": {
+        "quotes": {
+          "freq": "never"
+        },
+        "notifier": {
+          ".ns": "::::"
+        },
+        "clocksync": {
+          "+freq": "~48h",
+          "+zone": "Europe/Paris"
+        },
+        "clock": {
+          ".time": "1577729555"
+        },
+        "botino": {
+          ".status": "vcc:2.98,freeheap:17664",
+          "~lcdlogs": "false",
+          "~fslogs": "true"
+        },
+        "images": {
+          "im0": "",
+          "im3": "",
+          "im2": "",
+          "im1": ""
+        },
+        "propsync": {
+          "+freq": "~10m",
+          "+fstorefreq": "~24h",
+          "+fsyncfreq": "~24h"
+        },
+        "settings": {
+          "+periodms": "60000",
+          "project": "botino",
+          "~logl": "0",
+          "+ufreq": "~1h",
+          "~logo": "??1;",
+          "alias": "bot-82-kitchen",
+          "+utarget": "LATEST",
+          "+mperiodms": "1000",
+          "platform": "esp8266",
+          "~debug": "true",
+          "~version": "3.10.39-d265866"
+        }
+      }
+    }
+  },
+  {
+    "dbId": {
+      "id": 20907,
+      "creation": 1579590601
+    },
+    "device": {
+      "metadata": {
+        "device": "dev1",
+        "status": "C"
+      },
+      "actors": {
+        "botino": {
+          ".status": "vcc:2.97,freeheap:10168",
+          "~lcdlogs": "false",
+          "~fslogs": "true"
+        }
+      }
+    }
+  },
+  {
+    "dbId": {
+      "id": 20912,
+      "creation": 1579591201
+    },
+    "device": {
+      "metadata": {
+        "device": "dev1",
+        "status": "C"
+      },
+      "actors": {
+        "botino": {
+          ".status": "vcc:2.97,freeheap:10144",
+          "~lcdlogs": "false",
+          "~fslogs": "true"
+        }
+      }
+    }
+  }
+]
