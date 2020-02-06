@@ -12,5 +12,19 @@
         "updated_at": "2019-09-26T16:29:34.346435",
         "last_commit": "8e2d2dc7564c98af903c29f0edb67ce98d1aa8bd",
         "last_commit_time": "2019-09-10T20:53:44"
+    },
+    "com.github.ulauncher.ulauncher-timer": {
+        "id": "com.github.ulauncher.ulauncher-timer",
+        "url": "https://github.com/ulauncher/ulauncher-timer",
+        "updated_at": "2019-12-24T09:41:15.358109",
+        "last_commit": "1267b5997ca797b85136cf325bcf4a51e2f7adf7",
+        "last_commit_time": "2019-09-25T06:44:20"
+    },
+    "com.github.isacikgoz.ukill": {
+        "id": "com.github.isacikgoz.ukill",
+        "url": "https://github.com/isacikgoz/ukill",
+        "updated_at": "2019-12-24T09:42:03.029409",
+        "last_commit": "bc50d9f41d46b6813a5aeebddd15734dcdb9d8db",
+        "last_commit_time": "2019-05-28T18:30:00"
     }
 }

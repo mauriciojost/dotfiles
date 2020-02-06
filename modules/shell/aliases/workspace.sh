@@ -1,4 +1,7 @@
 #alias qworkspace-rename='$DOTFILES/modules/xfce/rename-xfce-workspace/rename-xfce-workspace/rename-xfce-workspace'
+function qworkspace-getname() {
+  wmctrl -d | grep '*' | sed 's/.* //g'
+}
 
 function qworkspace-rename() {
     # Current workspace output by wmctrl
