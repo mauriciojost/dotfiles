@@ -133,6 +133,12 @@ else
   echo "Dev shell essentials skipped"
 fi
 
+if [ ! -f "/usr/local/bin/broot" ] 
+then
+  echo "WARN: broot missing!"
+  echo "To install it follow: https://dystroy.org/broot/documentation/installation/"
+fi
+
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
 stty -ixon
 
