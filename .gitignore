@@ -32,3 +32,5 @@ module-shell/localrc.symlink
 /modules/git-cola/git-cola.configlink/settings
 /modules/xfce/xfce4.configlink/terminal/*
 /modules/xfce/xfce4.configlink/helpers.rc
+/modules/broot/broot.configlink/launcher/bash/br
+/modules/broot/broot.configlink/launcher/installed-v1
