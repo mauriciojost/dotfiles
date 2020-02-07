@@ -82,21 +82,8 @@ function qf(){
     find | grep $1
 }
 
-function qcd() {
-  if [ "$1" != "" ]
-  then
-    cd `dirname $1`
-  fi
-  pwd
-  ranger --choosedir=$HOME/.rangerdir
-  local lastdir=`cat $HOME/.rangerdir`
-  cd "$lastdir"
-}
-
-alias q=qcd
-
 # Show tree in a fancy way
-alias tree='tree -s -h -f --du'
+alias qtree='tree -s -h -f --du'
 
 # Open a file
 alias gopen='thunar'

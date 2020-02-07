@@ -99,15 +99,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-echo "Running .localrc ..."
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -115,14 +106,25 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# Load stderred to display stderr in red
-STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
-if [ -e "$STDERRRED_LIB" ] 
+
+if [ ! -f "/usr/local/bin/broot" ] 
 then
-  export LD_PRELOAD="$STDERRRED_LIB"
+  echo "WARN: broot missing!"
+  echo "To install it follow: https://dystroy.org/broot/documentation/installation/"
+  echo "Place broot under: /usr/local/bin/broot"
+
+  # Load stderred to display stderr in red (only if broot not set up, otherwise there is a collision)
+  STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
+  if [ -e "$STDERRRED_LIB" ] 
+  then
+    export LD_PRELOAD="$STDERRRED_LIB"
+  else
+    echo "Stderred skipped"
+  fi
 else
-  echo "Stderred skipped"
+  source $HOME/.config/broot/launcher/bash/br
 fi
+
 
 # Load highlighter module 'highlight red pattern'
 DEV_SHELL_ESSENTIALS_SCRIPT="$DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh"
@@ -133,18 +135,21 @@ else
   echo "Dev shell essentials skipped"
 fi
 
-if [ ! -f "/usr/local/bin/broot" ] 
-then
-  echo "WARN: broot missing!"
-  echo "To install it follow: https://dystroy.org/broot/documentation/installation/"
-  echo "Place broot under: /usr/local/bin/broot"
-fi
-
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
 stty -ixon
+
+# use .localrc for SUPER SECRET CRAP that you don't # want in your public, versioned repo.
+echo "Running .localrc ..."
+if [[ -a ~/.localrc ]]
+then
+  source ~/.localrc
+fi
+
+
 
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
+
 
