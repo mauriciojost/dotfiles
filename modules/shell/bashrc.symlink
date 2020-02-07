@@ -137,6 +137,7 @@ if [ ! -f "/usr/local/bin/broot" ]
 then
   echo "WARN: broot missing!"
   echo "To install it follow: https://dystroy.org/broot/documentation/installation/"
+  echo "Place broot under: /usr/local/bin/broot"
 fi
 
 # Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
