@@ -10,12 +10,12 @@ function qhistory-backup() {
 
 alias qexecute-using-local-display="DISPLAY=:0 "
 
-function qh-find-X() {
+function qhistory-find-x() {
     cat "$CUSTOM_HISTORY_FILE" | grep -a $1 | highlight yellow ';' | highlight green cd
 }
 
-function qh-find-here-anything() {
+function qhistory-find-all-in-this-dir() {
     bn=$(basename $PWD)
-    qh-find-X "$bn" | highlight blue "$bn"
+    qhistory-find-x "$bn" | highlight blue "$bn"
 }
 
