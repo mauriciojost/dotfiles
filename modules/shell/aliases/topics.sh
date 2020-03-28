@@ -4,6 +4,11 @@ function qtopic-list() {
   echo "LATEST HERE ^^^ "
 }
 
+function qtopic-open-with-filename-x() {
+  local files=`find $HOME/topics/ | grep $1`
+  vim $files
+}
+
 function qtopic-new-name() {
   local topic="$1"
   echo $HOME/topics/`date +"%Y-%m-%d"`."$topic"
@@ -27,5 +32,3 @@ function qtopic-new-dir(){
   ranger $dir
   echo "Directory: $dir"
 }
-
-alias qtopic=qtopic-new-file
