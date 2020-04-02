@@ -75,3 +75,6 @@
 	path = ~/.perso.gitconfig
 
 
+[user]
+	email = mauriciojost@gmail.com
+	name = Mauricio Jost

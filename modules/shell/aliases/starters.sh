@@ -72,25 +72,33 @@ function qlaunch() {
 
 
 function qdisk-usage-analyzer() {
-    local file_backup_dir=$HOME/.logs/
-    local file_backup_file=$file_backup_dir/$RANDOM-$RANDOM.log
+  local file_backup_dir=$HOME/.logs/
+  local file_backup_file=$file_backup_dir/$RANDOM-$RANDOM.log
 
-    mkdir -p $file_backup_dir
+  mkdir -p $file_backup_dir
 
-    # biggest packages
-    dpigs -n 100 -S -H
-    # disk usage
-    xdiskusage /
-    # backup status
+  # biggest packages
+  dpigs -n 100 -S -H
+  # disk usage
+  xdiskusage /
+  # backup status
 
-    echo "Storing disk usage story in $file_backup_file ..."
+  echo "Storing disk usage story in $file_backup_file ..."
 
-    echo "" > $file_backup_file
-    echo "### DPIGS" >> $file_backup_file
-    dpigs -n 1000000 -H >> $file_backup_file
-    echo "### APT LIST" >> $file_backup_file
-    apt list --installed >> $file_backup_file
-    echo "### DF" >> $file_backup_file
-    df >> $file_backup_file
+  echo "" > $file_backup_file
+  echo "### DPIGS" >> $file_backup_file
+  dpigs -n 1000000 -H >> $file_backup_file
+  echo "### APT LIST" >> $file_backup_file
+  apt list --installed >> $file_backup_file
+  echo "### DF" >> $file_backup_file
+  df >> $file_backup_file
 }
 
+function qdisk-cleanup() {
+
+  sudo apt-get clean
+  sudo apt-get autoremove
+  sudo journalctl --vacuum-size=10M
+  sudo fslint-gui
+
+}
