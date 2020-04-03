@@ -43,7 +43,7 @@
         "id": "3689c420-2f5e-469f-a814-7521651da0b4",
         "name": "launch",
         "keyword": "l",
-        "cmd": "#!/usr/bin/env bash\nnohup bash -i -c $@ &>> /tmp/ulaunch-launch.txt &",
+        "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c $@",
         "icon": null,
         "is_default_search": false,
         "run_without_argument": false,
