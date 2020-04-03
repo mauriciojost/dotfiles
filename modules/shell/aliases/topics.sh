@@ -9,6 +9,17 @@ function qtopic-open-with-filename-x() {
   vim $files
 }
 
+# Edit an alias that matches a given pattern
+function qtopic-edit() {
+  local ALIAS=$1
+  echo "Alias: $ALIAS"
+  FILES="`grep $ALIAS -i -l -R $HOME/topics/`"
+  echo "Found: "
+  echo $FILES
+  vim $FILES
+}
+
+
 function qtopic-new-name() {
   local topic="$1"
   echo $HOME/topics/`date +"%Y-%m-%d"`."$topic"
