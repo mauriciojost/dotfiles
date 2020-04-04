@@ -200,9 +200,7 @@ if v:version >= 700
 endif
 
 " Fantastic: https://github.com/jodavaho/bashlog/blob/master/vim_log
-
-set nu
-
+" Commit using command Lw
 command Lw w | !git add % &&  git commit % -m "Checkin %" && git push
 
 set filetype=markdown
@@ -210,17 +208,22 @@ au BufRead,BufNewFile *.md set filetype=markdown
 set autochdir
 syntax enable
 
-:highlight TODOTRACK ctermbg=cyan ctermfg=white
+" Symbols colored
+" (+)  -> positive
+" (-)  -> negative
+" ===> -> therefore
+" [ ]  -> todo
+" [/]  -> done
+" !!!  -> attention
 :highlight DONETRACK ctermbg=green
-:highlight TAGTRACK ctermbg=blue
-:highlight REDTRACK ctermbg=red
-:highlight PUSHTRACK ctermbg=DarkGray ctermfg=Gray
-:highlight TRASHTRACK ctermbg=Black ctermfg=DarkGray
-
-:let mdone = matchadd("DONETRACK","\\[x\\]")
-:let mdone = matchadd("DONETRACK","\\[v\\]")
+:let mdone = matchadd("DONETRACK","\\[/\\]")
+:highlight GREENFG ctermfg=green
+:let mgood = matchadd("GREENFG","(+)")
+:let mconsequence = matchadd("GREENFG","==>")
+:highlight TODOTRACK ctermbg=cyan ctermfg=white
 :let mtodo = matchadd("TODOTRACK", "\\[ \\]")
-:let mhigh = matchadd("REDTRACK", "\\[-\\]")
-:let mtrash = matchadd("TRASHTRACK", "\\[v\\]")
-:let mdelay = matchadd("PUSHTRACK", "\\[>\\]")
+:highlight REDTRACK ctermbg=red
+:highlight REDFG ctermfg=red
+:let mattention = matchadd("REDTRACK", "!!!")
+:let mbad = matchadd("REDFG", "(-)")
 
