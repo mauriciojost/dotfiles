@@ -43,3 +43,8 @@ function qtopic-new-dir(){
   ranger $dir
   echo "Directory: $dir"
 }
+
+function qtopic-push-to-confluence() {
+  local topic="$1"
+  $DOTFILES/modules/confluencer/markdown_to_confluence "$topic" "`qtopic-new-name $topic`"
+}
