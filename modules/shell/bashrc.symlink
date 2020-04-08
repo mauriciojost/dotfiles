@@ -87,8 +87,11 @@ shopt -s histappend
 
 # PATH configuration
 
-# shortcut to this dotfiles path is $DOTFILES
+# dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
+
+# topics path is $TOPICS
+export TOPICS="$HOME/topics"
 
 # Alias definitions.
 # You may want to put all your additions into a separate file like

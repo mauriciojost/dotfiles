@@ -211,7 +211,7 @@ syntax enable
 " Symbols colored
 " (+)  -> positive
 " (-)  -> negative
-" ===> -> therefore
+" ==> -> therefore
 " [ ]  -> todo
 " [/]  -> done
 " !!!  -> attention
@@ -220,9 +220,9 @@ syntax enable
 :highlight GREENFG ctermfg=green
 :let mgood = matchadd("GREENFG","(+)")
 :let mconsequence = matchadd("GREENFG","==>")
-:highlight TODOTRACK ctermbg=cyan ctermfg=white
+:highlight TODOTRACK ctermbg=gray ctermfg=white
 :let mtodo = matchadd("TODOTRACK", "\\[ \\]")
-:highlight REDTRACK ctermbg=red
+:highlight REDTRACK ctermbg=red ctermfg=black
 :highlight REDFG ctermfg=red
 :let mattention = matchadd("REDTRACK", "!!!")
 :let mbad = matchadd("REDFG", "(-)")

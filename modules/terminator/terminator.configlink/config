@@ -1,7 +1,7 @@
 [global_config]
   dbus = False
   focus = mouse
-  inactive_color_offset = 0.507042253521
+  inactive_color_offset = 0.802816901408
   scroll_tabbar = True
 [keybindings]
 [layouts]

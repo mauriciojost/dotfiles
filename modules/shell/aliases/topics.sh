@@ -1,31 +1,36 @@
 
 function qtopic-list() {
-  ls -laht $HOME/topics/ | sort -r
-  echo "LATEST HERE ^^^ "
+  #ls -laht "$TOPICS"
+  find "$TOPICS" -name '*.md' -printf "%T@ %Tc %p\n" | sort -n
+  echo "LATEST HERE ^^^"
+}
+
+function qtopic-last() {
+  qtopic-list | tail -16
 }
 
 function qtopic-open-with-filename-x() {
-  local files=`find $HOME/topics/ | grep $1`
+  local files=`find "$TOPICS" | grep $1`
+  echo "Files matched: $files"
   vim $files
 }
 
 # Edit an alias that matches a given pattern
-function qtopic-edit() {
-  local ALIAS=$1
-  echo "Alias: $ALIAS"
-  FILES="`grep $ALIAS -i -l -R $HOME/topics/`"
+function qtopic-open-with-content-x() {
+  local content="$1"
+  echo "Content: $content"
+  local files="`grep $content -i -l -R $TOPICS`"
   echo "Found: "
-  echo $FILES
-  vim $FILES
+  echo $files
+  vim $files
 }
-
 
 function qtopic-new-name() {
   local topic="$1"
-  echo $HOME/topics/`date +"%Y-%m-%d"`."$topic"
+  echo $TOPICS/`date +"%Y-%m-%d"`."$topic"
 }
 
-function qtopic-new-file(){
+function qtopic-new-file-x(){
   local topic="$1"
   local f=`qtopic-new-name $topic`.md
   vim "$f"
@@ -36,7 +41,7 @@ function qtopic-daily(){
   qtopic-new-file "daily"
 }
 
-function qtopic-new-dir(){
+function qtopic-new-dir-x(){
   local topic="$1"
   local dir=`qtopic-new-name $topic`
   mkdir -p $dir
@@ -44,7 +49,8 @@ function qtopic-new-dir(){
   echo "Directory: $dir"
 }
 
-function qtopic-push-to-confluence() {
-  local topic="$1"
-  $DOTFILES/modules/confluencer/markdown_to_confluence "$topic" "`qtopic-new-name $topic`"
+function qtopic-push-to-confluence-file-x() {
+  local filename="$1"
+  $DOTFILES/modules/confluencer/markdown_to_confluence "`basename $filename`" "$filename"
 }
+
