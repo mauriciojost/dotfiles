@@ -201,7 +201,10 @@ endif
 
 " Fantastic: https://github.com/jodavaho/bashlog/blob/master/vim_log
 " Commit using command Lw
-command Lw w | !git add % &&  git commit % -m "Checkin %" && git push
+command MdCommitPush w | !git add % &&  git commit % -m "Checkin %" && git push
+command MdView w | !remarkable %
+
+command MdPublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
 
 set filetype=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -220,7 +223,7 @@ syntax enable
 :highlight GREENFG ctermfg=green
 :let mgood = matchadd("GREENFG","(+)")
 :let mconsequence = matchadd("GREENFG","==>")
-:highlight TODOTRACK ctermbg=gray ctermfg=white
+:highlight TODOTRACK ctermbg=gray ctermfg=black
 :let mtodo = matchadd("TODOTRACK", "\\[ \\]")
 :highlight REDTRACK ctermbg=red ctermfg=black
 :highlight REDFG ctermfg=red
