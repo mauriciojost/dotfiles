@@ -1,7 +1,7 @@
 
 function qtopic-list() {
   #ls -laht "$TOPICS"
-  find "$TOPICS" -name '*.md' -printf "%T@ %Tc %p\n" | sort -n
+  find "$TOPICS" -name '*.md' -printf "%T@ %p\n" | sort -n
   echo "LATEST HERE ^^^"
 }
 
@@ -38,7 +38,7 @@ function qtopic-new-file-x(){
 }
 
 function qtopic-daily(){
-  qtopic-new-file "daily"
+  qtopic-new-file-x "daily"
 }
 
 function qtopic-new-dir-x(){
