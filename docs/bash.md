@@ -56,11 +56,11 @@ test 3 -gt 4 && echo True || echo False
 
 # Reading from file 
 ```
-exec<file_to_read     # exec is a reserved word
-while read line
+while IFS= read -r line
 do
-       echo $line
-done
+  echo "$line"
+done < "$input"
+
 ```
 
 # Read from a  pipe 

@@ -66,6 +66,7 @@ Ctrl-c
 ## Windows management
 
 ```
+:split                          split into multiple windows
 Ctrl-W t			makes the first (topleft) window current
 Ctrl-W K			moves the current window to full-width at the very top
 Ctrl-W H			moves the current window to full-height at far left

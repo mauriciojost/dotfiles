@@ -216,10 +216,10 @@ syntax enable
 " (-)  -> negative
 " ==> -> therefore
 " [ ]  -> todo
-" [/]  -> done
+" [x]  -> done
 " !!!  -> attention
 :highlight DONETRACK ctermbg=green
-:let mdone = matchadd("DONETRACK","\\[/\\]")
+:let mdone = matchadd("DONETRACK","\\[x\\]")
 :highlight GREENFG ctermfg=green
 :let mgood = matchadd("GREENFG","(+)")
 :let mconsequence = matchadd("GREENFG","==>")

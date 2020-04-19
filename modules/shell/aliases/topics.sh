@@ -41,6 +41,8 @@ function qtopic-daily(){
   qtopic-new-file-x "daily"
 }
 
+alias qdaily=qtopic-daily
+
 function qtopic-new-dir-x(){
   local topic="$1"
   local dir=`qtopic-new-name $topic`

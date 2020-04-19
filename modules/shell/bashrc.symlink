@@ -93,6 +93,9 @@ export DOTFILES="$HOME/.dotfiles"
 # topics path is $TOPICS
 export TOPICS="$HOME/topics"
 
+# docs path is $DOCS
+export DOCS="$DOTFILES/docs"
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.

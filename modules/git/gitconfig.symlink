@@ -68,6 +68,10 @@
 [credential]
 	helper = cache --timeout=360000
 
+[user]
+	email = mauriciojost@gmail.com
+	name = Mauricio Jost
+
 [includeIf "gitdir:~/workspace/"]
 	path = ~/.work.gitconfig
 
@@ -75,6 +79,3 @@
 	path = ~/.perso.gitconfig
 
 
-[user]
-	email = mauriciojost@gmail.com
-	name = Mauricio Jost
