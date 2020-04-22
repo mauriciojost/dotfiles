@@ -3,22 +3,22 @@
 ### Explore files
 
 function qexplore() {
-	echo "Use better qcd"
-	ranger $PWD  
+  echo "Use better qcd"
+  ranger $PWD  
 }
 
 function qexplore-gui () {
-	nautilus --no-desktop $PWD &
+  nautilus --no-desktop $PWD &
 }
 
 
 # Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
-	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=auto'
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  alias egrep='egrep --color=auto'
 fi
 
 # Some more ls aliases
@@ -30,18 +30,18 @@ alias la='ls -A'
 ### FIND
 
 function qfind-by-name () {
-	qassertnotempty "$1" "Arguments: <filename-pattern-to-look-for>"
-	find . -name "$1" | xargs -I% readlink -e % 
+  qassertnotempty "$1" "Arguments: <filename-pattern-to-look-for>"
+  find . -name "$1" | xargs -I% readlink -e % 
 }
 
 function qgrep-in-all-files() {
-	qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
-	grep --line-number -R "$1" .
+  qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
+  grep --line-number -R "$1" .
 }
 
 function qgrep-in-all-files-case-non-sensitive() {
-	qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
-	grep --line-number -R -i "$1" .
+  qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
+  grep --line-number -R -i "$1" .
 }
 
 # Grep with context (showing 5 lines above and 5 lines below the match).
@@ -59,10 +59,10 @@ alias qhl3='highlight yellow'
 
 # Save and go to last saved directory
 function sd(){
-    pwd > ~/.last-dir$1
+  pwd > ~/.last-dir$1
 }
 function gd(){
-    cd $(cat ~/.last-dir$1)
+  cd $(cat ~/.last-dir$1)
 }
 
 # Copy creating directory
@@ -79,7 +79,7 @@ function qmv() {
 
 # Search a file in the current directory or sub directories
 function qf(){
-    find | grep $1
+  find | grep $1
 }
 
 # Show tree in a fancy way
@@ -94,16 +94,21 @@ alias notepad='gedit'
 
 
 function qswap() {
-    local TMPFILE=tmp.$$
-    mv "$1" $TMPFILE
-    mv "$2" "$1"
-    mv $TMPFILE "$2"
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE
+  mv "$2" "$1"
+  mv $TMPFILE "$2"
 }
 
 
 alias qfind-dupes=fslint-gui
 
 function qfiles-rename-recursive-lowercase() {
-    shopt -s globstar nullglob
-    rename 'y/A-Z/a-z/' **/*
+  shopt -s globstar nullglob
+  rename 'y/A-Z/a-z/' **/*
+}
+
+function find-more-recent-than-date-x() {
+  local dt=${1:-'1/30/2017 0:00:00'}
+  find . -newermt $dt 
 }
