@@ -1,4 +1,5 @@
 [global_config]
+  always_split_with_profile = True
   dbus = False
   focus = mouse
   inactive_color_offset = 0.802816901408
@@ -19,9 +20,16 @@
   [[default]]
     copy_on_selection = True
     cursor_color = "#aaaaaa"
+    scrollback_infinite = True
+    scrollbar_position = hidden
+    urgent_bell = True
+    visible_bell = True
   [[myprofile]]
     background_darkness = 0.86
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#aaaaaa"
     scrollback_infinite = True
+    scrollbar_position = hidden
+    urgent_bell = True
+    visible_bell = True
