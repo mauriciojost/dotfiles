@@ -37,6 +37,8 @@ function qtopic-new-file-x(){
   echo "File: $f"
 }
 
+alias qtopic-new='qtopic-new-file-x'
+
 function qtopic-daily(){
   qtopic-new-file-x "daily"
 }
