@@ -24,8 +24,8 @@
     scrollbar_position = hidden
     urgent_bell = True
     visible_bell = True
-  [[myprofile]]
-    background_darkness = 0.86
+  [[transparent]]
+    background_darkness = 0.9
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#aaaaaa"
