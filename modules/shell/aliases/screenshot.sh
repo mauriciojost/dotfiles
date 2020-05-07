@@ -18,3 +18,16 @@ function qscreenshot-region-clipboard() {
    echo "Output is on the clipboard"
 }
 
+function qscreenshot-video-gif-window() {
+  #sudo add-apt-repository ppa:peek-developers/stable
+  #sudo apt update
+  #sudo apt install peek
+  peek
+}
+
+function qscreenshot-video-gif-tty() {
+  echo "Type 'exit' or Control-D when finished"
+  ttyrec "$videotmp"
+  $DOTFILES/modules/ttygif/ttygif/ttygif "$videotmp"
+}
+
