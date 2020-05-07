@@ -108,7 +108,7 @@ function qfiles-rename-recursive-lowercase() {
   rename 'y/A-Z/a-z/' **/*
 }
 
-function find-more-recent-than-date-x() {
+function qfind-more-recent-than-date-x() {
   local dt=${1:-'1/30/2017 0:00:00'}
   find . -newermt $dt 
 }
