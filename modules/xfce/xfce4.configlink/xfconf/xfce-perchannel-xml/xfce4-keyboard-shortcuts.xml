@@ -47,12 +47,13 @@
       <property name="&lt;Super&gt;c" type="string" value="google-chrome"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
       <property name="&lt;Super&gt;e" type="string" value="nautilus"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F1" type="string" value="bash  -i -c  &quot;qscreenshot-region-clipboard&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F5" type="string" value="bash -i -c &quot;qwindow-pid&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F12" type="string" value="bash  -i -c  &quot;qwindow-kill&quot;"/>
       <property name="&lt;Super&gt;t" type="string" value="terminator"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Page_Up" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Page_Down" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="bash -i -c &quot;qscreenshot-video-gif-window&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
@@ -158,7 +159,6 @@
       <property name="&lt;Alt&gt;F4" type="string" value="close_window_key"/>
       <property name="&lt;Super&gt;Tab" type="string" value="switch_window_key"/>
       <property name="Escape" type="string" value="cancel_key"/>
-      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_up_key"/>
       <property name="Down" type="string" value="down_key"/>
       <property name="Right" type="string" value="right_key"/>
       <property name="override" type="bool" value="true"/>
@@ -168,6 +168,10 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Right" type="string" value="right_workspace_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F9" type="string" value="maximize_horiz_key"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F10" type="string" value="maximize_vert_key"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Up" type="string" value="move_window_down_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;&lt;Alt&gt;Down" type="string" value="move_window_up_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Down" type="string" value="down_workspace_key"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;Up" type="string" value="up_workspace_key"/>
     </property>
   </property>
   <property name="providers" type="array">
