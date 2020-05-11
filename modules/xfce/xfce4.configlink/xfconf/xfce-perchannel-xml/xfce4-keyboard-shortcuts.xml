@@ -54,6 +54,7 @@
       <property name="&lt;Primary&gt;&lt;Alt&gt;Page_Up" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Page_Down" type="string" value="bash -i -c &quot;qworkspace-rename&quot;"/>
       <property name="&lt;Primary&gt;&lt;Shift&gt;F3" type="string" value="bash -i -c &quot;qscreenshot-video-gif-window&quot;"/>
+      <property name="&lt;Primary&gt;&lt;Shift&gt;F4" type="string" value="bash -i -c &quot;qscreenshot-region-file&quot;"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
