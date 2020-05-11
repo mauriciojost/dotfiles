@@ -2,9 +2,9 @@
 # Screenshot
 function qscreenshot-region-file() {
    local ld=`cat ~/.last-dir`
-   local new_name=$(zenity --entry --title="Name" --text="Filename" --entry-text="$RANDOM-$RANDOM")
+   local new_name=$(zenity --entry --title="Screenshot" --text="Filename" --entry-text="$RANDOM-$RANDOM")
    local newoutputfile="$ld/$new_name.png"
-   echo "Will save to: $newoutputfile (change directory using sd command)"
+   echo "Will save to: $newoutputfile (change directory using 'sd' command in the desired destination directory)"
    echo "Select region using mouse..."
    gnome-screenshot -a -f "$newoutputfile"
    echo ""

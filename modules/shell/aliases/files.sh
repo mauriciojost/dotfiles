@@ -112,3 +112,7 @@ function qfind-more-recent-than-date-x() {
   local dt=${1:-'1/30/2017 0:00:00'}
   find . -newermt $dt 
 }
+
+function qsplit-file-x-by-separator-y() {
+  csplit $1 "/"$2"/" "{*}"
+}
