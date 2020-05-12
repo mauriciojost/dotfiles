@@ -37,10 +37,25 @@ function qtopic-new-file-x(){
   echo "File: $f"
 }
 
+function qtopic-new-file-x-with-template-y(){
+  local topic="$1"
+  local template="$2"
+  local f=`qtopic-new-name $topic`.md
+  if [ ! -e "$f" ]
+  then
+    echo "Using template: $template"
+    cp "$template" "$f"
+  else
+    echo "Ignoring template: $template (file already exists)"
+  fi
+  vim "$f"
+  echo "File: $f"
+}
+
 alias qtopic-new='qtopic-new-file-x'
 
 function qtopic-daily(){
-  qtopic-new-file-x "daily"
+  qtopic-new-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
 }
 
 alias qdaily=qtopic-daily
