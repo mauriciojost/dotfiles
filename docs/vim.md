@@ -32,6 +32,7 @@ ctrl + i			go ahead to text sections you've come from
 gd 				will take you to the local declaration.
 gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
+gx                              will open whatever url is behind (web page, file, etc.)
 ```
 
 ## Basic editing
