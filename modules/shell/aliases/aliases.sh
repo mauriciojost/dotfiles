@@ -1,7 +1,6 @@
 # Minor customisations to very used commands
 alias qdu='du -hs * | sort -h'
 alias gop='exo-open'
-alias vim='vim -v'
 alias top='top -c'
 alias htop="htop -u `whoami`"
 alias route='route -n'
