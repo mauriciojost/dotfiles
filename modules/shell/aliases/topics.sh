@@ -58,6 +58,10 @@ function qtopic-daily(){
   qtopic-new-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
 }
 
+function qtopic-retro(){
+  qtopic-new-file-x-with-template-y "retro" "$DOTFILES/modules/topics/templates/retro.md"
+}
+
 alias qdaily=qtopic-daily
 
 function qtopic-new-dir-x(){
