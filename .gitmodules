@@ -16,3 +16,6 @@
 [submodule "modules/confluencer"]
 	path = modules/confluencer
 	url = https://github.com/mauriciojost/confluencer.git
+[submodule "modules/fzf/fzf"]
+	path = modules/fzf/fzf
+	url = https://github.com/junegunn/fzf.git
