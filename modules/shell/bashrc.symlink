@@ -113,24 +113,17 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
-if [ ! -f "/usr/local/bin/broot" ] 
+# Load stderred to display stderr in red (only if broot not set up, otherwise there is a collision)
+STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
+if [ -e "$STDERRRED_LIB" ] 
 then
-  echo "WARN: broot missing!"
-  echo "To install it follow: https://dystroy.org/broot/documentation/installation/"
-  echo "Place broot under: /usr/local/bin/broot"
-
-  # Load stderred to display stderr in red (only if broot not set up, otherwise there is a collision)
-  STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
-  if [ -e "$STDERRRED_LIB" ] 
-  then
-    export LD_PRELOAD="$STDERRRED_LIB"
-  else
-    echo "Stderred skipped"
-  fi
+  export LD_PRELOAD="$STDERRRED_LIB"
 else
-  source $HOME/.config/broot/launcher/bash/br
+  echo "Stderred skipped"
 fi
 
+# Load fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # Load highlighter module 'highlight red pattern'
 DEV_SHELL_ESSENTIALS_SCRIPT="$DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh"
@@ -152,7 +145,7 @@ then
 fi
 
 
-function qbind() {
+function _qbind() {
   echo "Binding: $1"
   bind $1
 }
@@ -162,6 +155,7 @@ date
 echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 
-qbind '"\C-f":"cd_with_fzf\n"'
+_qbind '"\C-f":"cd_with_fzf\n"'
+_qbind '"\C-v":"vim_with_fzf\n"'
+_qbind '"\C-h":"history_with_fzf\n"'
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
