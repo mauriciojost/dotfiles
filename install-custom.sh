@@ -19,5 +19,8 @@ cd $DOTFILES_ROOT
 
 echo "For: ulauncher -> follow the intstructions in the corresponding module"
 
+echo "For: fzf"
+modules/fzf/fzf/install
+
 echo ''
 echo '  All installed!'
