@@ -70,7 +70,7 @@ _append_history () {
   fi
   # strip useless entry number from the beginning
   LAST_CMD=${LAST_CMD#*  }
-  #echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
+  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
 }
 
 # Overwrite above settings.
