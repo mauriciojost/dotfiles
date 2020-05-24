@@ -97,3 +97,12 @@ function qgit-fixup-staged-changes-in-commit-X() {
   echo "Done"
 }
 
+
+function qgit-remove-submodule-x-path-y() {
+  local submodule=$2
+  local path_to_submodule=$2
+  git submodule deinit $path_to_submodule
+  git rm $path_to_submodule
+  git commit-m "Removed submodule $submodule"
+  rm -rf .git/modules/$path_to_submodule
+}
