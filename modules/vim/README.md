@@ -14,18 +14,6 @@ After this is done please run in `vim` the following command:
 
 And that is all!
 
-## Tricks
+## Use
 
-```
-gg=G                   Auto-indent the whole content of a file
-
-cid                    Change the inner word
-
-<select>               Replace multiple occurrences
-then cgn 
-type what to 
-replace with 
-then . to 
-repeat
-replacement
-```
+Please go to ../../docs/vim.md

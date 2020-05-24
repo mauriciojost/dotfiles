@@ -24,11 +24,21 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 Plug 'chrisbra/csv.vim'
+Plug 'masukomi/vim-markdown-folding'
 call plug#end()
+
+" Folding
+set foldmethod=indent
 
 set colorcolumn=+1        " highlight column after 'textwidth'
 set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
 highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+" Vim vim-markdown-folding
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
 
 " Set up syntax stuff
 syntax on
