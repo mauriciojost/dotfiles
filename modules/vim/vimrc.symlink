@@ -28,7 +28,6 @@ Plug 'masukomi/vim-markdown-folding'
 call plug#end()
 
 " Folding
-set foldmethod=indent
 
 set colorcolumn=+1        " highlight column after 'textwidth'
 set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
@@ -73,7 +72,7 @@ set scrolloff=5
 " Quick timeouts on key combinations.
 set timeoutlen=300
 
-" File type specific settings
+" Manual file type per extension
 autocmd BufRead *.xfa set filetype=xml
 autocmd BufRead *.xru set filetype=xml
 autocmd BufRead *.xna set filetype=xml
@@ -81,17 +80,26 @@ autocmd BufRead *.qcf set filetype=lisp
 autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 
+" ### Settings per file type ###
+" any filetype
 autocmd Filetype * set formatoptions-=cro
+" mail filetype
 autocmd Filetype mail set fo -=l autoindent spell
+" c/c++ filetype
 autocmd Filetype c,cpp,h set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+" sh filetype
 autocmd Filetype sh set ts=4 shiftwidth=2 expandtab
 autocmd Filetype lisp,ruby,xml,html set ts=8 shiftwidth=2 expandtab
 autocmd Filetype python set ts=4 shiftwidth=4 expandtab
+" xml/diff filetype
 autocmd Filetype xml,xslt,diff,ruby color desert
 autocmd Filetype xml,xslt,diff,ruby set expandtab
+" markdown filetype
+autocmd FileType markdown setlocal foldmethod=indent
+" wtf filetype
 autocmd BufReadPre viper,.viper set filetype=lisp
-autocmd BufRead ~/stellar/* set lbr formatoptions=l
 
+autocmd BufRead ~/stellar/* set lbr formatoptions=l
 autocmd BufRead *.dump set filetype=sql
 
 
