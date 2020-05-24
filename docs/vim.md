@@ -1,6 +1,6 @@
-# REAL VIM 
+# REAL VIM (as opposed to Intellij vim)
 
-### Basic navigation 
+## About basic navigation 
 
 ```
 w				next word
@@ -15,14 +15,14 @@ b				previous word
 *				go to the next occurence of the word under the cursor
 ```
 
-## Basic file management
+## About basic file management
 
 ```
 :x				save and exit 
 :ls				list opened files
 ```
 
-## Advanced navigation 
+## About advanced navigation 
 
 ```
 ctrl + 6			come back to the last viewed file
@@ -32,10 +32,13 @@ ctrl + i			go ahead to text sections you've come from
 gd 				will take you to the local declaration.
 gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
-gx                              will open whatever url is behind (web page, file, etc.)
+gx                              open url under cursor (web page, file, etc.)
+gf                              open file under cursor
 ```
 
-## Basic editing
+
+
+## About basic editing
 
 ```
 ctrl + n			autocomplete
@@ -53,18 +56,25 @@ P				paste before
 o				create a new line, go to it, and enter insert mode
 ```
 
-# Advanced editing
+## About miscellaneous stuff
 
 ```
 <cursor over word to replace>     replace a word multiple times without typing it
-*
-cgn
+*       (select)
+cgn   
 <put new word>
-Ctrl-c
-.
+<enter>
+.    (to repeat)
+
+
+gg=G                   Auto-indent the whole content of a file
+
+
+cid                    Change the inner word
+
 ```
 
-## Windows management
+## About windows management
 
 ```
 :split                          split into multiple windows
@@ -74,6 +84,13 @@ Ctrl-W H			moves the current window to full-height at far left
 ctrl-W n			creates new vim window (so two files can be seen simultaneously)
 ctrl-w ctrl-w 			switches between windows
 :q				removes a window
+```
+
+## About folding
+
+```
+zo                              open folding
+zc                              close folding
 ```
 
 ## Miscellaneous
@@ -122,7 +139,7 @@ Ctrl-a +
 	Ctrl-R 			replace in all documents
 ```
 
-## About CVS (and Git)
+## About Git
 
 ```
 # You may need to initialize CVS, by pointing out CSV type
@@ -144,7 +161,4 @@ Ctrl-g +
 Ctrl-e +
 	Ctrl-m			a method
 ```
-
-
-
 
