@@ -62,6 +62,10 @@ function qtopic-retro(){
   qtopic-new-file-x-with-template-y "retro" "$DOTFILES/modules/topics/templates/retro.md"
 }
 
+function qtopic-investigation(){
+  qtopic-new-file-x-with-template-y "investigation-$1" "$DOTFILES/modules/topics/templates/investigation.md"
+}
+
 alias qdaily=qtopic-daily
 
 function qtopic-new-dir-x(){
