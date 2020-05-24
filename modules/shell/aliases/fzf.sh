@@ -1,6 +1,6 @@
 function qfzf_cd_with() {
   cd $HOME 
-  cd "$(find . -type d -maxdepth 3 | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview" --preview-window=:hidden)"
+  cd "$(find . -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview" --preview-window=:hidden)"
 }
 
 function qfzf_vim_with() {

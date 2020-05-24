@@ -70,7 +70,7 @@ _append_history () {
   fi
   # strip useless entry number from the beginning
   LAST_CMD=${LAST_CMD#*  }
-  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
+  #echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
 }
 
 # Overwrite above settings.
@@ -155,8 +155,8 @@ date
 echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 
-_qbind '"\C-f":"qfzf_cd_with"' 
-_qbind '"\C-v":"qfzf_vim_with"'
+_qbind '"\C-f":"qfzf_cd_with\n"' 
+_qbind '"\C-v":"qfzf_vim_with\n"'
 _qbind '"\C-h":"$(qfzf_history_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
 
 
