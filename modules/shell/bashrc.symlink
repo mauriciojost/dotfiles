@@ -152,14 +152,16 @@ then
 fi
 
 
+function qbind() {
+  echo "Binding: $1"
+  bind $1
+}
 
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 
-
-bind '"\C-f":"cd_with_fzf\n"'
-bind '"\C-i":"echo hola"'
+qbind '"\C-f":"cd_with_fzf\n"'
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
