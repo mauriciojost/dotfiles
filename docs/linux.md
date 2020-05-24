@@ -464,6 +464,7 @@ example
 local interface range of ports, and show them in hexadecimal format
 tcpdump -i eth0 portrange 8080-8090 -A -e | tee result
 ngrep -W byline dst port 443 | tee result
+ngrep -W normal -d eth0 .../.+/devices/dev1./reports port 8090
 ```
 
 # PROGRAMMING C
