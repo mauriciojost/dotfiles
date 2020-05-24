@@ -27,17 +27,9 @@ Plug 'chrisbra/csv.vim'
 Plug 'masukomi/vim-markdown-folding'
 call plug#end()
 
-" Folding
-
-set colorcolumn=+1        " highlight column after 'textwidth'
-set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-
-" Vim vim-markdown-folding
-set nocompatible
-if has("autocmd")
-  filetype plugin indent on
-endif
+"set colorcolumn=+1        " highlight column after 'textwidth'
+"set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
+"highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
 
 " Set up syntax stuff
 syntax on
@@ -73,6 +65,7 @@ set scrolloff=5
 set timeoutlen=300
 
 " Manual file type per extension
+"autocmd BufRead *.md set filetype=markdown " seems not needed
 autocmd BufRead *.xfa set filetype=xml
 autocmd BufRead *.xru set filetype=xml
 autocmd BufRead *.xna set filetype=xml
@@ -80,7 +73,7 @@ autocmd BufRead *.qcf set filetype=lisp
 autocmd BufRead qpx.inc set filetype=make
 autocmd BufRead letter* set filetype=mail
 
-" ### Settings per file type ###
+" ### BEGIN Settings per file type ###
 " any filetype
 autocmd Filetype * set formatoptions-=cro
 " mail filetype
@@ -95,12 +88,20 @@ autocmd Filetype python set ts=4 shiftwidth=4 expandtab
 autocmd Filetype xml,xslt,diff,ruby color desert
 autocmd Filetype xml,xslt,diff,ruby set expandtab
 " markdown filetype
-autocmd FileType markdown setlocal foldmethod=indent
-" wtf filetype
-autocmd BufReadPre viper,.viper set filetype=lisp
+"autocmd FileType markdown setlocal foldmethod=indent
+"  for markdown, vim-markdown-folding
+set nocompatible
+if has("autocmd")
+  filetype plugin indent on
+endif
+" any other filetype
+" ### END Settings per file type ###
+"autocmd BufReadPre viper,.viper set filetype=lisp
 
-autocmd BufRead ~/stellar/* set lbr formatoptions=l
-autocmd BufRead *.dump set filetype=sql
+"autocmd BufRead ~/stellar/* set lbr formatoptions=l
+"autocmd BufRead *.dump set filetype=sql
+
+
 
 
 set title
@@ -214,8 +215,7 @@ endif
 " Commit using command Lw
 command MdCommitPush w | !git add % &&  git commit % -m "Checkin %" && git push
 command MdView w | !remarkable %
-
-command MdPublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
+command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
 
 set filetype=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -225,6 +225,7 @@ syntax enable
 " Symbols colored
 " (+)  -> positive
 " (-)  -> negative
+" (?)  -> doubt to be clarified
 " ==> -> therefore
 " [ ]  -> todo
 " [x]  -> done
@@ -240,4 +241,5 @@ syntax enable
 :highlight REDFG ctermfg=red
 :let mattention = matchadd("REDTRACK", "!!!")
 :let mbad = matchadd("REDFG", "(-)")
+:let mdoubt = matchadd("REDFG", "(?)")
 
