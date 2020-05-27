@@ -1,13 +1,9 @@
 function qfzf_cd_with() {
-  cd "$(find . -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview" --preview-window=:hidden)"
+  cd "$(find . -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview")"
 }
 
 function qfzf_vim_with() {
-  local f=$(fzf)
-  if [ -n "$f" ]
-  then
-    vim "$f"
-  fi
+  echo vim "$(find . -type f 2>/dev/null | fzf --preview="head -100 {}" --bind="space:toggle-preview")"
 }
 
 function qfzf_history_with() {

@@ -156,7 +156,7 @@ echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 
 _qbind '"\C-f":"qfzf_cd_with\n"' 
-_qbind '"\C-v":"qfzf_vim_with\n"'
+_qbind '"\C-v":"$(qfzf_vim_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
 _qbind '"\C-h":"$(qfzf_history_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
 
 
