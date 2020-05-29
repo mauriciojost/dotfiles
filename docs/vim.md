@@ -162,3 +162,27 @@ Ctrl-e +
 	Ctrl-m			a method
 ```
 
+## Plugins
+
+### plug
+```
+:PlugUpdate                    uptate all plugins in VIM or install ones not yet installed
+```
+
+### fzf
+```
+:Files                         browse files and open the one chosen
+```
+
+### git
+```
+:Git blame                     perform git blame
+```
+
+### folding
+```
+zn                             fold None
+za                             fold All
+zc                             close/fold section
+zo                             open/unfold section
+```

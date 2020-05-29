@@ -34,3 +34,4 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/helpers.rc
 /modules/broot/broot.configlink/launcher/bash/br
 /modules/broot/broot.configlink/launcher/installed-v1
+/modules/xfce/xfce4.configlink/xfce4-screenshooter

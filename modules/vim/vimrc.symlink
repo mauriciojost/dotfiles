@@ -25,6 +25,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 Plug 'chrisbra/csv.vim'
 Plug 'masukomi/vim-markdown-folding'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "set colorcolumn=+1        " highlight column after 'textwidth'
