@@ -23,7 +23,8 @@ free                            (available physical memory in the system, -m exp
 cat /etc/issue               (distribution name and version)
 ```
 
-# Torrent
+# TORRENT
+
 ```
 deluge (deluge-console, deluge-gtk, deluge-web) client
 has a daemon, to start it : $ deluged
@@ -40,7 +41,7 @@ google java chrome plugin install
 sudo ln -s /usr/lib/jvm/java-6-oracle/jre/lib/amd64/libnpjp2.so /opt/google/chrome/plugins/
 ```
 
-# Mount samba filesystem
+# MOUNT SAMBA FILESYSTEM
 
 ```
 sudo apt-get install cifs-utils
@@ -56,7 +57,7 @@ mjost@ciccio:/mnt/nas$
 ```
 
 
-# Mount android MTP filesystem (Ubuntu 12.04)
+# MOUNT ANDROID MTP FILESYSTEM (Ubuntu 12.04)
 
 ```
 http://www.webupd8.org/2012/12/how-to-mount-android-40-ubuntu-go-mtpfs.html
@@ -67,7 +68,7 @@ sudo apt-get install go-mtpfs-unity
 go-mtpfs /tmp/mount
 ```
 
-# Regarding users
+# REGARDING USERS
 
 ```
 passwd username                                                           change the password of username
@@ -90,15 +91,15 @@ gpg file.txt.gpg                                                            decr
 ```
                                   
 
-# learning webdav: 
+# REGARDING WEBDAV 
+
 ```
 mount locally a webdav filesystem 
 mount -t davfs https://novaforge.bull.com/alfresco-default/alfresco/webdav/sites/ /mnt/datascale
 ```
 
+# MOUNT USING CREDENTIALS BUT PUTTING THEM OUTSIDE FSTAB
 
-
-# mount using credentials but putting them outside fstab:
 ```
 fstab like: curlftpfs#my-ftp-location.local /mnt/my_ftp fuse allow_other,uid=1000,gid=1000,umask=0022 0 0
 /root/.netrc with 600 and: 
@@ -109,7 +110,8 @@ password ftp-pass
 https://linuxconfig.org/mount-remote-ftp-directory-host-locally-into-linux-filesystem
 
 ```
-# Regarding files search (find)
+# REGARDING FILES SEARCH (FIND)
+
 ```
 updatedb && locate file_name
 or
@@ -118,7 +120,8 @@ find / -name "name*" | xargs grep "something inside the file"
 find -wholename "*/smth/name*" | xargs grep "something inside the file"
 ```
 
-# Regarding disk/filesystem
+# REGARDING DISK/FILESYSTEM
+
 ```
 df -h                                                     view a report of disk space usage per device 
 tree                                                     make a tree of the filesystem
@@ -126,7 +129,8 @@ du -sh *                                                to see a list of files i
 duv                                                      same as above (but better)
 ```
 
-# Synchronizing files (rsync command)
+# SYNCHRONIZING FILES (RSYNC COMMAND)
+
 ```
 a archive
 v verbose
@@ -139,14 +143,15 @@ rsync   -vr --exclude “.git”  --delete   /path/to/source   destuser@desthost
 
 ```
 
-most useful example
+Useful example:
+
 ```
 rsync -avzrP --inplace --delete --exclude ".git/" --exclude ".logs/" --exclude "RM_DB" --exclude "SCHEDULER_DB" --exclude "TEST_SCHEDULER_DB" $CURRDIR/scheduling mjost@vizcacha:~/
 echo "Done."
 
 ```
 
-### File sudoers 
+# FILE SUDOERS 
 
 ```
 Give permissions to one user/group you must use:
@@ -194,13 +199,7 @@ USERTCPDUMP<tab>ALL = TCPDUMP
 
 ```
 
-
-
-
-
-
-
-# Regarding packaging and compression (tar gz)
+# REGARDING PACKAGING AND COMPRESSION (TAR GZ)
 
 keywords compress or decompress files comprimir descomprimir
 
@@ -217,7 +216,8 @@ tar -tvf file.tar (list all files inside this file)
 zcat file.tar.gz (cats all the things from this compressed file)
 ```
 
-# Regarding modules
+# REGARDING MODULES
+
 ```
 modprobe -r pcspkr           decouples a module (pcspkr) from the kernel
 modprobe    pcspkr           connects a module (pcspkr) to the kernel
@@ -227,7 +227,8 @@ find /lib/modules/$(uname -r) -name *.ko     list all the modules available to l
 lspci -v                             list of hardware devices and detailed information about them (including which "kernel driver"/module is being used for it)
 
 ```
-# Disable GUI mode 
+# DISABLE GUI MODE 
+
 keywords disable enable gui console text ubuntu boot screen startup login splash 
 
 ```
@@ -244,6 +245,7 @@ Done! After reboot, to start the gui just login and type:
 ```
 
 # DNS
+
 ```
 sudo vi /etc/resolv.conf and add
 nameserver <ip>
@@ -269,7 +271,8 @@ Connect to host and open port to get connection back
 localhost$ ssh -v -R7777:localhost:22 <remotehost>
 
 ```
-# Ask for open ports (port scanning) 
+# OPEN PORTS (PORT SCANNING) 
+
 ```
 keywords find out open ports port open firewall service 
 netstat -ant                check locally which are the open ports (focused on ports)
@@ -280,22 +283,25 @@ nmap -sP 192.168.0.*  list all the ports
 nmap -sn 10.10.10.0/24 list or discover all available ip addresses in the current lan
 
 ```
-# States of the ports 
-open
+
+States of the ports:
+
+1. open
 An application is actively accepting TCP connections, UDP datagrams or SCTP associations on this port. Finding these is often the primary goal of port scanning. Security-minded people know that each open port is an avenue for attack. Attackers and pen-testers want to exploit the open ports, while administrators try to close or protect them with firewalls without thwarting legitimate users. Open ports are also interesting for non-security scans because they show services available for use on the network.
-closed
+2. closed
 A closed port is accessible (it receives and responds to Nmap probe packets), but there is no application listening on it. They can be helpful in showing that a host is up on an IP address (host discovery, or ping scanning), and as part of OS detection. Because closed ports are reachable, it may be worth scanning later in case some open up. Administrators may want to consider blocking such ports with a firewall. Then they would appear in the filtered state, discussed next.
-filtered
+3. filtered
 Nmap cannot determine whether the port is open because packet filtering prevents its probes from reaching the port. The filtering could be from a dedicated firewall device, router rules, or host-based firewall software. These ports frustrate attackers because they provide so little information. Sometimes they respond with ICMP error messages such as type 3 code 13 (destination unreachable: communication administratively prohibited), but filters that simply drop probes without responding are far more common. This forces Nmap to retry several times just in case the probe was dropped due to network congestion rather than filtering. This slows down the scan dramatically.
-unfiltered
+4. unfiltered
 The unfiltered state means that a port is accessible, but Nmap is unable to determine whether it is open or closed. Only the ACK scan, which is used to map firewall rulesets, classifies ports into this state. Scanning unfiltered ports with other scan types such as Window scan, SYN scan, or FIN scan, may help resolve whether the port is open.
-open|filtered
+5. open|filtered
 Nmap places ports in this state when it is unable to determine whether a port is open or filtered. This occurs for scan types in which open ports give no response. The lack of response could also mean that a packet filter dropped the probe or any response it elicited. So Nmap does not know for sure whether the port is open or being filtered. The UDP, IP protocol, FIN, NULL, and Xmas scans classify ports this way.
-closed|filtered
+6. closed|filtered
 This state is used when Nmap is unable to determine whether a port is closed or filtered. It is only used for the IP ID idle scan.
 
 
 # Services
+
 ```
 sudo service <servicename> start
 sudo service <servicename> stop
@@ -367,7 +373,7 @@ exit 0
 Then execute the above described steps to manipulate it. 
 
 
-# Regarding networking
+# REGARDING NETWORKING
 
 ```
 ifup wlan0                      put up wifi interface
@@ -1390,4 +1396,33 @@ update-alternatives --list java
 update-alternatives --install /usr/bin/java java  /usr/lib/jvm/zips/jdk1.8.0_151/bin/java 2 # because 1 is taken by openjdk
 update-alternatives --config java 
 
+```
+
+# SGID bito
+
+Assume a directory d has SGID bit enabled, and group owner G.
+If a new file is created under d, such file f will have SGIT enabled too, and a group owner G.
+
+```
+set -u
+set -x
+set -e
+
+rm -fr test-* 
+
+# (Re)Create user
+#sudo deluser --force ftpmstr
+#sudo rm -fr /home/ftpmstr/
+#sudo useradd -d /home/ftpmstr -m -s /bin/bash ftpmstr
+
+# Create dirs
+mkdir -p test-sgid
+
+# Change permissions
+sudo chgrp ftpmstr test-sgid
+sudo chmod 2775 test-sgid
+
+# Play with them
+touch test-sgid/a
+mkdir -p test-sgid/1/2/3
 ```
