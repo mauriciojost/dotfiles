@@ -14,6 +14,8 @@ I conceived it for:
 
 ![Look](README.look.png)
 
+~[FZF](docs/img/dotfile.fzf.dir.gif)
+
 ## Getting started
 
 ```
