@@ -3,11 +3,11 @@ function qfzf_cd_with() {
 }
 
 function qfzf_vim_with() {
-  echo vim "$(find . -type f 2>/dev/null | fzf --preview="head -100 {}" --bind="space:toggle-preview")"
+  echo vim "$(find . -type f ! -name "*.class" ! -path "*/.git/*" 2>/dev/null | fzf --preview="head -100 {}" --bind="space:toggle-preview")"
 }
 
 function qfzf_history_with() {
-  cat $CUSTOM_HISTORY_FILE | fzf
+  tac $CUSTOM_HISTORY_FILE | fzf --no-sort
 }
 
 function qfzf_chrome_history_with() {
