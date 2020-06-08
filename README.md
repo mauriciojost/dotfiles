@@ -10,11 +10,25 @@ I conceived it for:
 - helping me with commands (and its flags) I often find useful via aliases / functions
 - keeping in hand code snippets I often forget
 - settings of window manager that suit daily life and work (task oriented using workspaces)
+- providing at hand topics
+    - create in a single command a dated Scrum daily report, with a template
+    - same way create a Scrum retrospective document
+    - same way create meeting minutes document
+- relies on Ulauncher for quick application starts
+    - can launch commands or aliases from it
+    - can be easily customized to open predefined pre-filled URLs
+- named workspace oriented window manager
+    - workspace name can be easily modified with a few keystrokes
+    - workspace name is part of command history
 - and more!
+
+It's look in a glance: 
 
 ![Look](README.look.png)
 
-~[FZF](docs/img/dotfile.fzf.dir.gif)
+Use of `fzf` tool:
+
+![FZF](docs/img/dotfile.fzf.dir.gif)
 
 ## Getting started
 
