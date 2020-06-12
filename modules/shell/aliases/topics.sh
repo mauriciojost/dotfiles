@@ -81,3 +81,7 @@ function qtopic-push-to-confluence-file-x() {
   $DOTFILES/modules/confluencer/markdown_to_confluence "`basename $filename`" "$filename"
 }
 
+function qtopic() {
+  qopen-by-content-cmd-X-dir-Y "vim" "$TOPICS/*"
+}
+
