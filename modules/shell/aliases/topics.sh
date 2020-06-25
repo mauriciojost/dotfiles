@@ -16,13 +16,8 @@ function qtopic-open-with-filename-x() {
 }
 
 # Edit an alias that matches a given pattern
-function qtopic-open-with-content-x() {
-  local content="$1"
-  echo "Content: $content"
-  local files="`grep $content -i -l -R $TOPICS`"
-  echo "Found: "
-  echo $files
-  vim $files
+function qtopic-open-with-content() {
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" $1
 }
 
 function qtopic-new-name() {
@@ -81,7 +76,5 @@ function qtopic-push-to-confluence-file-x() {
   $DOTFILES/modules/confluencer/markdown_to_confluence "`basename $filename`" "$filename"
 }
 
-function qtopic() {
-  qopen-by-content-cmd-X-dir-Y "vim" "$TOPICS/*"
-}
+alias qtopic=qtopic-open-with-content
 
