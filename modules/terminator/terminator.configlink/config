@@ -25,7 +25,7 @@
     urgent_bell = True
     visible_bell = True
   [[transparent]]
-    background_darkness = 0.9
+    background_darkness = 0.65
     background_type = transparent
     copy_on_selection = True
     cursor_color = "#aaaaaa"
