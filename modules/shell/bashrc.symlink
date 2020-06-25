@@ -148,18 +148,24 @@ fi
 
 
 function _qbind() {
-  echo "Binding: $1"
-  bind $1
+  local feature="$1"
+  local shortcut="$2"
+  local cmd="$3"
+  echo "Binding: $shortcut for $feature"
+  bind "$shortcut:$cmd"
 }
+
+ # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
+_qbind "Quick CD" '"\C-f"' '"qfzf_cd_with\n"' 
+_qbind "Quick Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"'
+_qbind "History++" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"'
+_qbind "Chrome Hist." '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"'
+_qbind "Topics" '"\C-t"' '"$(qtopic)\e\C-e\er"' # small tricks to write output into shell rather than executing it
 
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
 echo "Smart history file at: $CUSTOM_HISTORY_FILE"
 
-_qbind '"\C-f":"qfzf_cd_with\n"' 
-_qbind '"\C-v":"$(qfzf_vim_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
-_qbind '"\C-h":"$(qfzf_history_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
-_qbind '"\C-w":"$(qfzf_chrome_history_with)\e\C-e\er"' # small tricks to write output into shell rather than executing it
 
 
