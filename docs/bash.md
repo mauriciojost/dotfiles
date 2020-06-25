@@ -72,6 +72,10 @@ do
 done
 ```
 
+```
+cat file.txt | while read p; do echo "$p"; done
+```
+
 # Create a counter 
 
 keywords while for loop bash
