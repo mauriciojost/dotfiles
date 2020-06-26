@@ -9,7 +9,7 @@ function qfzf_vim_with() {
 
 function qfzf_history_with() {
   echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
-  tac $CUSTOM_HISTORY_FILE | fzf --no-sort --tiebreak=end,length,index --keep-right
+  tac $CUSTOM_HISTORY_FILE | grep "$pwd" | fzf --no-sort --tiebreak=end,length,index --keep-right
 }
 
 function qfzf_chrome_history_with() {
