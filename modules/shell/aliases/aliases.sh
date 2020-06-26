@@ -10,7 +10,7 @@ alias grep='grep -a --color=always' # a for binary
 alias x=exit
 
 # Put whatever is piped to qclip into the clipboard
-alias qclip-to='xclip -selection clipboard -i'
+alias qclip-to="tr -d '\n' | xclip -selection clipboard -i"
 alias qclip-from='xclip -selection clipboard -o'
 alias toclip='qclip-to'
 alias fromclip='qclip-from'
