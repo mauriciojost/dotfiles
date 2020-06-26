@@ -51,4 +51,12 @@ if __name__ == '__main__':
   reports="reports"
   process_reports(reports, output)
 
+```
+
+
+## Json parsing
+
+```
+python -c 'import json,sys;print json.load(sys.stdin)["hostname"]')
+```
 
