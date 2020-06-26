@@ -163,7 +163,8 @@ _qbind "Quick CD" '"\C-f"' '"qfzf_cd_with\n"'
 _qbind "Quick Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"'
 _qbind "History++" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"'
 _qbind "Chrome Hist." '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"'
-_qbind "Topics" '"\C-t"' '"$(qtopic)\e\C-e\er"' # small tricks to write output into shell rather than executing it
+_qbind "Topics" '"\C-t"' '"$(qtopic)\e\C-e\er"'
+_qbind "Documents" '"\C-j"' '"$(qdocs)\e\C-e\er"'
 
 # Ctrl-d does not exit
 set -o ignoreeof

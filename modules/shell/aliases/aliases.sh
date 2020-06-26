@@ -27,10 +27,9 @@ function qopen-by-content-cmd-X-dir-Y-what-Z() {
     file="$(egrep . -r "$from" | fzf | awk -F: '{print $1}')"
     if [ -e "$file" ]
     then
-      echo "Found file: $file"
-      $cmd $file
+      echo $cmd $file
     else
-      echo "Bad file: $file"
+      echo "echo Bad file: $file"
     fi
   else
     files="$(egrep $what -l -r $from)"
