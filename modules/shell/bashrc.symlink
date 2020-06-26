@@ -164,7 +164,8 @@ _qbind "Quick Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"'
 _qbind "History++" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"'
 _qbind "Chrome Hist." '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"'
 _qbind "Topics" '"\C-t"' '"$(qfzf_topics)\e\C-e\er"'
-_qbind "Documents" '"\C-j"' '"qfzf_docs\n"'
+#C-j forbidden, causes strange behaviour
+_qbind "Documents" '"\C-u"' '"qfzf_docs\n"'
 
 
 # Welcome message

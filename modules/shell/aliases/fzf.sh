@@ -44,6 +44,7 @@ function qfzf_alias() {
 # Show our documents
 function qfzf_docs() {
   qfzf_content_from_X_by_filenamecontent "$DOTFILES/docs/" | tr -d '\n' | xclip -selection clipboard
+  echo "Pasted into clipboard!"
 }
 
 # Show our topics
