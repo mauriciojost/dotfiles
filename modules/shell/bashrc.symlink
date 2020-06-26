@@ -124,6 +124,9 @@ else
   echo "Stderred skipped"
 fi
 
+# Pandoc
+[ -f /usr/bin/pandoc ] && eval "$(pandoc --bash-completion)"
+
 # Load fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
