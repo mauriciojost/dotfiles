@@ -10,7 +10,10 @@ alias grep='grep --color=always'
 alias x=exit
 
 # Put whatever is piped to qclip into the clipboard
-alias qclip='xclip -selection clipboard'
+alias qclip-to='xclip -selection clipboard -i'
+alias qclip-from='xclip -selection clipboard -o'
+alias toclip='qclip-to'
+alias fromclip='qclip-from'
 
 alias r='readlink -e '
 
