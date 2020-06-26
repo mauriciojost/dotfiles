@@ -6,6 +6,9 @@
   scroll_tabbar = True
   window_state = maximise
 [keybindings]
+  group_all = None
+  group_tab = None
+  help = None
 [layouts]
   [[default]]
     [[[child1]]]
