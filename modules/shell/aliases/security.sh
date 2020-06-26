@@ -9,6 +9,6 @@ function qsecurity-cleanup-history-matching-single() {
 
 function qsecurity-cleanup-history-matching() {
   local match="$1"
-  qsecurity-cleanup-history-matching-single "$HOME/.history.log" "$match"
+  qsecurity-cleanup-history-matching-single "$CUSTOM_HISTORY_FILE" "$match"
   qsecurity-cleanup-history-matching-single "$HOME/.bash_history" "$match"
 }
