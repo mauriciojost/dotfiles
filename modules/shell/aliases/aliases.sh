@@ -5,7 +5,7 @@ alias htop="htop -u `whoami`"
 alias route='route -n'
 alias cal='cal -3'
 alias octave='octave --force-gui'
-alias grep='grep --color=always'
+alias grep='grep -a --color=always' # a for binary
 
 alias x=exit
 
