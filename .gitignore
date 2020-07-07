@@ -5,7 +5,6 @@ module-shell/localrc.symlink
 /modules/plantuml/plantuml.jar
 /modules/plantuml/README.png
 /modules/ulauncher/ulauncher.configlink/ext_preferences/*.db
-/modules/xfce/xfce4.configlink.bkp/*
 /modules/xfce/xfce4.configlink/desktop/*
 /modules/xfce/xfce4.configlink/helpers.rc
 /modules/xfce/xfce4.configlink/panel/*
