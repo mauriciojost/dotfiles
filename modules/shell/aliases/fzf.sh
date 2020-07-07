@@ -52,5 +52,10 @@ function qfzf_topics() {
   qfzf_file_path_from_X_by_filenamecontent "$TOPICS"
 }
 
+# Explore all files in pwd
+function qfzf_here_by_content() {
+  qfzf_file_path_from_X_by_filenamecontent "$(pwd)"
+}
+
 
 
