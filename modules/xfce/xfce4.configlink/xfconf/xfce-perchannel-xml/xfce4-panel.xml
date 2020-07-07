@@ -51,7 +51,8 @@
       <property name="miniature-view" type="bool" value="false"/>
     </property>
     <property name="plugin-5" type="string" value="clock">
-      <property name="digital-format" type="string" value="%F%n%a %H:%m %V"/>
+      <property name="digital-format" type="string" value="%a %F%n H=%H:%m W=%V"/>
+      <property name="tooltip-format" type="string" value=""/>
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
