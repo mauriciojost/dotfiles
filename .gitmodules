@@ -13,9 +13,9 @@
 [submodule "modules/flamegraph"]
 	path = modules/flamegraph
 	url = https://github.com/brendangregg/FlameGraph.git
-[submodule "modules/confluencer"]
-	path = modules/confluencer
-	url = https://github.com/mauriciojost/confluencer.git
 [submodule "modules/fzf/fzf"]
 	path = modules/fzf/fzf
 	url = https://github.com/junegunn/fzf.git
+[submodule "modules/md_to_conf"]
+	path = modules/md_to_conf
+	url = https://github.com/RittmanMead/md_to_conf.git

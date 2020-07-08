@@ -73,7 +73,7 @@ function qtopic-new-dir-x(){
 
 function qtopic-push-to-confluence-file-x() {
   local filename="$1"
-  $DOTFILES/modules/confluencer/markdown_to_confluence "`basename $filename`" "$filename"
+  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" '~'"$USER"
 }
 
 alias qtopic=qtopic-open-with-content
