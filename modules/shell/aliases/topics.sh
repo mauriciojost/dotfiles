@@ -74,6 +74,7 @@ function qtopic-new-dir-x(){
 function qtopic-push-to-confluence-file-x() {
   local filename="$1"
   echo "Variables must be defined in ~/.localrc, follow https://github.com/RittmanMead/md_to_conf"
+  echo "Key or password??? Key did not work, password did."
   python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" '~'"$USER" --loglevel debug --ancestor $CONFLUENCE_ANCESTOR
 }
 
