@@ -73,9 +73,14 @@ function qtopic-new-dir-x(){
 
 function qtopic-push-to-confluence-file-x() {
   local filename="$1"
-  echo "Variables must be defined in ~/.localrc, follow https://github.com/RittmanMead/md_to_conf"
-  echo "Key or password??? Key did not work, password did."
-  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" '~'"$USER" --loglevel debug --ancestor $CONFLUENCE_ANCESTOR
+  local user="$CONFLUENCE_USERNAME"
+  local space='~'"$USER"
+  # Below variables must be defined in ~/.localrc, more info at https://github.com/RittmanMead/md_to_conf
+  # CONFLUENCE_USERNAME
+  # CONFLUENCE_ORGNAME # it's the endpoint without https://
+  echo "User: $user, space $space"
+  read -sp 'Password: ' pass
+  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass"
 }
 
 alias qtopic=qtopic-open-with-content
