@@ -73,7 +73,8 @@ function qtopic-new-dir-x(){
 
 function qtopic-push-to-confluence-file-x() {
   local filename="$1"
-  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" '~'"$USER"
+  echo "Variables must be defined in ~/.localrc, follow https://github.com/RittmanMead/md_to_conf"
+  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" '~'"$USER" --loglevel debug --ancestor $CONFLUENCE_ANCESTOR
 }
 
 alias qtopic=qtopic-open-with-content
