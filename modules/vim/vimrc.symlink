@@ -24,7 +24,8 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'derekwyatt/vim-scala'
 Plug 'chrisbra/csv.vim'
-Plug 'masukomi/vim-markdown-folding'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 call plug#end()
@@ -89,9 +90,6 @@ autocmd Filetype python set tabstop=4 shiftwidth=4 expandtab
 " xml/diff filetype
 autocmd Filetype xml,xslt,diff,ruby color desert
 autocmd Filetype xml,xslt,diff,ruby set expandtab
-" markdown filetype
-"autocmd FileType markdown setlocal foldmethod=indent
-"  for markdown, vim-markdown-folding
 set nocompatible
 if has("autocmd")
   filetype plugin indent on
@@ -223,6 +221,8 @@ command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %
 command QGitToggle GitGutterToggle
 command QCsvPretty CSVTabularize
 
+" Markdown syntax highlighting (vim-markdown plugin)
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala']
 
 set filetype=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
