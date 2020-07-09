@@ -229,6 +229,22 @@ set autochdir
 syntax enable
 
 " Symbols colored
+:highlight DONETRACK ctermbg=black ctermfg=green
+:highlight REDTRACK ctermbg=black ctermfg=red
+:highlight REDFG ctermbg=black ctermfg=red
+:highlight YELLOWFG ctermbg=black ctermfg=yellow
+:highlight GREENFG ctermbg=black ctermfg=green
+:highlight TODOTRACK ctermbg=black ctermfg=red
+:let mdone = matchadd("DONETRACK","\\[x\\]")
+:let mgood = matchadd("GREENFG","(+)")
+:let mconsequence = matchadd("GREENFG","==>")
+:let mnow = matchadd("GREENFG","(now)")
+:let mtodo = matchadd("TODOTRACK", "\\[ \\]")
+:let munknown = matchadd("TODOTRACK", "\\[?\\]")
+:let mattention = matchadd("REDTRACK", "!!!")
+:let mbad = matchadd("REDFG", "(-)")
+:let mdoubt = matchadd("YELLOWFG", "(?)")
+" Results
 " (+)  -> positive
 " (-)  -> negative
 " (?)  -> doubt to be clarified
@@ -237,17 +253,5 @@ syntax enable
 " [?]  -> todo
 " [x]  -> done
 " !!!  -> attention
-:highlight DONETRACK ctermbg=green
-:let mdone = matchadd("DONETRACK","\\[x\\]")
-:highlight GREENFG ctermfg=green
-:let mgood = matchadd("GREENFG","(+)")
-:let mconsequence = matchadd("GREENFG","==>")
-:highlight TODOTRACK ctermbg=gray ctermfg=black
-:let mtodo = matchadd("TODOTRACK", "\\[ \\]")
-:let munknown = matchadd("TODOTRACK", "\\[?\\]")
-:highlight REDTRACK ctermbg=red ctermfg=black
-:highlight REDFG ctermfg=red
-:let mattention = matchadd("REDTRACK", "!!!")
-:let mbad = matchadd("REDFG", "(-)")
-:let mdoubt = matchadd("REDFG", "(?)")
+" (now)-> now
 
