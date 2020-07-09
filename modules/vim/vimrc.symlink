@@ -22,7 +22,6 @@ Plug 'FrigoEU/psc-ide-vim'
 Plug 'derekwyatt/vim-scala'
 Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'derekwyatt/vim-scala'
 Plug 'chrisbra/csv.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
@@ -221,8 +220,8 @@ command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %
 command QGitToggle GitGutterToggle
 command QCsvPretty CSVTabularize
 
-" Markdown syntax highlighting (vim-markdown plugin)
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala']
+" Markdown syntax highlighting (vim-markdown plugin), first is the alias to use after ```, second the equivalent file extension
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala', 'java=java']
 
 set filetype=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
