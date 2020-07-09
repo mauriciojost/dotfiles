@@ -221,7 +221,7 @@ command QGitToggle GitGutterToggle
 command QCsvPretty CSVTabularize
 
 " Markdown syntax highlighting (vim-markdown plugin), first is the alias to use after ```, second the equivalent file extension
-let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala', 'java=java']
+let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala', 'java=java', 'yaml=yaml', 'yml=yml', 'json=json', 'html=html']
 
 set filetype=markdown
 au BufRead,BufNewFile *.md set filetype=markdown
