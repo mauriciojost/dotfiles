@@ -236,30 +236,25 @@ set autochdir
 syntax enable
 
 " Symbols colored
-:highlight DONETRACK ctermbg=black ctermfg=green
-:highlight REDTRACK ctermbg=black ctermfg=red
 :highlight REDFG ctermbg=black ctermfg=red
 :highlight YELLOWFG ctermbg=black ctermfg=yellow
 :highlight GREENFG ctermbg=black ctermfg=green
-:highlight TODOTRACK ctermbg=black ctermfg=red
-:let mdone = matchadd("DONETRACK","\\[x\\]")
-:let mgood = matchadd("GREENFG","(+)")
+:highlight GRAYFG ctermbg=black ctermfg=gray
+" judgments
+:let jpositive = matchadd("GREENFG","(+)")
+:let jnegative = matchadd("REDFG", "(-)")
+:let jdoubtful = matchadd("YELLOWFG", "(?)")
+" tasks
+:let mdone = matchadd("GREENFG","\\[x\\]") " [x]  -> done
+:let mtodo = matchadd("GRAYFG", "\\[ \\]") " [ ]  -> todo
+:let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown
+" edge task status (task where we're standing)
+:let munclear = matchadd("GRAYFG","(unclear)") " something needs clarification or is unknown on how to proceed
+:let mready = matchadd("GREENFG","(understood)") " ready to start (but not done because of availability)
+:let minprogress = matchadd("GREENFG","(in progress)") " currently in progress
+:let mblocked = matchadd("REDFG","(blocked)") " blocked for some external reason
+" misc
+:let mattention = matchadd("REDFG", "!!!")
 :let mconsequence = matchadd("GREENFG","==>")
-:let mnow = matchadd("GREENFG","(now)")
-:let mtodo = matchadd("TODOTRACK", "\\[ \\]")
-:let munknown = matchadd("TODOTRACK", "\\[?\\]")
-:let mattention = matchadd("REDTRACK", "!!!")
-:let mbad = matchadd("REDFG", "(-)")
-:let mdoubt = matchadd("YELLOWFG", "(?)")
-" Results
-" (+)  -> positive
-" (-)  -> negative
-" (?)  -> doubt to be clarified
-" ==> -> therefore
-" [ ]  -> todo
-" [?]  -> todo
-" [x]  -> done
-" !!!  -> attention
-" (now)-> now
 
 
