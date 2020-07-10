@@ -240,19 +240,20 @@ syntax enable
 :highlight YELLOWFG ctermbg=black ctermfg=yellow
 :highlight GREENFG ctermbg=black ctermfg=green
 :highlight GRAYFG ctermbg=black ctermfg=gray
+:highlight WHITEFG ctermbg=black ctermfg=white
+:highlight BLACKFG ctermfg=black
 " judgments
 :let jpositive = matchadd("GREENFG","(+)")
 :let jnegative = matchadd("REDFG", "(-)")
 :let jdoubtful = matchadd("YELLOWFG", "(?)")
 " tasks
-:let mdone = matchadd("GREENFG","\\[x\\]") " [x]  -> done
-:let mtodo = matchadd("GRAYFG", "\\[ \\]") " [ ]  -> todo
-:let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown
-" edge task status (task where we're standing)
-:let munclear = matchadd("GRAYFG","(unclear)") " something needs clarification or is unknown on how to proceed
-:let mready = matchadd("GREENFG","(understood)") " ready to start (but not done because of availability)
-:let minprogress = matchadd("GREENFG","(in progress)") " currently in progress
-:let mblocked = matchadd("REDFG","(blocked)") " blocked for some external reason
+:let mdone = matchadd("BLACKFG","\\[/\\].*") " [/]  -> done
+:let mdone2 = matchadd("BLACKFG","\\[x\\].*") " [x]  -> done
+:let mprogress = matchadd("WHITEFG","\\[p\\]") " [p]  -> in progress
+:let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
+:let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
+:let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
+:let munknown = matchadd("YELLOWFG", "- \\[?\\]") " [?]  -> unknown, unclear
 " misc
 :let mattention = matchadd("REDFG", "!!!")
 :let mconsequence = matchadd("GREENFG","==>")
