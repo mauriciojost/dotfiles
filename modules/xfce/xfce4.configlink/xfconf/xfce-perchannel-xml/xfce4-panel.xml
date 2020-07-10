@@ -67,6 +67,8 @@
         <value type="string" value="ulauncher"/>
         <value type="string" value="jetbrains-toolbox"/>
       </property>
+      <property name="size-max" type="uint" value="16"/>
+      <property name="show-frame" type="bool" value="false"/>
     </property>
     <property name="plugin-7" type="string" value="power-manager-plugin"/>
   </property>
