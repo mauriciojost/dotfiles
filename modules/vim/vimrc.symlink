@@ -253,7 +253,7 @@ syntax enable
 :let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
 :let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
 :let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
-:let munknown = matchadd("YELLOWFG", "- \\[?\\]") " [?]  -> unknown, unclear
+:let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown, unclear
 " misc
 :let mattention = matchadd("REDFG", "!!!")
 :let mconsequence = matchadd("GREENFG","==>")
