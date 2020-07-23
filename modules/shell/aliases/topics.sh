@@ -83,5 +83,25 @@ function qtopic-push-to-confluence-file-x() {
   python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass"
 }
 
+function qtopic-push-to-keep-file-x() {
+  local file="$1"
+  local filename="$(basename $1)"
+  $DOTFILES/modules/keep/keep-cli/keep add --title "KFILE:$filename" --text "$(cat $file)"
+}
+
+function qtopic-update-to-keep-file-x() {
+  local file="$1"
+  local filename="$(basename $1)"
+  local id=$($DOTFILES/modules/keep/keep-cli/keep find --query "KFILE:$filename" | grep -v '\[')
+  echo $id
+  if [ $( echo "$id" | wc -l ) == 1 ]
+  then
+    echo "One note matched the update request... OK."
+	$DOTFILES/modules/keep/keep-cli/keep set --note "$id" --title "KFILE:$filename" --text "$(cat $file)"
+  else
+    echo "Many notes matching!!! Aborting..."
+  fi
+}
+
 alias qtopic=qtopic-open-with-content
 
