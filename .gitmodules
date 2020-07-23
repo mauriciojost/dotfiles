@@ -19,3 +19,6 @@
 [submodule "modules/md_to_conf"]
 	path = modules/md_to_conf
 	url = https://github.com/RittmanMead/md_to_conf.git
+[submodule "modules/keep/keep-cli"]
+	path = modules/keep/keep-cli
+	url = https://github.com/mauriciojost/keep-cli.git
