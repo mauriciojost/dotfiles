@@ -103,5 +103,19 @@ function qtopic-update-to-keep-file-x() {
   fi
 }
 
+function qtopic-pull-from-keep-file-x() {
+  local file="$1"
+  local filename="$(basename $1)"
+  local id=$($DOTFILES/modules/keep/keep-cli/keep find --query "KFILE:$filename" | grep -v '\[')
+  echo $id
+  if [ $( echo "$id" | wc -l ) == 1 ]
+  then
+    echo "One note matched the update request... OK."
+	$DOTFILES/modules/keep/keep-cli/keep get --note "$id" > $file
+  else
+    echo "Many notes matching!!! Aborting..."
+  fi
+}
+
 alias qtopic=qtopic-open-with-content
 
