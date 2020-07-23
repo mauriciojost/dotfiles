@@ -74,6 +74,7 @@ set timeoutlen=300
 
 " Manual file type per extension
 "autocmd BufRead *.md set filetype=markdown " seems not needed
+autocmd BufRead *.sc set filetype=scala
 autocmd BufRead *.xfa set filetype=xml
 autocmd BufRead *.xru set filetype=xml
 autocmd BufRead *.xna set filetype=xml
