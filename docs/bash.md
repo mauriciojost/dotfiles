@@ -108,6 +108,17 @@ for opt in $@
   esac
 ```
 
+# Multi line variables
+
+```
+export LINE="line 3"
+cat <<EOL >> file.txt
+line 1
+line 2
+$LINE
+EOL
+```
+
 
 # Write a head-like command 
 
