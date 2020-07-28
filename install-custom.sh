@@ -22,5 +22,8 @@ echo "For: ulauncher -> follow the intstructions in the corresponding module"
 echo "For: fzf"
 modules/fzf/fzf/install
 
+echo "For: keyboard"
+sudo cp $DOTFILES/modules/keys-remap/keyboard /etc/default/keyboard
+
 echo ''
 echo '  All installed!'

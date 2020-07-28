@@ -149,24 +149,7 @@ then
 fi
 
 
-function _qbind() {
-  local feature="$1"
-  local shortcut="$2"
-  local cmd="$3"
-  echo "Binding: $shortcut for $feature"
-  bind "$shortcut:$cmd"
-}
-
- # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
-_qbind "Quick CD (to chosen dir, CD to it)" '"\C-f"' '"qfzf_cd_with\n"' 
-_qbind "Quick Find (by content in pwd, type vim cmd)" '"\C-a"' '"$(qfzf_here_by_content)\e\C-e\er"' 
-_qbind "Quick Vim (by filename, type vim cmd)" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"'
-_qbind "History++ (by date/dir/command in pwd, type)" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"'
-_qbind "Chrome Hist. (by url, open)" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"'
-_qbind "Topics (by content, copy to clipboard)" '"\C-t"' '"$(qfzf_topics)\e\C-e\er"'
-#C-j forbidden, causes strange behaviour
-_qbind "Documents" '"\C-u"' '"qfzf_docs\n"'
-
+_qset_bindings
 
 # Welcome message
 date

@@ -8,31 +8,48 @@
       <property name="position" type="string" value="p=6;x=0;y=0"/>
       <property name="length" type="uint" value="100"/>
       <property name="position-locked" type="bool" value="true"/>
-      <property name="size" type="uint" value="30"/>
+      <property name="size" type="uint" value="25"/>
       <property name="plugin-ids" type="array">
-        <value type="int" value="16"/>
         <value type="int" value="3"/>
         <value type="int" value="15"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
+        <value type="int" value="7"/>
         <value type="int" value="6"/>
         <value type="int" value="2"/>
-        <value type="int" value="17"/>
-        <value type="int" value="18"/>
-        <value type="int" value="19"/>
-        <value type="int" value="8"/>
+        <value type="int" value="9"/>
+        <value type="int" value="10"/>
       </property>
+      <property name="disable-struts" type="bool" value="false"/>
+      <property name="nrows" type="uint" value="2"/>
     </property>
   </property>
   <property name="plugins" type="empty">
-    <property name="plugin-2" type="string" value="actions"/>
-    <property name="plugin-3" type="string" value="tasklist"/>
+    <property name="plugin-2" type="string" value="actions">
+      <property name="items" type="array">
+        <value type="string" value="+lock-screen"/>
+        <value type="string" value="+switch-user"/>
+        <value type="string" value="+separator"/>
+        <value type="string" value="+suspend"/>
+        <value type="string" value="+hibernate"/>
+        <value type="string" value="-separator"/>
+        <value type="string" value="+shutdown"/>
+        <value type="string" value="+restart"/>
+        <value type="string" value="+separator"/>
+        <value type="string" value="+logout"/>
+        <value type="string" value="-logout-dialog"/>
+      </property>
+    </property>
+    <property name="plugin-3" type="string" value="tasklist">
+      <property name="flat-buttons" type="bool" value="false"/>
+      <property name="show-wireframes" type="bool" value="true"/>
+    </property>
     <property name="plugin-15" type="string" value="separator">
       <property name="expand" type="bool" value="true"/>
       <property name="style" type="uint" value="0"/>
     </property>
     <property name="plugin-4" type="string" value="pager">
-      <property name="rows" type="uint" value="4"/>
+      <property name="rows" type="uint" value="2"/>
       <property name="miniature-view" type="bool" value="false"/>
     </property>
     <property name="plugin-5" type="string" value="clock">
@@ -41,23 +58,23 @@
     </property>
     <property name="plugin-6" type="string" value="systray">
       <property name="names-visible" type="array">
+        <value type="string" value="system-config-printer"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="network"/>
         <value type="string" value="clipit"/>
+        <value type="string" value="teams"/>
         <value type="string" value="blueman-applet"/>
         <value type="string" value="update-notifier"/>
-
+        <value type="string" value="cisco anyconnect secure mobility client"/>
+        <value type="string" value="notes"/>
         <value type="string" value="ulauncher"/>
         <value type="string" value="jetbrains-toolbox"/>
       </property>
+      <property name="size-max" type="uint" value="16"/>
+      <property name="show-frame" type="bool" value="false"/>
     </property>
-    <property name="plugin-16" type="string" value="whiskermenu"/>
-    <property name="plugin-17" type="string" value="cpugraph"/>
-    <property name="plugin-18" type="string" value="pulseaudio">
-      <property name="enable-keyboard-shortcuts" type="bool" value="true"/>
-      <property name="mpris-players" type="string" value="chrome.instance10510;chrome.instance1093;chrome.instance12846;chrome.instance15273;chrome.instance1626;chrome.instance19105;chrome.instance19652;chrome.instance19852;chrome.instance2080;chrome.instance23947;chrome.instance25267;chrome.instance2673;chrome.instance4482;chrome.instance5324;chrome.instance565;chrome.instance5918;chrome.instance7061;chrome.instance7960;chrome.instance8338;parole"/>
-    </property>
-    <property name="plugin-19" type="string" value="power-manager-plugin"/>
-    <property name="plugin-8" type="string" value="windowmenu"/>
+    <property name="plugin-7" type="string" value="power-manager-plugin"/>
+    <property name="plugin-9" type="string" value="cpugraph"/>
+    <property name="plugin-10" type="string" value="windowmenu"/>
   </property>
 </channel>
