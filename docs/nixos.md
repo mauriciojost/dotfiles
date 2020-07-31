@@ -1,5 +1,23 @@
 # NIX OS
 
+## From Pills
+
+
+A **profile** in Nix is a general and convenient concept for realizing rollbacks.
+Profiles are made up of multiple "generations": they are versioned.
+Generations can be switched and rolled back atomically, which makes them convenient for managing changes to your system.
+
+Nix **expressions** are used to describe packages and how to build them. Nixpkgs is the repository containing all of the expressions: https://github.com/NixOS/nixpkgs.
+
+**Channels** are a set of packages and expressions available for download. Similar to Debian stable and unstable, there's a stable and unstable channel. In this installation, we're tracking nixpkgs-unstable.
+
+Channels are where are we getting packages from. There's a list of channels from which we get packages, although usually we use a single channel. The tool to manage channels is nix-channel.
+
+To remind you, ~/.nix-profile/etc points to the nix-2.1.3 derivation.
+
+
+
+## With Sergei
 Some terminology: 
 - derivation (.drv file, containing the description of the plan to build a package)
 - expression
