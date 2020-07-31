@@ -18,7 +18,7 @@ function qps() {
     echo $tmp2
     local cmd_length=80
     local filter=$2
-    ps $psargs -k-%cpu -eo pid=PID,%cpu=CPU_PERC,thcount=NRO_THREADS,vsz=VIRTUAL_MEM_KB,rss=RESIDENT_MEM_KB,pri=PRIORITY,euser=USER,etime=TIME,cmd=LONG | sed -E 's/^[ ]+//g' | sed -E "s/[ ]+/\^/g"  | sed -E "s/\^/ /10g" > $tmp1
+    ps $psargs -k-%cpu -eo pid=PID,%cpu=CPU_PERC,thcount=NRO_THREADS,vsz=VIRTUAL_MEM_KB,rss=RESIDENT_MEM_KB,pri=PRIORITY,euser=USER,etime=TIME,cmd=LONG_CMD,args=ARGS | sed -E 's/^[ ]+//g' | sed -E "s/[ ]+/\^/g"  | sed -E "s/\^/ /10g" > $tmp1
 
     if [ -z "$filter" ]
     then
@@ -27,7 +27,7 @@ function qps() {
 	cat $tmp1 | grep $filter >> $tmp2
     fi
     # requires visidata installation
-    vd --csv-delimiter '^' --default-width 10 --filetype csv --header 1 $tmp2
+    vd --csv-delimiter '^' --default-width 30 --filetype csv --header 1 $tmp2
 }
 
 function qhtop-processes-matching-X() {
