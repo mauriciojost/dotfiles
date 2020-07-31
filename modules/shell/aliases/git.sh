@@ -12,7 +12,7 @@ function gc(){
   git --no-pager log --reverse -30 --pretty=%s
   echo ""
   echo ""
-  git-cola 
+  git-cola &> /dev/null
 }
 
 alias gcp='git cherry-pick'

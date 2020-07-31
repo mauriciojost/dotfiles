@@ -111,6 +111,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+# Load nix
+[ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
 
 # Pandoc
 [ -f /usr/bin/pandoc ] && eval "$(pandoc --bash-completion)"
