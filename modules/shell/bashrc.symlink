@@ -112,17 +112,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 
-# Load stderred to display stderr in red (only if broot not set up, otherwise there is a collision)
-# Seems to collide with nix too...
-STDERRRED_LIB="$DOTFILES/modules/stderrred/stderred/build/libstderred.so"
-if [ -e "$STDERRRED_LIB" ] 
-then
-  #export LD_PRELOAD="$STDERRRED_LIB"
-  echo "Disabled stderred: collision with nix"
-else
-  echo "Stderred skipped"
-fi
-
 # Pandoc
 [ -f /usr/bin/pandoc ] && eval "$(pandoc --bash-completion)"
 
