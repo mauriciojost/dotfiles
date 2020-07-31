@@ -18,3 +18,4 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/xfwm4.xml
 /modules/xfce/xfce4.configlink/panel/cpugraph-*.rc
 /modules/xfce/xfce4.configlink/helpers.rc
+/modules/nix/pill-first-derivation/result
