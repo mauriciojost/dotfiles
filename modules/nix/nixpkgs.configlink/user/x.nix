@@ -1,9 +1,18 @@
 # ~/.config/nixpkgs/user/x.nix
 { config, pkgs, ... }:
 
+let 
+  my-python-packages = python-packages: with python-packages; [
+    pip
+    diffuse
+    virtualenv
+    requests
+    ipython
+  ];
+  python-with-my-packages = pkgs.python3.withPackages my-python-packages;
+in 
 {
   imports = [
-    #../program/editor/neovim/default.nix
     #../program/terminal/tmux/default.nix
   ];
 
@@ -16,7 +25,6 @@
     git
     whois
     git-cola
-
   ];
 
   #programs.git = {
@@ -25,5 +33,5 @@
   #  userName = "Mauri Jost";
   #  signing.signByDefault = true;
   #};
-  
+
 }
