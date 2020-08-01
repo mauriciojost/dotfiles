@@ -33,3 +33,23 @@ function qnix-packages-upgrade-all() {
 alias qnix-repl='nix repl'
 
 alias qnix-build-pointnix-x='nix-build'
+
+alias qnix-gcollect='nix-collect-garbage -d'
+
+function qnix-run-cmd-x-from-package-y() {
+  local cmd="$1"
+  local pkg="$2"
+  nix-shell -p "$cmd" --run "$pkg"
+}
+
+function qnix-run-with-dependencies-x-and-y() {
+  local dep1="$1"
+  local dep2="$2"
+  nix-shell -p "$dep1" -p "$dep2"
+}
+
+function qnix-hm-generations() {
+  home-manager generations
+}
+
+
