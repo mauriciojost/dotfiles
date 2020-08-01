@@ -25,7 +25,10 @@ function qnix-dependencies-of-x-all() {
 
 alias qnix-channels-list='nix-channel --list'
 
-alias qnix-packages-upgrade-all='nix-env -u'
+function qnix-packages-upgrade-all() {
+  nix-channel --update
+  nix-env -u
+}
 
 alias qnix-repl='nix repl'
 
