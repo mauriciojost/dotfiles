@@ -4,7 +4,6 @@
 let 
   my-python-packages = python-packages: with python-packages; [
     pip
-    diffuse
     virtualenv
     requests
     ipython
@@ -25,6 +24,7 @@ in
     git
     whois
     git-cola
+    python-with-my-packages
   ];
 
   #programs.git = {
