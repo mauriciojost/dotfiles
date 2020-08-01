@@ -15,6 +15,7 @@
     jq
     git
     whois
+    git-cola
 
   ];
 
