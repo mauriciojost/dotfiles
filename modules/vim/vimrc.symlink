@@ -257,6 +257,8 @@ syntax enable
 :let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
 :let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
 :let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown, unclear
+:let mnoteby = matchadd("YELLOWFG", "COMMENT .*: .*") " COMMENT MICHAEL: This is a comment done by Michael...
+:let mnoteby2 = matchadd("YELLOWFG", "BY .*: .*") " BY MICHAEL: This is a comment done by Michael...
 " misc
 :let mattention = matchadd("REDFG", "!!!")
 :let mconsequence = matchadd("GREENFG","==>")
