@@ -145,7 +145,7 @@ _qset_bindings
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
-echo "Smart history file at: $CUSTOM_HISTORY_FILE"
+echo "- for help: qhelp"
 
 
 
