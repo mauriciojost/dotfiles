@@ -9,6 +9,12 @@ function qtopic-last() {
   qtopic-list | tail -16
 }
 
+function qtopic-backup() {
+  cd "$TOPICS" 
+  git commit -a -m "Backup"
+  git push origin master
+}
+
 function qtopic-open-with-filename-x() {
   local files=`find "$TOPICS" | grep $1`
   echo "Files matched: $files"
@@ -51,6 +57,10 @@ alias qtopic-new='qtopic-new-file-x'
 
 function qtopic-daily(){
   qtopic-new-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
+}
+
+function qtopic-design-session(){
+  qtopic-new-file-x-with-template-y "dessign-session" "$DOTFILES/modules/topics/templates/design-session.md"
 }
 
 function qtopic-retro(){
