@@ -97,6 +97,9 @@ function qgit-fixup-staged-changes-in-commit-X() {
   echo "Done"
 }
 
+function qgit-submodule-init-recursively() {
+  git submodule update --init --recursive
+}
 
 function qgit-remove-submodule-x-path-y() {
   local submodule=$2

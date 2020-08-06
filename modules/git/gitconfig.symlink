@@ -30,6 +30,7 @@
 	default = current
 
 [alias]
+	co = checkout
 	qtree = !gitk --all
 
 	qlog = log --graph --pretty=format:'%Cred%h%Creset %an: %s - %Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --name-status --full-history --abbrev-commit

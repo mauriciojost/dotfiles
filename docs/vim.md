@@ -34,6 +34,9 @@ gD 				will take you to the global declaration.
 Ctrl-o				go to where you were before
 gx                              open url under cursor (web page, file, etc.)
 gf                              open file under cursor
+
+mk                              mark current position (can use a-z)
+'k                              move to mark k
 ```
 
 

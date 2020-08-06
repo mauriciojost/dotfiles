@@ -1,11 +1,9 @@
-fzf_searchable_directories="$HOME/.dotfiles $HOME/workspace $HOME/persospace $HOME/topics"
-
 function qfzf_cd_with() {
-  cd "$(find $fzf_searchable_directories -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview")"
+  cd "$(find $pwd -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview")"
 }
 
 function qfzf_vim_with() {
-  echo vim "$(find $fzf_searchable_directories -type f ! -name "*.class" ! -path "*/.git/*" 2>/dev/null | fzf --preview="head -100 {}" --bind="space:toggle-preview")"
+  echo vim "$(find $pwd -type f ! -name "*.class" ! -path "*/.git/*" 2>/dev/null | fzf --preview="head -100 {}" --bind="left:toggle-preview")"
 }
 
 function qfzf_history_with() {
