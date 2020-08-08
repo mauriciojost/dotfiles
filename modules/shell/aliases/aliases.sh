@@ -1,7 +1,6 @@
 # Minor customisations to very used commands
 alias qdu='du -hs * | sort -h'
 alias gop='exo-open'
-alias htop="htop -u `whoami`"
 alias route='route -n'
 alias cal='cal -3'
 alias octave='octave --force-gui'
