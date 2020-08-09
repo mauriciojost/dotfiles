@@ -140,7 +140,7 @@ then
 fi
 
 
-_qset_bindings
+_qset_bindings set
 
 # Welcome message
 date
