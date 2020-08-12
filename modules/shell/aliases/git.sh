@@ -97,6 +97,14 @@ function qgit-fixup-staged-changes-in-commit-X() {
   echo "Done"
 }
 
+# Commits that were not integrated in master branch (to run before a branch removal to prevent work loss)
+function qgit-missing-commits-in-x-not-present-in-master-y() {
+  local merged_or_not="$1"
+  local master="${2:-master}"
+  echo "Commits in $merged_or_not not present in $master:"
+  git log --no-merges "$merged_or_not" ^"$master"
+}
+
 function qgit-submodule-init-recursively() {
   git submodule update --init --recursive
 }
