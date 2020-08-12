@@ -9,7 +9,8 @@ function qmarkdown-sql-calculate() {
 
   local file="$1"
   local csv=a
-  cat "$file" | egrep -o '([\(]id=\w+ (\w+=\w+[ \)])+)' > $csv
+  cat "$file" | egrep -o '(\(id=[^ )]+ ([^ )]+=[^ )]+)+)\)' > $csv
+
   local query=$(cat "$file" | egrep -o 'select .* from .*$')
   sed -i 's#(##g' $csv
   sed -i 's#)##g' $csv
@@ -35,5 +36,26 @@ function qmarkdown-sql-calculate() {
   echo $header_formatted > $csv.tmp
   cat $csv >> $csv.tmp
   mv $csv.tmp table
+  echo ""
+  echo ""
   python2-q-text-as-data --tab-delimited-output --beautify --output-header --skip-header --delimiter='^' "$query"
+  if [ "$?" != "0" ]
+  then
+    echo ""
+    echo ""
+    echo "ERROR: failed to parse/interpret/execute the requests"
+    echo "Example of a valid markdown:"
+    echo "  Wash dishes (id=wash hours=10)"
+    echo "  Do laundry (id=laundry hours=3)"
+    echo "  CALCULATE: select sum(hours) as total from table"
+    echo "  Some more text ignored"
+    echo "  >>>would return>>>"
+    echo "  total=13"
+    echo ""
+    echo "Fix your markdown and try again"
+    echo ""
+  else
+    echo ""
+    echo ""
+  fi
 }
