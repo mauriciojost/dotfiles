@@ -7,3 +7,7 @@ function qepoch() {
   date +%s
 }
 
+function qtime-epoch() {
+  date +%s
+}
+
