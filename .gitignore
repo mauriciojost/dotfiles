@@ -25,3 +25,7 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/xfce4-notifyd.xml
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/xfce4-session.xml
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/xfce4-settings-manager.xml
+/modules/xfce/xfce4.configlink/terminal/accels.scm
+/modules/xfce/xfce4.configlink/panel/whiskermenu-16.rc
+/modules/xfce/xfce4.configlink/panel/whiskermenu-1.rc
+/modules/xfce/xfce4.configlink/panel/netload-19.rc
