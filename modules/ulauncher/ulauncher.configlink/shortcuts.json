@@ -58,5 +58,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1597692654.186961
+    },
+    "4a701a36-dc19-4310-83e3-804b936e3f70": {
+        "id": "4a701a36-dc19-4310-83e3-804b936e3f70",
+        "name": "Go to window",
+        "keyword": "go",
+        "cmd": "bash -i -c 'qworkspace-goto-window '\"$@\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1597694356.9429445
     }
 }

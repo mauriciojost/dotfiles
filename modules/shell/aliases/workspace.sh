@@ -42,3 +42,11 @@ function qworkspace-bring-window() {
     wmctrl -R "$window_exp"
   fi
 }
+
+function qworkspace-goto-window() {
+  local window_exp="$1"
+  if [ ! -z "$window_exp" ]
+  then
+    wmctrl -a "$window_exp"
+  fi
+}
