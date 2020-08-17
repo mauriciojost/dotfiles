@@ -34,3 +34,11 @@ function qworkspace-rename() {
     done
     eval $xfconf_cmd
 }
+
+function qworkspace-bring-window() {
+  local window_exp="$1"
+  if [ ! -z "$window_exp" ]
+  then
+    wmctrl -R "$window_exp"
+  fi
+}

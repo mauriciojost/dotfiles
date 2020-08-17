@@ -48,5 +48,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1577086133.5599096
+    },
+    "3ddd5f82-5430-4512-bf29-c1dabb8a463a": {
+        "id": "3ddd5f82-5430-4512-bf29-c1dabb8a463a",
+        "name": "Bring window",
+        "keyword": "br",
+        "cmd": "bash -i -c 'qworkspace-bring-window '\"$@\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1597692654.186961
     }
 }
