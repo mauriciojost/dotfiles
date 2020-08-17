@@ -153,6 +153,15 @@ echo "Done."
 
 # FILE SUDOERS 
 
+To grant permissions to certain user to run `pm-suspend` create a new file `/etc/sudoers.d/99-custom.conf` with this content:
+```
+mjost   ALL=(ALL)       NOPASSWD:       /usr/sbin/pm-suspend
+```
+
+That's it!
+
+## The old style
+
 ```
 Give permissions to one user/group you must use:
 1. su visudo -q     (it is vim specially created for /etc/sudoers file, to edit it with much caution)
