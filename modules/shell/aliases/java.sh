@@ -38,3 +38,18 @@ function qgradle-gvm-init() {
 	source $HOME/.gvm/bin/gvm-init.sh
 }
 
+function qjava-trust-server-port() {
+  local servername="$1"
+  local serverport="$2"
+  local jre_lib_security_cacerts_dir="$3"
+  if [ -z "$jre_lib_security_cacerts_dir" ]
+  then
+    echo "Must provide the cacerts directory (probably $(readlink -e $(which java) | sed 's#/bin/java#/jre/lib/security/cacerts#') to be created if does not exist)"
+  else
+    echo "Getting certificate of $servername port $port..."
+    openssl s_client -showcerts -connect $servername:$serverport </dev/null 2>/dev/null|openssl x509 -outform PEM >mycertfile.pem
+    echo "Adding certificate to $jre_lib_security_cacerts_dir..."
+    echo "Default password: changeit"
+    keytool -importcert -file mycertfile.pem -alias "${servername}_${serverport}" -keystore $jre_lib_security_cacerts_dir
+  fi
+}
