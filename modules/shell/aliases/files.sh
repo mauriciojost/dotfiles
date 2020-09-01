@@ -116,3 +116,26 @@ function qfind-more-recent-than-date-x() {
 function qsplit-file-x-by-separator-y() {
   csplit $1 "/"$2"/" "{*}"
 }
+
+
+function qlines-only-in-file-1() {
+  local file1="$1"
+  local file2="$2"
+  #find lines only in file1
+  comm --check-order -23 "$file1" "$file2"
+}
+
+function qlines-only-in-file-2() {
+  local file1="$1"
+  local file2="$2"
+  #find lines only in file2
+  comm --check-order -13 "$file1" "$file2"
+}
+
+function qlines-common-to-both() {
+  local file1="$1"
+  local file2="$2"
+  #find lines common to both files
+  comm --check-order -12 "$file1" "$file2"
+}
+
