@@ -22,22 +22,21 @@ function _xmllint_xfce() {
 
 
 function qhelp() {
-  echo "### GENERAL SHORTCUTS"
-  echo "ctrl + space                ulauncher"
-  echo ""
-  echo "### XFCE SHORTCUTS"
-  _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]'
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
-  echo ""
-  echo "### SHELL BINDINGS"
-  _qset_bindings show
-
-  echo ""
-  echo "### CONFIGURATION APPS"
-  echo "Configure using the following applications"
-  echo "- keyboard: xfce4-keyboard-settings"
-  echo "- window manager: xfwm4-settings"
+  echo "### GENERAL SHORTCUTS" | highlight green '.*'
+  echo "ctrl + space                ulauncher" | highlight green '.*'
+  echo "" | highlight green '.*'
+  echo "### XFCE SHORTCUTS" | highlight red '.*'
+  _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]' | highlight red '.*'
+  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']" | highlight red '.*'
+  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']" | highlight red '.*'
+  echo "" | highlight red '.*'
+  echo "### SHELL BINDINGS" | highlight blue '.*'
+  _qset_bindings show | highlight blue '.*'
+  echo "" | highlight blue '.*'
+  echo "### CONFIGURATION APPS" | highlight yellow '.*'
+  echo "Configure using the following applications" | highlight yellow '.*'
+  echo "- keyboard: xfce4-keyboard-settings" | highlight yellow '.*'
+  echo "- window manager: xfwm4-settings" | highlight yellow '.*'
 }
 
 # Put whatever is piped to qclip into the clipboard
@@ -108,13 +107,13 @@ function _qset_bindings() {
   local mode="$1"
    # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
   _qbind "Quick CD (to chosen dir, CD to it)" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
-  _qbind "Quick Find (by content in pwd, type vim cmd)" '"\C-a"' '"$(qfzf_here_by_content)\e\C-e\er"' "$mode"
-  _qbind "Quick Vim (by filename, type vim cmd)" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "Typical by filename to vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "Typical by content to vim" '"\C-a"' '"$(qfzf_typical_filename_stdout)\e\C-e\er"' "$mode"
+  #_qbind "Typical by content line to clipboard" '"\C-t"' '"$(qfzf_typical_line_on_clipboard)\e\C-e\er"' "$mode"
+  _qbind "Typical by content line to clipboard" '"\C-t"' '"qfzf_typical_line_on_clipboard\n"' "$mode"
   _qbind "History++ (by date/dir/command in pwd, type)" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
   _qbind "Chrome Hist. (by url, open)" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
-  _qbind "Topics (by content, copy to clipboard)" '"\C-t"' '"$(qfzf_topics)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
-  _qbind "Documents" '"\C-u"' '"qfzf_docs\n"' "$mode"
 }
 
 
