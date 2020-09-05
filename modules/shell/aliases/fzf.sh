@@ -1,5 +1,4 @@
 # 'typical dirs' are considered $PWD, $TOPICS and $DOTFILES/docs
-
 function _typical_dirs() {
   local interm="$1"
   local output="$interm $DOTFILES/docs $interm $TOPICS"
@@ -11,6 +10,7 @@ function _typical_dirs() {
   fi
   echo "$output"
 }
+
 function qfzf_cd_with() {
   cd "$(find $pwd -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview")"
 }
