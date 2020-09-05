@@ -106,11 +106,10 @@ function _qbind() {
 function _qset_bindings() {
   local mode="$1"
    # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
-  _qbind "Quick CD (to chosen dir, CD to it)" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
-  _qbind "Typical by filename to vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
-  _qbind "Typical by content to vim" '"\C-a"' '"$(qfzf_typical_filename_stdout)\e\C-e\er"' "$mode"
-  #_qbind "Typical by content line to clipboard" '"\C-t"' '"$(qfzf_typical_line_on_clipboard)\e\C-e\er"' "$mode"
-  _qbind "Typical by content line to clipboard" '"\C-t"' '"qfzf_typical_line_on_clipboard\n"' "$mode"
+  _qbind "change Folder (cd ./xx)" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
+  _qbind "open typical by fileName to vim" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "Typical by conTent to vim" '"\C-t"' '"$(qfzf_typical_filename_stdout)\e\C-e\er"' "$mode"
+  _qbind "Snippets (typical by content line) to clipboard" '"\C-s"' '"qfzf_typical_line_on_clipboard\n"' "$mode"
   _qbind "History++ (by date/dir/command in pwd, type)" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
   _qbind "Chrome Hist. (by url, open)" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
