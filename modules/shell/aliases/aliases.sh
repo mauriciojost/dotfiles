@@ -21,22 +21,27 @@ function _xmllint_xfce() {
 }
 
 
-function qhelp() {
+function _qhelp() {
+  echo "### CONFIGURATION APPS" | highlight green '.*'
+  echo "Configure using the following applications"
+  echo "- keyboard: xfce4-keyboard-settings"
+  echo "- window manager: xfwm4-settings"
+  echo ""
   echo "### GENERAL SHORTCUTS" | highlight green '.*'
-  echo "ctrl + space                ulauncher" | highlight green '.*'
-  echo "" | highlight green '.*'
-  echo "### XFCE SHORTCUTS" | highlight red '.*'
-  _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]' | highlight red '.*'
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']" | highlight red '.*'
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']" | highlight red '.*'
-  echo "" | highlight red '.*'
-  echo "### SHELL BINDINGS" | highlight blue '.*'
-  _qset_bindings show | highlight blue '.*'
-  echo "" | highlight blue '.*'
-  echo "### CONFIGURATION APPS" | highlight yellow '.*'
-  echo "Configure using the following applications" | highlight yellow '.*'
-  echo "- keyboard: xfce4-keyboard-settings" | highlight yellow '.*'
-  echo "- window manager: xfwm4-settings" | highlight yellow '.*'
+  echo "- Control space ==> ulauncher"
+  echo ""
+  echo "### XFCE SHORTCUTS" | highlight green '.*'
+  _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]'
+  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
+  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
+  echo ""
+  echo "### SHELL BINDINGS" | highlight green '.*'
+  _qset_bindings show
+  echo ""
+}
+
+function qhelp() {
+  _qhelp | sed 's#Primary ##g' | column -t -s '==>'
 }
 
 # Put whatever is piped to qclip into the clipboard
