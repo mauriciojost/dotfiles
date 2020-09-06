@@ -41,7 +41,7 @@ function _qhelp() {
 }
 
 function qhelp() {
-  _qhelp | sed 's#Primary ##g' | column -t -s '==>'
+  _qhelp | sed 's#Primary #Control #g' | column -t -s '==>'
 }
 
 # Put whatever is piped to qclip into the clipboard
