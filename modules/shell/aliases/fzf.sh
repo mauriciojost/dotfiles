@@ -1,10 +1,10 @@
 # 'typical dirs' are considered $PWD, $TOPICS and $DOTFILES/docs
 function _typical_dirs() {
-  local interm="$1"
-  local output="$interm $DOTFILES/docs $interm $TOPICS"
+  local pref="$1"
+  local output="$pref $TOPICS $pref $DOTFILES/docs"
   if [ "$(pwd)" != "$HOME" ] 
   then
-    output="$output $interm $(pwd)"
+    output="$pref $(pwd) $output"
   else
     output="$output"
   fi
@@ -53,22 +53,6 @@ function qfzf_content_egrepargs_X_by_filenamecontent() {
 function qfzf_alias() {
   qfzf_file_path_egrepargs_X_by_filenamecontent "-r $DOTFILES/modules/shell/aliases/"
 }
-
-# Show our documents
-#function qfzf_docs() {
-#  qfzf_content_egrepargs_X_by_filenamecontent "-r $DOTFILES/docs/" | tr -d '\n' | xclip -selection clipboard
-#  echo "Pasted into clipboard!"
-#}
-
-# Show our topics
-#function qfzf_topics() {
-#  qfzf_file_path_egrepargs_X_by_filenamecontent "-r $TOPICS"
-#}
-
-# Explore all files in pwd
-#function qfzf_here_by_content() {
-#  qfzf_file_path_egrepargs_X_by_filenamecontent "-r $(pwd)"
-#}
 
 # Search on typical dirs and copy selected line into the clipboard
 function qfzf_typical_line_on_clipboard() {
