@@ -26,22 +26,34 @@ function qtopic-open-with-content() {
   qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" $1
 }
 
-function qtopic-new-name() {
+function qtopic-new-daily-name() {
   local topic="$1"
   echo $TOPICS/`date +"%Y-%m-%d"`."$topic"
 }
 
-function qtopic-new-file-x(){
+function qtopic-new-weekly-name() {
   local topic="$1"
-  local f=`qtopic-new-name $topic`.md
+  echo $TOPICS/`date +"%Y-w%V"`."$topic"
+}
+
+function qtopic-new-daily-file-x(){
+  local topic="$1"
+  local f=`qtopic-new-daily-name $topic`.md
   vim "$f"
   echo "File: $f"
 }
 
-function qtopic-new-file-x-with-template-y(){
+function qtopic-new-weekly-file-x(){
+  local topic="$1"
+  local f=`qtopic-new-weekly-name $topic`.md
+  vim "$f"
+  echo "File: $f"
+}
+
+function qtopic-new-daily-file-x-with-template-y(){
   local topic="$1"
   local template="$2"
-  local f=`qtopic-new-name $topic`.md
+  local f=`qtopic-new-daily-name $topic`.md
   if [ ! -e "$f" ]
   then
     echo "Using template: $template"
@@ -53,29 +65,49 @@ function qtopic-new-file-x-with-template-y(){
   echo "File: $f"
 }
 
-alias qtopic-new='qtopic-new-file-x'
+function qtopic-new-weekly-file-x-with-template-y(){
+  local topic="$1"
+  local template="$2"
+  local f=`qtopic-new-weekly-name $topic`.md
+  if [ ! -e "$f" ]
+  then
+    echo "Using template: $template"
+    cp "$template" "$f"
+  else
+    echo "Ignoring template: $template (file already exists)"
+  fi
+  vim "$f"
+  echo "File: $f"
+}
+
+alias qtopic-new='qtopic-new-daily-file-x'
 
 function qtopic-daily(){
-  qtopic-new-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
+  qtopic-new-daily-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
+}
+
+function qtopic-weekly(){
+  qtopic-new-weekly-file-x-with-template-y "weekly" "$DOTFILES/modules/topics/templates/weekly.md"
 }
 
 function qtopic-design-session(){
-  qtopic-new-file-x-with-template-y "dessign-session" "$DOTFILES/modules/topics/templates/design-session.md"
+  qtopic-new-daily-file-x-with-template-y "dessign-session" "$DOTFILES/modules/topics/templates/design-session.md"
 }
 
 function qtopic-retro(){
-  qtopic-new-file-x-with-template-y "retro" "$DOTFILES/modules/topics/templates/retro.md"
+  qtopic-new-daily-file-x-with-template-y "retro" "$DOTFILES/modules/topics/templates/retro.md"
 }
 
 function qtopic-investigation(){
-  qtopic-new-file-x-with-template-y "investigation-$1" "$DOTFILES/modules/topics/templates/investigation.md"
+  qtopic-new-daily-file-x-with-template-y "investigation-$1" "$DOTFILES/modules/topics/templates/investigation.md"
 }
 
 alias qdaily=qtopic-daily
+alias qweekly=qtopic-weekly
 
 function qtopic-new-dir-x(){
   local topic="$1"
-  local dir=`qtopic-new-name $topic`
+  local dir=`qtopic-new-daily-name $topic`
   mkdir -p $dir
   ranger $dir
   echo "Directory: $dir"
