@@ -43,6 +43,14 @@ function qworkspace-bring-window() {
   fi
 }
 
+function qworkspace-bring-window-exact-match() {
+  local window_exp="$1"
+  if [ ! -z "$window_exp" ]
+  then
+    wmctrl -F -R "$window_exp"
+  fi
+}
+
 function qworkspace-goto-window() {
   local window_exp="$1"
   if [ ! -z "$window_exp" ]
@@ -50,3 +58,16 @@ function qworkspace-goto-window() {
     wmctrl -a "$window_exp"
   fi
 }
+
+function qworkspace-list-windows() {
+  echo "wid^name" > apps
+  wmctrl -l | awk -F' ' '{i=$1; w=$2; h=$3; $1=$2=$3=""; print w "^" $0}'| sed -E 's/\^ +/\^/g' | sort -n >> apps
+  echo "id^name" > works
+  wmctrl -d | awk -F' ' '{i=$1; $1=$2=$3=$4=$5=$6=$7=$8=$9=""; print i "^" $0}' | sed -E 's/\^ +/\^/g' | sort -n >> works
+  python2-q-text-as-data --output-delimiter='^' -b --output-header --skip-header --delimiter='^' "select w.name as workspace,a.name as application from apps as a join works as w where a.wid = w.id"
+}
+
+function qworkspace-bring() {
+  qworkspace-list-windows  | fzf | echo qworkspace-bring-window-exact-match "$(awk -F^ '{print $2}')" # something is wrong, stuff with chars [ and ] do not match
+}
+
