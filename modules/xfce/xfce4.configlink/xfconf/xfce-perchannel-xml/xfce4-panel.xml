@@ -61,6 +61,7 @@
         <value type="string" value="system-config-printer"/>
         <value type="string" value="networkmanager applet"/>
         <value type="string" value="task manager"/>
+        <value type="string" value="guake"/>
         <value type="string" value="network"/>
         <value type="string" value="clipit"/>
         <value type="string" value="teams"/>

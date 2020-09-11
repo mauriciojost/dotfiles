@@ -142,6 +142,12 @@ fi
 
 _qset_bindings set
 
+if [ "$(qterminal-which)" == "guake" ]
+then
+  echo "Dumping guake settings (to load qguake-load)"
+  qguake-dump
+fi
+
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
