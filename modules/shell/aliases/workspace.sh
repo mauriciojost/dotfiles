@@ -59,6 +59,14 @@ function qworkspace-goto-window() {
   fi
 }
 
+function qworkspace-goto-window-id() {
+  local window_id="$1"
+  if [ ! -z "$window_id" ]
+  then
+    wmctrl -i -a "$window_id"
+  fi
+}
+
 function qworkspace-list-windows() {
   echo "wid^id^name" > apps
   wmctrl -l | awk -F' ' '{i=$1; w=$2; h=$3; $1=$2=$3=""; print w "^" i "^" $0}'| sed -E 's/\^ +/\^/g' | sort -n >> apps
@@ -67,7 +75,11 @@ function qworkspace-list-windows() {
   python2-q-text-as-data --output-delimiter='^' -b --output-header --skip-header --delimiter='^' "select w.name as workspace,a.name as application, a.id as application_id from apps as a join works as w where a.wid = w.id"
 }
 
-function qworkspace-bring() {
-  qworkspace-list-windows  | fzf | qworkspace-bring-window-id "$(awk -F^ '{print $3}')" # something is wrong, stuff with chars [ and ] do not match
+function br() {
+  qworkspace-list-windows  | fzf | qworkspace-bring-window-id "$(awk -F^ '{print $3}')"
+}
+
+function go() {
+  qworkspace-list-windows  | fzf | qworkspace-goto-window-id "$(awk -F^ '{print $3}')"
 }
 
