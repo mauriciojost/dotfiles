@@ -7,7 +7,9 @@ function qbackup-locals() {
     $HOME/.localrc \
     $CUSTOM_HISTORY_FILE \
     $HOME/.bash_history \
+    $HOME/.config/google-chrome/Default/Bookmarks \
     .
   git add -A && git commit -m "Backup" && git push
 }
 
+alias backup=qbackup-locals
