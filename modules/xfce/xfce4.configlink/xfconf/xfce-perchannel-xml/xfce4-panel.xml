@@ -14,6 +14,7 @@
         <value type="int" value="15"/>
         <value type="int" value="4"/>
         <value type="int" value="5"/>
+        <value type="int" value="1"/>
         <value type="int" value="7"/>
         <value type="int" value="6"/>
         <value type="int" value="2"/>
@@ -53,7 +54,7 @@
       <property name="miniature-view" type="bool" value="false"/>
     </property>
     <property name="plugin-5" type="string" value="clock">
-      <property name="digital-format" type="string" value="%a %F%n H=%H:%M W=%V"/>
+      <property name="digital-format" type="string" value="&lt;b&gt;%a %F%n&lt;/b&gt; H=&lt;b&gt;%H:%M&lt;/b&gt; W=%V"/>
       <property name="tooltip-format" type="string" value=""/>
     </property>
     <property name="plugin-6" type="string" value="systray">
@@ -78,5 +79,10 @@
     <property name="plugin-7" type="string" value="power-manager-plugin"/>
     <property name="plugin-9" type="string" value="cpugraph"/>
     <property name="plugin-10" type="string" value="windowmenu"/>
+    <property name="plugin-1" type="string" value="clock">
+      <property name="timezone" type="string" value="UTC"/>
+      <property name="digital-format" type="string" value="(UTC H=%R)"/>
+      <property name="tooltip-format" type="string" value=""/>
+    </property>
   </property>
 </channel>
