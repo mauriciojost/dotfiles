@@ -12,7 +12,7 @@ function _typical_dirs() {
 }
 
 function qfzf_cd_with() {
-  cd "$(find $pwd -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="space:toggle-preview")"
+  cd "$(find $pwd -maxdepth 3 -type d 2>/dev/null | fzf --preview="tree -L 2 {}" --bind="left:toggle-preview")"
 }
 
 
