@@ -27,13 +27,14 @@ function _qhelp() {
   echo "- keyboard: xfce4-keyboard-settings"
   echo "- window manager: xfwm4-settings"
   echo ""
-  echo "### GENERAL SHORTCUTS" | highlight green '.*'
-  echo "- Control space ==> ulauncher"
-  echo ""
   echo "### XFCE SHORTCUTS" | highlight green '.*'
   _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]'
   _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
   _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
+  echo ""
+  echo "### GENERAL SHORTCUTS" | highlight green '.*'
+  echo " - $(cat $DOTFILES/modules/ulauncher/ulauncher.configlink/settings.json |  python2 -c 'import json,sys;print json.load(sys.stdin)["hotkey-show-app"]') ==> ulauncher"
+  dconf dump /apps/guake/keybindings/global/ | sed -E "s#show-hide='(.*)'#- \1 ==> guake#g" | grep -v '[/]'
   echo ""
   echo "### SHELL BINDINGS" | highlight green '.*'
   _qset_bindings show
@@ -41,8 +42,9 @@ function _qhelp() {
 }
 
 function qhelp() {
-  _qhelp | sed 's#Primary #Control #g' | column -t -s '==>'
+  _qhelp | sed 's#Primary#Control#g' | sed -E "s#(<|>)# #g" | sed 's/ *$//g' | sed 's/^ *//g' | sed 's/  / /g' | column -t -s '==>'
 }
+
 
 # Put whatever is piped to qclip into the clipboard
 alias qclip-to="tr -d '\n' | xclip -selection clipboard -i"
