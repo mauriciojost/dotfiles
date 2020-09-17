@@ -68,18 +68,35 @@ function qworkspace-goto-window-id() {
 }
 
 function qworkspace-list-windows() {
+  local d="$(mktemp -d)"
+  cd "$d"
   echo "wid^id^name" > apps
   wmctrl -l | awk -F' ' '{i=$1; w=$2; h=$3; $1=$2=$3=""; print w "^" i "^" $0}'| sed -E 's/\^ +/\^/g' | sort -n >> apps
   echo "id^name" > works
   wmctrl -d | awk -F' ' '{i=$1; $1=$2=$3=$4=$5=$6=$7=$8=$9=""; print i "^" $0}' | sed -E 's/\^ +/\^/g' | sort -n >> works
   python2-q-text-as-data --output-delimiter='^' -b --output-header --skip-header --delimiter='^' "select w.name as workspace,a.name as application, a.id as application_id from apps as a join works as w where a.wid = w.id"
+  rm apps works
+  cd -
+  rmdir "$d"
 }
 
 function br() {
-  qworkspace-list-windows  | fzf | qworkspace-bring-window-id "$(awk -F^ '{print $3}')"
+  local name="$1"
+  if [ "$name" == "" ]
+  then
+    qworkspace-list-windows | fzf | qworkspace-bring-window-id "$(awk -F^ '{print $3}')"
+  else
+    qworkspace-bring-window "$name"
+  fi
 }
 
 function go() {
-  qworkspace-list-windows  | fzf | qworkspace-goto-window-id "$(awk -F^ '{print $3}')"
+  local name="$1"
+  if [ "$name" == "" ]
+  then
+    qworkspace-list-windows | fzf | qworkspace-goto-window-id "$(awk -F^ '{print $3}')"
+  else
+    qworkspace-goto-window "$name"
+  fi
 }
 

@@ -102,6 +102,7 @@ function qtopic-investigation(){
   qtopic-new-daily-file-x-with-template-y "investigation-$1" "$DOTFILES/modules/topics/templates/investigation.md"
 }
 
+alias qnote=qtopic-new
 alias qdaily=qtopic-daily
 alias qweekly=qtopic-weekly
 

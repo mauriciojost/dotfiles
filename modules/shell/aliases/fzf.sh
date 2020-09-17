@@ -22,8 +22,11 @@ function qfzf_vim_with() {
 }
 
 function qfzf_history_with() {
+  local f="$(mktemp)"
   echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
-  tac $CUSTOM_HISTORY_FILE | egrep -a "cd $(pwd | tr '/' '.')" | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' | fzf --no-sort --tiebreak=end,length,index --keep-right | sed 's/^[^;]*;//g'
+  tac $CUSTOM_HISTORY_FILE | egrep -a "cd $(pwd | tr '/' '.')" | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
+  cat "$f" | fzf --no-sort --tiebreak=end,length,index --keep-right | sed 's/^[^;]*;//g'
+  rm "$f"
 }
 
 function qfzf_chrome_history_with() {
