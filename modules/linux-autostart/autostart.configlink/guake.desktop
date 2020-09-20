@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Guake
+Comment=Guake
+Categories=GNOME;Utility;
+Exec=env /usr/bin/guake
+Icon=guake
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enabled=true
