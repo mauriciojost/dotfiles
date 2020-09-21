@@ -38,8 +38,16 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+function _branch() {
+  local b=$(git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/' ) 
+  if [ ! -z "$b" ]
+  then
+    echo "($b)"
+  fi
+}
+
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w$(_branch)\[\033[00m\] \$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
@@ -69,7 +77,7 @@ _append_history () {
   fi
   # strip useless entry number from the beginning
   LAST_CMD=${LAST_CMD#*  }
-  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid ; cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
+  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid branch: $(_branch); cd $(pwd); $LAST_CMD;" >> $CUSTOM_HISTORY_FILE
 }
 
 # Overwrite above settings.
