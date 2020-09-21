@@ -15,6 +15,10 @@ function gc(){
   git-cola &> /dev/null
 }
 
+function qgit-branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
 alias gcp='git cherry-pick'
 
 alias gs='git status -u'
