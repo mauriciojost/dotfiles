@@ -38,7 +38,7 @@ function qgradle-gvm-init() {
 	source $HOME/.gvm/bin/gvm-init.sh
 }
 
-function qjava-trust-server-port() {
+function qjava-trust-pkix-server-port() {
   local servername="$1"
   local serverport="$2"
   local jre_lib_security_cacerts_dir="$3"
