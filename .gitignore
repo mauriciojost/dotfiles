@@ -29,3 +29,4 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/panel/whiskermenu-16.rc
 /modules/xfce/xfce4.configlink/panel/whiskermenu-1.rc
 /modules/xfce/xfce4.configlink/panel/netload-19.rc
+/modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/pointers.xml
