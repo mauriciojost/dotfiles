@@ -16,9 +16,15 @@ function qtopic-backup() {
 }
 
 function qtopic-open-with-filename-x() {
-  local files=`find "$TOPICS" | grep $1`
-  echo "Files matched: $files"
-  vim $files
+  local fn="$1"
+  if [ -z "$fn" ]
+  then
+    vim "$(find $TOPICS -type f | sort -r | fzf)"
+  else
+    local files=`find "$TOPICS" | grep $fn`
+    echo "Files matched: $files"
+    vim $files
+  fi
 }
 
 # Edit an alias that matches a given pattern
@@ -160,5 +166,5 @@ function qtopic-pull-from-keep-file-x() {
   fi
 }
 
-alias qtopic=qtopic-open-with-content
+alias qtopic=qtopic-open-with-filename-x
 
