@@ -7,32 +7,13 @@ let sql_runner_cmd = 'bash -i -c "qmarkdown-sql-calculate '
 set runtimepath+=~/.dotfiles/modules/vim/mdcalc.vim/
 
 call plug#begin()
-Plug 'tpope/vim-sensible'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-rsi'
 Plug 'tpope/vim-sleuth'
-Plug 'tpope/vim-vinegar'
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
-Plug 'mileszs/ack.vim'
-Plug 'leafgarland/typescript-vim'
-Plug 'raichoo/purescript-vim'
-Plug 'FrigoEU/psc-ide-vim'
 Plug 'derekwyatt/vim-scala'
-Plug 'ayu-theme/ayu-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
 call plug#end()
 
 "set colorcolumn=+1        " highlight column after 'textwidth'
@@ -253,7 +234,7 @@ syntax enable
 " tasks
 :let mdone = matchadd("BLACKFG","\\[/\\].*") " [/]  -> done
 :let mdone2 = matchadd("BLACKFG","\\[x\\].*") " [x]  -> done
-:let mprogress = matchadd("WHITEFG","\\[p\\]") " [p]  -> in progress
+:let mprogress = matchadd("WHITEFG","\\[p\\].*") " [p]  -> in progress
 :let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
 :let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
 :let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
