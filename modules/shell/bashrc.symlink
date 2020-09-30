@@ -50,15 +50,16 @@ function _dir() {
   local d="$1"
   local d_1="$(dirname $d)"
   local d_2="$(dirname $d_1)"
+  local max_length=70
   local proposed="$(echo "$d" | sed "s#$HOME#~#g")"
   local charcount="$(echo "$proposed" | wc -m)"
-  if [ $charcount -lt 50 ]
+  if [ $charcount -lt $max_length ]
   then
     echo "$proposed"
   else
     proposed=".../$(basename $d_2)/$(basename $d_1)/$(basename $d)" | sed "s#...$HOME#~#g"
     charcount="$(echo "$proposed" | wc -m)"
-    if [ $charcount -lt 50 ]
+    if [ $charcount -lt $max_length ]
     then
       echo "$proposed"
     else
