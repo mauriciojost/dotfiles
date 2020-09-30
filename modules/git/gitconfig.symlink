@@ -79,3 +79,5 @@
 	path = ~/.perso.gitconfig
 
 
+[pull]
+	ff = only
