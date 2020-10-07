@@ -9,11 +9,11 @@ set runtimepath+=~/.dotfiles/modules/vim/mdcalc.vim/
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-markdown'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
-Plug 'plasticboy/vim-markdown'
 call plug#end()
 
 "set colorcolumn=+1        " highlight column after 'textwidth'
