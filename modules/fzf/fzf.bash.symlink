@@ -1,0 +1,13 @@
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == *$HOME/.dotfiles/modules/fzf/fzf/bin* ]]; then
+  export PATH="${PATH:+${PATH}:}$HOME/.dotfiles/modules/fzf/fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+#[[ $- == *i* ]] && source "$HOME/.dotfiles/modules/fzf/fzf/shell/completion.bash" 2> /dev/null
+
+# Key bindings
+# ------------
+#source "$HOME/.dotfiles/modules/fzf/fzf/shell/key-bindings.bash"
