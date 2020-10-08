@@ -29,6 +29,14 @@ function qfzf_history_with() {
   rm "$f"
 }
 
+function qfzf_history_light_with() {
+  local f="$(mktemp)"
+  echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
+  tail -50000 $CUSTOM_HISTORY_FILE | tac - | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
+  cat "$f" | fzf --no-sort --tiebreak=end,length,index --keep-right | sed 's/^[^;]*;//g'
+  rm "$f"
+}
+
 function qfzf_chrome_history_with() {
   local backup="/tmp/chrome-history-fzf-search"
   local chrome_history_db="$HOME/.config/google-chrome/Default/History"

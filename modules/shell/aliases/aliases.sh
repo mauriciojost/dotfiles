@@ -118,6 +118,7 @@ function _qset_bindings() {
   _qbind "open by conTent" '"\C-t"' '"$(qfzf_typical_filename_stdout)\e\C-e\er"' "$mode"
   _qbind "copy Snippets" '"\C-s"' '"qfzf_typical_line_on_clipboard\n"' "$mode"
   _qbind "command line History" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
+  _qbind "command line History (light)" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
   _qbind "history Web" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
 }
