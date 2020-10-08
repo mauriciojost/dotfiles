@@ -98,6 +98,8 @@ function qdisk-cleanup() {
 
   sudo apt-get clean
   sudo apt-get autoremove
+  sudo rm -rf /var/lib/apt/lists/*
+  echo Can restore with sudo apt-get update
   sudo journalctl --vacuum-size=10M
   sudo fslint-gui
 
