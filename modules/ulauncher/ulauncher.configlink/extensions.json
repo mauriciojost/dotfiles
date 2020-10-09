@@ -33,5 +33,12 @@
         "updated_at": "2020-06-18T09:16:59.441728",
         "last_commit": "dba36155502b85c6fb5040a8142614525d11d0ad",
         "last_commit_time": "2020-06-16T08:01:44"
+    },
+    "com.github.brpaz.ulauncher-lastpass": {
+        "id": "com.github.brpaz.ulauncher-lastpass",
+        "url": "https://github.com/brpaz/ulauncher-lastpass",
+        "updated_at": "2020-10-08T23:32:41.718574",
+        "last_commit": "d6236bb25110183f478cadba19ee35c27d387c3d",
+        "last_commit_time": "2020-06-27T16:17:54"
     }
 }
