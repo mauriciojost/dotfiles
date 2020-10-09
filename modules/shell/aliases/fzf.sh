@@ -39,9 +39,17 @@ function qfzf_history_light_with() {
 
 function qfzf_chrome_history_with() {
   local backup="/tmp/chrome-history-fzf-search"
-  local chrome_history_db="$HOME/.config/google-chrome/Default/History"
-  cp "$chrome_history_db" "$backup"
-  echo gop $(sqlite3 $backup "select url from urls;" | fzf)
+  find $HOME/.config/google-chrome/ -type f -name History > /tmp/chrome-history-files.list
+  echo "" > /tmp/chrome-history-urls.list
+  while IFS= read -r line
+  do
+    rm -f "$backup"
+    cp "$line" "$backup"
+    sqlite3 "$backup" "select url from urls;" >> /tmp/chrome-history-urls.list
+  done < "/tmp/chrome-history-files.list"
+
+
+  echo gop $(cat /tmp/chrome-history-urls.list | fzf)
 }
 
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
