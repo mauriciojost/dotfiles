@@ -3,7 +3,7 @@
 import scala.io.Source
 import java.time._
 import java.time.format._
-import scala.util.Try
+import scala.util._
 
 object Record {
   val p1 = DateTimeFormatter.ofPattern("E d MMM HH:mm:ss VV yyyy")
@@ -17,7 +17,7 @@ object Record {
     r1.orElse(r2).getOrElse(throw new IllegalArgumentException(s"Cannot parse date: '$t'"))
   }
 
-  def validate(r: Record): Record = {
+  def validate(r: Record): Try[Record] = Try {
     r.ws.foreach { w =>
       if (w.length > 30 || w.contains(" "))
         throw new IllegalArgumentException(s"Unexpected ws: $r")
@@ -26,17 +26,27 @@ object Record {
       if (s.length > 40 || s.contains(" "))
         throw new IllegalArgumentException(s"Unexpected session: $r")
     }
+    r.branch.foreach { b =>
+      if (b.length > 50)
+        throw new IllegalArgumentException(s"Unexpected branch: $r")
+    }
+    if (r.commands.isEmpty)
+      throw new IllegalArgumentException(s"Unexpected command: $r")
+    //if (r.commands.find(_.contains("cd ")).isEmpty)
+    //  throw new IllegalArgumentException(s"Unexpected command without cd: $r")
     r
   }
 
-  def apply(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Record = Record(
-    pattern = pattern,
-    line = or,
-    date = date.map(dateParse),
-    session = session.map(sanitize),
-    ws = ws.map(sanitize),
-    branch = branch.map(sanitize),
-    commands = commands.toList.flatMap(_.split(';').toList).map(sanitize)
+  def from(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Try[Record] = validate(
+    Record(
+      pattern = pattern,
+      line = or,
+      date = date.map(dateParse),
+      session = session.map(sanitize),
+      ws = ws.map(sanitize),
+      branch = branch.map(sanitize),
+      commands = commands.toList.flatMap(_.split(';').toList)
+    )
   )
 }
 
@@ -45,6 +55,8 @@ case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], sessi
   def csv: String = {
     s"$pattern^${date.mkString}^${ws.mkString}"
   }
+
+  override def toString: String = s"pattern=$pattern line='$line' date='$date' session='$session' ws='$ws' branch='$branch' commands='$commands'"
 }
 
 
@@ -60,17 +72,24 @@ def main(f: String) = {
   val cdCommandsDate = ">\\s+(cd.*\\s+#.*)".r
   val records = Source.fromFile(f).getLines.filterNot(_.isEmpty).map(s => s.replaceAll("  ", " ")).map { original =>
     original match {
-      case echoDateSessionDashWorspaceBranchCommands(date, session, ws, branch, cmd) => Record(1, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = Some(branch), commands = Some(cmd))
-      case echoDateSessionDashWorspaceCommands(date, session, ws, cmd) => Record(2, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = None, commands = Some(cmd))
-      case echoDate2SessionDashWorspaceBranchCommands(date, session, ws, branch, cmd) => Record(3, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = Some(branch), commands = Some(cmd))
-      case echoDate2SessionDashWorspaceCommands(date, session, ws, cmd) => Record(4, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = None, commands = Some(cmd))
-      case echoSessionArrowCommandsDate(session, cmd, date, unk) => Record(5, or = original, date = Some(date), session = Some(session), ws = None, branch = None, commands = Some(cmd))
-      case echoSessionArrowCommands(session, cmd) => Record(6, or = original, date = None, session = Some(session), ws = None, branch = None, commands = Some(cmd))
-      case commandsDate(cmd, date) => Record(7, or = original, date = Some(date), session = None, ws = None, branch = None, commands = Some(cmd))
-      case cdCommandsDate(cmd) => Record(8, or = original, date = None, session = None, ws = None, branch = None, commands = Some(cmd))
-      case x => Record(9, or = original, date = None, session = None, ws = None, branch = None, commands = None)
+      case echoDateSessionDashWorspaceBranchCommands(date, session, ws, branch, cmd) => Record.from(1, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = Some(branch), commands = Some(cmd))
+      case echoDateSessionDashWorspaceCommands(date, session, ws, cmd) => Record.from(2, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = None, commands = Some(cmd))
+      case echoDate2SessionDashWorspaceBranchCommands(date, session, ws, branch, cmd) => Record.from(3, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = Some(branch), commands = Some(cmd))
+      case echoDate2SessionDashWorspaceCommands(date, session, ws, cmd) => Record.from(4, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = None, commands = Some(cmd))
+      case echoSessionArrowCommandsDate(session, cmd, date, unk) => Record.from(5, or = original, date = Some(date), session = Some(session), ws = None, branch = None, commands = Some(cmd))
+      case echoSessionArrowCommands(session, cmd) => Record.from(6, or = original, date = None, session = Some(session), ws = None, branch = None, commands = Some(cmd))
+      case commandsDate(cmd, date) => Record.from(7, or = original, date = Some(date), session = None, ws = None, branch = None, commands = Some(cmd))
+      case cdCommandsDate(cmd) => Record.from(8, or = original, date = None, session = None, ws = None, branch = None, commands = Some(cmd))
+      case x => Record.from(9, or = original, date = None, session = None, ws = None, branch = None, commands = None)
     }
   }
-  records.foreach(k => println(k.csv))
+  val list = records.toList
+  list.collect {
+    case Success(s) => println(s.csv)
+  }
+
+  val k: List[(Int, Int)] = list.map(s => if (s.isFailure) (1, 0) else (0, 1))
+  val (fa, su) = k.reduce{(a, b) => (a._1 + b._1, a._2 + b._2)}
+  println(s"Failures: $fa (${100.0 * fa/(fa + su)}%), successes: $su(${100.0 * su/(fa + su)}%)")
 }
 
