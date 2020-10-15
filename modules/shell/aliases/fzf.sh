@@ -1,4 +1,6 @@
 # 'typical dirs' are considered $PWD, $TOPICS and $DOTFILES/docs
+export _HISTORY_MAX_LINES_LIGHT=10000
+export _FILE_CONTENT_MAX_FZF=300
 function _typical_dirs() {
   local pref="$1"
   local output="$pref $TOPICS $pref $DOTFILES/docs"
@@ -25,14 +27,14 @@ function qfzf_history_with() {
   local f="$(mktemp)"
   # echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
   tac $CUSTOM_HISTORY_FILE | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length,index --keep-right | sed 's/^[^;]*;//g'
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g'
   rm "$f"
 }
 
 function qfzf_history_light_with() {
   local f="$(mktemp)"
-  tail -50000 $CUSTOM_HISTORY_FILE | tac - | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length,index --keep-right | sed 's/^[^;]*;//g'
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | tac - | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g'
   rm "$f"
 }
 
@@ -53,12 +55,12 @@ function qfzf_chrome_history_with() {
 
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
-  f="$(find $from -type f | while IFS= read -r f ; do echo "$f: $(head -200 $f | tr -d '\n' | tr -d '\0')"; done | fzf | awk -F: '{print $1}')"
+  f="$(find $from -type f | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | fzf | awk -F: '{print $1}')"
   if [ "$f" != "" ]
   then
     echo "vim $f"
   else
-    echo "echo '# Nothing found'"
+    echo "# Nothing found"
   fi
 }
 
