@@ -5,28 +5,51 @@ import java.time._
 import java.time.format._
 import scala.util.Try
 
-@main
-def main(f: String) = {
+object Record {
   val p1 = DateTimeFormatter.ofPattern("E d MMM HH:mm:ss VV yyyy")
   val p2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
-  case class Record(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]) {
-    def dt: Option[ZonedDateTime] = { 
-      date.flatMap { d => 
-        val trimmed = d.trim
-        val f1 = Try(ZonedDateTime.parse(trimmed.replace("CEST", "CET"), p1)).toOption
-        val f2 = Try(LocalDateTime.parse(trimmed, p2).atZone(ZoneId.of("CET"))).toOption
-        val v = f1.orElse(f2)
-        if (! v.isDefined) 
-          throw new IllegalArgumentException(s"Cannot parse date: '$trimmed'")
-        v
-      }
-    }
-    def csv: String = {
-      if (ws.mkString.size > 30)
-        throw new IllegalArgumentException(s"Unexpected large ws: '$ws' ('$or': $pattern)")
-      s"$pattern^${dt.mkString}^${ws.mkString.trim}"
-    }
+
+  def sanitize(s: String): String = s.trim
+  def dateParse(d: String): ZonedDateTime = {
+    val t = d.trim.replace("CEST", "CET")
+    val r1 = Try(ZonedDateTime.parse(t, p1)).toOption
+    val r2 = Try(LocalDateTime.parse(t, p2).atZone(ZoneId.of("CET"))).toOption
+    r1.orElse(r2).getOrElse(throw new IllegalArgumentException(s"Cannot parse date: '$t'"))
   }
+
+  def validate(r: Record): Record = {
+    r.ws.foreach { w =>
+      if (w.length > 30 || w.contains(" "))
+        throw new IllegalArgumentException(s"Unexpected ws: $r")
+    }
+    r.session.foreach { s =>
+      if (s.length > 40 || s.contains(" "))
+        throw new IllegalArgumentException(s"Unexpected session: $r")
+    }
+    r
+  }
+
+  def apply(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Record = Record(
+    pattern = pattern,
+    line = or,
+    date = date.map(dateParse),
+    session = session.map(sanitize),
+    ws = ws.map(sanitize),
+    branch = branch.map(sanitize),
+    commands = commands.toList.flatMap(_.split(';').toList).map(sanitize)
+  )
+}
+
+case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], session: Option[String], ws: Option[String], branch: Option[String], commands: List[String]) {
+  import Record._
+  def csv: String = {
+    s"$pattern^${date.mkString}^${ws.mkString}"
+  }
+}
+
+
+@main
+def main(f: String) = {
   val echoDateSessionDashWorspaceBranchCommands = "echo (\\w{3} \\d+ \\w+ [0-9:]+ \\w+ \\d{4}) (\\w+) - ws:(.*?) branch:(.*?);(.*)".r
   val echoDateSessionDashWorspaceCommands = "echo (\\w{3} \\d+ \\w+ [0-9:]+ \\w+ \\d{4}) (\\w+) - ws:(.*?);(.*)".r
   val echoDate2SessionDashWorspaceBranchCommands = "echo (\\w{10}\\s+[0-9:]+) (\\w+)\\s+-\\s+ws:\\s+(.*?)\\s+branch:(.*?);(.*)".r
@@ -48,7 +71,6 @@ def main(f: String) = {
       case x => Record(9, or = original, date = None, session = None, ws = None, branch = None, commands = None)
     }
   }
-  //records.foreach(k => println(k.dt))
   records.foreach(k => println(k.csv))
 }
 
