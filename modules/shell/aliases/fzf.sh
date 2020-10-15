@@ -53,12 +53,12 @@ function qfzf_chrome_history_with() {
 
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
-  f=$(find $(echo $from | sed 's#-r##g') -type f |  while IFS= read -r t ; do echo "$t: $(head -200 $t | tr -d '\n' | tr -d '\0')"; done | fzf | awk -F: '{print $1}')
+  f="$(find $from -type f | while IFS= read -r f ; do echo "$f: $(head -200 $f | tr -d '\n' | tr -d '\0')"; done | fzf | awk -F: '{print $1}')"
   if [ "$f" != "" ]
   then
     echo "vim $f"
   else
-    echo "echo Nothing"
+    echo "echo '# Nothing found'"
   fi
 }
 
@@ -69,7 +69,7 @@ function qfzf_content_egrepargs_X_by_filenamecontent() {
 
 # Edit an alias that matches a given pattern
 function qfzf_alias() {
-  qfzf_file_path_egrepargs_X_by_filenamecontent "-r $DOTFILES/modules/shell/aliases/"
+  qfzf_file_path_egrepargs_X_by_filenamecontent "$DOTFILES/modules/shell/aliases/"
 }
 
 # Search on typical dirs and copy selected line into the clipboard
@@ -80,6 +80,6 @@ function qfzf_typical_line_on_clipboard() {
 
 # Search on typical dirs by content (and by filename) and stdout vim command on choice (search is on typical dirs)
 function qfzf_typical_filename_stdout() {
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs -r)"
+  qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")"
 }
 
