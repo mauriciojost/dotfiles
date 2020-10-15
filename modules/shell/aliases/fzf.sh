@@ -53,7 +53,7 @@ function qfzf_chrome_history_with() {
 
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
-  f=$(egrep . $from | fzf | awk -F: '{print $1}')
+  f=$(find $(echo $from | sed 's#-r##g') -type f |  while IFS= read -r t ; do echo "$t: $(head -200 $t | tr -d '\n' | tr -d '\0')"; done | fzf | awk -F: '{print $1}')
   if [ "$f" != "" ]
   then
     echo "vim $f"
