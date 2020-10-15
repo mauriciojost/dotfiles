@@ -27,14 +27,14 @@ function qfzf_history_with() {
   local f="$(mktemp)"
   # echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
   tac $CUSTOM_HISTORY_FILE | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g'
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g' | xargs
   rm "$f"
 }
 
 function qfzf_history_light_with() {
   local f="$(mktemp)"
   tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | tac - | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g'
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g' | xargs
   rm "$f"
 }
 
