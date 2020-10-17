@@ -11,11 +11,11 @@ function qtime-epoch() {
   date +%s
 }
 
-function qtime-date() {
+function qdate-time() {
   date '+%Y-%m-%d %H:%M:%S (epoch=%s) (month=%h)'
 }
 
-function qtime-date-nospace() {
+function qdate-time-nospace() {
   date '+%Y-%m-%d-%H-%M-%S'
 }
 
