@@ -6,6 +6,10 @@ alias cal='cal -3'
 alias octave='octave --force-gui'
 alias grep='grep -a --color=always' # a for binary
 
+function vim() {
+  /usr/bin/vim $(echo "$1" | sed 's#:# +#g') # allows to open a file at a given line
+}
+
 alias x=exit
 
 function _xmllint() {
