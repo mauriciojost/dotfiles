@@ -28,14 +28,15 @@ function qfzf_vim_with() {
 
 function qfzf_history_with() {
   # echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
-  cat "$f" | _fzf --header="HISTORY..." --tac --no-sort --tiebreak=end,length "$CUSTOM_HISTORY_FILE" | sed -E 's/###.*//g'
+  cat "$CUSTOM_HISTORY_FILE" | _fzf --header="HISTORY..." --tac --no-sort --tiebreak=end,length | sed -E 's/###.*//g'
 }
 
 function qfzf_history_light_with() {
-  local f="$(mktemp)"
-  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE > "$f"
-  cat "$f" | _fzf --header="HISTORY($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length | sed -E 's/###.*//g'
-  rm "$f"
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | _fzf --header="HISTORY($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length | sed -E 's/###.*//g'
+}
+
+function qfzf_history_light_local_with() {
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | grep "pwd='$(pwd)'"| _fzf --header="HISTORY $PWD ($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length | sed -E 's/###.*//g'
 }
 
 function qfzf_chrome_history_with() {
