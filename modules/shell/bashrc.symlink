@@ -128,7 +128,7 @@ _append_history () {
   fi
   # strip useless entry number from the beginning
   LAST_CMD_TRIMMED="$(echo "$LAST_CMD" | sed -E 's#[0-9]+ (.*)#\1#')"
-  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid branch: $(_branch); cd $(pwd); $LAST_CMD_TRIMMED;" >> $CUSTOM_HISTORY_FILE
+  echo "$LAST_CMD_TRIMMED ### pwd='$(pwd)' date='$(qdate-time-nospace)' ws='$xfceworkspaceid' br='$(_branch)' ss='$TERMINALSESSIONID'" >> $CUSTOM_HISTORY_FILE
 }
 
 # Overwrite above settings.

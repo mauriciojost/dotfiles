@@ -8,6 +8,7 @@ import scala.util._
 object Record {
   val p1 = DateTimeFormatter.ofPattern("E d MMM HH:mm:ss VV yyyy")
   val p2 = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+  val p3output = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss")
 
   def sanitize(s: String): String = s.trim
   def dateParse(d: String): ZonedDateTime = {
@@ -55,7 +56,7 @@ object Record {
       pwd = cd
     )
   }
-  def formatDate(zdt: ZonedDateTime): String = zdt.toString
+  def formatDate(zdt: ZonedDateTime): String = p3output.format(zdt)
 }
 
 case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], session: Option[String], ws: Option[String], branch: Option[String], commands: List[String], pwd: Option[String]) {
@@ -66,7 +67,7 @@ case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], sessi
   def pwdStr: String = pwd.mkString
   def branchStr: String = branch.mkString
   def sessionStr: String = session.map(normalize).mkString
-  def csv: String = s"${commands.mkString("; ")} ### ##pwd='$pwdStr' ##date='$dateStr' ##ws='$wsStr' ##br='$branchStr' ##ss='$sessionStr'"
+  def csv: String = s"${commands.mkString("; ")} ### pwd='$pwdStr' date='$dateStr' ws='$wsStr' br='$branchStr' ss='$sessionStr'"
 }
 
 @main

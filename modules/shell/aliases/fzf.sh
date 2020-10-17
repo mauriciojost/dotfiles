@@ -1,5 +1,5 @@
 # 'typical dirs' are considered $PWD, $TOPICS and $DOTFILES/docs
-export _HISTORY_MAX_LINES_LIGHT=10000
+export _HISTORY_MAX_LINES_LIGHT=80000
 export _FILE_CONTENT_MAX_FZF=300
 function _typical_dirs() {
   local pref="$1"
@@ -26,15 +26,15 @@ function qfzf_vim_with() {
 function qfzf_history_with() {
   local f="$(mktemp)"
   # echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
-  tac $CUSTOM_HISTORY_FILE | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g' | xargs
+  tac $CUSTOM_HISTORY_FILE > "$f"
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right
   rm "$f"
 }
 
 function qfzf_history_light_with() {
   local f="$(mktemp)"
-  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | tac - | sed "s#$(pwd)#.#g" | sed "s#cd .; ##g" | column -s ';' > "$f"
-  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right | sed 's/^[^;]*;//g' | xargs
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | tac - > "$f"
+  cat "$f" | fzf --no-sort --tiebreak=end,length --keep-right
   rm "$f"
 }
 
