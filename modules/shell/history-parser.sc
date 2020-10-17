@@ -41,7 +41,7 @@ object Record {
   def from(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Try[Record] = validate{
     val cmd = commands.toList.flatMap(_.split(';').toList).map(_.trim)
     val (cd, otherCmds) = cmd match {
-      case cdCmd :: otherCmds if cdCmd.startsWith("cd ") => (Some(cdCmd.replace("cd ", "")), otherCmds)
+      case cdCmd :: otherCmds if cdCmd.startsWith("cd ") => (Some(cdCmd.replace("cd ", "").trim), otherCmds)
       case otherCmds => (None, otherCmds)
     }
     Record(
@@ -66,11 +66,7 @@ case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], sessi
   def pwdStr: String = pwd.mkString
   def branchStr: String = branch.mkString
   def sessionStr: String = session.map(normalize).mkString
-  def csv: String = {
-    s"${commands.mkString("; ")} ### pwd='$pwdStr' date='$dateStr' ws='$wsStr' branch='$branchStr' session='$sessionStr'"
-  }
-
-  override def toString: String = s"pattern=$pattern line='$line' date='$date' session='$session' ws='$ws' branch='$branch' commands='$commands'"
+  def csv: String = s"${commands.mkString("; ")} ### ##pwd='$pwdStr' ##date='$dateStr' ##ws='$wsStr' ##br='$branchStr' ##ss='$sessionStr'"
 }
 
 @main
@@ -111,5 +107,9 @@ def main(f: String) = {
   val successes = list.collect {
     case Success(s) => s
   }
+  val useful = successes
+    .filterNot(_.commands == List("ls"))
+
+  useful.foreach(r => println(r.csv))
 }
 
