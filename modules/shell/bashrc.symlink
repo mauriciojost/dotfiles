@@ -162,9 +162,6 @@ else
   echo "Dev shell essentials skipped"
 fi
 
-# Allow reverse-i-search (ctrl-r) and i-search (ctrl+s)
-stty -ixon
-
 # use .localrc for SUPER SECRET CRAP that you don't # want in your public, versioned repo.
 echo "Running .localrc ..."
 if [[ -a ~/.localrc ]]
@@ -172,14 +169,8 @@ then
   source ~/.localrc
 fi
 
-
 _qset_bindings set
 
-if [ "$(qterminal-which)" == "guake" ]
-then
-  echo "Dumping guake settings (to load qguake-load)"
-  qguake-dump
-fi
 
 # Welcome message
 date
