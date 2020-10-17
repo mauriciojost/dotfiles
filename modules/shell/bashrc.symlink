@@ -85,35 +85,6 @@ xterm*|rxvt*)
     ;;
 esac
 
-TERMINALSESSIONID=`echo $RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM | md5sum | cut -c 1-10`
-
-CUSTOM_HISTORY_FILENAME=.history.log
-CUSTOM_HISTORY_FILE=$HOME/$CUSTOM_HISTORY_FILENAME
-
-_append_history () {
-  local LAST_CMD=$(history 1)
-
-  if xhost >& /dev/null ; then
-    xfceworkspaceid=`wmctrl -d | grep '*' | sed 's/.* //g'`
-  else 
-    xfceworkspaceid="noworkspace"
-  fi
-  # strip useless entry number from the beginning
-  LAST_CMD_TRIMMED="$(echo "$LAST_CMD" | sed -E 's#[0-9]+ (.*)#\1#')"
-  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid branch: $(_branch); cd $(pwd); $LAST_CMD_TRIMMED;" >> $CUSTOM_HISTORY_FILE
-}
-
-# Overwrite above settings.
-export HISTCONTROL=ignoredups:ignorespace
-export HISTSIZE=100000
-# export HISTTIMEFORMAT="%D %T "
-# export HISTIGNORE="&:ls:exit"
-
-# Add command to the history file as soon as it is typed
-PROMPT_COMMAND="_append_history; history -a;$PROMPT_COMMAND"
-
-# append to the history file, don't overwrite it
-shopt -s histappend
 
 # PATH configuration
 
@@ -141,6 +112,37 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+TERMINALSESSIONID=`echo $RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM-$RANDOM | md5sum | cut -c 1-10`
+
+CUSTOM_HISTORY_FILENAME=.history.log
+CUSTOM_HISTORY_FILE=$HOME/$CUSTOM_HISTORY_FILENAME
+
+_append_history () {
+  local LAST_CMD=$(history 1)
+
+  if xhost >& /dev/null ; then
+    xfceworkspaceid="$(qworkspace-getname)"
+  else 
+    xfceworkspaceid="noworkspace"
+  fi
+  # strip useless entry number from the beginning
+  LAST_CMD_TRIMMED="$(echo "$LAST_CMD" | sed -E 's#[0-9]+ (.*)#\1#')"
+  echo "echo $(date) $TERMINALSESSIONID - ws: $xfceworkspaceid branch: $(_branch); cd $(pwd); $LAST_CMD_TRIMMED;" >> $CUSTOM_HISTORY_FILE
+}
+
+# Overwrite above settings.
+export HISTCONTROL=ignoredups:ignorespace
+export HISTSIZE=100000
+# export HISTTIMEFORMAT="%D %T "
+# export HISTIGNORE="&:ls:exit"
+
+# Add command to the history file as soon as it is typed
+PROMPT_COMMAND="_append_history; history -a;$PROMPT_COMMAND"
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
 
 # Load nix
 [ -f ~/.nix-profile/etc/profile.d/nix.sh ] && source ~/.nix-profile/etc/profile.d/nix.sh
