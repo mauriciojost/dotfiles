@@ -6,9 +6,13 @@ function qworkspace-list() {
   done < <(xfconf-query -c xfwm4 -p /general/workspace_names | tail -n +3)
 }
 
+function qworkspace-getidx() {
+  wmctrl -d | grep '*' | cut -d " " -f1
+>>>>>>> 3420884... Workspaces stuff
+
 function qworkspace-getname() {
   # current workspace index
-  curnt_ws_idx=$(wmctrl -d | grep '*' | cut -d " " -f1)
+  curnt_ws_idx="$(qworkspace-getidx)"
   # Get the names of all the workspaces
   ws_names=()
   while read name; do
