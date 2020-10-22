@@ -9,7 +9,7 @@ set runtimepath+=~/.dotfiles/modules/vim/mdcalc.vim/
 call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sleuth'
-" Plug 'tpope/vim-markdown'
+Plug 'godlygeek/tabular' " required by plasticboy/vim-markdown
 Plug 'plasticboy/vim-markdown'
 Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
