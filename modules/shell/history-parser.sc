@@ -4,6 +4,7 @@ import scala.io.Source
 import java.time._
 import java.time.format._
 import scala.util._
+import java.io._
 
 object Record {
   val p1 = DateTimeFormatter.ofPattern("E d MMM HH:mm:ss VV yyyy")
@@ -15,7 +16,8 @@ object Record {
     val t = d.trim.replace("CEST", "CET")
     val r1 = Try(ZonedDateTime.parse(t, p1)).toOption
     val r2 = Try(LocalDateTime.parse(t, p2).atZone(ZoneId.of("CET"))).toOption
-    r1.orElse(r2).getOrElse(throw new IllegalArgumentException(s"Cannot parse date: '$t'"))
+    val r3 = Try(LocalDateTime.parse(t, p3output).atZone(ZoneId.of("CET"))).toOption
+    r1.orElse(r2).orElse(r3).getOrElse(throw new IllegalArgumentException(s"Cannot parse date: '$t'"))
   }
 
   def validate(r: Record): Try[Record] = Try {
@@ -39,10 +41,10 @@ object Record {
     r
   }
 
-  def from(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Try[Record] = validate{
+  def from(pattern: Int, or: String, date: Option[String], session: Option[String], ws: Option[String], branch: Option[String], commands: Option[String]): Try[Record] = Try{
     val cmd = commands.toList.flatMap(_.split(';').toList).map(_.trim)
     val (cd, otherCmds) = cmd match {
-      case cdCmd :: otherCmds if cdCmd.startsWith("cd ") => (Some(cdCmd.replace("cd ", "").trim), otherCmds)
+      case cdCmd :: otherCmds if (pattern != 10) && cdCmd.startsWith("cd ") => (Some(cdCmd.replace("cd ", "").trim), otherCmds)
       case otherCmds => (None, otherCmds)
     }
     Record(
@@ -55,7 +57,7 @@ object Record {
       commands = otherCmds.filterNot(_.isEmpty).map(_.trim),
       pwd = cd
     )
-  }
+  }.flatMap(validate)
   def formatDate(zdt: ZonedDateTime): String = p3output.format(zdt)
 }
 
@@ -71,7 +73,7 @@ case class Record(pattern: Int, line: String, date: Option[ZonedDateTime], sessi
 }
 
 @main
-def main(f: String) = {
+def main(iFile: String, oFile: String) = {
   val echoDateSessionDashWorspaceBranchCommands = "echo (\\w{3} \\d+ \\w+ [0-9:]+ \\w+ \\d{4}) (\\w+) - ws:(.*?) branch:(.*?);(.*)".r
   val echoDateSessionDashWorspaceCommands = "echo (\\w{3} \\d+ \\w+ [0-9:]+ \\w+ \\d{4}) (\\w+) - ws:(.*?);(.*)".r
   val echoDate2SessionDashWorspaceBranchCommands = "echo (\\w{10}\\s+[0-9:]+) (\\w+)\\s+-\\s+ws:\\s+(.*?)\\s+branch:(.*?);(.*)".r
@@ -81,7 +83,8 @@ def main(f: String) = {
   val echoSessionArrowCommands = "([^ ]+)\\s+->\\s+(.*)".r
   val commandsDate = "(.*)\\s+#\\s+(\\d{4}-\\d{2}-\\d{2} [0-9:]+.*)".r
   val cdCommandsDate = ">\\s+(cd.*\\s+#.*)".r
-  val records = Source.fromFile(f).getLines.filterNot(_.isEmpty).map(s => s.replaceAll("  ", " ")).map { original =>
+  val target = "(.*?) ### pwd='(.*?)' date='(.*?)' ws='(.*?)' br='(.*?)' ss='(.*?)'".r
+  val records = Source.fromFile(iFile).getLines.filterNot(_.isEmpty).map(s => s.replaceAll("  ", " ")).map { original =>
     original match {
       case echoDateSessionDashWorspaceBranchCommands(date, session, ws, branch, cmd) => Record.from(1, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = Some(branch), commands = Some(cmd))
       case echoDateSessionDashWorspaceCommands(date, session, ws, cmd) => Record.from(2, or = original, date = Some(date), session = Some(session), ws = Some(ws), branch = None, commands = Some(cmd))
@@ -92,6 +95,7 @@ def main(f: String) = {
       case echoSessionArrowCommands(session, cmd) => Record.from(6, or = original, date = None, session = Some(session), ws = None, branch = None, commands = Some(cmd))
       case commandsDate(cmd, date) => Record.from(7, or = original, date = Some(date), session = None, ws = None, branch = None, commands = Some(cmd))
       case cdCommandsDate(cmd) => Record.from(8, or = original, date = None, session = None, ws = None, branch = None, commands = Some(cmd))
+      case target(cmd, pwd, date, ws, br, sess) => Record.from(10, or = original, date = Some(date), session = Some(sess), ws = Some(ws), branch = Some(br), commands = Some(cmd))
       case x => Record.from(9, or = original, date = None, session = None, ws = None, branch = None, commands = None)
     }
   }
@@ -111,6 +115,8 @@ def main(f: String) = {
   val useful = successes
     .filterNot(_.commands == List("ls"))
 
-  useful.foreach(r => println(r.csv))
+  val pw = new PrintWriter(new File(oFile))
+  useful.foreach(r => pw.write(r.csv))
+  pw.close
 }
 
