@@ -129,13 +129,14 @@ function qgit-remove-submodule-x-path-y() {
 function qgit-search-commit-such-that() {
   local branch="$1"
   local expr="$2"
+  local max_commits="${3:-50}"
   # qgit-search-commit-such-that 'master' '[ "$(cat kafka-consumer/version.txt)" == "1.1.70" ] && echo true '
-  for commit in $(git rev-list "$branch")
+  for commit in $(git rev-list "$branch" | head -$max_commits)
   do
 	  git checkout "$commit" &> /dev/null
 	  if [ "$(eval "$expr")" == "true" ]
 	  then
-	    echo "$commit"
+	    git show -s --format='%H %s' "$commit"
 	  fi
   done
 }
