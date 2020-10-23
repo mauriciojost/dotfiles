@@ -119,6 +119,7 @@ function _qset_bindings() {
    # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
   _qbind "change Folder (cd ./xx)" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
   _qbind "open by fileName" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "open by filename with Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
   _qbind "open by conTent" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
   _qbind "copy snYppets" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
   _qbind "command line History" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
