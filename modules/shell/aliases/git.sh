@@ -125,3 +125,17 @@ function qgit-remove-submodule-x-path-y() {
   git commit-m "Removed submodule $submodule"
   rm -rf .git/modules/$path_to_submodule
 }
+
+function qgit-search-commit-such-that() {
+  local branch="$1"
+  local expr="$2"
+  # qgit-search-commit-such-that 'master' '[ "$(cat kafka-consumer/version.txt)" == "1.1.70" ] && echo true '
+  for commit in $(git rev-list "$branch")
+  do
+	  git checkout "$commit" &> /dev/null
+	  if [ "$(eval "$expr")" == "true" ]
+	  then
+	    echo "$commit"
+	  fi
+  done
+}
