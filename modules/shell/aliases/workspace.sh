@@ -8,7 +8,7 @@ function qworkspace-list() {
 
 function qworkspace-getidx() {
   wmctrl -d | grep '*' | cut -d " " -f1
->>>>>>> 3420884... Workspaces stuff
+}
 
 function qworkspace-getname() {
   # current workspace index
