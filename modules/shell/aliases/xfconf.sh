@@ -34,7 +34,12 @@ function qxfconf-load() {
   for c in $(qxfconf-list-channels)
   do 
     f="$DOTFILES/modules/xfconf/xfconf.$c.conf"
-    echo "Loading channel: $c ($f) ..."
-    qxfconf-load-props-for-channel-x "$c" "$f"
+    if [ -e "$f" ]
+    then
+      echo "Loading channel: $c ($f) ..."
+      qxfconf-load-props-for-channel-x "$c" "$f"
+    else
+      echo "Skipping channel: $c (no file present) ..."
+    fi
   done
 }
