@@ -15,7 +15,7 @@ function qxfconf-dump() {
   for c in $(qxfconf-list-channels)
   do 
     echo "Dumping channel: $c ..."
-    qxfconf-dump-props-for-channel-x "$c" > "$HOME/.xfconf.$c.conf"
+    qxfconf-dump-props-for-channel-x "$c" > "$DOTFILES/modules/xfconf/xfconf.$c.conf"
   done
 }
 
@@ -33,7 +33,7 @@ function qxfconf-load-props-for-channel-x() {
 function qxfconf-load() {
   for c in $(qxfconf-list-channels)
   do 
-    f=$HOME/.xfconf.$c.conf
+    f="$DOTFILES/modules/xfconf/xfconf.$c.conf"
     echo "Loading channel: $c ($f) ..."
     qxfconf-load-props-for-channel-x "$c" "$f"
   done
