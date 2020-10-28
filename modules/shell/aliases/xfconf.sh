@@ -76,12 +76,11 @@ function qxfconf-reset-properties() {
   done
 }
 
-function qxfconf-restart-read-from-xml() {
+function qxfconf-restart-read-from-xml() { # it worked to reload settings from xml
   killall xfconfd 
+  echo "Loading panel (xfce4-panel restart)..."
   xfce4-panel -r
-}
-
-function qxfconf-restart-session-read-from-xml() {
-  killall xfconfd 
+  echo "Loading the full settings (restarting session)..."
   kill -9 $(ps -ef  | grep -e "$USER.*xfce4-session$" | awk '{print $2}')
 }
+
