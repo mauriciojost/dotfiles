@@ -80,3 +80,8 @@ function qxfconf-restart-read-from-xml() {
   killall xfconfd 
   xfce4-panel -r
 }
+
+function qxfconf-restart-session-read-from-xml() {
+  killall xfconfd 
+  kill -9 $(ps -ef  | grep -e "$USER.*xfce4-session$" | awk '{print $2}')
+}
