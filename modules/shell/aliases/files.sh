@@ -34,13 +34,21 @@ function qfind-by-name () {
 }
 
 function qgrep-in-all-files() {
-  qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
-  grep --line-number -R "$1" .
+  local expr="$1"
+  qassertnotempty "$expr" "Arguments: <pattern-to-look-for>"
+  grep --line-number -R "$expr" .
+  echo "Will open files..."
+  sleep 3
+  $(which vim) "+/$expr" $(grep -R --files-with-matches "$expr") # trick to avoid opening vim alias
 }
 
 function qgrep-in-all-files-case-non-sensitive() {
-  qassertnotempty "$1" "Arguments: <pattern-to-look-for>"
-  grep --line-number -R -i "$1" .
+  local expr="$1"
+  qassertnotempty "$expr" "Arguments: <pattern-to-look-for>"
+  grep --line-number -R -i "$expr" .
+  echo "Will open files..."
+  sleep 3
+  $(which vim) "+/$expr" $(grep -R --files-matches "$expr") # trick to avoid opening vim alias
 }
 
 # Grep with context (showing 5 lines above and 5 lines below the match).

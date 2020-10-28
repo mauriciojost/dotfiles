@@ -7,7 +7,17 @@ alias octave='octave --force-gui'
 alias grep='grep -a --color=always' # a for binary
 
 function vim() {
-  /usr/bin/vim $(echo "$@" | sed 's#:# +#g') # allows to open a file at a given line
+  local args=""
+  for arg in $@
+  do
+    if [[ "$arg" == *:* ]]; then # contains file position (in format /path/to/file.c:33)
+      args="$args $(echo "$arg" | sed 's#:$##g' | awk -F: '{print "+"$2" "$1}')"
+    else
+      args="$args $arg"
+    fi
+  done
+  echo "Generated args: $args"
+  /usr/bin/vim $args
 }
 
 alias x=exit
@@ -87,14 +97,14 @@ function qopen-by-content-cmd-X-dir-Y-what-Z() {
 
 # Edit an alias that matches a given pattern
 function qalias-edit() {
-  qopen-by-content-cmd-X-dir-Y-what-Z vim "$DOTFILES/modules/shell/aliases/" $@
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/modules/shell/aliases/" $@
 }
 
 alias qalias=qalias-edit
 
 # Show our documents
 function qdocs-edit() {
-  qopen-by-content-cmd-X-dir-Y-what-Z vim "$DOTFILES/docs/" $@
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/docs/" $@
 }
 
 alias qdocs=qdocs-edit
