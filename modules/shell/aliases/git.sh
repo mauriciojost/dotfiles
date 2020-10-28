@@ -59,7 +59,18 @@ alias qgit-tree='git log --oneline --decorate --all --graph'
 
 # Useful to rewrite a repository to delete passwords and sensitive information
 
-alias qgit-bfg="java -jar $HOME/bin/zips/jars/bfg.jar"
+function qgit-remove-passowrds-bfg-from-repoX-in-file-Y() {
+  local repo_mirrored_dir="$1"
+  local pwd_file="$2"
+  cd $repo_mirrored_dir
+  echo "Create a clone repo with 'git clone --mirror xxxx' before proceeding"
+  sleep 2
+  java -jar $HOME/bin/zips/jars/bfg.jar -rt $pwd_file .
+  git gc --prune=now --aggressive
+  echo "Now take a look at the repo..."
+  sleep 2
+  echo "Then, if satisfied, do: 'git push'"
+}
 
 alias qgit-tag-push-master='git push origin master --tags'
 
