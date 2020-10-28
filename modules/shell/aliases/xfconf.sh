@@ -68,10 +68,15 @@ function qxfconf-load() {
   done
 }
 
-function qxfconf-reset() {
+function qxfconf-reset-properties() {
   local channels="${1:-$(qxfconf-list-channels)}"
   for c in $channels
   do 
     qxfconf-reset-props-for-channel-x "$c"
   done
+}
+
+function qxfconf-restart-read-from-xml() {
+  killall xfconfd 
+  xfce4-panel -r
 }
