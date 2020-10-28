@@ -32,3 +32,9 @@ module-shell/localrc.symlink
 /modules/xfce/xfce4.configlink/xfconf/xfce-perchannel-xml/pointers.xml
 /modules/xfconf/xfconf.xfce4-desktop.conf
 /modules/xfconf/xfconf.xfce4-session.conf
+/modules/xfconf/xfconf.parole.conf
+/modules/xfconf/xfconf.displays.conf
+/modules/xfconf/xfconf.xfce4-notifyd.conf
+/modules/xfconf/xfconf.xfce4-settings-editor.conf
+/modules/xfconf/xfconf.xfce4-settings-manager.conf
+/modules/xfconf/xfconf.xfprint.conf
