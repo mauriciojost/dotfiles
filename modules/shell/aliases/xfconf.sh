@@ -81,6 +81,20 @@ function qxfconf-restart-read-from-xml() { # it worked to reload settings from x
   echo "Loading panel (xfce4-panel restart)..."
   xfce4-panel -r
   echo "Loading the full settings (restarting session)..."
-  kill -9 $(ps -ef  | grep -e "$USER.*xfce4-session$" | awk '{print $2}')
+  xfce4-panel -r
+  echo "If no luck..."
+  echo kill -9 $(ps -ef  | grep -e "$USER.*xfce4-session$" | awk '{print $2}')
+
+}
+
+function qxfconf-restart-albetto() {
+  echo "Killing processes..."
+  kill -9 $(pidof  xfconfd)
+  kill -9 $(pidof  xfsettingsd)
+}
+
+function qxfconf-restart-albetto-2() {
+  xfsettingsd &
+  /usr/lib/xfce4/xfconf/xfconfd &
 }
 
