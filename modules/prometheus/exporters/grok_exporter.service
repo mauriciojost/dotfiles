@@ -1,0 +1,13 @@
+[Unit]
+Description=Prometheus Grok Exporter
+After=network-online.target
+
+[Service]
+User=prometheus
+Restart=always
+RestartSec=30
+ExecStart=/bin/bash /opt/grok_exporter/launch 30m
+
+[Install]
+WantedBy=multi-user.target
+

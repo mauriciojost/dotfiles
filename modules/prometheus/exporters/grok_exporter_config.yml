@@ -1,0 +1,28 @@
+root@vps451121:/etc/systemd/system # cat /opt/grok_exporter/config.yml
+global:
+    config_version: 2
+input:
+    type: file
+    path: /home/mjost/opt/main4ino-server-wrapper-prd/devices-logs/*2020-11-02*.log
+    readall: true
+    fail_on_missing_logfile: false
+grok:
+    patterns_dir: ./patterns
+metrics:
+    - type: counter
+      name: grok_main4ino_endloops
+      help: The endloops
+      match: '%{NUMBER:epoch} %{NOTSPACE:stuff} %{NOTSPACE:loglevel} #ENDLOOP'
+      labels:
+          event: 'endloop'
+          device: '{{gsub .logfile ".*/devices-logs/([^.]*).*" "\\1" }}'
+    - type: gauge
+      name: grok_main4ino_fails
+      help: failures reported by devices
+      match: '%{NUMBER:epoch} %{NOTSPACE:stuff} %{NOTSPACE:loglevel} fails   %{NUMBER:fails}'
+      value: '{{.fails}}'
+      labels:
+          event: 'fails'
+          device: '{{gsub .logfile ".*/devices-logs/([^.]*).*" "\\1" }}'
+server:
+    port: 9144

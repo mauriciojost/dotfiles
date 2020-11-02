@@ -1,0 +1,13 @@
+process_names:
+
+  # cmdline is a list of regexps applied to argv.
+  # Each must match, and any captures are added to the .Matches map.
+  - name: "{{.Comm}}:{{.Matches.Class}}"
+    exe:
+    - java
+    cmdline:
+    - '.+jar\s+(?P<Class>\S+)\s*.*'
+  - name: "{{.Comm}}"
+    cmdline:
+    - '.+'
+
