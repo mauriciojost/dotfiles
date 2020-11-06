@@ -42,6 +42,11 @@ function qtopic-new-weekly-name() {
   echo $TOPICS/`date +"%Y-w%V"`."$topic"
 }
 
+function qtopic-new-monthly-name() {
+  local topic="$1"
+  echo $TOPICS/`date +"%Y-m%m"`."$topic"
+}
+
 function qtopic-new-daily-file-x(){
   local topic="$1"
   local f=`qtopic-new-daily-name $topic`.md
@@ -86,6 +91,21 @@ function qtopic-new-weekly-file-x-with-template-y(){
   echo "File: $f"
 }
 
+function qtopic-new-monthly-file-x-with-template-y(){
+  local topic="$1"
+  local template="$2"
+  local f=`qtopic-new-monthly-name $topic`.md
+  if [ ! -e "$f" ]
+  then
+    echo "Using template: $template"
+    cp "$template" "$f"
+  else
+    echo "Ignoring template: $template (file already exists)"
+  fi
+  vim "$f"
+  echo "File: $f"
+}
+
 alias qtopic-new='qtopic-new-daily-file-x'
 
 function qtopic-daily(){
@@ -98,6 +118,10 @@ function qtopic-weekly(){
 
 function qtopic-flat(){
   qtopic-new-weekly-file-x-with-template-y "flat" "$DOTFILES/modules/topics/templates/flat.md"
+}
+
+function qtopic-monthly(){
+  qtopic-new-monthly-file-x-with-template-y "monthly" "$DOTFILES/modules/topics/templates/monthly.md"
 }
 
 function qtopic-design-session(){
@@ -115,6 +139,7 @@ function qtopic-investigation(){
 alias qnote=qtopic-new
 alias qdaily=qtopic-daily
 alias qweekly=qtopic-weekly
+alias qmonthly=qtopic-monthly
 
 function qtopic-new-dir-x(){
   local topic="$1"
