@@ -229,24 +229,31 @@ syntax enable
 :highlight WHITEFG ctermbg=black ctermfg=white
 :highlight WHITEFGBG ctermbg=white ctermfg=gray
 :highlight BLACKFG ctermfg=black
-" judgments
-:let jpositive = matchadd("GREENFG","(+)")
-:let jnegative = matchadd("REDFG", "(-)")
-:let jdoubtful = matchadd("YELLOWFG", "(?)")
-" tasks
-:let mdone = matchadd("BLACKFG","\\[/\\].*") " [/]  -> done
-:let mdone2 = matchadd("BLACKFG","\\[x\\].*") " [x]  -> done
-:let mprogress = matchadd("WHITEFG","\\[p\\].*") " [p]  -> in progress
-:let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
-:let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
-:let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
-:let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown, unclear
-:let mnoteby = matchadd("YELLOWFG", "COMMENT .*: .*") " COMMENT MICHAEL: This is a comment done by Michael...
-:let mnoteby2 = matchadd("YELLOWFG", "BY .*: .*") " BY MICHAEL: This is a comment done by Michael...
-" misc
-:let mattention = matchadd("REDFG", "!!!")
-:let mconsequence = matchadd("GREENFG","==>")
-:let mmarker = matchadd("WHITEFGBG","%%%") " %%% -> marker (talk about it during a daily for instance)
+
+augroup asteriskbold
+  au!
+  au BufNewFile,BufRead *.md let jpositive = matchadd("GREENFG","(+)")
+
+  " judgments
+  au BufNewFile,BufRead *.md let jpositive = matchadd("GREENFG","(+)")
+  au BufNewFile,BufRead *.md let jnegative = matchadd("REDFG", "(-)")
+  au BufNewFile,BufRead *.md let jdoubtful = matchadd("YELLOWFG", "(?)")
+  " tasks
+  au BufNewFile,BufRead *.md let mdone = matchadd("BLACKFG","\\[/\\].*") " [/]  -> done
+  au BufNewFile,BufRead *.md let mdone2 = matchadd("BLACKFG","\\[x\\].*") " [x]  -> done
+  au BufNewFile,BufRead *.md let mprogress = matchadd("WHITEFG","\\[p\\].*") " [p]  -> in progress
+  au BufNewFile,BufRead *.md let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
+  au BufNewFile,BufRead *.md let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
+  au BufNewFile,BufRead *.md let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
+  au BufNewFile,BufRead *.md let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown, unclear
+  au BufNewFile,BufRead *.md let mnoteby = matchadd("YELLOWFG", "COMMENT .*: .*") " COMMENT MICHAEL: This is a comment done by Michael...
+  au BufNewFile,BufRead *.md let mnoteby2 = matchadd("YELLOWFG", "BY .*: .*") " BY MICHAEL: This is a comment done by Michael...
+  " misc
+  au BufNewFile,BufRead *.md let mattention = matchadd("REDFG", "!!!")
+  au BufNewFile,BufRead *.md let mconsequence = matchadd("GREENFG","==>")
+  au BufNewFile,BufRead *.md let mmarker = matchadd("WHITEFGBG","%%%") " %%% -> marker (talk about it during a daily for instance)
+augroup end
+
 
 
 
