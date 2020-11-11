@@ -5,6 +5,7 @@ let maplocalleader = ","
 " https://blog.semanticart.com/2017/01/05/lets-write-a-basic-vim-plugin/
 let sql_runner_cmd = 'bash -i -c "qmarkdown-sql-calculate '
 set runtimepath+=~/.dotfiles/modules/vim/mdcalc.vim/
+set mouse-=a " disable annoying mouse selection
 
 call plug#begin()
 Plug 'tpope/vim-fugitive'
@@ -246,5 +247,6 @@ syntax enable
 :let mattention = matchadd("REDFG", "!!!")
 :let mconsequence = matchadd("GREENFG","==>")
 :let mmarker = matchadd("WHITEFGBG","%%%") " %%% -> marker (talk about it during a daily for instance)
+
 
 
