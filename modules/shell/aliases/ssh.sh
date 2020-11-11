@@ -6,3 +6,7 @@ function qssh-tunnel-dst-hostX-portY-locportZ() {
   local source_port="$3"
   ssh -N -L "$source_port":127.0.0.1:"$dest_port" "$user_server"
 }
+
+function qssh-agent-start-daemon() {
+  gnome-keyring-daemon --start --components=pkcs11
+}
