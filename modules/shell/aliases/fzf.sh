@@ -33,11 +33,11 @@ function qfzf_history_with() {
 }
 
 function qfzf_history_light_with() {
-  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | awk -F' ### ' '{print $1}' | uniq | _fzf --exact --header="HISTORY($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | awk -F' ### ' '{print $1}' | tac | awk '!($0 in S) {print; S[$0]}' | tac | _fzf --exact --header="HISTORY($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length
 }
 
 function qfzf_history_light_local_with() {
-  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | grep "pwd='$(pwd)'"| awk -F' ### ' '{print $1}' | uniq | _fzf --exact --header="HISTORY $PWD ($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length
+  tail -$_HISTORY_MAX_LINES_LIGHT $CUSTOM_HISTORY_FILE | grep "pwd='$(pwd)'"| awk -F' ### ' '{print $1}' | tac | awk '!($0 in S) {print; S[$0]}' | tac | _fzf --exact --header="HISTORY $PWD ($_HISTORY_MAX_LINES_LIGHT)..." --tac --no-sort --tiebreak=end,length
 }
 
 function qfzf_chrome_history_with() {
