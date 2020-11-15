@@ -96,6 +96,10 @@ function qtopic-weekly(){
   qtopic-new-weekly-file-x-with-template-y "weekly" "$DOTFILES/modules/topics/templates/weekly.md"
 }
 
+function qtopic-flat(){
+  qtopic-new-weekly-file-x-with-template-y "flat" "$DOTFILES/modules/topics/templates/flat.md"
+}
+
 function qtopic-design-session(){
   qtopic-new-daily-file-x-with-template-y "dessign-session" "$DOTFILES/modules/topics/templates/design-session.md"
 }
