@@ -31,7 +31,7 @@ filetype indent on
 set showmatch
 set matchtime=0
 set shortmess=atI
-set ruler
+set ruler " not working (to see current column)
 set showcmd
 
 set sidescroll=1
@@ -210,6 +210,7 @@ command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %
 command MdKeepPublish w | ! bash -i -c "qtopic-push-to-keep-file-x %"
 command MdKeepUpdate w | ! bash -i -c "qtopic-update-to-keep-file-x %"
 command MdCalculate w | ! bash -i -c "qmarkdown-sql-calculate %"
+command MdDisable let g:vim_markdown_folding_disabled = 1
 command QGitToggle GitGutterToggle
 command QCsvPretty CSVTabularize
 

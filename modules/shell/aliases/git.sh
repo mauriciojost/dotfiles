@@ -29,6 +29,10 @@ alias gs='git status -u'
 
 alias gl=qgit-log-extended
 
+function qgit-history-for-file-x() {
+  gitk --follow "$1"
+}
+
 alias qgit-stage="git add -i"
 
 alias qgit-unstage="git reset HEAD -- "
