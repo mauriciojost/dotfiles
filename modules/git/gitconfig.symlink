@@ -69,6 +69,9 @@
 [credential]
 	helper = cache --timeout=360000
 
+[user]
+	email = mauriciojost@gmail.com
+
 [includeIf "gitdir:~/workspace/"]
 	path = ~/.work.gitconfig
 
@@ -78,6 +81,6 @@
 [includeIf "gitdir:~/.dotfiles/"]
 	path = ~/.perso.gitconfig
 
-
 [pull]
 	ff = only
+
