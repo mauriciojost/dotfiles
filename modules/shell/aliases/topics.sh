@@ -17,12 +17,15 @@ function qtopic-backup() {
 
 function qtopic-open-with-filename-x() {
   local fn="$1"
+  local match=""
   if [ -z "$fn" ]
   then
-    vim "$(find $TOPICS -type f | sort -r | fzf)"
+    match="$(find $TOPICS -type f -printf '%T@^%p\n' | sort -n -r | awk -F^ '{print $2}' | fzf --no-sort)"
   else
-    local files=`find "$TOPICS" | grep $fn`
-    echo "Files matched: $files"
+    match=`find "$TOPICS" | grep $fn`
+  fi
+  if [ -n "$match" ]
+  then
     vim $files
   fi
 }

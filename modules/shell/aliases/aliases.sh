@@ -131,6 +131,7 @@ function _qset_bindings() {
   _qbind "open by fileName" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
   _qbind "open by filename with Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
   _qbind "open by conTent" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
+  _qbind "open tOpics" '"\C-o"' '"qtopic\n"' "$mode"
   _qbind "copy snYppets" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
   _qbind "command line History" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
   _qbind "command line History (light)" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"

@@ -163,6 +163,8 @@ highlight link GitGutterChangeDeleteLine GitGutterChangeLineDefault
 ":map <C-g> :GitGutterSignsToggle<CR>
 ":map <C-g> :GitGutterLineHighlightsToggle<CR>
 
+" Markdown configuration
+let g:vim_markdown_folding_disabled = 1
 
 set autoindent
 set cindent
@@ -210,6 +212,7 @@ command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %
 command MdKeepPublish w | ! bash -i -c "qtopic-push-to-keep-file-x %"
 command MdKeepUpdate w | ! bash -i -c "qtopic-update-to-keep-file-x %"
 command MdCalculate w | ! bash -i -c "qmarkdown-sql-calculate %"
+command MdEnable let g:vim_markdown_folding_disabled = 0
 command MdDisable let g:vim_markdown_folding_disabled = 1
 command QGitToggle GitGutterToggle
 command QCsvPretty CSVTabularize
