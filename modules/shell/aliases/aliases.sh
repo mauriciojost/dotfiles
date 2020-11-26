@@ -135,7 +135,7 @@ function _qset_bindings() {
   _qbind "copy snYppets" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
   _qbind "command line History" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
   _qbind "command line History (light)" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
-  _qbind "command line History (light) (local)" '"\C-i"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
+  _qbind "command line history (light) (local)" '"\C-b"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
   _qbind "history Web" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
 }
