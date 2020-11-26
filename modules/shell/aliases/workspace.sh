@@ -112,6 +112,12 @@ function qworkspace-list-csv() {
   wmctrl -d | awk -F' ' '{i=$1; $1=$2=$3=$4=$5=$6=$7=$8=$9=""; print i "^" $0}' | sed -E 's/\^ +/\^/g' | sort -n
 }
 
+function qworkspace-window-rename() {
+  local old_window_expr="$1"
+  local new_window_name="$2"
+  wmctrl -r "$old_window_expr" -N "$new_window_name"
+}
+
 function qworkspace-list-windows() {
   local d="$(mktemp -d)"
   cd "$d"
