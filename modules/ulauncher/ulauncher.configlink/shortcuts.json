@@ -38,5 +38,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1597694356.9429445
+    },
+    "2c7c2cfa-d5d2-476f-8846-ae051106e4c8": {
+        "id": "2c7c2cfa-d5d2-476f-8846-ae051106e4c8",
+        "name": "Trash window",
+        "keyword": "ta",
+        "cmd": "bash -i -c 'qworkspace-take-window '\"$@\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1606424360.4840248
     }
 }

@@ -54,6 +54,22 @@ function qworkspace-rename() {
     eval $xfconf_cmd
 }
 
+function qworkspace-take-window() {
+  local window_exp="$1"
+  if [ ! -z "$window_exp" ]
+  then
+    wmctrl -r "$window_exp" -t 0
+  fi
+}
+
+function qworkspace-take-window-id() {
+  local window_id="$1"
+  if [ ! -z "$window_id" ]
+  then
+    wmctrl -i -r "$window_id" -t 0
+  fi
+}
+
 function qworkspace-bring-window() {
   local window_exp="$1"
   if [ ! -z "$window_exp" ]
@@ -116,6 +132,17 @@ function br() {
     qworkspace-bring-window "$name"
   fi
 }
+
+function ta() {
+  local name="$1"
+  if [ "$name" == "" ]
+  then
+    qworkspace-list-windows | fzf | qworkspace-take-window-id "$(awk -F^ '{print $3}')"
+  else
+    qworkspace-take-window "$name"
+  fi
+}
+
 
 function go() {
   local name="$1"
