@@ -11,7 +11,9 @@ Restart=on-failure
 #Prometheus on different path user
 ExecStart=/opt/prometheus/prometheus \
   --config.file=/opt/prometheus/prometheus.yml \
-  --storage.tsdb.path=/opt/prometheus/data
+  --storage.tsdb.path=/opt/prometheus/data \
+  --web.listen-address=:19090 \
+  --storage.tsdb.retention.time=2d
 
 [Install]
 WantedBy=multi-user.target

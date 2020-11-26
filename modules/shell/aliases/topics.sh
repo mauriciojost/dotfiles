@@ -26,7 +26,7 @@ function qtopic-open-with-filename-x() {
   fi
   if [ -n "$match" ]
   then
-    vim $files
+    vim $match
   fi
 }
 
