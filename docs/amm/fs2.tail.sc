@@ -15,16 +15,15 @@ implicit val timer: Timer[IO] = IO.timer(ec)
 def tailFile(
   path: Path,
   chunkSize: Int = 1024
-): Stream[IO, Byte] = {
+): Stream[IO, String] = {
   val bytes = fs2.io.file.tail[IO](path, blocker, chunkSize)
-  //bytes.through(fs2.text.utf8Decode).through(fs2.text.lines)
-  bytes
+  bytes.through(fs2.text.utf8Decode).through(fs2.text.lines)
 }
 
-def p(i: Stream[IO, Byte]): Stream[IO, Byte] = {
-  i.evalMap{s =>
+def print(s: Stream[IO, String]): Stream[IO, String] = {
+  s.evalMap{s =>
     IO {
-      println(s.toInt)
+      println(s)
       s
     }
   }
@@ -32,9 +31,10 @@ def p(i: Stream[IO, Byte]): Stream[IO, Byte] = {
 
 
 @main
-def main(f: String) = {
-  val s = tailFile(Paths.get(f), 8)
-  s.through(p).drain.compile.toList.unsafeRunSync()
+def main(file: String) = {
+  val tail = tailFile(Paths.get(file), 8)
+  println(s"Reading $file...")
+  tail.through(print).drain.compile.toList.unsafeRunSync()
 }
 
 
