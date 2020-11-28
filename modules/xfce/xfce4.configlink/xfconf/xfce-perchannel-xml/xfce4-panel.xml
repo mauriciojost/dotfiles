@@ -76,6 +76,7 @@
         <value type="string" value="notes"/>
         <value type="string" value="ulauncher"/>
         <value type="string" value="jetbrains-toolbox"/>
+        <value type="string" value="hp-systray"/>
       </property>
       <property name="size-max" type="uint" value="16"/>
       <property name="show-frame" type="bool" value="false"/>
