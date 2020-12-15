@@ -11,6 +11,7 @@ function qtopic-last() {
 
 function qtopic-backup() {
   cd "$TOPICS" 
+  git add -A
   git commit -a -m "Backup"
   git push origin master
 }

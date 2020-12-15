@@ -13,7 +13,8 @@ ExecStart=/opt/prometheus/prometheus \
   --config.file=/opt/prometheus/prometheus.yml \
   --storage.tsdb.path=/opt/prometheus/data \
   --web.listen-address=:19090 \
-  --storage.tsdb.retention.time=2d
+  --storage.tsdb.retention.time=2d \
+  --log.level=debug
 
 [Install]
 WantedBy=multi-user.target
