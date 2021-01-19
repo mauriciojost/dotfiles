@@ -1,0 +1,20 @@
+[Unit]
+Description=Prometheus Server
+Documentation=https://prometheus.io/docs/introduction/overview/
+After=network-online.target
+
+[Service]
+#User=prometheus # as yourself
+Restart=on-failure
+
+#Change this line if you download the 
+#Prometheus on different path user
+ExecStart=%h/opt/prometheus/prometheus \
+  --config.file=%h/opt/prometheus/prometheus.yml \
+  --storage.tsdb.path=%h/opt/prometheus/data \
+  --web.listen-address=:19090 \
+  --storage.tsdb.retention.time=2d \
+  --log.level=debug
+
+[Install]
+WantedBy=multi-user.target

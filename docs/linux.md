@@ -71,23 +71,24 @@ go-mtpfs /tmp/mount
 # REGARDING USERS
 
 ```
-passwd username                                                           change the password of username
-su [userxx]                                                                    change the user to 'userxx'  (if no user specified, uses root)
-sudo                                                                             super user does
-useradd -d HOMEDIR -m -s /bin/bash LOGINNAME         create a new user (to add password/ssh you do '# passwd LOGINNAME')
-useradd -G {group-name} username               add user to group
-chmod +x +r +w file_name                                             change the attributes of a file for this user, eXecution, Readable, Writable
-chmod 777 file_name                                                     change the attributes of a file for all users
-chmod ogua=xwr file_name                                            o others, g group, u owner, a all mentioned before
+passwd username                                       change the password of username
+su [userxx]                                           change the user to 'userxx'  (if no user specified, uses root)
+sudo                                                  super user does
+useradd -d HOMEDIR -m -s /bin/bash LOGINNAME          create a new user (to add password/ssh you do '# passwd LOGINNAME')
+useradd -G {group-name} username                      create user and add it to group
+vigr                                                  modify groups
+chmod +x +r +w file_name                              change the attributes of a file for this user, eXecution, Readable, Writable
+chmod 777 file_name                                   change the attributes of a file for all users
+chmod ogua=xwr file_name                              o others, g group, u owner, a all mentioned before
 chmod WHOWHAT FILE
-chmod o-x-r-w file_name                                                nothing for others
-chmod og-x-r-w file_name                                              nothing neither for others nor for the file's group
-chown owner_name[:group_name] file_name                   change the owner of this file, the only one who can change the permissions
-killall -u username                                                         kill all the processes (including the sshd) of this user
-deluser --force username                                               delete this user
-finger                                                                          find out who's logged in 
-gpg -c file.txt                                                               encrypt file 
-gpg file.txt.gpg                                                            decrypt file
+chmod o-x-r-w file_name                               nothing for others
+chmod og-x-r-w file_name                              nothing neither for others nor for the file's group
+chown owner_name[:group_name] file_name               change the owner of this file, the only one who can change the permissions
+killall -u username                                   kill all the processes (including the sshd) of this user
+deluser --force username                              delete this user
+finger                                                find out who's logged in 
+gpg -c file.txt                                       encrypt file 
+gpg file.txt.gpg                                      decrypt file
 ```
                                   
 
