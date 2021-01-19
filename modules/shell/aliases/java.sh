@@ -38,6 +38,26 @@ function qgradle-gvm-init() {
 	source $HOME/.gvm/bin/gvm-init.sh
 }
 
+function qcertificate-get-server-port() {
+  local servername="$1"
+  local serverport="$2"
+  local extension="${3:-pem}"
+  local f=/tmp/$servername.$serverport.certfile.$extension
+  openssl s_client -showcerts -connect $servername:$serverport </dev/null 2>/dev/null|openssl x509 -outform PEM > $f
+  echo "$f"
+}
+
+function qcertificate-install-server-port() {
+  local servername="$1"
+  local serverport="$2"
+  f="$(qcertificate-get-server-port $servername $serverport crt)"
+  # From https://unix.stackexchange.com/questions/90450/adding-a-self-signed-certificate-to-the-trusted-list
+  echo "Now: "
+  echo "sudo cp $f /usr/local/share/ca-certificates/"
+  echo "sudo update-ca-certificates"
+  echo "certutil -d sql:$HOME/.pki/nssdb -A -t \"C,,\" -n \"$servername $serverport at $f\" -i $f"
+}
+
 function qjava-trust-pkix-server-port() {
   local servername="$1"
   local serverport="$2"
@@ -47,9 +67,9 @@ function qjava-trust-pkix-server-port() {
     echo "Must provide the cacerts directory (probably $(readlink -e $(which java) | sed 's#/bin/java#/jre/lib/security/cacerts#') to be created if does not exist)"
   else
     echo "Getting certificate of $servername port $port..."
-    openssl s_client -showcerts -connect $servername:$serverport </dev/null 2>/dev/null|openssl x509 -outform PEM >mycertfile.pem
+    f=$(qcertificate-get-server-port $servername $serverport)
     echo "Adding certificate to $jre_lib_security_cacerts_dir..."
     echo "Default password: changeit"
-    keytool -importcert -file mycertfile.pem -alias "${servername}_${serverport}" -keystore $jre_lib_security_cacerts_dir
+    keytool -importcert -file $f -alias "${servername}_${serverport}" -keystore $jre_lib_security_cacerts_dir
   fi
 }
