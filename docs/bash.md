@@ -101,11 +101,18 @@ done
 # Command line arguments 
 
 ```
+#!/usr/bin/env bash
+
 for opt in $@
+do
   case $opt in
     -i) input_file=$2 ; shift 2 ;;  # reading $2 grabs the *next* fragment
     -o) output_file=$2 ; shift 2 ;; # shift 2 to get past both the -o and the next
   esac
+done
+
+echo "input_file=$input_file"
+echo "output_file=$output_file"
 ```
 
 # Multi line variables
