@@ -199,5 +199,5 @@ function qtopic-pull-from-keep-file-x() {
   fi
 }
 
-alias qtopic=qtopic-open-with-filename-x
+alias qtopic=qtopic-open-with-content
 
