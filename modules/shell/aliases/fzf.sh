@@ -58,7 +58,7 @@ function qfzf_chrome_history_with() {
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
   local header="$2"
-  f="$(find $from -type f $find_args | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" | awk -F: '{print $1}')"
+  f="$(find $from -type f $find_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index | awk -F: '{print $1}')"
   if [ "$f" != "" ]
   then
     echo "vim $f"
