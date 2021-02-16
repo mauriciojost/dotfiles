@@ -206,7 +206,10 @@ endif
 " Commands / aliases
 " Fantastic: https://github.com/jodavaho/bashlog/blob/master/vim_log
 " Commit using command Lw
-command MdCommitPush w | !git add % &&  git commit % -m "Checkin %" && git push
+" Topics
+command TopicBackup w | !git add % &&  git commit % -m "Checkin %" && git push
+command TopicBackupAll w | ! bash -i -c "qtopic-backup"
+" MarkDowns
 command MdView w | !remarkable %
 command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
 command MdKeepPublish w | ! bash -i -c "qtopic-push-to-keep-file-x %"
@@ -214,7 +217,9 @@ command MdKeepUpdate w | ! bash -i -c "qtopic-update-to-keep-file-x %"
 command MdCalculate w | ! bash -i -c "qmarkdown-sql-calculate %"
 command MdEnable let g:vim_markdown_folding_disabled = 0
 command MdDisable let g:vim_markdown_folding_disabled = 1
+" CSVs
 command QCsvPretty CSVTabularize
+" Git
 command QGitDisable GitGutterDisable
 command QGitEnable GitGutterEnable
 
