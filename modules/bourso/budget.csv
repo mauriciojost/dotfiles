@@ -1,12 +1,13 @@
-customCategory;budgetAmount
-feeding;4365
-property;-795
-tax;-125
-baby;-618
-leisure;-250
-shopping;-650
-service;-182
-health;-120
-cleaning;-120
-insurance;-126
-internal;0
+customCategory;budgetAmount;desc
+feeding;2142;1412 + 730
+property;-163;
+tax;-118;
+baby;-612;
+leisure;-250;
+shopping;-650;
+service;-182;
+health;-0;
+cleaning;-120;
+insurance;-126;
+internal;0;
+unknown;0;

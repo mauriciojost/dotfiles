@@ -21,6 +21,10 @@ function qboursorama-match() {
     *sc*armand*piet*)                   echo "$line;shopping;boulangerie;boulangerie" ;;
     *la*boulangerie*)                   echo "$line;shopping;boulangerie;boulangerie" ;;
     *PAUL*REPUBLIQUE*)                  echo "$line;shopping;boulangerie;panaderia en av de la republique" ;;
+    *cep*boulanger*)                    echo "$line;shopping;boulangerie;panaderia" ;;
+    *hoggar*viandes*)                   echo "$line;shopping;food;meat" ;;
+    *lart*et*le*pain*)                  echo "$line;shopping;boulangerie;panaderia" ;;
+
     # maison
     *eurodif*)                          echo "$line;shopping;property;bazar" ;;
     *carre*blanc*)                      echo "$line;shopping;property;bazar" ;;
@@ -41,8 +45,9 @@ function qboursorama-match() {
 
     # transport
     *escota*)                           echo "$line;leisure;transport;peages escota" ;;
-    *STATION*AVIA*)                     echo "$line;leisure; transport;fuel avia" ;;
-    *PAYBYPHONE*NIC*)                   echo "$line;service; parking auto parking mensual" ;;
+    *STATION*AVIA*)                     echo "$line;leisure;transport;fuel avia" ;;
+    *PAYBYPHONE*NIC*)                   echo "$line;service;parking;auto parking mensual" ;;
+    *AGIP*)                             echo "$line;service;transport;fuel agip" ;;
 
     # trip
     *VOLOTEA*)                          echo "$line;leisure;trip;plane" ;;
@@ -65,6 +70,7 @@ function qboursorama-match() {
     *CPAM*061*NICE*)                    echo "$line;insurance;securite-social;securite-social" ;;
     *axa*)                              echo "$line;insurance;assurance voiture" ;;
     *CRCAM*PROVENCE*)                   echo "$line;insurance;assurance habitation" ;;
+
     # property
     *VIR*SEPA*LE*DOMINO*)               echo "$line;property;charges;" ;;
     *VIR*P1APPELDESFONDS*)              echo "$line;property;charges;" ;;
@@ -72,11 +78,13 @@ function qboursorama-match() {
     # service
     *edf*)                              echo "$line;service;edf;electricity" ;;
     *google*)                           echo "$line;service;googledrive;nas" ;;
+    *VIR*P1*INTERNET*TV*)               echo "$line;service;tvinternet;" ;;
 
     # vetement
     *HETM234*)                          echo "$line;basic;clothes;" ;;
 
     # marta unknown
+    *selvi*didier*)                     echo "$line;leisure;unclear;martatoexplain" ;;
     *jm*et*mf*)                         echo "$line;leisure;unclear;martatoexplain" ;;
     *zara*home*)                        echo "$line;leisure;unclear;martatoexplain" ;;
     *adav*)                             echo "$line;leisure;unclear;martatoexplain" ;;
@@ -102,6 +110,7 @@ function qboursorama-match() {
     # feeding operations
     *FAIRNESS*)                         echo "$line;feeding;fairness;fairness move mauri" ;;
     *VIR*SEPA*RANIERI*730*)             echo "$line;feeding;fairness;fairness move marta" ;;
+    *Salaire*fix*)                      echo "$line;feeding;fairness;fairness move martax" ;;
 
     # internal operations
     *SEPA*RANIERI*MARTA*Virements*re*)  echo "$line;internal;safe;safe move" ;;
@@ -162,10 +171,12 @@ function qboursorama-analyse() {
 	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' 'select *, substr(dateOp,7)|| "-" ||substr(dateOp,4,2)|| "-" ||substr(dateOp,1,2) as dateOpIso from /tmp/bourso.csv.tmp3' > /tmp/bourso.csv
 
 	screen -AdmS myshell -t balance bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv' | fzf --no-sort"
-	screen -S myshell -X screen -t summary_budget bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select r.customCategory as category, sum(r.amount) as consumed, b.budgetAmount as budget, b.budgetAmount - sum(r.amount) as diff from /tmp/bourso.csv as r join /home/mjost/.dotfiles/modules/bourso/budget.csv as b where r.customCategory = b.customCategory group by r.customCategory' | fzf --no-sort"
-	screen -S myshell -X screen -t summary bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), customCategory from /tmp/bourso.csv group by customCategory, customSubCategory order by sum(amount)' | fzf --no-sort"
+
+	screen -S myshell -X screen -t summary_budget bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select substr(r.dateOpIso, 1,7) as month, r.customCategory as category, sum(r.amount) as consumed, b.budgetAmount as budget, b.budgetAmount - sum(r.amount) as diff from /home/mjost/.dotfiles/modules/bourso/budget.csv as b left join /tmp/bourso.csv as r  where r.customCategory = b.customCategory group by month, r.customCategory' | fzf --no-sort"
+	screen -S myshell -X screen -t summary bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), substr(dateOpIso, 1,7) as month, customCategory from /tmp/bourso.csv group by customCategory, month order by sum(amount)' | fzf --no-sort"
+
 	screen -S myshell -X screen -t summary++ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), customCategory, customSubCategory, customDescription from /tmp/bourso.csv group by customCategory, customSubCategory, customDescription order by sum(amount)' | fzf --no-sort"
-	screen -S myshell -X screen -t details bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select (amount - 0.0) as amnt, customCategory, customSubCategory, customDescription, dateOpIso as date, label, categoryParent as catPar, category as cat, supplierFound as supplier, accountLabel as account from /tmp/bourso.csv order by amnt' | fzf --no-sort"
+	screen -S myshell -X screen -t details bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, customCategory, customSubCategory, customDescription, category as cat, supplierFound as supplier, accountLabel as account, label, categoryParent as catPar from /tmp/bourso.csv order by amnt' | fzf --no-sort"
 	screen -x myshell
   else
     echo "No $input file found!"
