@@ -21,9 +21,9 @@ function qtopic-open-with-filename-x() {
   local match=""
   if [ -z "$fn" ]
   then
-    match="$(find $TOPICS -type f ! -path '*.git*' -printf '%T@^%p\n' | sort -n -r | awk -F^ '{print $2}' | fzf --no-sort)"
+    match="$(find $TOPICS -maxdepth 1 -type f ! -path '*.git*' -printf '%T@^%p\n' | sort -n -r | awk -F^ '{print $2}' | fzf --no-sort)"
   else
-    match=`find "$TOPICS" -type f ! -path '*.git*' | grep $fn`
+    match=`find "$TOPICS" -maxdepth 1 -type f ! -path '*.git*' | grep $fn`
   fi
   if [ -n "$match" ]
   then
@@ -33,7 +33,7 @@ function qtopic-open-with-filename-x() {
 
 # Edit an alias that matches a given pattern
 function qtopic-open-with-content() {
-  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" $1
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" "" $1
 }
 
 function qtopic-new-daily-name() {

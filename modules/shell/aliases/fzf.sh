@@ -57,8 +57,9 @@ function qfzf_chrome_history_with() {
 
 function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
-  local header="$2"
-  f="$(find $from -type f $find_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index | awk -F: '{print $1}')"
+  local find_extra_args="$2"
+  local header="$3"
+  f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index | awk -F: '{print $1}')"
   if [ "$f" != "" ]
   then
     echo "vim $f"
@@ -75,7 +76,7 @@ function qfzf_content_egrepargs_X_by_filenamecontent() {
 
 # Edit an alias that matches a given pattern
 function qfzf_alias() {
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$DOTFILES/modules/shell/aliases/" "OPEN ALIAS..."
+  qfzf_file_path_egrepargs_X_by_filenamecontent "$DOTFILES/modules/shell/aliases/" "" "OPEN ALIAS..."
 }
 
 # Search on typical dirs and copy selected line into the clipboard
@@ -88,6 +89,6 @@ function qfzf_typical_line_on_clipboard() {
 # Search on typical dirs by content (and by filename) and stdout vim command on choice (search is on typical dirs)
 function qfzf_typical_filename_stdout() {
   local header="$1"
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" "$header"
+  qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" "-maxdepth 1" "$header"
 }
 

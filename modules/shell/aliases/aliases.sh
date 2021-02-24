@@ -71,11 +71,12 @@ alias r='readlink -e '
 function qopen-by-content-cmd-X-dir-Y-what-Z() {
   local cmd="$1"
   local from="$2"
-  local what="$3"
+  local extra_flags_egrep="$3"
+  local what="$4"
 
   if [ "$what" == "" ]
   then
-    file="$(egrep . -r "$from" | fzf | awk -F: '{print $1}')"
+    file="$(egrep . $extra_flags_egrep "$from" | fzf | awk -F: '{print $1}')"
     if [ -e "$file" ]
     then
       $cmd $file
@@ -97,14 +98,14 @@ function qopen-by-content-cmd-X-dir-Y-what-Z() {
 
 # Edit an alias that matches a given pattern
 function qalias-edit() {
-  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/modules/shell/aliases/" $@
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/modules/shell/aliases/" -r $@
 }
 
 alias qalias=qalias-edit
 
 # Show our documents
 function qdocs-edit() {
-  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/docs/" $@
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim +/$1" "$DOTFILES/docs/" -r $@
 }
 
 alias qdocs=qdocs-edit
@@ -127,16 +128,16 @@ function _qbind() {
 function _qset_bindings() {
   local mode="$1"
    # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
-  _qbind "change Folder (cd ./xx)" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
-  _qbind "open by fileName" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
-  _qbind "open by filename with Vim" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
-  _qbind "open by conTent" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
-  _qbind "open tOpics" '"\C-o"' '"qtopic\n"' "$mode"
-  _qbind "copy snYppets" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
-  _qbind "command line History" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
-  _qbind "command line History (light)" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
-  _qbind "command line history (light) (local)" '"\C-b"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
-  _qbind "history Web" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
+  _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
+  _qbind "open by fileName                qfzf_vim_with" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "open by filename with Vim       qfzf_vim_with" '"\C-v"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+  _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
+  _qbind "open tOpics                     qtopic" '"\C-o"' '"qtopic\n"' "$mode"
+  _qbind "copy snYppets                   qfzf_typical_line_on_clipboard" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
+  _qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
+  _qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
+  _qbind "command line history (&local)   qfzf_history_light_local_with" '"\C-b"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
+  _qbind "history Web                     qfzf_chrome_history_with" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
 }
 
