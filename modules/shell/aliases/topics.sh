@@ -1,4 +1,5 @@
-
+_github_io_git_repo_name=mauriciojost.github.io
+_github_io_git_repo=https://github.com/mauriciojost/$_github_io_git_repo_name.git
 function qtopic-list() {
   #ls -laht "$TOPICS"
   find "$TOPICS" -name '*.md' -printf "%T@ %p\n" | sort -n
@@ -197,6 +198,42 @@ function qtopic-pull-from-keep-file-x() {
   else
     echo "Many notes matching!!! Aborting..."
   fi
+}
+
+function qtopic-as-presentation-file-x() {
+  local file="$(readlink -e "$1")"
+  local filename="$(basename "$file")"
+  local directory=/tmp/github.io
+  local day="$(date '+%d')"
+  local month="$(date '+%m')"
+  local year="$(date '+%Y')"
+  local mdname=$year-$month-$day-$filename
+  local posts=_posts
+  local port=4567
+  killall -9 jekyll
+  if [ ! -d "$directory" ]
+  then
+    mkdir -p "$directory"
+    cd "$directory"
+    git clone $_github_io_git_repo
+    cd "$directory/$_github_io_git_repo_name"
+    git submodule update --init --recursive
+  else
+    cd "$directory/$_github_io_git_repo_name"
+  fi
+
+  sleep 1
+
+  rm -f $posts/*
+
+  cat "$DOTFILES/modules/topics/templates/presentation-prefix.md" | \
+    sed "s/TEMPLATE_NAME/$filename/g" | \
+    sed "s/TEMPLATE_DATE/$year-$month-$day/g" > $posts/$mdname.markdown
+  cat $file >> $posts/$mdname.markdown
+
+  jekyll serve -P $port & 
+  sleep 2
+  gop http://127.0.0.1:$port/
 }
 
 alias qtopic=qtopic-open-with-content

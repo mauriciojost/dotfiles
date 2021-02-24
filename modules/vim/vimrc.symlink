@@ -212,6 +212,7 @@ command TopicBackupAll w | ! bash -i -c "qtopic-backup"
 " MarkDowns
 command MdView w | !remarkable %
 command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
+command MdAsPresentation w | ! bash -i -c "qtopic-as-presentation-file-x %"
 command MdKeepPublish w | ! bash -i -c "qtopic-push-to-keep-file-x %"
 command MdKeepUpdate w | ! bash -i -c "qtopic-update-to-keep-file-x %"
 command MdCalculate w | ! bash -i -c "qmarkdown-sql-calculate %"
