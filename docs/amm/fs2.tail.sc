@@ -1,5 +1,7 @@
 #!/usr/bin/env amm
 
+// Heads up with the imports colliding with the file-name, avoid it
+
 import $ivy.`co.fs2::fs2-io:2.4.5`, fs2.Stream
 import $ivy.`org.typelevel::cats-effect:2.2.0`, cats.effect._
 

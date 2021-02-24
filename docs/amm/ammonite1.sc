@@ -1,5 +1,7 @@
 #!/usr/bin/env amm
 
+// Heads up with the imports colliding with the file-name, avoid it
+
 import $ivy.`com.chuusai::shapeless:2.3.3`, shapeless._
 
 @main
