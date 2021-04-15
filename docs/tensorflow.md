@@ -39,3 +39,4 @@ From [here](https://www.tensorflow.org/lite/microcontrollers/get_started).
 ## Get started with images
 
 From [here](https://medium.com/analytics-vidhya/building-edge-ai-applications-using-tensorflow-lite-on-esp32-baf8534b176e).
+Learn [Colab from here](https://colab.research.google.com/notebooks/intro.ipynb#scrollTo=-Rh3-Vt9Nev9).
