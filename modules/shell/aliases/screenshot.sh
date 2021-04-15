@@ -1,7 +1,10 @@
+SCREENSHOTS=$HOME/images
 
 # Screenshot
 function qscreenshot-region-file() {
-   local ld=`cat ~/.last-dirscreenshots`
+   #local ld=`cat ~/.last-dirscreenshots`
+   local ld="$SCREENSHOTS/$(qworkspace-getname)/$(date '+%Y-%m-%d')"
+   mkdir -p "$ld"
    local tmp="$(mktemp -u).png"
    echo "Select region using mouse..."
    gnome-screenshot -a -f "$tmp"
