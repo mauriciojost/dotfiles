@@ -22,7 +22,7 @@ function qtopic-open-with-filename-x() {
   local match=""
   if [ -z "$fn" ]
   then
-    match="$(find $TOPICS -maxdepth 1 -type f ! -path '*.git*' -printf '%T@^%p\n' | sort -n -r | awk -F^ '{print $2}' | fzf --no-sort)"
+    match="$(find $TOPICS -maxdepth 1 -type f ! -path '*.git*' -printf '%T@^%p\n' | sort -n -r | awk -F^ '{print $2}' | fzf -m --no-sort)"
   else
     match=`find "$TOPICS" -maxdepth 1 -type f ! -path '*.git*' | grep $fn`
   fi
