@@ -16,6 +16,7 @@ Plug 'mxw/vim-jsx'
 Plug 'derekwyatt/vim-scala'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
+Plug 'dhruvasagar/vim-table-mode'
 call plug#end()
 
 "set colorcolumn=+1        " highlight column after 'textwidth'
