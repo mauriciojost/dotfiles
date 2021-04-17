@@ -208,11 +208,10 @@ EOL
 }
 
 function qboursorama-analyse() {
-  sql='python2-q-text-as-data -b --output-header --skip-header --delimiter=;'
+  sql='python2-q-text-as-data  --output-header --skip-header --delimiter=; --output-delimiter=;'
   sql2='python2-q-text-as-data --output-header --skip-header --delimiter=; --output-delimiter=;'
   local iso_month=${1:-20}
   local base="$HOME/Downloads"
-  #local view_tool="fzf --no-sort"
   local view_tool="vd --csv-delimiter ';' --default-width 30 --filetype csv --header 1"
   rm -f /tmp/bourso.*
 
