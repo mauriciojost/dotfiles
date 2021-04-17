@@ -9,7 +9,7 @@ service;-182;
 health;-120;
 cleaning;-120;
 insurance;-126;
-internal;1;transfers from one account to another, to be ignored
-basic;1;basic expenses like clothes, haircuts, etc.
-unknown;1;unknow expense, to be investigated
-transfers;1;transfers from one account to another, to be ignored
+internal;0;transfers from one account to another, to be ignored
+basic;0;basic expenses like clothes, haircuts, etc.
+unknown;0;unknow expense, to be investigated
+transfers;0;transfers from one account to another, to be ignored
