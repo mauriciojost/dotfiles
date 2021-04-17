@@ -25,5 +25,11 @@ modules/fzf/fzf/install
 echo "For: keyboard"
 sudo cp $DOTFILES/modules/keys-remap/keyboard /etc/default/keyboard
 
+echo "For: privates"
+cd $DOTFILES_ROOT/modules/privates/
+bash install.sh
+
+cd $DOTFILES_ROOT
+
 echo ''
 echo '  All installed!'
