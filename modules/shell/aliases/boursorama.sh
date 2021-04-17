@@ -8,10 +8,12 @@ function _qboursorama-match() {
     *netto*)                            echo "$line;shopping;food;regular" ;;
     *u*express*)                        echo "$line;shopping;food;regular" ;;
     *monoprix*)                         echo "$line;shopping;food;regular" ;;
+    *plaisir*des*ha*)                   echo "$line;shopping;food;regular" ;;
+    *constans*et*fi*)                   echo "$line;shopping;food;panier-legumes" ;;
     *naturalia*)                        echo "$line;shopping;food;regular" ;;
     *carrefour*)                        echo "$line;shopping;food;regular" ;;
     *bioman*)                           echo "$line;shopping;food;bio" ;;
-    *francis*viande*)                   echo "$line;shopping;food" ;;
+    *francis*viande*)                   echo "$line;shopping;food;x" ;;
     *livrais-expres*)                   echo "$line;shopping;food;livraison express carrefour" ;;
     *picard*surgeles*)                  echo "$line;shopping;food;compras picard" ;;
     *boucherie*de*la*tour*)             echo "$line;shopping;food;compras carne" ;;
@@ -37,18 +39,20 @@ function _qboursorama-match() {
     *bricorama*)                        echo "$line;shopping;property;repair" ;;
 
     # baby
-    *dr*de*paz*)                        echo "$line;baby;health;" ;;
-    *sergent*major*)                    echo "$line;baby;clothes;" ;;
-    *wedoogift*)                        echo "$line;baby;games;" ;;
-    *vente*privee*)                     echo "$line;baby;clothes;" ;;
-    *pinocchio*)                        echo "$line;baby;games;" ;;
-    *la*grande*recr*)                   echo "$line;baby;games;" ;;
-    *la*recree*)                        echo "$line;baby;games;" ;;
-    *barbe*de*papa*)                    echo "$line;baby;haircut;" ;;
-    *oeuvre*des*creches*de*nice*)       echo "$line;baby;creche;" ;;
-    *du*pareil*au*me*)                  echo "$line;baby;clothes;" ;;
-    *vertbaudet*)                       echo "$line;baby;clothes;" ;;
+    *dr*de*paz*)                        echo "$line;baby;health;x" ;;
+    *sergent*major*)                    echo "$line;baby;clothes;x" ;;
+    *wedoogift*)                        echo "$line;baby;games;x" ;;
+    *vente*privee*)                     echo "$line;baby;clothes;x" ;;
+    *pinocchio*)                        echo "$line;baby;games;x" ;;
+    *la*grande*recr*)                   echo "$line;baby;games;x" ;;
+    *la*recree*)                        echo "$line;baby;games;x" ;;
+    *barbe*de*papa*)                    echo "$line;baby;haircut;x" ;;
+    *oeuvre*des*creches*de*nice*)       echo "$line;baby;creche;x" ;;
+    *du*pareil*au*me*)                  echo "$line;baby;clothes;x" ;;
+    *vertbaudet*)                       echo "$line;baby;clothes;x" ;;
     *decathlon*)                        echo "$line;baby;sport;decathlon" ;;
+    *vinted*fr*)                        echo "$line;baby;clothes-stuff;vinted" ;;
+    *sumup*saby*)                       echo "$line;baby;experience;manege-garibaldi" ;;
 
     # transport
     *escota*)                           echo "$line;leisure;transport;peages escota" ;;
@@ -62,42 +66,42 @@ function _qboursorama-match() {
     *rla*automate*)                     echo "$line;leisure;transport;unknown" ;;
 
     # tech
-    *amazon*)                           echo "$line;leisure;amazon;" ;;
-    *fnac*)                             echo "$line;leisure;fnac;" ;;
+    *amazon*)                           echo "$line;leisure;amazon;x" ;;
+    *fnac*)                             echo "$line;leisure;fnac;x" ;;
 
     # sante
-    *virto*fe*mar*)                     echo "$line;health;general;" ;;
-    *pharmacie*)                        echo "$line;health;pharmacie;" ;;
+    *virto*fe*mar*)                     echo "$line;health;general;x" ;;
+    *pharmacie*)                        echo "$line;health;pharmacie;x" ;;
     *gras*savoye*)                      echo "$line;health;mutuel;gras savoye" ;;
+    *arpisante*)                        echo "$line;health;pharmacie;x" ;;
 
     # taxes
-    *direction*generale*des*finance*)   echo "$line;tax;unknown;" ;;
-    *caf*alpes*)                        echo "$line;tax;caf;" ;;
+    *direction*generale*des*finance*)   echo "$line;tax;unknown;x" ;;
+    *caf*alpes*)                        echo "$line;tax;caf;x" ;;
     *contravention*)                    echo "$line;tax;contravention;multas" ;;
     *forf*p*stat*web*)                  echo "$line;tax;contravention;multas" ;;
 
     # insurance
     *cpam*061*nice*)                    echo "$line;insurance;securite-social;securite-social" ;;
-    *axa*)                              echo "$line;insurance;assurance voiture" ;;
-    *crcam*provence*)                   echo "$line;insurance;assurance habitation" ;;
+    *axa*)                              echo "$line;insurance;assurance voiture;x" ;;
+    *crcam*provence*)                   echo "$line;insurance;assurance habitation;x" ;;
 
     # property
-    *vir*sepa*le*domino*)               echo "$line;property;charges;" ;;
-    *vir*p1appeldesfonds*)              echo "$line;property;charges;" ;;
+    *vir*sepa*le*domino*)               echo "$line;property;charges;x" ;;
+    *vir*p1appeldesfonds*)              echo "$line;property;charges;x" ;;
 
     # service
     *edf*)                              echo "$line;service;edf;electricity" ;;
     *google*)                           echo "$line;service;googledrive;nas" ;;
-    *vir*p1*internet*tv*)               echo "$line;service;tvinternet;" ;;
-    *la*poste*)                         echo "$line;service;laposte;" ;;
+    *vir*p1*internet*tv*)               echo "$line;service;tvinternet;x" ;;
+    *la*poste*)                         echo "$line;service;laposte;x" ;;
     *orange*)                           echo "$line;service;internet;orange" ;;
 
     # vetement
-    *hetm234*)                          echo "$line;basic;clothes;" ;;
-    *vp.com*)                           echo "$line;basic;clothes;" ;;
+    *hetm234*)                          echo "$line;basic;clothes;x" ;;
+    *vp.com*)                           echo "$line;basic;clothes;x" ;;
 
     # marta unknown
-    *sumup*saby*)                       echo "$line;leisure;unclear;martatoexplain" ;;
     *selvi*didier*)                     echo "$line;leisure;unclear;martatoexplain" ;;
     *jm*et*mf*)                         echo "$line;leisure;unclear;martatoexplain" ;;
     *zara*home*)                        echo "$line;leisure;unclear;martatoexplain" ;;
@@ -110,9 +114,7 @@ function _qboursorama-match() {
     *paul*)                             echo "$line;leisure;unclear;martatoexplain" ;;
     *giorgeschi*)                       echo "$line;leisure;unclear;martatoexplain" ;;
     *sc*aurora*)                        echo "$line;leisure;unclear;martatoexplain" ;;
-    *plaisir*des*ha*)                   echo "$line;leisure;unclear;martatoexplain" ;;
     *alice*delice*)                     echo "$line;leisure;unclear;martatoexplain" ;;
-    *vinted*fr*)                        echo "$line;leisure;unclear;martatoexplain" ;;
     *vival*sc*)                         echo "$line;leisure;unclear;martatoexplain" ;;
     *ek*saleya*)                        echo "$line;leisure;unclear;martatoexplain" ;;
     *l*agrume*)                         echo "$line;leisure;unclear;martatoexplain" ;;
@@ -120,25 +122,24 @@ function _qboursorama-match() {
     *sc*goodfood*)                      echo "$line;leisure;unclear;martatoexplain" ;;
     *pastry*plaisir*)                   echo "$line;leisure;unclear;martatoexplain" ;;
     *pianelli*freres*)                  echo "$line;leisure;unclear;martatoexplain-crepes" ;;
-    *arpisante*)                        echo "$line;leisure;unclear;martatoexplain-parfums-pharmacie" ;;
-    *peisino*)                          echo "$line;leisure;unclear;martatoexplain-pharmacie" ;;
-    *constans*et*fi*)                   echo "$line;leisure;unclear;martatoexplain-flowersrosesantibes" ;;
+    *peisino*)                          echo "$line;leisure;flowers;avoid" ;;
     *rodi*fleurs*)                      echo "$line;leisure;unclear;martatoexplain-flowers" ;;
     *sc*a*la*mic*)                      echo "$line;leisure;unclear;martatoexplain-smth" ;;
     *armee*alpes*)                      echo "$line;leisure;unclear;mauritoexplain" ;;
 
     # feeding operations
-    *fairness*)                         echo "$line;feeding;fairness;fairness move mauri" ;;
-    *vir*sepa*ranieri*730*)             echo "$line;feeding;fairness;fairness move marta" ;;
-    *salaire*fix*)                      echo "$line;feeding;fairness;fairness move martax" ;;
+    *fairness*)                         echo "$line;internal;feeding;seems fairness move mauri" ;;
+    *vir*sepa*ranieri*730*)             echo "$line;internal;feeding;seems fairness move marta" ;;
+    *salaire*fix*)                      echo "$line;internal;feeding;seems fairness move martax" ;;
 
-    # internal operations
+    # internal bank operations / transfers
     *sepa*ranieri*marta*virements*re*)  echo "$line;internal;safe;safe move" ;;
-    *safe*)                             echo "$line;internal;safe;safe move;" ;;
-    *sos*)                              echo "$line;internal;safe;safe move;" ;;
-    *interets*debiteurs*)               echo "$line;internal;service;boursorama;" ;;
-    *Mouvements*internes*)              echo "$line;internal;safe;safe;" ;;
-    *vir*interne*)                      echo "$line;internal;virement interne;" ;;
+    *safe*)                             echo "$line;internal;safe;safe move" ;;
+    *sos*)                              echo "$line;internal;safe;safe move" ;;
+    *interets*debiteurs*)               echo "$line;internal;service;boursorama" ;;
+    *Mouvements*internes*)              echo "$line;internal;safe;safe" ;;
+    *vir*interne*)                      echo "$line;internal;virement interne;x" ;;
+    *virements*re*)                     echo "$line;internal;virement recu;x" ;;
 
     ## leisure
     # food
@@ -218,34 +219,55 @@ EOL
 	  _qboursorama-match "$line" >> /tmp/bourso.csv.tmp3
 	done < /tmp/bourso.csv.tmp2
 
+	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' 'select substr(dateOp,7)|| "-" ||substr(dateOp,4,2)|| "-" ||substr(dateOp,1,2) as dateOpIso, substr(dateOp,7)|| "-" ||substr(dateOp,4,2) as monthOpIso,* from /tmp/bourso.csv.tmp3 where dateOpIso like "'$iso_month'%"' > /tmp/bourso.csv.tmp4
 
-	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' 'select *, substr(dateOp,7)|| "-" ||substr(dateOp,4,2)|| "-" ||substr(dateOp,1,2) as dateOpIso from /tmp/bourso.csv.tmp3 where dateOpIso like "'$iso_month'%"' > /tmp/bourso.csv
+        # columns at this point: 
+	# dateOpIso;monthOpIso;dateOp;dateVal;label;category;categoryParent;supplierFound;amount;accountNum;accountLabel;accountBalance;customCategory;customSubcategory;customDescription
+	# 2021-03-31;2021-03;31/0..;31/03..;VIR from-fix-to-.;Virements ;Mouvements in;viremariable;112,86;40513502;FAMILIA CARTA 0930 BOURSO;16,90;internal;safe;safe
+
+        # The idea is to group all bank account transfers into a single line representing the flow (should be equal to the feeding - actual paid expenses via bank transfer, which is to be avoided)
+	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' "\
+	    select 'transfers' as dateOpIso , monthOpIso,'transfers' as newCustomCategory,'transfers' as customSubcategory,'transfers' as customDescription,'transfers' as category, 'transfers' as supplierFound, 'transfers' as accountLabel, 'transfers' as label, 'transfers' as categoryParent, sum(amount) as amount from /tmp/bourso.csv.tmp4 \
+	      where customCategory == 'internal' \
+	      group by monthOpIso \
+	    union \
+	    select dateOpIso,monthOpIso,customCategory as newCustomCategory,customSubcategory,customDescription,category,supplierFound, accountLabel, label, categoryParent, amount from /tmp/bourso.csv.tmp4 where newCustomCategory != 'internal'" \
+	      > /tmp/bourso.csv
+
+	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' "\
+	    select r.monthOpIso, r.newCustomCategory, sum(r.amount), b.budgetAmount, sum(r.amount) - b.budgetAmount as budget_left_pos_is_good \
+	    from \
+	      /home/mjost/.dotfiles/modules/bourso/budget.csv as b \
+	    left outer join \
+	      /tmp/bourso.csv as r \
+	    where \
+	      r.newCustomCategory = b.customCategory group by r.monthOpIso, r.newCustomCategory\
+	    "> /tmp/bourso.csv.budget
 
 cat <<EOL >> /tmp/bourso.csv.report
 REPORT
 
 1. Lines check:
-- step 1: $(cat /tmp/bourso.csv.tmp1 | wc -l)
-- step 2: $(cat /tmp/bourso.csv.tmp2 | wc -l)
-- step 3: $(cat /tmp/bourso.csv.tmp3 | wc -l)
-- step 4: $(cat /tmp/bourso.csv      | wc -l)
+$(wc -l /tmp/bourso*)
 
 2. Balance:
 $(python2-q-text-as-data -T -b --output-header --skip-header --delimiter=';' 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv')
 EOL
-
+#if [ 1 == 3 ]
+#then
 	screen -AdmS myshell -t help bash -c "less /tmp/bourso.help"
 
 	screen -S myshell -X screen -t report bash -c "cat /tmp/bourso.csv.report | less"
 
-	screen -S myshell -X screen -t summary bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select substr(r.dateOpIso, 1,7) as month, r.customCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by month, r.customCategory' | $view_tool"
+	screen -S myshell -X screen -t summary bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' | $view_tool"
 
-	screen -S myshell -X screen -t summary_budget bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select substr(r.dateOpIso, 1,7) as month, r.customCategory as category, sum(r.amount) as consumed, b.budgetAmount as budget, b.budgetAmount - sum(r.amount) as diff from /home/mjost/.dotfiles/modules/bourso/budget.csv as b left join /tmp/bourso.csv as r  where r.customCategory = b.customCategory group by month, r.customCategory' | $view_tool"
-	screen -S myshell -X screen -t summary+ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), substr(dateOpIso, 1,7) as month, customCategory from /tmp/bourso.csv group by customCategory, month order by sum(amount)' | $view_tool"
+	screen -S myshell -X screen -t summary_budget bash -c "cat /tmp/bourso.csv.budget | $view_tool"
+	screen -S myshell -X screen -t summary+ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), monthOpIso, newCustomCategory from /tmp/bourso.csv group by newCustomCategory, monthOpIso order by sum(amount)' | $view_tool"
 
-	screen -S myshell -X screen -t summary++ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), customCategory, customSubCategory, customDescription from /tmp/bourso.csv group by customCategory, customSubCategory, customDescription order by sum(amount)' | $view_tool"
-	screen -S myshell -X screen -t details bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, customCategory, customSubCategory, customDescription, category as cat, supplierFound as supplier, accountLabel as account, label, categoryParent as catPar from /tmp/bourso.csv order by amnt' | $view_tool"
+	screen -S myshell -X screen -t summary++ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), newCustomCategory, customSubCategory, customDescription from /tmp/bourso.csv group by newCustomCategory, customSubCategory, customDescription order by sum(amount)' | $view_tool"
+	screen -S myshell -X screen -t details bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' | $view_tool"
 	screen -x myshell
+#fi
   else
     echo "No $input file found!"
   fi
