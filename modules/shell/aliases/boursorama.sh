@@ -52,6 +52,7 @@ function _qboursorama-match() {
     *vertbaudet*)                       echo "$line;baby;clothes;x" ;;
     *decathlon*)                        echo "$line;baby;sport;decathlon" ;;
     *vinted*fr*)                        echo "$line;baby;clothes-stuff;vinted" ;;
+    *mgp*vinted*)                       echo "$line;baby;clothes-stuff;vinted" ;;
     *sumup*saby*)                       echo "$line;baby;experience;manege-garibaldi" ;;
 
     # transport
@@ -124,6 +125,7 @@ function _qboursorama-match() {
     *pianelli*freres*)                  echo "$line;leisure;unclear;martatoexplain-crepes" ;;
     *peisino*)                          echo "$line;leisure;flowers;avoid" ;;
     *rodi*fleurs*)                      echo "$line;leisure;unclear;martatoexplain-flowers" ;;
+    *au*bouquet*de*n*)                  echo "$line;leisure;unclear;martatoexplain-flowers" ;;
     *sc*a*la*mic*)                      echo "$line;leisure;unclear;martatoexplain-smth" ;;
     *armee*alpes*)                      echo "$line;leisure;unclear;mauritoexplain" ;;
 
@@ -156,6 +158,7 @@ function _qboursorama-match() {
     *delices*de*la*republique*)         echo "$line;leisure;unclear;patiseria" ;;
     *pane*e*olio*)                      echo "$line;leisure;restaurant;coulee verte" ;;
     *sushi*)                            echo "$line;leisure;restaurant;sushi" ;;
+    *the*healer*)                       echo "$line;leisure;restaurant;fast-food" ;;
     # food delivery
     *uber*)                             echo "$line;leisure;delivery;food" ;;
     *deliveroo*)                        echo "$line;leisure;delivery;food" ;;
