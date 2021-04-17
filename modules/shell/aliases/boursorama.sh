@@ -236,7 +236,7 @@ function qboursorama-analyse() {
 
         # The idea is to group all bank account transfers into a single line representing the flow (should be equal to the feeding - actual paid expenses via bank transfer, which is to be avoided)
 	$sql "\
-	    select 'transfers' as dateOpIso , monthOpIso,'transfers' as newCustomCategory,'transfers' as customSubcategory,'transfers' as customDescription,'transfers' as category, 'transfers' as supplierFound, 'transfers' as accountLabel, 'transfers' as label, 'transfers' as categoryParent, sum(amount) as amount from /tmp/bourso.csv.tmp4 \
+	    select monthOpIso as dateOpIso , monthOpIso,'transfers' as newCustomCategory,'transfers' as customSubcategory,'transfers' as customDescription,'transfers' as category, 'transfers' as supplierFound, 'transfers' as accountLabel, 'transfers' as label, 'transfers' as categoryParent, sum(amount) as amount from /tmp/bourso.csv.tmp4 \
 	      where customCategory == 'internal' \
 	      group by monthOpIso \
 	    union \
@@ -244,7 +244,7 @@ function qboursorama-analyse() {
 	      > /tmp/bourso.csv
 
 	$sql "\
-	    select r.monthOpIso, r.newCustomCategory, sum(r.amount), b.budgetAmount, sum(r.amount) - b.budgetAmount as budget_left_pos_is_good \
+	    select r.monthOpIso, r.newCustomCategory, sum(r.amount), b.budgetAmount, sum(r.amount) - b.budgetAmount as budget_left, 100*(sum(r.amount))/b.budgetAmount as percentage_consumed \
 	    from \
 	      /home/mjost/.dotfiles/modules/bourso/budget.csv as b \
 	    left outer join \
@@ -255,10 +255,9 @@ function qboursorama-analyse() {
 
 	$sql 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' > /tmp/bourso.csv.summary
 
-	$sql "\
-	    select sum(amount), monthOpIso, newCustomCategory from /tmp/bourso.csv group by newCustomCategory, monthOpIso order by sum(amount)" > /tmp/bourso.csv.summaryp
+	$sql 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv.tmp4' > /tmp/bourso.csv.balance
 
-	$sql 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' > /tmp/bourso.csv.details
+	$sql 'select (e.amount - 0.0) as amount, 100 * (e.amount - 0.0) / b.budgetAmount as amount_budget_perc, e.newCustomCategory as category, b.budgetAmount as category_budget_amount, b.percentage_consumed as category_budget_consumed_perc, e.dateOpIso as date, e.label as label, e.customSubCategory as subcategory, e.customDescription as description, e.accountLabel as account, e.category as boursorama_category, e.supplierFound as boursorama_supplier, e.categoryParent as boursorama_category_parent from /tmp/bourso.csv as e join /tmp/bourso.csv.budget as b where e.monthOpIso = b.monthOpIso and e.newCustomCategory = b.newCustomCategory order by category_budget_consumed_perc,amount' > /tmp/bourso.csv.details
 
 cat <<EOL >> /tmp/bourso.csv.report
 REPORT
@@ -266,8 +265,6 @@ REPORT
 1. Lines check:
 $(wc -l /tmp/bourso*)
 
-2. Balance:
-$($sql -T 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv')
 EOL
 #if [ 1 == 3 ]
 #then
@@ -275,9 +272,9 @@ EOL
 	_create_visidata_help
 	screen -AdmS myshell -t help bash -c "less /tmp/bourso.help"
 	screen -S myshell -X screen -t report bash -c "cat /tmp/bourso.csv.report | less"
-	screen -S myshell -X screen -t summary bash -c "cat /tmp/bourso.csv.summary | $view_tool"
-	screen -S myshell -X screen -t summary_budget bash -c "cat /tmp/bourso.csv.budget | $view_tool"
-	screen -S myshell -X screen -t summary+ bash -c "cat /tmp/bourso.csv.summaryp | $view_tool"
+	screen -S myshell -X screen -t balance bash -c "cat /tmp/bourso.csv.balance | $view_tool"
+	screen -S myshell -X screen -t balance_by_category bash -c "cat /tmp/bourso.csv.summary | $view_tool"
+	screen -S myshell -X screen -t balance_by_category_and_budget bash -c "cat /tmp/bourso.csv.budget | $view_tool"
 	screen -S myshell -X screen -t details bash -c "cat /tmp/bourso.csv.details | $view_tool"
 	screen -x myshell
 #fi

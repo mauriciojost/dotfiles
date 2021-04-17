@@ -1,5 +1,5 @@
 customCategory;budgetAmount;desc
-feeding;2142;1412 + 730
+feeding;2142;money put monthly into common account (1412 + 730)
 property;-163;
 tax;-118;
 baby;-612;
@@ -9,7 +9,7 @@ service;-182;
 health;-120;
 cleaning;-120;
 insurance;-126;
-internal;0;
-basic;0;
-unknown;0;
-transfers;0;
+internal;1;transfers from one account to another, to be ignored
+basic;1;basic expenses like clothes, haircuts, etc.
+unknown;1;unknow expense, to be investigated
+transfers;1;transfers from one account to another, to be ignored
