@@ -167,6 +167,8 @@ function _qboursorama-match() {
   esac
 }
 function qboursorama-analyse() {
+  sql='python2-q-text-as-data -b --output-header --skip-header --delimiter=;'
+	sql2='python2-q-text-as-data --output-header --skip-header --delimiter=; --output-delimiter=;'
   local iso_month=${1:-20}
   local base="$HOME/Downloads"
   #local view_tool="fzf --no-sort"
@@ -226,7 +228,7 @@ EOL
 	# 2021-03-31;2021-03;31/0..;31/03..;VIR from-fix-to-.;Virements ;Mouvements in;viremariable;112,86;40513502;FAMILIA CARTA 0930 BOURSO;16,90;internal;safe;safe
 
         # The idea is to group all bank account transfers into a single line representing the flow (should be equal to the feeding - actual paid expenses via bank transfer, which is to be avoided)
-	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' "\
+	$sql2 "\
 	    select 'transfers' as dateOpIso , monthOpIso,'transfers' as newCustomCategory,'transfers' as customSubcategory,'transfers' as customDescription,'transfers' as category, 'transfers' as supplierFound, 'transfers' as accountLabel, 'transfers' as label, 'transfers' as categoryParent, sum(amount) as amount from /tmp/bourso.csv.tmp4 \
 	      where customCategory == 'internal' \
 	      group by monthOpIso \
@@ -234,7 +236,7 @@ EOL
 	    select dateOpIso,monthOpIso,customCategory as newCustomCategory,customSubcategory,customDescription,category,supplierFound, accountLabel, label, categoryParent, amount from /tmp/bourso.csv.tmp4 where newCustomCategory != 'internal'" \
 	      > /tmp/bourso.csv
 
-	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' "\
+	$sql "\
 	    select r.monthOpIso, r.newCustomCategory, sum(r.amount), b.budgetAmount, sum(r.amount) - b.budgetAmount as budget_left_pos_is_good \
 	    from \
 	      /home/mjost/.dotfiles/modules/bourso/budget.csv as b \
@@ -244,12 +246,12 @@ EOL
 	      r.newCustomCategory = b.customCategory group by r.monthOpIso, r.newCustomCategory\
 	    "> /tmp/bourso.csv.budget
 
-	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' > /tmp/bourso.csv.summary
+	$sql 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' > /tmp/bourso.csv.summary
 
-	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' "\
+	$sql "\
 	    select sum(amount), monthOpIso, newCustomCategory from /tmp/bourso.csv group by newCustomCategory, monthOpIso order by sum(amount)" > /tmp/bourso.csv.summaryp
 
-	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' > /tmp/bourso.csv.details
+	$sql 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' > /tmp/bourso.csv.details
 
 cat <<EOL >> /tmp/bourso.csv.report
 REPORT
@@ -258,7 +260,7 @@ REPORT
 $(wc -l /tmp/bourso*)
 
 2. Balance:
-$(python2-q-text-as-data -T -b --output-header --skip-header --delimiter=';' 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv')
+$($sql -T 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive, max(dateOpIso) as until_date_inclusive from /tmp/bourso.csv')
 EOL
 #if [ 1 == 3 ]
 #then
