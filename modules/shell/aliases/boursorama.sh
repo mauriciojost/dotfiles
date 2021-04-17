@@ -166,16 +166,10 @@ function _qboursorama-match() {
     *)                                  echo "$line;unknown;boh;boh" ;;
   esac
 }
-function qboursorama-analyse() {
-  sql='python2-q-text-as-data -b --output-header --skip-header --delimiter=;'
-	sql2='python2-q-text-as-data --output-header --skip-header --delimiter=; --output-delimiter=;'
-  local iso_month=${1:-20}
-  local base="$HOME/Downloads"
-  #local view_tool="fzf --no-sort"
-  local view_tool="vd --csv-delimiter ';' --default-width 30 --filetype csv --header 1"
-  rm -f /tmp/bourso.*
-  cat <<EOL >> /tmp/bourso.help
 
+
+function _create_visidata_help() {
+  cat <<EOL >> /tmp/bourso.help
 
 VISIDATA helpers:
 - general
@@ -198,6 +192,9 @@ VISIDATA helpers:
     3. create pivot:                         shift+w
     4. exit:                                 q
 EOL
+}
+
+function _show_instructions() {
 
   cat <<EOL
 USE:
@@ -208,8 +205,20 @@ USE:
 
 Press ENTER once the file has been downloaded in $base...
 EOL
+}
 
+function qboursorama-analyse() {
+  sql='python2-q-text-as-data -b --output-header --skip-header --delimiter=;'
+  sql2='python2-q-text-as-data --output-header --skip-header --delimiter=; --output-delimiter=;'
+  local iso_month=${1:-20}
+  local base="$HOME/Downloads"
+  #local view_tool="fzf --no-sort"
+  local view_tool="vd --csv-delimiter ';' --default-width 30 --filetype csv --header 1"
+  rm -f /tmp/bourso.*
+
+  _show_instructions
   read -i xx
+
   local input="$(ls -t $base/export*.csv | head -1)"
   if [ -e "$input" ]
   then
@@ -264,6 +273,8 @@ $($sql -T 'select sum(amount) as balance, min(dateOpIso) as from_date_inclusive,
 EOL
 #if [ 1 == 3 ]
 #then
+
+	_create_visidata_help
 	screen -AdmS myshell -t help bash -c "less /tmp/bourso.help"
 	screen -S myshell -X screen -t report bash -c "cat /tmp/bourso.csv.report | less"
 	screen -S myshell -X screen -t summary bash -c "cat /tmp/bourso.csv.summary | $view_tool"
