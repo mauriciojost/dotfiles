@@ -209,7 +209,6 @@ EOL
 
 function qboursorama-analyse() {
   sql='python2-q-text-as-data  --output-header --skip-header --delimiter=; --output-delimiter=;'
-  sql2='python2-q-text-as-data --output-header --skip-header --delimiter=; --output-delimiter=;'
   local iso_month=${1:-20}
   local base="$HOME/Downloads"
   local view_tool="vd --csv-delimiter ';' --default-width 30 --filetype csv --header 1"
@@ -229,14 +228,14 @@ function qboursorama-analyse() {
 	  _qboursorama-match "$line" >> /tmp/bourso.csv.tmp3
 	done < /tmp/bourso.csv.tmp2
 
-	python2-q-text-as-data --output-header --skip-header --delimiter=';' --output-delimiter=';' 'select substr(dateOp,7)|| "-" ||substr(dateOp,4,2)|| "-" ||substr(dateOp,1,2) as dateOpIso, substr(dateOp,7)|| "-" ||substr(dateOp,4,2) as monthOpIso,* from /tmp/bourso.csv.tmp3 where dateOpIso like "'$iso_month'%"' > /tmp/bourso.csv.tmp4
+	$sql 'select substr(dateOp,7)|| "-" ||substr(dateOp,4,2)|| "-" ||substr(dateOp,1,2) as dateOpIso, substr(dateOp,7)|| "-" ||substr(dateOp,4,2) as monthOpIso,* from /tmp/bourso.csv.tmp3 where dateOpIso like "'$iso_month'%"' > /tmp/bourso.csv.tmp4
 
         # columns at this point: 
 	# dateOpIso;monthOpIso;dateOp;dateVal;label;category;categoryParent;supplierFound;amount;accountNum;accountLabel;accountBalance;customCategory;customSubcategory;customDescription
 	# 2021-03-31;2021-03;31/0..;31/03..;VIR from-fix-to-.;Virements ;Mouvements in;viremariable;112,86;40513502;FAMILIA CARTA 0930 BOURSO;16,90;internal;safe;safe
 
         # The idea is to group all bank account transfers into a single line representing the flow (should be equal to the feeding - actual paid expenses via bank transfer, which is to be avoided)
-	$sql2 "\
+	$sql "\
 	    select 'transfers' as dateOpIso , monthOpIso,'transfers' as newCustomCategory,'transfers' as customSubcategory,'transfers' as customDescription,'transfers' as category, 'transfers' as supplierFound, 'transfers' as accountLabel, 'transfers' as label, 'transfers' as categoryParent, sum(amount) as amount from /tmp/bourso.csv.tmp4 \
 	      where customCategory == 'internal' \
 	      group by monthOpIso \
