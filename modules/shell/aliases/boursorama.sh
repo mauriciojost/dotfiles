@@ -244,6 +244,13 @@ EOL
 	      r.newCustomCategory = b.customCategory group by r.monthOpIso, r.newCustomCategory\
 	    "> /tmp/bourso.csv.budget
 
+	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' > /tmp/bourso.csv.summary
+
+	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' "\
+	    select sum(amount), monthOpIso, newCustomCategory from /tmp/bourso.csv group by newCustomCategory, monthOpIso order by sum(amount)" > /tmp/bourso.csv.summaryp
+
+	python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' > /tmp/bourso.csv.details
+
 cat <<EOL >> /tmp/bourso.csv.report
 REPORT
 
@@ -256,16 +263,11 @@ EOL
 #if [ 1 == 3 ]
 #then
 	screen -AdmS myshell -t help bash -c "less /tmp/bourso.help"
-
 	screen -S myshell -X screen -t report bash -c "cat /tmp/bourso.csv.report | less"
-
-	screen -S myshell -X screen -t summary bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select r.monthOpIso, r.newCustomCategory as category, sum(r.amount) as consumed from /tmp/bourso.csv as r group by r.monthOpIso, r.newCustomCategory' | $view_tool"
-
+	screen -S myshell -X screen -t summary bash -c "cat /tmp/bourso.csv.summary | $view_tool"
 	screen -S myshell -X screen -t summary_budget bash -c "cat /tmp/bourso.csv.budget | $view_tool"
-	screen -S myshell -X screen -t summary+ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), monthOpIso, newCustomCategory from /tmp/bourso.csv group by newCustomCategory, monthOpIso order by sum(amount)' | $view_tool"
-
-	screen -S myshell -X screen -t summary++ bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select sum(amount), newCustomCategory, customSubCategory, customDescription from /tmp/bourso.csv group by newCustomCategory, customSubCategory, customDescription order by sum(amount)' | $view_tool"
-	screen -S myshell -X screen -t details bash -c "python2-q-text-as-data -b --output-header --skip-header --delimiter=';' 'select dateOpIso as date, (amount - 0.0) as amnt, newCustomCategory, customSubCategory, customDescription, accountLabel as account, label, category as cat, supplierFound as supplier, categoryParent as catPar from /tmp/bourso.csv order by amnt' | $view_tool"
+	screen -S myshell -X screen -t summary+ bash -c "cat /tmp/bourso.csv.summaryp | $view_tool"
+	screen -S myshell -X screen -t details bash -c "cat /tmp/bourso.csv.details | $view_tool"
 	screen -x myshell
 #fi
   else
