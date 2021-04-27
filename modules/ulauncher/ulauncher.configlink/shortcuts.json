@@ -48,5 +48,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1606424360.4840248
+    },
+    "94b75874-5f64-431c-a376-043db9aafd8f": {
+        "id": "94b75874-5f64-431c-a376-043db9aafd8f",
+        "name": "New topic",
+        "keyword": "t",
+        "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c \"qtopic-new $@\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1618995167.0047524
     }
 }
