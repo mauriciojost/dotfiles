@@ -38,3 +38,4 @@ module-shell/localrc.symlink
 /modules/xfconf/xfconf.xfce4-settings-editor.conf
 /modules/xfconf/xfconf.xfce4-settings-manager.conf
 /modules/xfconf/xfconf.xfprint.conf
+/docs/amm/amm
