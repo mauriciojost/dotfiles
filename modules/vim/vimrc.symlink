@@ -1,5 +1,6 @@
 let g:plug_shallow = 0
 let maplocalleader = ","
+let mapleader = ","
 
 " md calculator plugin (WIP)
 " https://blog.semanticart.com/2017/01/05/lets-write-a-basic-vim-plugin/
@@ -17,11 +18,19 @@ Plug 'derekwyatt/vim-scala'
 Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
 Plug 'dhruvasagar/vim-table-mode'
+Plug 'ferrine/md-img-paste.vim'
 call plug#end()
 
 "set colorcolumn=+1        " highlight column after 'textwidth'
 "set colorcolumn=+1,+2,+3  " highlight three columns after 'textwidth'
 "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+
+
+" For plugin ferrine/md-img-paste
+autocmd FileType markdown nmap <buffer><silent> <leader>p :call mdip#MarkdownClipboardImage()<CR>
+" there are some defaults for image directory and image name, you can change them
+let g:mdip_imgdir = 'images'
+let g:mdip_imgname = 'xx'
 
 " Set up syntax stuff
 syntax on
@@ -220,10 +229,10 @@ command MdCalculate w | ! bash -i -c "qmarkdown-sql-calculate %"
 command MdEnable let g:vim_markdown_folding_disabled = 0
 command MdDisable let g:vim_markdown_folding_disabled = 1
 " CSVs
-command QCsvPretty CSVTabularize
+command CsvPretty CSVTabularize
 " Git
-command QGitDisable GitGutterDisable
-command QGitEnable GitGutterEnable
+command GitDisable GitGutterDisable
+command GitEnable GitGutterEnable
 
 " Markdown syntax highlighting (vim-markdown plugin), first is the alias to use after ```, second the equivalent file extension
 let g:vim_markdown_fenced_languages = ['c++=cpp', 'viml=vim', 'bash=sh', 'ini=dosini', 'scala=scala', 'java=java', 'yaml=yaml', 'yml=yml', 'json=json', 'html=html']

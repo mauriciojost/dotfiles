@@ -143,19 +143,20 @@ function qgit-remove-submodule-x-path-y() {
 
 function qgit-search-commit-such-that() {
   local branch="$1"
-  local expr="$2"
+  local expr_condition="$2"
   local max_commits="${3:-50}"
+  local expr_debug="${4:-echo boh}"
   local format='%h %aN %ci %s'
   local curr_branch="$(qgit-branch)"
-  # qgit-search-commit-such-that 'master' '[ "$(cat kafka-consumer/version.txt)" == "1.1.70" ] && echo true '
+  # qgit-search-commit-such-that 'master' '[ "$(cat kafka-consumer/version.txt)" == "1.1.70" ] && echo true ' 'echo hello'
   for commit in $(git rev-list "$branch" | head -$max_commits)
   do
 	  git checkout "$commit" &> /dev/null
-	  if [ "$(eval "$expr")" == "true" ]
+	  if [ "$(eval "$expr_condition")" == "true" ]
 	  then
-	    echo ">>>> $(git show -s --format="$format" "$commit" | cut -c1-120)"
+	    echo ">>>> $(git show -s --format="$format" "$commit" | cut -c1-120) $(eval "$expr_debug")"
 	  else
-	    echo "     $(git show -s --format="$format" "$commit" | cut -c1-120)"
+	    echo "     $(git show -s --format="$format" "$commit" | cut -c1-120) $(eval "$expr_debug")"
 	  fi
   done
   git checkout "${curr_branch}"
