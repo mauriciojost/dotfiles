@@ -2,10 +2,11 @@
 
 ## From Pills
 
+See [here](https://nixos.org/guides/nix-pills/)
 
 A **profile** in Nix is a general and convenient concept for realizing rollbacks.
 Profiles are made up of multiple "generations": they are versioned.
-Generations can be switched and rolled back atomically, which makes them convenient for managing changes to your system.
+**Generations** can be switched and rolled back atomically, which makes them convenient for managing changes to your system. Whenever you change a **profile**, a new **generation** is created.
 
 Nix **expressions** are used to describe packages and how to build them. Nixpkgs is the repository containing all of the expressions: https://github.com/NixOS/nixpkgs.
 
@@ -73,4 +74,69 @@ https://github.com/NixOS/nixpkgs/blob/master/default.nix
 3. 
 ```
 nix-build release.nix # nix-instantiate and nix-store
+```
+
+# Write a package on your own
+
+From [here](https://nix-tutorial.gitlabpages.inria.fr/nix-tutorial/first-package.html)
+
+Language: “Nix Expression Language”.
+- functional
+- weird syntax
+
+A `derivation` is a sort of `package`. More precisely is the function that describes a build process.
+
+This is a derivation for the example: 
+
+```
+{                                                                                                   #  between these {} you have the input of the functionb
+  pkgs ? import (fetchTarball "https://github.com/NixOS/nixpkgs-channels/archive/b58ada326aa612ea1e2fb9a53d550999e94f1985.tar.gz") {} #  input: the pkgs variable, ? gives a default value to pkgs, top-level tree of packages, The pkgs imported here is a snapshot of the unstable nixpkgs channel on the b58ada326aa612ea1e2fb9a53d550999e94f1985 commit. The nixpkgs tree of this commit can be traversed here.
+}:
+pkgs.stdenv.mkDerivation rec { # mkDerivation takes a set as input and expects many attributes within it 
+  pname = "chord"; # the pname and version attributes are concatenated to form the package name (i.e. chord-0.1.0)
+  version = "0.1.0";
+
+  rev = "cbe903e7f8839794fbe572ea4c811e2c802a4038";
+  src = pkgs.fetchurl { # the src attribute is mandatory and needs to point to the directory that contains the source code.
+                        # fetchurl downloads the file, unpacks it if necessary, then ensures that the hash of the download content matches the expected sha256.
+    url = "https://gitlab.inria.fr/nix-tutorial/chord-tuto-nix-2019/-/archive/${rev}/chord-tuto-nix-2019-${rev}.tar.gz";
+    sha256 = "1d75ad63llkcgs2y44fsfismg0n6srlzx3n8fy9v07550jnhwh1c";
+  };
+
+  buildInputs = [ # buildInputs attribute contains the list of packages required to build the derivation
+    pkgs.simgrid
+    pkgs.boost
+    pkgs.cmake
+  ];
+
+  configurePhase = '' # Nix separates the build process in several phases, that are concatenated to form a build script. This seems strange at first but this is quite convenient, as usually only a small subpart of the package build process needs to be changed.
+    cmake .
+  '';
+
+  buildPhase = ''
+    make
+  '';
+  # In this case, Nix does the default build script for CMake, which is essentially cmake && make && make install
+
+  installPhase = ''
+    mkdir -p $out/bin
+    mv chord $out/bin
+  '';
+}
+```
+
+Then you can do: 
+```
+nix-build chord_example.nix
+```
+
+And thanks to the build of the derivation see: 
+
+```
+./result/bin/chord --help
+```
+
+You can also enter the environment: 
+```
+nix-shell --pure chord_example.nix
 ```
