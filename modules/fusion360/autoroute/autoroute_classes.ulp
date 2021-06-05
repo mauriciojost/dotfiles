@@ -1,0 +1,149 @@
+#usage "<b>Autoroute Classes</b>\n"
+       "<p>"
+       "Select nets belonging to specified classes to autoroute."
+       "<p>"
+       "<author>Author: ed@anuff.com</author>"
+
+/*
+ * autoroute_classes.ulp
+ *
+ * Copyright (c) 2004 Ed Anuff <ed@anuff.com>. All Rights Reserved.
+ *
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ *
+*/
+
+string classes[];
+int n_classes = 0;
+
+string replaceString(string source, string find, string replace) {
+
+	string result = source;
+	
+	int i = strstr(source, find);
+	if (i > -1) {
+		string head = strsub(source, 0, i);
+		string tail = strsub(source, i + strlen(find));
+		result = head + replace + tail;
+	}
+	
+	return result;
+}
+
+string trimString(string source) {
+
+	string result = source;
+	
+	int head = -1;
+	
+	for (int i = 0; source[i]; i++) {
+		if (!isspace(source[i])) {
+			head = i - 1;
+			break;
+		}
+   	}
+   	
+   	if (head > -1) {
+   		result = strsub(source, head);
+   	}
+	
+	for (i = (strlen(result) - 1); result[i]; i--) {
+		if (!isspace(result[i])) {
+			break;
+		}
+		else {
+			result[i] = 0;
+		}
+   	}
+   	
+ 	return result;
+}
+
+string cleanWhitespace(string text) {
+	string oldtext = "";
+
+	do 
+	{
+		oldtext = text;
+		replaceString(text, "  ", " ");
+	} while (text != oldtext);
+
+	return trimString(text);
+}
+
+string cleanName(string name) {
+
+	name = strupr(name);
+	name = replaceString(name, "_", " ");
+	name = replaceString(name, ".", " ");
+	name = replaceString(name, "(", " ");
+	name = replaceString(name, ")", " ");
+	name = replaceString(name, "/", " ");
+	//name = replaceString(name, "-", " ");
+	name = replaceString(name, "\\", " ");
+
+	name = cleanWhitespace(name);
+	name = replaceString(name, " ", "_");
+
+	return name;
+}
+
+if (!board) {
+	dlgMessageBox(usage + "<hr><b>ERROR: No board!</b><p>\nThis program can only work in the board editor.");
+	exit(1);
+}
+
+board(B) {
+	B.classes(C) {
+		if (C.name != "") classes[n_classes++] = C.name;
+	}
+}
+
+int class_selected = 0;
+string command = "AUTO ";
+
+int result = dlgDialog("Enter Parameters") {
+	dlgHBoxLayout {
+		dlgStretch(1);
+		dlgLabel("Autorouter Wizard");
+		dlgStretch(1);
+	}
+	dlgListBox(classes, class_selected) {
+		project.schematic(S) {
+			S.nets(N) {
+				if (N.class.name == classes[class_selected]) {
+					command += N.name + " "; 
+					dlgRedisplay();
+				}
+			}
+		}
+	}
+	dlgTextEdit(command);
+	dlgSpacing(10);
+	dlgHBoxLayout {
+		dlgStretch(1);
+		dlgPushButton("+OK")    dlgAccept();
+		dlgPushButton("Cancel") dlgReject();
+	}
+};
+
+if (result > 0) {
+	exit(command);
+}
+else {
+	dlgMessageBox(";Autoroute Classes ULP cancelled.", "&Ok");
+}
+
+exit(0);
