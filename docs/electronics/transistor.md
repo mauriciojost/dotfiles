@@ -61,7 +61,7 @@ Sub-type : NPN
 Ic       : 5A
 Hfe      : 1000
 ON / SAT characteristics
-Vce sat  : 2.0-4.0v !!! (is more than 0.7v beause of Darlington schema)
+Vce sat  : 2.0-4.0v !!! (is more than 0.7v beause of Darlington)
 Vbe sat  : 2.5v
 
 ## IRF3205 (my favorite)
@@ -71,7 +71,7 @@ G    | current
   S  v
 ```
 
-Price    : $
+Price    : $ (~50 for 5e)
 Package  : TO-220 (1Ampere package)
 Type     : MOSFET
 Sub-type : ?
@@ -79,5 +79,26 @@ Id       : 110A
 ON / SAT characteristics
 Vds sat  : 1mv
 Vgs thres: min 2.0v
+
+[Datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/68131/IRF/IRF3205.html)
+
+## IRLML6244 (my new favorite)
+
+```
+  D
+G    | current
+  S  v
+```
+
+Price    : $ (~100 for 5e)
+Package  : SOT-23 
+Type     : MOSFET
+Sub-type : ?
+Id       : 6.3A
+ON / SAT characteristics
+Vds sat  : ? (very very low)
+Vgs thres: min 0.5v-1.1v
+
+[Datasheet](https://pdf1.alldatasheet.com/datasheet-pdf/view/520588/IRF/IRLML6244.html)
 
 
