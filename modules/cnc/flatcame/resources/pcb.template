@@ -1,0 +1,105 @@
+# #####################################################################################
+# DESCRIPTION:
+# Take the output of Fusion 360 PCB Gerber and Excellon files and generate a the 
+# GCODES for a 2-sided PCB machining.
+# #####################################################################################
+
+### VARIABLES DEFINITION
+# Default path when using Export to Project Directory option in Fusion 360
+#set BASE_PATH "/home/mjost/persospace/3d/cnc/projects/Mauricio Jost"
+#set ROOT_FOLDER "${BASE_PATH}/waterino-gene/CAMOutputs"
+# <<< isolation
+set DIAMETER_ISOLATE 0.50
+set Z_ISOLATE -0.20
+set FEED_RATE_ISOLATE 40
+set PASSES_ISOLATE 2
+set OVERLAP_ISOLATE 0
+# Tricky here, the diameter isolate can't reflect reality because otherwise flatcam does not isolate everyting.
+# In reality the measured value for a 15deg vbit at 0.2mm depth is around 0.7mm
+# the actual overlap is DIAMETER_ISOLATE * OVERLAP_ISOLATE in % => 0.5mm
+
+# <<< isolation rough
+set DIAMETER_ISOLATE_ROUGH 1.00
+set Z_ISOLATE_ROUGH -0.30
+set FEED_RATE_ISOLATE_ROUGH 60
+set PASSES_ISOLATE_ROUGH 3
+set OVERLAP_ISOLATE_ROUGH 30
+
+# <<< cutout
+set DIAMETER_CUTOUT 2.0
+set Z_CUTOUT -2.0
+set FEED_RATE_CUTOUT 40
+set PASSES_CUTOUT 1
+set OVERLAP_CUTOUT 0
+
+# <<< drill
+set DIAMETER_DRILL 1.0
+set DRILL_Z 1.9
+set FEED_RATE_DRILL 40
+set Z_SAFE_DRILL 2
+set DRILL_SPEED 900
+
+
+# <<< general
+set Z_SAFE_MOVE 2
+set GCODE_EXT ncc
+set ALIGNMENT_AXIS X
+
+### PROCESSING OF GEOMETRIES
+
+# CUTOUT of top_cutout layer
+open_gerber "${ROOT_FOLDER}/GerberFiles/profile.gbr" -outname top_cutout1
+isolate top_cutout1 -dia ${DIAMETER_ISOLATE} -passes ${PASSES_CUTOUT} -overlap ${OVERLAP_CUTOUT} -combine True -outname top_cutout2
+cutout top_cutout2 -dia ${DIAMETER_CUTOUT} -margin 0.0 -gapsize 0.5 -gaps lr lr -outname top_cutout3
+cncjob top_cutout3 -dia ${DIAMETER_CUTOUT} -z_cut ${Z_CUTOUT} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_CUTOUT} -startz ${Z_SAFE_MOVE} -outname top_cutout_final
+write_gcode top_cutout_final "${ROOT_FOLDER}/02b____with_reference_ensure_clean_borders___heightmap_create_auto_probe_edit_use___open_next_save_as_amap.${GCODE_EXT}"
+# CUTOUT of top_cutout layer (for test, exploring, to replace 02b, uses isolate z and feedrate)
+cncjob top_cutout3 -dia ${DIAMETER_ISOLATE} -z_cut ${Z_ISOLATE} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_ISOLATE} -startz ${Z_SAFE_MOVE} -outname top_cutout_simulation
+write_gcode top_cutout_simulation "${ROOT_FOLDER}/02a____with_reference_ensure_clean_borders___heightmap_create_auto_probe_edit_use___remove_probes_go___open_next_save_as_amap.${GCODE_EXT}"
+
+# ISOLATION of TOP copper layer
+# <<< isolation fine
+open_gerber "${ROOT_FOLDER}/GerberFiles/copper_top.gbr" -outname top_isolate1
+isolate top_isolate1 -dia ${DIAMETER_ISOLATE} -passes ${PASSES_ISOLATE} -overlap ${OVERLAP_ISOLATE} -combine True -outname top_isolate2
+cncjob top_isolate2 -dia ${DIAMETER_ISOLATE} -z_cut ${Z_ISOLATE} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_ISOLATE} -startz ${Z_SAFE_MOVE} -outname top_isolate_final
+write_gcode top_isolate_final "${ROOT_FOLDER}/03___remove_probes____heightmap_open_use___speed_go.${GCODE_EXT}"
+# <<< isolation rough
+isolate top_isolate1 -dia ${DIAMETER_ISOLATE_ROUGH} -passes ${PASSES_ISOLATE_ROUGH} -overlap ${OVERLAP_ISOLATE_ROUGH} -combine True -outname top_isolate2_rough
+cncjob top_isolate2_rough -dia ${DIAMETER_ISOLATE_ROUGH} -z_cut ${Z_ISOLATE_ROUGH} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_ISOLATE_ROUGH} -startz ${Z_SAFE_MOVE} -outname top_isolate_final_rough
+write_gcode top_isolate_final_rough "${ROOT_FOLDER}/03b___remove_bit____put_rough_bit____adjust_manually_z____heightmap_open_use____speed_go.${GCODE_EXT}"
+
+# DRILL of ALIGN layer (bug https://bitbucket.org/jpcgt/flatcam/issues/496/flatcam-8994-tclcommandaligndrill)
+#aligndrill top_cutout1 -dia "${DIAMETER_DRILL}" -axis "${ALIGNMENT_AXIS}" -box top_cutout1 -minoffset 1 -grid 1 -gridoffset 0 -axisoffset 0 -outname align1
+#drillcncjob align1 -spindlespeed ${DRILL_SPEED} -drillz ${DRILL_Z} -travelz ${Z_SAFE_MOVE} -feedrate_z ${FEED_RATE_DRILL} -endxy 0,0 -outname top_align_final
+#write_gcode top_align_final "${ROOT_FOLDER}/top_align.${GCODE_EXT}"
+#open_excellon "${ROOT_FOLDER}/DrillFiles/drill_1_16.xln" -outname drill1
+#drillcncjob drill1 -spindlespeed ${DRILL_SPEED} -drillz ${DRILL_Z} -travelz ${Z_SAFE_MOVE} -feedrate_z ${FEED_RATE_DRILL} -endxy 0,0 -outname top_drill_final
+#write_gcode top_drill_final "${ROOT_FOLDER}/top_drill.${GCODE_EXT}"
+
+# DRILL of DRILLS1_16 layer AND DRILL of ALIGN layer
+aligndrill top_cutout1 -dia "${DIAMETER_DRILL}" -axis "${ALIGNMENT_AXIS}" -box top_cutout1 -minoffset 1 -grid 1 -gridoffset 0 -axisoffset 0 -outname align1
+open_excellon "${ROOT_FOLDER}/DrillFiles/drill_1_16.xln" -outname drill1
+open_excellon "${ROOT_FOLDER}/empty.xln" -outname empty1
+join_excellon top_drill_align align1 drill1
+join_excellon top_align align1 empty1
+drillcncjob top_drill_align -spindlespeed ${DRILL_SPEED} -drillz ${DRILL_Z} -travelz ${Z_SAFE_MOVE} -feedrate_z ${FEED_RATE_DRILL} -endxy 0,0 -outname top_drill_align_final
+drillcncjob top_align -spindlespeed ${DRILL_SPEED} -drillz ${DRILL_Z} -travelz ${Z_SAFE_MOVE} -feedrate_z ${FEED_RATE_DRILL} -endxy 0,0 -outname bottom_align_final
+write_gcode top_drill_align_final "${ROOT_FOLDER}/04___change_tool_drill___z_adjust_manually_drill_z0____speed_go.${GCODE_EXT}"
+write_gcode bottom_align_final "${ROOT_FOLDER}/05___turn_${ALIGNMENT_AXIS}___lift_z_manually___align_by_go_play_multiple_times.${GCODE_EXT}"
+
+# ISOLATION of BOTTOM copper layer
+open_gerber "${ROOT_FOLDER}/GerberFiles/copper_bottom.gbr" -outname bottom_isolate1
+mirror bottom_isolate1 -axis "${ALIGNMENT_AXIS}" -box top_cutout1
+isolate bottom_isolate1 -dia ${DIAMETER_ISOLATE} -passes ${PASSES_ISOLATE} -overlap ${OVERLAP_ISOLATE} -combine True -outname bottom_isolate2
+cncjob bottom_isolate2 -dia ${DIAMETER_ISOLATE} -z_cut ${Z_ISOLATE} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_ISOLATE} -startz ${Z_SAFE_DRILL} -outname bottom_isolate_final
+write_gcode bottom_isolate_final "${ROOT_FOLDER}/06___turn_${ALIGNMENT_AXIS}_aligned___change_tool_vbit___attach_probes___z_probe___heightmap_create_auto_probe_use___speed_go.${GCODE_EXT}"
+
+# CUTOUT of bottom_cutout layer (for real)
+open_gerber "${ROOT_FOLDER}/GerberFiles/profile.gbr" -outname xx_cutout1_tmp
+mirror xx_cutout1_tmp -axis "${ALIGNMENT_AXIS}" -box top_cutout1
+isolate xx_cutout1_tmp -dia ${DIAMETER_ISOLATE} -passes ${PASSES_CUTOUT} -overlap ${OVERLAP_CUTOUT} -combine True -outname bottom_cutout2
+cutout bottom_cutout2 -dia ${DIAMETER_CUTOUT} -margin 0.0 -gapsize 0.5 -gaps lr lr -outname bottom_cutout3
+cncjob bottom_cutout3 -dia ${DIAMETER_CUTOUT} -z_cut ${Z_CUTOUT} -z_move ${Z_SAFE_MOVE} -feedrate ${FEED_RATE_CUTOUT} -startz ${Z_SAFE_MOVE} -outname bottom_cutout_final
+write_gcode bottom_cutout_final "${ROOT_FOLDER}/07___change_tool_profile___z_adjust_manually___speed_go.${GCODE_EXT}"
+
+

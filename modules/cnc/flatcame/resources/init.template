@@ -1,0 +1,22 @@
+(Units per Minute Mode)
+G94
+(to use millimeters for lenght units)
+G21
+(use plane XY)
+G17
+(set rate to 40 mm per minute)
+F40
+
+(x,y inverted, fix it)
+$3=3
+(set logic of Z probe)
+$6=0
+(probe Z)
+G21G38.2Z-10F100
+(set X,Y,Z to zero)
+G92Z0
+G92X0
+G92Y0
+(back off)
+G0Z15
+

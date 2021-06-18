@@ -1,0 +1,630 @@
+[INFO][MainThread] FlatCAM Starting...
+[DEBUG][MainThread] Win64!
+[DEBUG][MainThread] Application path is C:\Program Files\FlatCAM\lib\library.zip
+[DEBUG][MainThread] Started in C:\cygwin64\home\mjost\workspace\3d\cnc
+[DEBUG][MainThread] FlatCAM defaults loaded from: C:\Users\Mauricio\AppData\Roaming\FlatCAM\current_defaults.FlatConfig
+[DEBUG][MainThread] MainGUI.__init__() --> UI state restored from QSettings.
+[DEBUG][MainThread] MainGUI.__init__() --> UI layout restored from QSettings. Layout = minimal
+[DEBUG][MainThread] App.save_project_auto_update() --> updated the interval timeout.
+[DEBUG][MainThread] FlatCAMTranslation.apply_language() --> [Errno 2] No translation file found for domain: 'strings'. Perhaps is Cx_freeze-ed?
+[DEBUG][MainThread] App.__init__() --> Applied English language.
+[DEBUG][MainThread] propagate_defaults()
+[DEBUG] Finished Preferences GUI form initialization.
+[DEBUG][MainThread] Finished creating Object Collection.
+[DEBUG][MainThread] Setting up canvas: 2D
+[DEBUG][MainThread] Finished Canvas initialization in 0.3852725028991699 seconds.
+[DEBUG][MainThread] Finished creating Workers crew.
+[DEBUG][MainThread] TCL Shell has been initialized.
+D:\1.DEV\FlatCAM_beta\appGUI\PlotCanvasLegacy.py:911: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
+[DEBUG][MainThread] Tools are installed.
+[DEBUG][MainThread] Initialization of the Geometry Editor is finished ...
+[DEBUG][MainThread] Initialization of the Excellon Editor is finished ...
+[DEBUG][MainThread] Initialization of the Gerber Editor is finished ...
+[DEBUG][MainThread] Initialization of the GCode Editor is finished ...
+[DEBUG][MainThread] Finished adding FlatCAM Editor's.
+[DEBUG][MainThread] + Adding Exclusion Areas
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread]  -> Connecting Toolbar Signals
+[DEBUG][MainThread]  -> Connecting Tools Toolbar Signals
+[DEBUG][MainThread] Finished connecting Signals.
+[DEBUG][MainThread] END of constructor. Releasing control.
+[DEBUG][MainThread] TCL command 'TclCommandOpenGerber' executed.
+[DEBUG][Dummy-4] open_gerber()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.048003 seconds before initialize().
+[DEBUG][Dummy-4] Gerber units found = MM
+[DEBUG][Dummy-4] Gerber format found. (%FSLAX34Y34*%) 
+[DEBUG][Dummy-4] Gerber format found. Gerber zeros = L (L-omit leading zeros, T-omit trailing zeros, D-no zero supression)
+[DEBUG][Dummy-4] Gerber format found. Coordinates type = Absolute (Absolute or Relative)
+[WARNING][Dummy-4] Line ignored (6): %IN*%
+[WARNING][Dummy-4] Line ignored (7): %IPPOS*%
+[DEBUG][Dummy-4] Starting macro. Line 8: %AMOC8*
+[DEBUG][Dummy-4] Continuing macro. Line 9.
+[DEBUG][Dummy-4] End of macro. Line 9.
+[WARNING][Dummy-4] Joining 1 polygons.
+[DEBUG][Dummy-4] Union by buffer...
+[WARNING][Dummy-4] Union(buffer) done.
+[DEBUG][Dummy-4] New object with name: top_cutout1. 0.007999 seconds executing initialize().
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GerberObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    gerber
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/GerberFiles/profile.gbr
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread] TCL command 'TclCommandIsolate' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.028004 seconds before initialize().
+[DEBUG][Dummy-4] New object with name: top_cutout2. 0.004002 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCutout' executed.
+[DEBUG][MainThread] AppObject.new_object()
+[DEBUG][MainThread] Calling object constructor...
+[DEBUG][MainThread] FlatCAMObj.visible()
+[DEBUG][MainThread] 0.028002 seconds before initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][MainThread] New object with name: top_cutout3. 0.000000 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][MainThread] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.040001 seconds before initialize().
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 2 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 2
+[DEBUG] Finishing G-Code... 2 paths traced.
+[DEBUG][Dummy-4] New object with name: top_cutout_final. 0.004000 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] solid_geometry is None
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.043963 seconds before initialize().
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 2 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 2
+[DEBUG] Finishing G-Code... 2 paths traced.
+[DEBUG][Dummy-4] New object with name: top_cutout_simulation. 0.004002 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] solid_geometry is None
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandOpenGerber' executed.
+[DEBUG][Dummy-4] open_gerber()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.031991 seconds before initialize().
+[DEBUG][Dummy-4] Gerber units found = MM
+[DEBUG][Dummy-4] Gerber format found. (%FSLAX34Y34*%) 
+[DEBUG][Dummy-4] Gerber format found. Gerber zeros = L (L-omit leading zeros, T-omit trailing zeros, D-no zero supression)
+[DEBUG][Dummy-4] Gerber format found. Coordinates type = Absolute (Absolute or Relative)
+[WARNING][Dummy-4] Line ignored (6): %INTop Copper*%
+[WARNING][Dummy-4] Line ignored (7): %IPPOS*%
+[DEBUG][Dummy-4] Starting macro. Line 8: %AMOC8*
+[DEBUG][Dummy-4] Continuing macro. Line 9.
+[DEBUG][Dummy-4] End of macro. Line 9.
+[WARNING][Dummy-4] Joining 263 polygons.
+[DEBUG][Dummy-4] Union by buffer...
+[WARNING][Dummy-4] Union(buffer) done.
+[DEBUG][Dummy-4] New object with name: top_isolate1. 0.240025 seconds executing initialize().
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GerberObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    gerber
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/GerberFiles/copper_top.gbr
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread] TCL command 'TclCommandIsolate' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.032016 seconds before initialize().
+[DEBUG][Dummy-4] New object with name: top_isolate2. 0.259996 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.044003 seconds before initialize().
+[DEBUG][Dummy-4] Creating a CNCJob out of a single-geometry
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 62 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 62
+[DEBUG] Finishing G-Code... 62 paths traced.
+[DEBUG][Dummy-4] New object with name: top_isolate_final. 0.636061 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandIsolate' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.031977 seconds before initialize().
+[DEBUG][Dummy-4] New object with name: top_isolate2_rough. 0.188030 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.040002 seconds before initialize().
+[DEBUG][Dummy-4] Creating a CNCJob out of a single-geometry
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 84 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 84
+[DEBUG] Finishing G-Code... 84 paths traced.
+[DEBUG][Dummy-4] New object with name: top_isolate_final_rough. 0.599972 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandAlignDrill' executed.
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.028002 seconds before initialize().
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] New object with name: align1. 0.000000 seconds executing initialize().
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] ExcellonObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandOpenExcellon' executed.
+[DEBUG][Dummy-4] open_excellon()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.027985 seconds before initialize().
+[WARNING][Dummy-4] Found start of the header: M48
+[WARNING][Dummy-4] Line ignored, it's a comment: ;GenerationSoftware,Autodesk,EAGLE,9.7.0*%
+[WARNING][Dummy-4] Line ignored: ;GenerationSoftware,Autodesk,EAGLE,9.7.0*%
+[WARNING][Dummy-4] Line ignored, it's a comment: ;CreationDate,2021-06-16T20:09:33Z*%
+[WARNING][Dummy-4] Line ignored: ;CreationDate,2021-06-16T20:09:33Z*%
+[WARNING][Dummy-4] Line ignored: FMAT,2
+[WARNING][Dummy-4] Line ignored: ICI,OFF
+[WARNING][Dummy-4] UNITS found inline - Value before conversion: MM
+[DEBUG][Dummy-4] FlatCAMObj.ExcellonObject.convert_units()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.convert_units() --> Factor: 1.0
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.scale()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[WARNING][Dummy-4] UNITS found inline - Value after conversion: MM
+[WARNING][Dummy-4] Excellon format preset is: 3:3
+[WARNING][Dummy-4] Type of ZEROS found inline, in header: T
+[DEBUG][Dummy-4] Tool definition: 6 {'C': 0.35, 'solid_geometry': []}
+[DEBUG][Dummy-4] Tool definition: 5 {'C': 0.66, 'solid_geometry': []}
+[DEBUG][Dummy-4] Tool definition: 4 {'C': 0.7, 'solid_geometry': []}
+[DEBUG][Dummy-4] Tool definition: 3 {'C': 0.813, 'solid_geometry': []}
+[DEBUG][Dummy-4] Tool definition: 2 {'C': 1.016, 'solid_geometry': []}
+[WARNING][Dummy-4] Found end of the header: %
+[WARNING][Dummy-4] Line ignored: G90
+[DEBUG][Dummy-4] ALternative M71/M72 units found, before conversion: MM
+[DEBUG][Dummy-4] FlatCAMObj.ExcellonObject.convert_units()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.convert_units() --> Factor: 1.0
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.scale()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] ALternative M71/M72 units found, after conversion: MM
+[WARNING][Dummy-4] Excellon format preset is: 3:3
+[DEBUG][Dummy-4] Tool change: 2
+[DEBUG][Dummy-4] Tool change: 3
+[DEBUG][Dummy-4] Tool change: 4
+[DEBUG][Dummy-4] Tool change: 5
+[DEBUG][Dummy-4] Tool change: 6
+[WARNING][Dummy-4] Line ignored: M30
+[INFO][Dummy-4] Zeros: T, Units MM.
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] New object with name: drill1. 0.104006 seconds executing initialize().
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] ExcellonObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    excellon
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/DrillFiles/drill_1_16.xln
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread] TCL command 'TclCommandOpenExcellon' executed.
+[DEBUG][Dummy-4] open_excellon()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.028002 seconds before initialize().
+[WARNING][Dummy-4] Found start of the header: M48
+[WARNING][Dummy-4] Line ignored, it's a comment: ;GenerationSoftware,Autodesk,EAGLE,9.7.0*%
+[WARNING][Dummy-4] Line ignored: ;GenerationSoftware,Autodesk,EAGLE,9.7.0*%
+[WARNING][Dummy-4] Line ignored, it's a comment: ;CreationDate,2021-03-23T21:58:16Z*%
+[WARNING][Dummy-4] Line ignored: ;CreationDate,2021-03-23T21:58:16Z*%
+[WARNING][Dummy-4] Line ignored: FMAT,2
+[WARNING][Dummy-4] Line ignored: ICI,OFF
+[WARNING][Dummy-4] UNITS found inline - Value before conversion: MM
+[DEBUG][Dummy-4] FlatCAMObj.ExcellonObject.convert_units()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.convert_units() --> Factor: 1.0
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.scale()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[WARNING][Dummy-4] UNITS found inline - Value after conversion: MM
+[WARNING][Dummy-4] Excellon format preset is: 3:3
+[WARNING][Dummy-4] Type of ZEROS found inline, in header: T
+[DEBUG][Dummy-4] Tool definition: 2 {'C': 0.7, 'solid_geometry': []}
+[DEBUG][Dummy-4] Tool definition: 1 {'C': 1.016, 'solid_geometry': []}
+[WARNING][Dummy-4] Found end of the header: %
+[WARNING][Dummy-4] Line ignored: G90
+[DEBUG][Dummy-4] ALternative M71/M72 units found, before conversion: MM
+[DEBUG][Dummy-4] FlatCAMObj.ExcellonObject.convert_units()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.convert_units() --> Factor: 1.0
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.scale()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] ALternative M71/M72 units found, after conversion: MM
+[WARNING][Dummy-4] Excellon format preset is: 3:3
+[DEBUG][Dummy-4] Tool change: 1
+[INFO][Dummy-4] Zeros: T, Units MM.
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][Dummy-4] New object with name: empty1. 0.004000 seconds executing initialize().
+[DEBUG][Dummy-4] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] ExcellonObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    excellon
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/empty.xln
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread] TCL command 'TclCommandJoinExcellon' executed.
+[DEBUG][MainThread] AppObject.new_object()
+[DEBUG][MainThread] Calling object constructor...
+[DEBUG][MainThread] FlatCAMObj.visible()
+[DEBUG][MainThread] 0.023996 seconds before initialize().
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][MainThread] New object with name: top_drill_align. 0.016006 seconds executing initialize().
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] ExcellonObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandJoinExcellon' executed.
+[DEBUG][MainThread] AppObject.new_object()
+[DEBUG][MainThread] Calling object constructor...
+[DEBUG][MainThread] FlatCAMObj.visible()
+[DEBUG][MainThread] 0.027997 seconds before initialize().
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.create_geometry()
+[DEBUG][MainThread] New object with name: top_align. 0.000000 seconds executing initialize().
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] ExcellonObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandDrillcncjob' executed.
+[DEBUG][Dummy-5] AppObject.new_object()
+[DEBUG][Dummy-5] Calling object constructor...
+[DEBUG][Dummy-5] Creating CNCJob object...
+[DEBUG][Dummy-5] FlatCAMObj.visible()
+[DEBUG][Dummy-5] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-5] 0.043984 seconds before initialize().
+[DEBUG] Creating CNC Job from Excellon...
+[DEBUG] Tools sorted are: [2, 3, 4, 5, 1, 6]
+[DEBUG] Found 6 TOOLS with drills.
+[DEBUG] Using OR-Tools Basic drill path optimization.
+[INFO] Total distance: 350
+[WARNING] Number of drills for which to generate GCode: 73
+[DEBUG] The total travel distance with OR-TOOLS Basic Algorithm is: 363.2209578514266
+[DEBUG] The total travel distance including travel to end position is: 378.40916709412534
+
+[DEBUG][Dummy-5] New object with name: top_drill_align_final. 0.431905 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG][Dummy-5] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandDrillcncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.045056 seconds before initialize().
+[DEBUG] Creating CNC Job from Excellon...
+[DEBUG] Tools sorted are: [2, 1, 3]
+[DEBUG] Found 2 TOOLS with drills.
+[DEBUG] Using OR-Tools Basic drill path optimization.
+[INFO] Total distance: 210
+[WARNING] Number of drills for which to generate GCode: 5
+[DEBUG] The total travel distance with OR-TOOLS Basic Algorithm is: 170.14
+[DEBUG] The total travel distance including travel to end position is: 212.32743414809676
+
+[DEBUG][Dummy-4] New object with name: bottom_align_final. 0.008004 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandOpenGerber' executed.
+[DEBUG][Dummy-4] open_gerber()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.032003 seconds before initialize().
+[DEBUG][Dummy-4] Gerber units found = MM
+[DEBUG][Dummy-4] Gerber format found. (%FSLAX34Y34*%) 
+[DEBUG][Dummy-4] Gerber format found. Gerber zeros = L (L-omit leading zeros, T-omit trailing zeros, D-no zero supression)
+[DEBUG][Dummy-4] Gerber format found. Coordinates type = Absolute (Absolute or Relative)
+[WARNING][Dummy-4] Line ignored (6): %INBottom Copper*%
+[WARNING][Dummy-4] Line ignored (7): %IPPOS*%
+[DEBUG][Dummy-4] Starting macro. Line 8: %AMOC8*
+[DEBUG][Dummy-4] Continuing macro. Line 9.
+[DEBUG][Dummy-4] End of macro. Line 9.
+[WARNING][Dummy-4] Joining 75 polygons.
+[DEBUG][Dummy-4] Union by buffer...
+[WARNING][Dummy-4] Union(buffer) done.
+[DEBUG][Dummy-4] New object with name: bottom_isolate1. 0.084004 seconds executing initialize().
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GerberObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    gerber
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/GerberFiles/copper_bottom.gbr
+[DEBUG][MainThread] Recent items list has been populated.
+[DEBUG][MainThread] TCL command 'TclCommandMirror' executed.
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] parseGerber.Gerber.mirror()
+[DEBUG][Dummy-4] execute --> GerberObject.plot()
+[DEBUG][Dummy-4] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] on_zoom_fit--> OC.get_bounds()
+[DEBUG][MainThread] parseGerber.Gerber.bounds()
+[DEBUG][MainThread] parseGerber.Gerber.bounds()
+[DEBUG][MainThread] parseGerber.Gerber.bounds()
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG][MainThread] appParsers.ParseExcellon.Excellon.bounds()
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] solid_geometry is None
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] solid_geometry is None
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG][MainThread] TCL command 'TclCommandIsolate' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.032077 seconds before initialize().
+[DEBUG][Dummy-4] New object with name: bottom_isolate2. 0.136007 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] Creating CNCJob object...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-4] 0.040002 seconds before initialize().
+[DEBUG][Dummy-4] Creating a CNCJob out of a single-geometry
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 93 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 93
+[DEBUG] Finishing G-Code... 93 paths traced.
+[DEBUG][Dummy-4] New object with name: bottom_isolate_final. 0.800411 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG][MainThread] TCL command 'TclCommandOpenGerber' executed.
+[DEBUG][Dummy-4] open_gerber()
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.028006 seconds before initialize().
+[DEBUG][Dummy-4] Gerber units found = MM
+[DEBUG][Dummy-4] Gerber format found. (%FSLAX34Y34*%) 
+[DEBUG][Dummy-4] Gerber format found. Gerber zeros = L (L-omit leading zeros, T-omit trailing zeros, D-no zero supression)
+[DEBUG][Dummy-4] Gerber format found. Coordinates type = Absolute (Absolute or Relative)
+[WARNING][Dummy-4] Line ignored (6): %IN*%
+[WARNING][Dummy-4] Line ignored (7): %IPPOS*%
+[DEBUG][Dummy-4] Starting macro. Line 8: %AMOC8*
+[DEBUG][Dummy-4] Continuing macro. Line 9.
+[DEBUG][Dummy-4] End of macro. Line 9.
+[WARNING][Dummy-4] Joining 1 polygons.
+[DEBUG][Dummy-4] Union by buffer...
+[WARNING][Dummy-4] Union(buffer) done.
+[DEBUG][Dummy-4] New object with name: xx_cutout1_tmp. 0.003999 seconds executing initialize().
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GerberObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] register_recent()
+[DEBUG][MainThread]    gerber
+[DEBUG][MainThread]    C:/cygwin64/tmp/tmp.8rJQ9WNRrG/CAMOutputs/GerberFiles/profile.gbr
+[DEBUG][MainThread] TCL command 'TclCommandMirror' executed.
+[DEBUG][Dummy-4] parseGerber.Gerber.bounds()
+[DEBUG][Dummy-4] parseGerber.Gerber.mirror()
+[DEBUG][Dummy-4] execute --> GerberObject.plot()
+[DEBUG][Dummy-4] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] TCL command 'TclCommandIsolate' executed.
+[DEBUG][Dummy-4] AppObject.new_object()
+[DEBUG][Dummy-4] Calling object constructor...
+[DEBUG][Dummy-4] FlatCAMObj.visible()
+[DEBUG][Dummy-4] 0.032002 seconds before initialize().
+[DEBUG][Dummy-4] New object with name: bottom_cutout2. 0.004001 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][Dummy-4] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCutout' executed.
+[DEBUG][MainThread] AppObject.new_object()
+[DEBUG][MainThread] Calling object constructor...
+[DEBUG][MainThread] FlatCAMObj.visible()
+[DEBUG][MainThread] 0.027984 seconds before initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][MainThread] New object with name: bottom_cutout3. 0.000000 seconds executing initialize().
+[DEBUG] camlib.Geometry.bounds()
+[DEBUG][MainThread] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] GeometryObject.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandCncjob' executed.
+[DEBUG][Dummy-5] AppObject.new_object()
+[DEBUG][Dummy-5] Calling object constructor...
+[DEBUG][Dummy-5] Creating CNCJob object...
+[DEBUG][Dummy-5] FlatCAMObj.visible()
+[DEBUG][Dummy-5] FlatCAMCNCJob.gcode_header()
+[DEBUG][Dummy-5] 0.047985 seconds before initialize().
+[DEBUG] Executing camlib.CNCJob.generate_from_geometry_2()
+[DEBUG] 2 paths
+[DEBUG] Indexing geometry before generating G-Code...
+[DEBUG] Starting G-Code...
+[WARNING] Number of paths for which to generate GCode: 2
+[DEBUG] Finishing G-Code... 2 paths traced.
+[DEBUG][Dummy-5] New object with name: bottom_cutout_final. 0.004000 seconds executing initialize().
+[DEBUG] camlib.CNCJob.bounds()
+[DEBUG] CNCJob->bounds()
+[DEBUG] solid_geometry is None
+[DEBUG][Dummy-5] Moving new object back to main thread.
+[DEBUG][MainThread] on_object_created()
+[DEBUG][MainThread] on_object_created --> OC.append()
+[DEBUG][MainThread] FlatCAMCNCJob.set_ui()
+[DEBUG][MainThread] set_ui --> FlatCAMObj.to_form()
+[DEBUG][MainThread] plot --> FlatCAMObj.plot()
+[DEBUG][MainThread] build_ui--> FlatCAMObj.build_ui()
+[DEBUG][MainThread] TCL command 'TclCommandWriteGCode' executed.
+[DEBUG] App.PreferencesUIManager.save_defaults()
+[DEBUG][MainThread] propagate_defaults()
+[DEBUG][MainThread] App.save_project_auto_update() --> updated the interval timeout.
+[DEBUG][MainThread] App.quit_application() --> App Defaults saved.
+[DEBUG][MainThread] App.quit_application() --> App UI state saved.

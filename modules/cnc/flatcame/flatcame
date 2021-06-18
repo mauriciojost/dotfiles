@@ -1,0 +1,80 @@
+#!/usr/bin/env bash
+
+tmp_script=.script.flatcam
+template=resources/pcb.template 
+cyg_prefix="/cygdrive/c/"
+win_prefix="C:/"
+cyg_prefix2="/home/"
+win_prefix2="C:/cygwin64/home/"
+cyg_prefix3="/tmp/"
+win_prefix3="C:/cygwin64/tmp/"
+
+
+source config.conf
+
+function to_win() {
+  local path="$1"
+  echo "$path" | \
+    sed -E "s#^$cyg_prefix#$win_prefix#g" | \
+    sed -E "s#^$cyg_prefix2#$win_prefix2#g" | \
+    sed -E "s#^$cyg_prefix3#$win_prefix3#g" | \
+    sed 's#/#\\#g'
+}
+
+function to_win_backslash() {
+  local path="$1"
+  echo "$(to_win "$path")" | sed 's#\\#/#g'
+}
+
+function to_win_forwardslash() {
+  local path="$1"
+  echo "$(to_win "$path")" | sed 's#/#\\#g'
+}
+
+target="$1"
+if [[ "$target" == *.zip ]] 
+then
+  echo "Parsing zip: $target"
+  tmpdir=$(mktemp -d)
+  unzip -d "$tmpdir" "$target"
+  ls "$tmpdir"
+  mv "$tmpdir"/*/*/* "$tmpdir"
+  ls "$tmpdir"
+  target="$tmpdir"
+  cyg_cam_outputs="$target/CAMOutputs"
+  win_cam_outputs="$(to_win_backslash "$cyg_cam_outputs")"
+else
+  echo "Looking for projects at: $base_path_projects/.../CamOutputs"
+  sleep 2
+  cyg_cam_outputs="$base_path_projects/$target/CAMOutputs"
+  win_cam_outputs="$(to_win_backslash "$cyg_cam_outputs")"
+  if [ ! -d "$cyg_cam_outputs" ]
+  then
+    echo "Invalid target ($cyg_cam_outputs does not exist), use any of:"
+    ls "$base_path_projects" | awk '{print "- " $1}'
+    exit 1
+  fi
+fi
+
+
+echo "set ROOT_FOLDER \"$win_cam_outputs\"" > "$tmp_script"
+cat "$template" >> "$tmp_script"
+shellfile="$(to_win "$(readlink -e "$tmp_script")")"
+rm -f "$cyg_cam_outputs/"*.ncc
+
+echo "Target (cygwin) : $cyg_cam_outputs"
+echo "Target (windows): $win_cam_outputs"
+echo "Script (windows): $shellfile"
+
+"$explorer" "$(to_win_forwardslash "$win_cam_outputs")"
+
+set -e 
+set -x
+
+echo "Exported: https://docs.google.com/document/d/14261J5scl-l1lvdDl-IfnNN0h52vkqq1lmbIxXHqT8k/edit#heading=h.9jy9yqzfuoqx"
+cat resources/init.template > "$cyg_cam_outputs/01____presentation_mode____use_vbit_clean_chucke_from_dust____put_000_manually____attach_probes___go.ncc"
+cat resources/empty.xln > "$cyg_cam_outputs/empty.xln"
+mkdir -p logs
+"$flatcam" --shellfile="$shellfile" &> logs/flatcam.log &
+
+
