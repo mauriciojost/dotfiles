@@ -10,8 +10,8 @@
 #set ROOT_FOLDER "${BASE_PATH}/waterino-gene/CAMOutputs"
 # <<< isolation
 set DIAMETER_ISOLATE 0.50
-set Z_ISOLATE -0.20
-set FEED_RATE_ISOLATE 40
+set Z_ISOLATE -0.17
+set FEED_RATE_ISOLATE 50
 set PASSES_ISOLATE 2
 set OVERLAP_ISOLATE 0
 # Tricky here, the diameter isolate can't reflect reality because otherwise flatcam does not isolate everyting.
@@ -21,7 +21,7 @@ set OVERLAP_ISOLATE 0
 # <<< isolation rough
 set DIAMETER_ISOLATE_ROUGH 1.00
 set Z_ISOLATE_ROUGH -0.30
-set FEED_RATE_ISOLATE_ROUGH 60
+set FEED_RATE_ISOLATE_ROUGH 70
 set PASSES_ISOLATE_ROUGH 3
 set OVERLAP_ISOLATE_ROUGH 30
 
