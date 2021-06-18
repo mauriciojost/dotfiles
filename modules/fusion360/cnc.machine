@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<machine xmlns="http://www.hsmworks.com/xml/2009/machine">
+
+  <vendor>Autodesk</vendor>
+
+  <model></model>
+
+  <description>Generic 3-axis</description>
+
+  <control></control>
+
+  <machining additive="no" inspection="no" jet="no" milling="yes" turning="no"/>
+
+  <dimensions depth="0mm" height="0mm" weight="0kg" width="0mm"/>
+
+  <capacities depth="100mm" height="30mm" weight="0kg" width="100mm"/>
+
+  <png128></png128>
+
+  <mtk></mtk>
+
+  <fusion>
+    <model></model>
+  </fusion>
+
+  <custom>
+    <name></name>
+    <softwareVersion></softwareVersion>
+    <network ip="" port="" protocol=""/>
+    <serial></serial>
+  </custom>
+
+  <coolant options=""/>
+
+  <multiAxis adjust="yes" angle="10deg" cone="3deg" feedRateType="inverse" linearizationTolerance="0.040000000000000001mm" method="off" reconfigure="yes" tolerance="0.040000000000000001mm"/>
+
+  <tooling maximumToolDiameter="0mm" maximumToolLength="0mm" maximumToolWeight="0kg" numberOfTools="100" toolChanger="no" toolPreload="no"/>
+
+  <machiningTime ratio="1" toolChangeTime="60s"/>
+
+  <capabilities maximumBlockProcessingSpeed="0" maximumFeedrate="0mm/min" workOffsets="100"/>
+
+  <simulation retractOnIndexing="yes" shortestAngularRotation="yes" wcs="0mm 0mm 0mm">
+    <machineAssembly></machineAssembly>
+  </simulation>
+
+  <post>
+    <postProcessor></postProcessor>
+    <postProperties>
+      <Parameters/>
+    </postProperties>
+    <setupSheet></setupSheet>
+    <setupSheetProperties/>
+  </post>
+
+  <axis actuator="linear" coordinate="X" homePosition="0mm" id="X" link="table" maximumFeed="0mm/min" name="" offset="0mm 0mm 0mm" rapidFeed="0mm/min" resolution="0mm"/>
+
+  <axis actuator="linear" coordinate="Y" homePosition="0mm" id="Y" link="table" maximumFeed="0mm/min" name="" offset="0mm 0mm 0mm" rapidFeed="0mm/min" resolution="0mm"/>
+
+  <axis actuator="linear" coordinate="Z" homePosition="0mm" id="Z" link="table" maximumFeed="0mm/min" name="" offset="0mm 0mm 0mm" rapidFeed="0mm/min" resolution="0mm"/>
+
+  <spindle axis="0 0 1" maximumSpeed="10000rpm" minimumSpeed="0rpm">
+    <description></description>
+  </spindle>
+
+</machine>
