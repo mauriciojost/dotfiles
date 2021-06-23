@@ -1,3 +1,4 @@
+# https://nixos.wiki/wiki/Nix_Expression_Language
 let 
   f1 = x: y: x + y;   # function expecting 2 curried integers
   f2 = {x,y}: x + y; # function expecting 1 attribute set with x and y
