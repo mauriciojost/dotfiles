@@ -1,0 +1,4 @@
+export PATH=$PATH:${coreutils}/bin/
+mkdir toto
+echo tototext > toto/file1
+cp -r toto $out
