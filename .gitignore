@@ -40,3 +40,4 @@ module-shell/localrc.symlink
 /modules/xfconf/xfconf.xfprint.conf
 /docs/amm/amm
 /modules/bourso/details.vd
+/docs/nix/result
