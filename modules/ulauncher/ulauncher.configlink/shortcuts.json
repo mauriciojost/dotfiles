@@ -58,5 +58,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1618995167.0047524
+    },
+    "72be4174-be45-4253-be52-ffdfe425cb7b": {
+        "id": "72be4174-be45-4253-be52-ffdfe425cb7b",
+        "name": "Daily",
+        "keyword": "daily",
+        "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c qdaily",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1623308858.7326436
     }
 }
