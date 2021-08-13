@@ -7,7 +7,7 @@ alias _fzf="fzf -m $_FZF_HIGHLIGHT --border=sharp"
 find_args='! -name *.class ! -path *.git*'
 function _typical_dirs() {
   local pref="$1"
-  local output="$pref $TOPICS $pref $DOTFILES/docs"
+  local output="$pref $TOPICS $pref $DOTFILES/docs $pref $HOME/.ssh/config"
   if [ "$(pwd)" != "$HOME" ] 
   then
     output="$pref $(pwd) $output"

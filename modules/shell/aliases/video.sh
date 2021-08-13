@@ -1,5 +1,6 @@
 
 alias qrecord-screen-video=simplescreenrecorder
+alias qscreen-record-in-video=simplescreenrecorder
 
 #function qvideo-process-simple-input-output() {
 #	mencoder $1 -oac pcm -ovc x264 -o $2
