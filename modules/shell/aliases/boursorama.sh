@@ -1,1 +1,0 @@
-/home/mjost/.dotfiles/modules/privates/boursorama/boursorama.sh
