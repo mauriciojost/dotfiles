@@ -76,7 +76,9 @@ function qopen-by-content-cmd-X-dir-Y-what-Z() {
 
   if [ "$what" == "" ]
   then
-    file="$(egrep . $extra_flags_egrep "$from" | fzf -m | awk -F: '{print $1}')"
+    file="$(egrep . $extra_flags_egrep "$from" | fzf -m --preview='echo {} | cat $(awk -F: "{print \$1}")' | awk -F: '{print $1}')"
+	
+
     if [ -e "$file" ]
     then
       $cmd $file

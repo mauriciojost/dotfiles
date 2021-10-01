@@ -59,7 +59,7 @@ function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
   local find_extra_args="$2"
   local header="$3"
-  f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index | awk -F: '{print $1}')"
+  f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index --preview='echo {} | cat $(awk -F: "{print \$1}")' | awk -F: '{print $1}')"
   if [ "$f" != "" ]
   then
     echo "vim $f"
