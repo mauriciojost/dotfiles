@@ -1,3 +1,45 @@
+function qsystemd-reload() {
+  systemctl daemon-reload
+}
+
+function qsystemd-list() {
+  systemctl list-unit-files
+}
+
+function qsystemd-start-service() {
+  local service="$1"
+  systemctl start "$service"
+}
+
+function qsystemd-stop-service() {
+  local service="$1"
+  systemctl stop "$service"
+}
+
+function qsystemd-restart-service() {
+  local service="$1"
+  systemctl restart "$service"
+}
+
+function qsystemd-logs() {
+  journalctl -xe
+}
+
+function qsystemd-logs-service() {
+  local service="$1"
+  journalctl -u "$service"
+}
+
+function qsystemd-enable-on-boot-service() {
+  local service="$1"
+  systemctl enable "$service"
+}
+
+function qsystemd-status-service() {
+  local service="$1"
+  systemctl status "$service"
+}
+
 function qsystemd-user-reload() {
   systemctl --user daemon-reload
 }
