@@ -36,10 +36,10 @@ function qfind-by-name () {
 function qgrep-in-all-files() {
   local expr="$1"
   qassertnotempty "$expr" "Arguments: <pattern-to-look-for>"
-  grep --line-number -R "$expr" .
+  grep --line-number -R --exclude-dir='*.git*' "$expr" .
   echo "Will open files..."
   sleep 3
-  $(which vim) "+/$expr" $(grep -R --files-with-matches "$expr") # trick to avoid opening vim alias
+  $(which vim) "+/$expr" $(grep -R --exclude-dir='*.git*' --files-with-matches "$expr") # trick to avoid opening vim alias
 }
 
 function qgrep-in-all-files-case-non-sensitive() {
