@@ -7,7 +7,13 @@
 4. Go to Vim Emulation (Ctrl-Shift-A and choose Vim Emulation) and for Ctrl+O and Ctrl+I choose IDE.
 5. Restart Intellij.
 
-Then you should have a very good keymap working ;)
+There are keymaps that may conflict between Intellij and the Vim plugin: 
+
+Settings -> Editor -> Vim -> ...
+
+They should be automatically configured thanks to .ideavimrc
+
+You should have a very good keymap working ;)
 
 ## Use reniced
 

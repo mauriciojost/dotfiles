@@ -1,2 +1,15 @@
 source ~/.vimrc
 set clipboard+=unnamedplus,unnamed,ideaput
+
+" See https://github.com/JetBrains/ideavim/blob/master/doc/sethandler.md
+
+" use Vim handlers in normal mode and IDE handlers in insert mode
+sethandler n:ide i:ide
+
+" Use ctrl-c (go to normal mode) as vim shortcut in all modes
+sethandler <C-C> a:vim
+
+" Use ctrl-] (move to next/previous paragraph) as vim shortcut in all modes
+sethandler <C-]> a:vim
+sethandler <C-[> a:vim
+

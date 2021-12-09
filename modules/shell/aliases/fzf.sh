@@ -27,6 +27,11 @@ function qfzf_vim_with() {
   echo vim "$(find $(_typical_dirs) -type f $find_args 2>/dev/null | _fzf --header="EDIT..." --preview="head -100 {}" --bind="left:toggle-preview")"
 }
 
+# Search on local directory by filename (not by content) and stdout vim command on choice
+function qfzf_vim_local_with() {
+  echo vim "$(find $(pwd) -type f $find_args 2>/dev/null | _fzf --header="EDIT..." --preview="head -100 {}" --bind="left:toggle-preview")"
+}
+
 function qfzf_history_with() {
   # echo "Useful expression: 'fullword fuzzy 'fullword2" >&2
   cat "$CUSTOM_HISTORY_FILE" | _fzf --header="HISTORY..." --tac --no-sort --tiebreak=end,length | sed -E 's/###.*//g'

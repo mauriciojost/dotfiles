@@ -94,6 +94,17 @@ function qdisk-usage-analyzer() {
   df >> $file_backup_file
 }
 
+function qdisk-cleanup-snap() {
+ #Removes old revisions of snaps
+ #CLOSE ALL SNAPS BEFORE RUNNING THIS
+ set -eu
+ LANG=en_US.UTF-8 snap list --all | awk '/disabled/{print $1, $3}' |
+     while read snapname revision; do
+         echo snap remove "$snapname" --revision="$revision"
+     done
+}
+
+
 function qdisk-cleanup() {
 
   sudo apt-get clean
@@ -101,6 +112,8 @@ function qdisk-cleanup() {
   sudo rm -rf /var/lib/apt/lists/*
   echo Can restore with sudo apt-get update
   sudo journalctl --vacuum-size=10M
+  sudo snap set system refresh.retain=2 # make snap
+  qdisk-cleanup-snap
   sudo fslint-gui
 
 }
