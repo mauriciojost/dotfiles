@@ -12,6 +12,7 @@ function gc(){
   git --no-pager log --reverse -30 --pretty=%s
   echo ""
   echo ""
+  echo "If WSL: use VcXsrv with 'Native opengl' setting enabled"
   git-cola &> /dev/null
 }
 
