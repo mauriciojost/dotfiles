@@ -121,10 +121,15 @@ CUSTOM_HISTORY_FILE=$HOME/$CUSTOM_HISTORY_FILENAME
 _append_history () {
   local LAST_CMD=$(history 1)
 
-  if xhost >& /dev/null ; then
-    xfceworkspaceid="$(qworkspace-getname)"
-  else 
-    xfceworkspaceid="noworkspace"
+  if [ -e "$(which xfconf-query)" ]
+  then
+    if xhost >& /dev/null ; then
+      xfceworkspaceid="$(qworkspace-getname)"
+    else 
+      xfceworkspaceid="noworkspace"
+    fi
+  else
+    xfceworkspaceid="noxfceworkspace"
   fi
   # strip useless entry number from the beginning
   LAST_CMD_TRIMMED="$(echo "$LAST_CMD" | sed -E 's#[0-9]+ (.*)#\1#')"

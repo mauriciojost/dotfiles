@@ -71,6 +71,7 @@
 
 [user]
 	email = mauriciojost@gmail.com
+	name = Mauricio Jost
 
 [includeIf "gitdir:~/workspace/"]
 	path = ~/.work.gitconfig

@@ -19,3 +19,6 @@
 [submodule "modules/keep/keep-cli"]
 	path = modules/keep/keep-cli
 	url = https://github.com/mauriciojost/keep-cli.git
+[submodule "modules/privates"]
+	path = modules/privates
+	url = git@bitbucket.org:mauriciojost/dotfiles-privates.git
