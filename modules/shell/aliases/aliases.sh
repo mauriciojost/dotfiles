@@ -132,8 +132,9 @@ function _qset_bindings() {
    # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
   _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
   _qbind "open by fileName on typ. dirs   qfzf_vim_with" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
-  _qbind "open by filename on local dir  qfzf_vim_local_with" '"\C-v"' ' "$(qfzf_vim_local_with)\e\C-e\er"' "$mode"
+  _qbind "open by filename on local dir   qfzf_vim_local_with" '"\C-v"' ' "$(qfzf_vim_local_with)\e\C-e\er"' "$mode"
   _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
+  _qbind "open by content (L)             qfzf_currdir_filename_stdout" '"\C-l"' '"$(qfzf_currdir_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
   _qbind "open tOpics                     qtopic" '"\C-o"' '"qtopic\n"' "$mode"
   _qbind "copy snYppets                   qfzf_typical_line_on_clipboard" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
   _qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"

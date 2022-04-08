@@ -222,6 +222,7 @@ command TopicBackupAll w | ! bash -i -c "qtopic-backup"
 " MarkDowns
 command MdView w | !remarkable %
 command MdConfluencePublish w | ! bash -i -c "qtopic-push-to-confluence-file-x %"
+command MdConfluencePublishUnder w | ! bash -i -c "qtopic-push-to-confluence-file-x-under-default %"
 command MdAsPresentation w | ! bash -i -c "qtopic-as-presentation-file-x %"
 command MdKeepPublish w | ! bash -i -c "qtopic-push-to-keep-file-x %"
 command MdKeepUpdate w | ! bash -i -c "qtopic-update-to-keep-file-x %"
@@ -244,7 +245,9 @@ syntax enable
 
 " Symbols colored
 :highlight REDFG ctermbg=black ctermfg=red
+:highlight REDWHITEFG ctermbg=white ctermfg=red
 :highlight YELLOWFG ctermbg=black ctermfg=yellow
+:highlight BLUEFG ctermbg=black ctermfg=blue
 :highlight GREENFG ctermbg=black ctermfg=green
 :highlight GRAYFG ctermbg=black ctermfg=gray
 :highlight WHITEFG ctermbg=black ctermfg=white
@@ -256,8 +259,10 @@ augroup asteriskbold
   au BufNewFile,BufRead *.md let jpositive = matchadd("GREENFG","(+)")
 
   " judgments
+  au BufNewFile,BufRead *.md let jinfo = matchadd("BLUEFG","(!)")
   au BufNewFile,BufRead *.md let jpositive = matchadd("GREENFG","(+)")
   au BufNewFile,BufRead *.md let jnegative = matchadd("REDFG", "(-)")
+  au BufNewFile,BufRead *.md let jverynegative = matchadd("REDWHITEFG", "(---)")
   au BufNewFile,BufRead *.md let jdoubtful = matchadd("YELLOWFG", "(?)")
   " tasks
   au BufNewFile,BufRead *.md let mdone = matchadd("BLACKFG","\\[/\\].*") " [/]  -> done

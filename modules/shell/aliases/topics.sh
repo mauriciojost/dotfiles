@@ -166,6 +166,16 @@ function qtopic-push-to-confluence-file-x() {
   python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass"
 }
 
+function qtopic-push-to-confluence-file-x-under-default() {
+  local filename="$1"
+  local user="$CONFLUENCE_USERNAME"
+  local parent='1793394684'
+  local space='DDL'
+  echo "User: $user, space: $space, parent: $parent"
+  read -sp 'Password: ' pass
+  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass" #-a "$parent"
+}
+
 function qtopic-push-to-keep-file-x() {
   local file="$1"
   local filename="$(basename $1)"
