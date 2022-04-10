@@ -20,10 +20,11 @@
   # changes in each release.
   home.stateVersion = "20.09";
 
-  imports = [
+  imports = with pkgs; [
     #./machine/apollo.nix
     #./role/darwin-laptop/index.nix
     ./user/x.nix
+    ./user/diffuse.nix
   ];
 }
 
