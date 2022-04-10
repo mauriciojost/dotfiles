@@ -1,0 +1,17 @@
+
+     ┌────┐          ┌────────┐          ┌───────┐
+     │user│          │frontend│          │backend│
+     └─┬──┘          └───┬────┘          └───┬───┘
+       │      invoke     │                   │
+       │ ────────────────>                   │
+       │                 │                   │
+       │                 │      invoke       │
+       │                 │ ─────────────────>│
+     ┌─┴──┐          ┌───┴────┐          ┌───┴───┐
+     │user│          │frontend│          │backend│
+     └────┘          └────────┘          └───────┘
+
+@startuml
+user -> frontend : invoke
+frontend -> backend : invoke
+@enduml
