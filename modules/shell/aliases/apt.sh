@@ -13,15 +13,22 @@ alias qyum-provides='apt-file search'
 function qdist-upgrade() {
   local tmpd=~/.logs
   mkdir -p $tmpd 
-  local fn=$tmpd/dist-upgrade.$(date '+%Y-%m-%d-%H-%M-%S').log
-  date &>> $fn
-  echo "installed before" &>> $fn
-  apt list --installed &>> $fn
-  echo "upgradable before" &>> $fn
-  apt list --upgradeable &>> $fn
-  sudo apt-get dist-upgrade
-  echo "installed after" &>> $fn
-  apt list --installed &>> $fn
-  echo "upgradable after" &>> $fn
-  apt list --upgradeable &>> $fn
+  local fn=$tmpd/dist-upgrade.$(date '+%Y-%m-%d-%H-%M-%S')
+
+  local fnbefore=$fn.before.log
+  date &>> $fnbefore
+  echo "installed before" &>> $fnbefore
+  apt list --installed | sort &>> $fnbefore
+  echo "upgradable before" &>> $fnbefore
+  apt list --upgradeable | sort &>> $fnbefore
+
+  local fnduring=$fn.during.log
+  sudo apt-get dist-upgrade &>> $fnduring
+
+  local fnafter=$fn.after.log
+  date &>> $fnafter
+  echo "installed after" &>> $fnafter
+  apt list --installed | sort &>> $fnafter
+  echo "upgradable after" &>> $fnafter
+  apt list --upgradeable | sort &>> $fnafter
 }
