@@ -23,7 +23,7 @@ function qdist-upgrade() {
   apt list --upgradeable | sort &>> $fnbefore
 
   local fnduring=$fn.during.log
-  sudo apt-get dist-upgrade &>> $fnduring
+  sudo apt-get dist-upgrade -y &>> $fnduring
 
   local fnafter=$fn.after.log
   date &>> $fnafter
