@@ -16,16 +16,20 @@ function qdist-upgrade() {
   local fn=$tmpd/dist-upgrade.$(date '+%Y-%m-%d-%H-%M-%S')
 
   local fnbefore=$fn.before.log
+  local fnduring=$fn.during.log
+  local fnafter=$fn.after.log
+  echo "Logs in:"
+  echo "- $fnbefore"
+  echo "- $fnduring"
+  echo "- $fnafter"
   date &>> $fnbefore
   echo "installed before" &>> $fnbefore
   apt list --installed | sort &>> $fnbefore
   echo "upgradable before" &>> $fnbefore
   apt list --upgradeable | sort &>> $fnbefore
 
-  local fnduring=$fn.during.log
   sudo apt-get dist-upgrade -y &>> $fnduring
 
-  local fnafter=$fn.after.log
   date &>> $fnafter
   echo "installed after" &>> $fnafter
   apt list --installed | sort &>> $fnafter
