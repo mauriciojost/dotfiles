@@ -41,3 +41,5 @@ module-shell/localrc.symlink
 /docs/amm/amm
 /modules/bourso/details.vd
 /docs/nix/result
+/modules/autostart/autostart.configlink/teams.desktop
+/modules/avro/read-snippet.sc
