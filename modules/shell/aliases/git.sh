@@ -17,7 +17,11 @@ function gc(){
 }
 
 function qgit-branch() {
-     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+function qgit-branch-delete-remote() {
+  git push $1 --delete $2
 }
 
 function qgit-number-of-commits-until-this-one() {
