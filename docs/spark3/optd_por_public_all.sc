@@ -1,5 +1,0 @@
-val df = spark.read.option("delimiter","^").option("header","true").csv("optd_por_public_all.csv")
-df.write.format("delta").save("optd_por_public_all.delta")
-df.write.format("parquet").save("optd_por_public_all.parquet")
-df.withColumn("part", substring("geoname_id", 1,3)).write.format("parquet").partitionBy("part").save("optd_por_public_all.parquetpartitioned")
-df.withColumn("part", col("geoname_id")).write.format("parquet").save("optd_por_public_all.parquetpartitioned")

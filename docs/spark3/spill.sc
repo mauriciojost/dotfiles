@@ -33,7 +33,7 @@ spillListener.reset()
 spark.conf.set("spark.sql.shuffle.partitions", 1)
 
 // The location of our non-skewed set of transactions
-val trxPath = "optd_por_public_all.csv"
+val trxPath = "datasets/optd_por_public_all.csv"
 def df() = spark.read.option("delimiter","^").option("header","true").csv(trxPath)
 val dfs = (1 to 100).map(_ => df()).reduce(_ union _)
 
