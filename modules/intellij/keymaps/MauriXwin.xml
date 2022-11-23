@@ -1,88 +1,103 @@
 <keymap version="1" name="MauriXwin" parent="Default for XWin">
   <action id="$SelectAll" />
+  <action id="Back">
+    <keyboard-shortcut first-keystroke="ctrl alt left" />
+    <mouse-shortcut keystroke="button4" />
+    <keyboard-shortcut first-keystroke="ctrl o" />
+  </action>
   <action id="CallHierarchy">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control U" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="shift ctrl u" />
   </action>
   <action id="ChangesView.Commit">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control C" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl c" />
   </action>
   <action id="CloseEditor">
-    <keyboard-shortcut first-keystroke="control W" />
+    <keyboard-shortcut first-keystroke="ctrl w" />
   </action>
   <action id="Compare.Selected">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="shift control C" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="shift ctrl c" />
   </action>
   <action id="Diagram.SelectAll" />
   <action id="ExternalJavaDoc">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control D" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="shift ctrl d" />
   </action>
   <action id="ExtractMethod">
-    <keyboard-shortcut first-keystroke="control E" second-keystroke="control M" />
+    <keyboard-shortcut first-keystroke="ctrl e" second-keystroke="ctrl m" />
   </action>
   <action id="FileStructurePopup">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control M" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl m" />
   </action>
   <action id="FindInPath">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control F" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl f" />
   </action>
   <action id="FindUsages">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control U" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl u" />
+  </action>
+  <action id="Forward">
+    <keyboard-shortcut first-keystroke="ctrl alt right" />
+    <mouse-shortcut keystroke="button5" />
+    <keyboard-shortcut first-keystroke="ctrl i" />
   </action>
   <action id="Git.Branches">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control B" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl b" />
   </action>
   <action id="Git.Log">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control L" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl l" />
   </action>
   <action id="Git.Rebase">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control R" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl r" />
   </action>
   <action id="Git.Stash">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control S" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl s" />
   </action>
   <action id="GotoClass">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control C" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl c" />
   </action>
   <action id="MethodHierarchy">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control H" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="shift ctrl h" />
   </action>
+  <action id="OverrideMethods" />
   <action id="ParameterInfo">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control P" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl p" />
   </action>
   <action id="QuickJavaDoc">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control D" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl d" />
   </action>
   <action id="RenameElement">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control R" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl r" />
   </action>
   <action id="ReplaceInPath">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="shift control R" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="shift ctrl r" />
+  </action>
+  <action id="Scala.ShowImplicits">
+    <keyboard-shortcut first-keystroke="shift ctrl alt equals" />
+    <keyboard-shortcut first-keystroke="shift ctrl alt add" />
   </action>
   <action id="SwitchApply">
-    <keyboard-shortcut first-keystroke="shift alt ENTER" />
+    <keyboard-shortcut first-keystroke="shift alt enter" />
   </action>
   <action id="SwitchDown">
-    <keyboard-shortcut first-keystroke="shift alt DOWN" />
+    <keyboard-shortcut first-keystroke="shift alt down" />
   </action>
   <action id="SwitchLeft">
-    <keyboard-shortcut first-keystroke="shift alt LEFT" />
+    <keyboard-shortcut first-keystroke="shift alt left" />
   </action>
   <action id="SwitchRight">
-    <keyboard-shortcut first-keystroke="shift alt RIGHT" />
+    <keyboard-shortcut first-keystroke="shift alt right" />
   </action>
   <action id="SwitchUp">
-    <keyboard-shortcut first-keystroke="shift alt UP" />
+    <keyboard-shortcut first-keystroke="shift alt up" />
   </action>
   <action id="TypeHierarchy">
-    <keyboard-shortcut first-keystroke="control A" second-keystroke="control H" />
+    <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="ctrl h" />
   </action>
   <action id="Vcs.ShowHistoryForBlock">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="shift control H" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="shift ctrl h" />
   </action>
   <action id="Vcs.ShowTabbedFileHistory">
-    <keyboard-shortcut first-keystroke="control G" second-keystroke="control H" />
+    <keyboard-shortcut first-keystroke="ctrl g" second-keystroke="ctrl h" />
   </action>
   <action id="VimPluginToggle">
-    <keyboard-shortcut first-keystroke="control alt Q" />
+    <keyboard-shortcut first-keystroke="ctrl alt q" />
   </action>
 </keymap>

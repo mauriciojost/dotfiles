@@ -12,3 +12,9 @@ function qdata-parquet-read-raw() {
   local INPUT=$1
   echo "spark.read.parquet(\"$INPUT\").show(1000)" | spark-shell 2>&1 | grep '+\||'
 }
+
+function qdata-delta-read-raw() {
+  local INPUT=$1
+  echo "spark.read.format(\"delta\").load(\"$INPUT\").show(1000)" | spark-shell --packages io.delta:delta-core_2.12:1.0.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension"
+}
+

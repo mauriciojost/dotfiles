@@ -3,15 +3,10 @@
 ## Install IdeaVim 
 
 1. Install IdeaVim plugin on Intellij.
-3. After closing Intellij, copy the provided `keymaps/*.xml` into `$HOME/.IdeaXXX/config/keymaps/`
-4. Go to Vim Emulation (Ctrl-Shift-A and choose Vim Emulation) and for Ctrl+O and Ctrl+I choose IDE.
-5. Restart Intellij.
+3. After closing Intellij, copy the provided `keymaps/*.xml` into `$HOME/.IdeaXXX/config/keymaps/` or `$HOME/.config/JetBrains/IdeaICXXXX.Y/keymaps` (as per [this](https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.html#54eb49dd))
+4. Restart Intellij for the keymap to be available, and choose (Ctrl-Alt-S)
 
-There are keymaps that may conflict between Intellij and the Vim plugin: 
-
-Settings -> Editor -> Vim -> ...
-
-They should be automatically configured thanks to .ideavimrc
+For information: there are keymaps that may conflict between Intellij and the Vim plugin, you can see them with `Settings -> Editor -> Vim -> ...`. However they should be automatically configured thanks to `$HOME/.ideavimrc`.
 
 You should have a very good keymap working ;)
 

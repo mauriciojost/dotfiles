@@ -13,3 +13,7 @@ sethandler <C-C> a:vim
 sethandler <C-]> a:vim
 sethandler <C-[> a:vim
 
+" Use ctrl-o ctrl-i (move to previous/next point) as IDE shortcut in all modes
+sethandler <C-o> a:ide
+sethandler <C-i> a:ide
+
