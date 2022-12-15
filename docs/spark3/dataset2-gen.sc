@@ -1,5 +1,11 @@
+// Arguments: --driver-memory 2G --driver-cores 4
+sc.setJobDescription("dataset2-gen.sc: read")
 val df = spark.read.option("delimiter","^").option("header","true").csv("datasets/optd_por_public_all.csv")
+sc.setJobDescription("dataset2-gen.sc: write delta")
 df.write.format("delta").save("datasets/optd_por_public_all.delta")
+sc.setJobDescription("dataset2-gen.sc: write parquet")
 df.write.format("parquet").save("datasets/optd_por_public_all.parquet")
+sc.setJobDescription("dataset2-gen.sc: write parquet partitioned")
 df.withColumn("part", substring(col("geoname_id"), 1,3)).write.format("parquet").partitionBy("part").save("datasets/optd_por_public_all.parquetpartitioned")
+sc.setJobDescription("dataset2-gen.sc: write parquet partitioned2")
 df.withColumn("part", col("geoname_id")).write.format("parquet").partitionBy("part").save("datasets/optd_por_public_all.parquetpartitioned2")

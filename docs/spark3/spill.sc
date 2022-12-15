@@ -1,3 +1,4 @@
+// Arguments: --executor-memory 1G --driver-memory 1G --executor-cores 1
 sc.setJobDescription("Step A-2: Register our Spill Listener")
 // Stolen the Apache Spark test suite, TestUtils
 // https://github.com/apache/spark/blob/master/core/src/main/scala/org/apache/spark/TestUtils.scala

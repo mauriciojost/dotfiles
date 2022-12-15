@@ -1,4 +1,7 @@
 bin/rclocal/
+docs/spark3/datasets/
+docs/spark3/metastore_db/
+docs/spark3/derby.log
 /modules/broot/broot.configlink/launcher/
 /modules/git-cola/git-cola.configlink/settings
 module-shell/localrc.symlink

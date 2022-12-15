@@ -10,22 +10,16 @@ function qspark-shell-with-delta() {
 }
 
 qspark-shell-script() {
+  local script="$1"
   cd $DOTFILES/docs/spark3
-  cat $1 - | spark-shell --packages io.delta:delta-core_2.12:1.0.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" $2
+  local args=$(cat $script | grep '// Arguments: ' | sed 's#// Arguments: ##g')
+  cat $script - | spark-shell --packages io.delta:delta-core_2.12:1.0.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" $args
 }
 
-qspark-shell-script-spill() {
-  qspark-shell-script spill.sc "--executor-memory 1G --driver-memory 1G --executor-cores 1"
-}
-
-qspark-shell-script-dataset1-gen() {
-  qspark-shell-script dataset1-gen.sc
-}
-
-qspark-shell-script-dataset2-gen() {
+qspark-shell-script-dataset2-download() {
   cd $DOTFILES/docs/spark3
   mkdir -p datasets
   curl https://raw.githubusercontent.com/opentraveldata/opentraveldata/master/opentraveldata/optd_por_public_all.csv > datasets/optd_por_public_all.csv
-  qspark-shell-script dataset2-gen.sc "--driver-memory 2G --driver-cores 4"
+  echo "Now launch qspark-shell-script dataset2-gen.sc"
 }
 
