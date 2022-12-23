@@ -3,6 +3,10 @@ function qspark-shell-with-packages() {
   spark-shell --packages "$packs_coords_list"
 }
 
+function qspark-dir() {
+  cd $DOTFILES/docs/spark3
+}
+
 function qspark-shell-with-delta() {
   # assumes spark 3
   cd $DOTFILES/docs/spark3
