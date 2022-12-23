@@ -114,7 +114,7 @@ function qtopic-new-monthly-file-x-with-template-y(){
 alias qtopic-new='qtopic-new-daily-file-x'
 
 function qtopic-daily(){
-  qtopic-new-daily-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
+  qtopic-new-weekly-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
 }
 
 function qtopic-weekly(){
