@@ -11,7 +11,7 @@
     },
     "3689c420-2f5e-469f-a814-7521651da0b4": {
         "id": "3689c420-2f5e-469f-a814-7521651da0b4",
-        "name": "launch",
+        "name": "Shortcut Launch (l)",
         "keyword": "l",
         "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c $@",
         "icon": null,
@@ -21,7 +21,7 @@
     },
     "3ddd5f82-5430-4512-bf29-c1dabb8a463a": {
         "id": "3ddd5f82-5430-4512-bf29-c1dabb8a463a",
-        "name": "Bring window",
+        "name": "Shortcut Bring window (br)",
         "keyword": "br",
         "cmd": "bash -i -c 'qworkspace-bring-window '\"$@\"",
         "icon": null,
@@ -31,7 +31,7 @@
     },
     "4a701a36-dc19-4310-83e3-804b936e3f70": {
         "id": "4a701a36-dc19-4310-83e3-804b936e3f70",
-        "name": "Go to window",
+        "name": "Shortcut Go to window (go)",
         "keyword": "go",
         "cmd": "bash -i -c 'qworkspace-goto-window '\"$@\"",
         "icon": null,
@@ -41,7 +41,7 @@
     },
     "2c7c2cfa-d5d2-476f-8846-ae051106e4c8": {
         "id": "2c7c2cfa-d5d2-476f-8846-ae051106e4c8",
-        "name": "Trash window",
+        "name": "Shortcut Trash window (ta)",
         "keyword": "ta",
         "cmd": "bash -i -c 'qworkspace-take-window '\"$@\"",
         "icon": null,
@@ -51,7 +51,7 @@
     },
     "94b75874-5f64-431c-a376-043db9aafd8f": {
         "id": "94b75874-5f64-431c-a376-043db9aafd8f",
-        "name": "New topic",
+        "name": "Shortcut New topic (t)",
         "keyword": "t",
         "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c \"qtopic-new $@\"",
         "icon": null,
@@ -61,12 +61,22 @@
     },
     "72be4174-be45-4253-be52-ffdfe425cb7b": {
         "id": "72be4174-be45-4253-be52-ffdfe425cb7b",
-        "name": "Daily",
+        "name": "Shortcut Daily (daily)",
         "keyword": "daily",
         "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c qdaily",
         "icon": null,
         "is_default_search": false,
         "run_without_argument": true,
         "added": 1623308858.7326436
+    },
+    "d8728b64-06e0-4f54-944e-f46284484e58": {
+        "id": "d8728b64-06e0-4f54-944e-f46284484e58",
+        "name": "Shortcut Contextual topic (ct)",
+        "keyword": "ct",
+        "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c \"qtopic-contextual-new $@\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": false,
+        "added": 1674414520.0596304
     }
 }

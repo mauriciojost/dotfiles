@@ -59,6 +59,13 @@ function qtopic-new-daily-file-x(){
   echo "File: $f"
 }
 
+function qtopic-contextual-new-daily-file-x(){
+  local topic="$1"
+  local f=`qtopic-new-daily-name $(qworkspace-getname | sed 's/\//-/g')-$topic`.md
+  vim "$f"
+  echo "File: $f"
+}
+
 function qtopic-new-weekly-file-x(){
   local topic="$1"
   local f=`qtopic-new-weekly-name $topic`.md
@@ -112,6 +119,8 @@ function qtopic-new-monthly-file-x-with-template-y(){
 }
 
 alias qtopic-new='qtopic-new-daily-file-x'
+
+alias qtopic-contextual-new='qtopic-contextual-new-daily-file-x'
 
 function qtopic-daily(){
   qtopic-new-weekly-file-x-with-template-y "daily" "$DOTFILES/modules/topics/templates/daily.md"
