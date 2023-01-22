@@ -16,8 +16,13 @@ function gc(){
   git-cola &> /dev/null
 }
 
+# current branch
 function qgit-branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+function qgit-branches() {
+git branch --sort='-authordate'
 }
 
 function qgit-branch-delete-remote() {
