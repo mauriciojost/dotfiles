@@ -41,7 +41,6 @@ filetype indent on
 set showmatch
 set matchtime=0
 set shortmess=atI
-set ruler " not working (to see current column)
 set showcmd
 
 set sidescroll=1
@@ -282,5 +281,6 @@ augroup asteriskbold
 augroup end
 
 
+set ruler " not working (to see current column)
 
 
