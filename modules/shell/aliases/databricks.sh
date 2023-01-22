@@ -15,6 +15,15 @@ function dcat() {
   databricks fs cat dbfs:$1
 }
 
+function dcsv() {
+  tmp=$(mktemp)
+  csvs=$(databricks fs ls dbfs:$1 | grep csv)
+  for i in $csvs; do databricks fs cat dbfs:$1/$i >> $tmp; done
+  mv $tmp $(basename $1)
+  echo $(basename $1)
+}
+
+
 function ddread() {
   #set -x
   databricks fs cat dbfs:$1/_delta_log/00000000000000000$2.json | jq --compact-output 'select (.add)    | .add    | {"path": .path, "sizeMb": (round(.size / 1024 / 1024)), "partition": .partitionValues, "action": "add"}'
