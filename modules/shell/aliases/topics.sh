@@ -163,6 +163,10 @@ function qtopic-new-dir-x(){
   echo "Directory: $dir"
 }
 
+# CONFLUENCE
+#export CONFLUENCE_USERNAME='mjost'
+#export CONFLUENCE_ORGNAME='xxx.net/confluence'
+
 function qtopic-push-to-confluence-file-x() {
   local filename="$1"
   local user="$CONFLUENCE_USERNAME"

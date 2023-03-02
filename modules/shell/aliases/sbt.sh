@@ -1,8 +1,19 @@
 function qsbt-test-only(){
-  CLASS_PATTERN=$1
-  CLASS=`find | grep $CLASS_PATTERN | grep '\.scala' | sed 's/\.\/src\/test\/scala\///g' | sed 's/\//./g' | sed 's/.scala//' | head -1`
+  local PATTERN=$1
+  echo "### Testing match $PATTERN"
+  echo "Run: $cmd"
+  set -x
+  sbt "testOnly *$PATTERN*"
+  set +x
+  echo "### Done"
+}
+
+
+function qsbt-test-only-class(){
+  local CLASS_PATTERN=$1
+  local CLASS=`find | grep $CLASS_PATTERN | grep '\.scala' | sed 's/\.\/src\/test\/scala\///g' | sed 's/\//./g' | sed 's/.scala//' | head -1`
   echo "### Testing class $CLASS"
-  sbt "testOnly $CLASS"
+  echo "Run: sbt \"testOnly $CLASS\""
   echo "### Done"
 }
 
