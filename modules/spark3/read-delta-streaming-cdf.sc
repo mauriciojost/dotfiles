@@ -14,9 +14,9 @@ def processBatch(df: DataFrame, batchId: Long): Unit = {
 }
 
 // Which one is used?
-//spark.conf.set("spark.sql.files.maxPartitionBytes", 1 * 1024) // 1 KB
-spark.conf.set("spark.sql.files.maxPartitionBytes", 1000 * 1024) // 100 KB
-val inputDf = spark.readStream.format("delta").option("maxBytesPerTrigger", "1k").option("readChangeFeed", "true").option("ignoreChanges", "true").table(name)
+spark.conf.set("spark.sql.files.maxPartitionBytes", 1 * 1024) // 1 KB
+//spark.conf.set("spark.sql.files.maxPartitionBytes", 1000000 * 1024) // 100 KB
+val inputDf = spark.readStream.format("delta").option("maxBytesPerTrigger", "100000k").option("readChangeFeed", "true").option("ignoreChanges", "true").table(name)
 
 inputDf.writeStream.option("checkpointLocation", checkpoint).foreachBatch(processBatch _).outputMode(OutputMode.Update).trigger(Trigger.AvailableNow()).start()
 

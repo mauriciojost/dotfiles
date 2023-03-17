@@ -1,3 +1,6 @@
+SPARK_DEFAULT_PACKAGES=io.delta:delta-core_2.12:2.1.0,org.apache.spark:spark-avro_2.12:3.3.2
+SPARK_DEFAULT_CONFIGS="--conf spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension --conf spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog"
+
 function qspark-with-packages() {
   qspark-init
   local packs_coords_list=${1:-"com.beachape:enumeratum_2.12:1.5.15"}
@@ -8,18 +11,11 @@ function qspark-init() {
   cd $DOTFILES/docs/spark3
 }
 
-function qspark-with-delta() {
-  # assumes spark 3
-  qspark-init
-  spark-shell --packages io.delta:delta-core_2.12:2.1.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension"
-}
-
 function qspark-script() {
   local script="$1"
   qspark-init
   local args=$(cat $script | grep '// Arguments: ' | sed 's#// Arguments: ##g')
-  cat $script - | spark-shell --packages io.delta:delta-core_2.12:2.1.0 --conf "spark.sql.extensions=io.delta.sql.DeltaSparkSessionExtension" --conf "spark.sql.catalog.spark_catalog=org.apache.spark.sql.delta.catalog.DeltaCatalog" $args
-
+  cat $script - | spark-shell --packages $SPARK_DEFAULT_PACKAGES $SPARK_DEFAULT_CONFIGS $args
 }
 
 function qspark-script-dataset2-download() {
