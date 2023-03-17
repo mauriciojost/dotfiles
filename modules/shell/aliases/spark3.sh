@@ -8,7 +8,7 @@ function qspark-with-packages() {
 }
 
 function qspark-init() {
-  cd $DOTFILES/docs/spark3
+  cd $DOTFILES/modules/spark3
 }
 
 function qspark-script() {
