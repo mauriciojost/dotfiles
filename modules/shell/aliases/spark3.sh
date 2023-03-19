@@ -11,11 +11,16 @@ function qspark-init() {
   cd $DOTFILES/modules/spark3
 }
 
-function qspark-script() {
+function qspark() {
   local script="$1"
   qspark-init
-  local args=$(cat $script | grep '// Arguments: ' | sed 's#// Arguments: ##g')
-  cat $script - | spark-shell --packages $SPARK_DEFAULT_PACKAGES $SPARK_DEFAULT_CONFIGS $args
+  if [ -z "$script" ] 
+  then
+    spark-shell --packages $SPARK_DEFAULT_PACKAGES $SPARK_DEFAULT_CONFIGS $args
+  else
+    local args=$(cat $script | grep '// Arguments: ' | sed 's#// Arguments: ##g')
+    cat $script - | spark-shell --packages $SPARK_DEFAULT_PACKAGES $SPARK_DEFAULT_CONFIGS $args
+  fi
 }
 
 function qspark-script-dataset2-download() {
@@ -25,4 +30,3 @@ function qspark-script-dataset2-download() {
   echo "Now launch qspark-script dataset2-gen.sc"
 }
 
-alias qspark=qspark-script

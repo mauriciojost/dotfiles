@@ -18,7 +18,7 @@ def processBatch(df: DataFrame, batchId: Long): Unit = {
 //spark.conf.set("spark.sql.files.maxPartitionBytes", 10 * 1024) // 10 KB 
 // spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024) // 1MB // TAKEN INTO ACCOUNT (100 tasks, at most a whole file, no grouping YET of files into same partition)
 // spark.conf.set("spark.sql.files.maxPartitionBytes", 10 * 1024 * 1024) // 10MB // TAKEN INTO ACCOUNT (34 tasks, grouping of files into same partition)
- spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024 * 1024) // 1GB (6 tasks, as many as executors)
+spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024 * 1024) // 1GB (6 tasks, as many as executors)
 
 val schema = spark.read.format("avro").load(path).schema
 val inputDf = spark.readStream.format("avro").schema(schema).option("maxFilesPerTrigger", "100").load(path) // works, 1 batch
