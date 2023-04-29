@@ -18,7 +18,16 @@ function _typical_dirs() {
 }
 
 function qfzf_cd_with() {
-  cd "$(find $pwd -maxdepth 2 -type d $find_args 2>/dev/null | _fzf --header="CD TO..." --preview="tree -L 2 {}" --bind="left:toggle-preview")"
+  local query_and_dir="$(find $pwd -maxdepth 2 -type d $find_args 2>/dev/null | _fzf --header="CD TO..." --preview="tree -L 2 {}" --bind="left:toggle-preview" --print-query)"
+  local dir_value=$(echo $query_and_dir | head -1)
+  local query_value=$(echo $query_and_dir | tail -1)
+  if [ -d "$dir_value" ]
+  then
+    cd "$dir_value"
+  else
+    mkdir -p "$query_value"
+    cd $query_value
+  fi
 }
 
 
