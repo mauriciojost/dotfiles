@@ -1,7 +1,7 @@
 # MONDAY
 
-## WHAT DID I DO
-- In short: 
+## WHAT DID I DO (UPDATE SCRUM BOARD LIVE)
+- [US] In short: 
 - Some details: 
   - 
 ## OBSTACLES
@@ -10,8 +10,8 @@
 
 # TUESDAY
 
-## WHAT DID I DO
-- In short: 
+## WHAT DID I DO (UPDATE SCRUM BOARD LIVE)
+- [US] In short: 
 - Some details: 
   - 
 ## OBSTACLES
@@ -20,8 +20,8 @@
 
 # WEDNESDAY
 
-## WHAT DID I DO
-- In short: 
+## WHAT DID I DO (UPDATE SCRUM BOARD LIVE)
+- [US] In short: 
 - Some details: 
   - 
 ## OBSTACLES
@@ -30,8 +30,8 @@
 
 # THURSDAY
 
-## WHAT DID I DO
-- In short: 
+## WHAT DID I DO (UPDATE SCRUM BOARD LIVE)
+- [US] In short: 
 - Some details: 
   - 
 ## OBSTACLES
@@ -40,8 +40,8 @@
 
 # FRIDAY
 
-## WHAT DID I DO
-- In short: 
+## WHAT DID I DO (UPDATE SCRUM BOARD LIVE)
+- [US] In short: 
 - Some details: 
   - 
 ## OBSTACLES

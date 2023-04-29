@@ -7,6 +7,22 @@ function qexplore() {
   ranger $PWD  
 }
 
+function cdm2() {
+  cd ../../
+}
+
+function cdm3() {
+  cd ../../../
+}
+
+function cdm4() {
+  cd ../../../../
+}
+
+function cdm5() {
+  cd ../../../../../
+}
+
 function qexplore-gui () {
   nautilus --no-desktop $PWD &
 }

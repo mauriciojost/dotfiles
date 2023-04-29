@@ -1,4 +1,13 @@
 // Arguments: --driver-memory 2G --driver-cores 4
+
+
+/*
+First run:
+  qspark-init
+  mkdir -p datasets
+  curl https://raw.githubusercontent.com/opentraveldata/opentraveldata/master/opentraveldata/optd_por_public_all.csv > datasets/optd_por_public_all.csv
+*/
+
 sc.setJobDescription("dataset2-gen.sc: read")
 val df = spark.read.option("delimiter","^").option("header","true").csv("datasets/optd_por_public_all.csv")
 /*

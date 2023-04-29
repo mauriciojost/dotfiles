@@ -268,7 +268,7 @@ augroup asteriskbold
   au BufNewFile,BufRead *.md let mdone2 = matchadd("BLACKFG","\\[x\\].*") " [x]  -> done
   au BufNewFile,BufRead *.md let mprogress = matchadd("WHITEFG","\\[p\\].*") " [p]  -> in progress
   au BufNewFile,BufRead *.md let mprogress2 = matchadd("WHITEFG","\\[>\\].*") " [>]  -> in progress
-  au BufNewFile,BufRead *.md let mtodo = matchadd("WHITEFG", "\\[ \\]") " [ ]  -> understood and to do
+  au BufNewFile,BufRead *.md let mtodo = matchadd("WHITEFG", "\\[ \\].*") " [ ]  -> understood and to do
   au BufNewFile,BufRead *.md let mdeclined = matchadd("BLACKFG", "\\[-\\].*") " [-]  -> declined, won't do
   au BufNewFile,BufRead *.md let mblocked = matchadd("REDFG", "\\[b\\]") " [b]  -> blocked
   au BufNewFile,BufRead *.md let munknown = matchadd("YELLOWFG", "\\[?\\]") " [?]  -> unknown, unclear

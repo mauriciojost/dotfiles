@@ -14,9 +14,9 @@ def processBatch(df: DataFrame, batchId: Long): Unit = {
 }
 
 //spark.conf.set("spark.sql.files.maxPartitionBytes", 1 * 1024) // 1 KB
-//spark.conf.set("spark.sql.files.maxPartitionBytes", 100 * 1024) // 0.1 MB
+spark.conf.set("spark.sql.files.maxPartitionBytes", 100 * 1024) // 0.1 MB
 //spark.conf.set("spark.sql.files.maxPartitionBytes", 512 * 1024) // 0.5 MB
-spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024) // 1 MB
+//spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024) // 1 MB
 //spark.conf.set("spark.sql.files.maxPartitionBytes", 1024 * 1024 * 1024) // 1 GB (taken into account)
 
 // val inputDf = spark.readStream.format("delta").option("maxFilesPerTrigger", "2").option("ignoreChanges", "true").load(path) // works
@@ -30,3 +30,4 @@ inputDf.writeStream.option("checkpointLocation", checkpoint).foreachBatch(proces
 // maxPartitionBytes 1GB + maxBytesPerTrigger 5m => 3 batches (3, 4, 1 files each, with same amount of partitions each as the files)
 // maxPartitionBytes 1MB + maxBytesPerTrigger 5m => 3 batches (7, 8, 3 partitions each)
 // maxPartitionBytes 0.1MB + maxBytesPerTrigger 100m (1 trigger) => 1 batch with 160 partitions, but they are **NOT UNIFORM** (8 partitions filled with data, the rest empty) ???
+// maxPartitionBytes 100MB + maxBytesPerTrigger 100m => 1 batch, 6 partitions (not really uniform, one task of 3.9MB)

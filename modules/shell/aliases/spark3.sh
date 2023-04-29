@@ -23,10 +23,5 @@ function qspark() {
   fi
 }
 
-function qspark-script-dataset2-download() {
-  qspark-init
-  mkdir -p datasets
-  curl https://raw.githubusercontent.com/opentraveldata/opentraveldata/master/opentraveldata/optd_por_public_all.csv > datasets/optd_por_public_all.csv
-  echo "Now launch qspark-script dataset2-gen.sc"
-}
 
+alias s=qspark
