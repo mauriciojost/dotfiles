@@ -152,7 +152,6 @@ function qtopic-investigation(){
 
 alias qnote=qtopic-new
 alias qdaily=qtopic-daily
-alias qweekly=qtopic-weekly
 alias qmonthly=qtopic-monthly
 
 function qtopic-new-dir-x(){

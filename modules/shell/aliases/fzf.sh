@@ -19,14 +19,17 @@ function _typical_dirs() {
 
 function qfzf_cd_with() {
   local query_and_dir="$(find $pwd -maxdepth 2 -type d $find_args 2>/dev/null | _fzf --header="CD TO..." --preview="tree -L 2 {}" --bind="left:toggle-preview" --print-query)"
-  local dir_value=$(echo $query_and_dir | head -1)
-  local query_value=$(echo $query_and_dir | tail -1)
+  local dir_value=$(echo "$query_and_dir" | tail -1)
+  local query_value=$(echo "$query_and_dir" | head -1)
+  echo "QUERYDIR: $query_and_dir"
+  echo "DIR:      $dir_value"
+  echo "QUERY:    $query_value"
   if [ -d "$dir_value" ]
   then
     cd "$dir_value"
   else
-    mkdir -p "$query_value"
-    cd $query_value
+    new_dir=$(echo $query_value | sed 's/[^0-9a-zA-Z\-]*//g')
+    echo "mkdir -p \"$new_dir\" && cd $new_dir"
   fi
 }
 
@@ -73,12 +76,14 @@ function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local from="$1"
   local find_extra_args="$2"
   local header="$3"
-  f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index --preview='echo {} | cat $(awk -F: "{print \$1}")' | awk -F: '{print $1}')"
-  if [ "$f" != "" ]
+  local f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf --header="$header" --tiebreak=index --preview='echo {} | cat $(awk -F: "{print \$1}") --print-query' | awk -F: '{print $1}')"
+  local query_value=$(echo "$f" | head -1)
+  local file_value=$(echo "$f" | tail -1)
+  if [ "$file_value" != "" ]
   then
-    echo "vim $f"
+    echo "$file_value"
   else
-    echo ""
+    echo "$query_value"
   fi
 }
 
@@ -90,7 +95,11 @@ function qfzf_content_egrepargs_X_by_filenamecontent() {
 
 # Edit an alias that matches a given pattern
 function qfzf_alias() {
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$DOTFILES/modules/shell/aliases/" "" "OPEN ALIAS..."
+  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$DOTFILES/modules/shell/aliases/" "" "OPEN ALIAS...")
+  if [ -f "$f" ]
+  then
+    echo vim "$f"
+  fi
 }
 
 # Search on typical dirs and copy selected line into the clipboard
@@ -103,12 +112,20 @@ function qfzf_typical_line_on_clipboard() {
 # Search on typical dirs by content (and by filename) and stdout vim command on choice (search is on typical dirs)
 function qfzf_typical_filename_stdout() {
   local header="$1"
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" "-maxdepth 1" "$header"
+  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" "-maxdepth 1" "$header")
+  if [ -f "$f" ]
+  then
+    echo vim "$f"
+  fi
 }
 
 # Search on this dir by content (and by filename) and stdout vim command on choice (search is on PWD dir recursively)
 function qfzf_currdir_filename_stdout() {
   local header="$1"
-  qfzf_file_path_egrepargs_X_by_filenamecontent "$(pwd)" "-maxdepth 1" "$header"
+  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$(pwd)" "-maxdepth 1" "$header")
+  if [ -f "$f" ]
+  then
+    echo vim "$f"
+  fi
 }
 

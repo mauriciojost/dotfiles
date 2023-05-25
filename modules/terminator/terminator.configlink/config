@@ -4,6 +4,7 @@
   window_state = maximise
   scroll_tabbar = True
   inactive_color_offset = 0.802816901408
+  enabled_plugins = ,
   always_split_with_profile = True
 [keybindings]
   group_all = None
