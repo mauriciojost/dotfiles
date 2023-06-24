@@ -260,3 +260,7 @@ function qtopic-as-presentation-file-x() {
 
 alias qtopic=qtopic-open-with-content
 
+function qtopic-todos-display-all(){
+  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" '-r' '' "'"'![\ ]'
+}
+

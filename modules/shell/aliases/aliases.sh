@@ -73,12 +73,11 @@ function qopen-by-content-cmd-X-dir-Y-what-Z() {
   local from="$2"
   local extra_flags_egrep="$3"
   local what="$4"
+  local deft="$5"
 
   if [ "$what" == "" ]
   then
-    file="$(egrep . $extra_flags_egrep "$from" | fzf -m --preview='echo {} | cat $(awk -F: "{print \$1}")' | awk -F: '{print $1}')"
-	
-
+    file="$(egrep . $extra_flags_egrep "$from" | fzf -q "$deft" -m --preview='echo {} | cat $(awk -F: "{print \$1}")' | awk -F: '{print $1}')"
     if [ -e "$file" ]
     then
       $cmd $file
@@ -136,6 +135,7 @@ function _qset_bindings() {
   _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
   _qbind "open by content (L)             qfzf_currdir_filename_stdout" '"\C-l"' '"$(qfzf_currdir_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
   _qbind "open tOpics                     qtopic" '"\C-o"' '"qtopic\n"' "$mode"
+  _qbind "open todosX                     qtopic" '"\C-x"' '"qtopic-todos-display-all\n"' "$mode"
   _qbind "copy snYppets                   qfzf_typical_line_on_clipboard" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
   _qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
   _qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"

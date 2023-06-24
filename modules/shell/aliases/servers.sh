@@ -35,6 +35,11 @@ function qhtop-processes-matching-X() {
     $cmd
 }
 
+function qhtop() {
+    TENTHSOFSEC=100
+    sudo htop -d $TENTHSOFSEC
+}
+
 function qvpn-over-ssh-using-server-X() {
 	if [ -z "$1" ]
 	then
@@ -74,4 +79,17 @@ function qmount-over-ssh-using-server-X-and-localmount-Y() {
 	SERVER=$1
 	MOUNT=$2
     sshfs $SERVER $MOUNT 
+}
+
+function qcpu-workload-loops-X() {
+	local LOOPS=$1
+	local SLEEP=$2
+	for i in $(seq 1 $LOOPS)
+	do
+	    for j in $(seq 1 $LOOPS)
+	    do
+		echo $i$j | md5sum >> /dev/null
+	    done
+	    sleep $SLEEP
+	done
 }
