@@ -118,6 +118,8 @@ function qtopic-new-monthly-file-x-with-template-y(){
   echo "File: $f"
 }
 
+alias qtn='qtopic-new-daily-file-x'
+alias qt='qtopic-new-daily-file-x'
 alias qtopic-new='qtopic-new-daily-file-x'
 
 alias qtopic-contextual-new='qtopic-contextual-new-daily-file-x'
@@ -178,12 +180,21 @@ function qtopic-push-to-confluence-file-x() {
   python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass"
 }
 
+function qtopic-push-to-confluence-file-x-simulate() {
+  local filename="$1"
+  local user="$CONFLUENCE_USERNAME"
+  local space='~'"$USER"
+  python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass" --simulate
+}
+
 function qtopic-push-to-confluence-file-x-under-default() {
   local filename="$1"
   local user="$CONFLUENCE_USERNAME"
-  local parent='1793394684'
-  local space='DDL'
-  echo "User: $user, space: $space, parent: $parent"
+  local space='~'"$USER"
+  # Below variables must be defined in ~/.localrc, more info at https://github.com/RittmanMead/md_to_conf
+  # CONFLUENCE_USERNAME
+  # CONFLUENCE_ORGNAME # it's the endpoint without https://
+  echo "User: $user, space $space"
   read -sp 'Password: ' pass
   python3 $DOTFILES/modules/md_to_conf/md2conf.py "$filename" "$space" --loglevel debug -u $user -p "$pass" #-a "$parent"
 }

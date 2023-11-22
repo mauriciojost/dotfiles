@@ -22,6 +22,10 @@ df.withColumn("part", col("geoname_id")).write.format("parquet").partitionBy("pa
 sc.setJobDescription("dataset2-gen.sc: write delta (with cdf)")
 df.repartition(100).write.format("delta").option("delta.enableChangeDataFeed", "true").save("datasets/optd_por_public_all.delta.cdf1")
 */
+sc.setJobDescription("dataset2-gen.sc: write delta (with cdf 100)")
+df.repartition(100).write.format("delta").option("delta.enableChangeDataFeed", "true").save("datasets/optd_por_public_all.delta.cdf")
+sc.setJobDescription("dataset2-gen.sc: write delta (with cdf 1000)")
+df.repartition(1000).write.format("delta").option("delta.enableChangeDataFeed", "true").save("datasets/optd_por_public_all.delta.cdf1000")
 /*
 import org.apache.spark.sql.types._
 import io.delta.tables._
@@ -34,5 +38,7 @@ sc.setJobDescription("dataset2-gen.sc: write avro")
 df.repartition(100).write.format("avro").save("datasets/optd_por_public_all.avro")
 
 */
+/*
 sc.setJobDescription("dataset2-gen.sc: write avro2")
 df.repartition(8).write.format("avro").save("datasets/optd_por_public_all.avro2")
+*/

@@ -1,0 +1,22 @@
+{
+    "store": {
+        "book": [
+            {
+                "category": "reference",
+                "price": 8.95
+            },
+            {
+                "category": "fiction",
+                "price": 12.99
+            },
+            {
+                "category": "fiction",
+                "price": 8.99
+            },
+            {
+                "category": "fiction",
+                "price": 22.99
+            }
+        ]
+    }
+}

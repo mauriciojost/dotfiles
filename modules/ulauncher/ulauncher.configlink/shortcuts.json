@@ -78,5 +78,15 @@
         "is_default_search": false,
         "run_without_argument": false,
         "added": 1674414520.0596304
+    },
+    "25b6f434-c5c8-4138-8836-a5cc67361dc2": {
+        "id": "25b6f434-c5c8-4138-8836-a5cc67361dc2",
+        "name": "Shortcut Dispatch Windows (di)",
+        "keyword": "di",
+        "cmd": "#!/usr/bin/env bash\nterminator -x bash -i -c \"di\"",
+        "icon": null,
+        "is_default_search": false,
+        "run_without_argument": true,
+        "added": 1674416377.7657106
     }
 }

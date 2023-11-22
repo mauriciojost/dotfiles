@@ -24,7 +24,7 @@ spark.read.format("delta").load(path).write.format("delta").save(output)
 
 // read from output, write to output
 val inputDf = spark.readStream.format("delta").option("maxBytesPerTrigger", "5000k").option("ignoreChanges", "true").load(output)
-inputDf.writeStream.option("checkpointLocation", checkpoint).foreachBatch(processBatch _).outputMode(OutputMode.Update).trigger(Trigger.AvailableNow()).start()
+inputDf.writeStream.option("checkpointLocation", checkpoint).foreachBatch(processBatch _).outputMode(OutputMode.Update).trigger(Trigger.AvailableNow()).start().awaitTermination()
 
 // Display in another shell with: 
 //   DeltaTable.forPath("/tmp/tmpPath/9f23d0af-f9c3-466f-b58e-7e3c1ea84a2a/data").toDF.select("country_name","continent_name").filter(col("country_name") === "Argentina").show(10)

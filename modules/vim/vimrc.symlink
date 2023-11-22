@@ -279,6 +279,7 @@ augroup asteriskbold
   au BufNewFile,BufRead *.md let mnoteby2 = matchadd("YELLOWFG", "BY .*: .*") " BY MICHAEL: This is a comment done by Michael...
   " misc
   au BufNewFile,BufRead *.md let mattention = matchadd("REDFG", "!!!")
+  au BufNewFile,BufRead *.md let mattention2 = matchadd("REDFG", "(!.*)") " (!SOMETHING HERE)
   au BufNewFile,BufRead *.md let mconsequence = matchadd("GREENFG","==>")
   au BufNewFile,BufRead *.md let mmarker = matchadd("WHITEFGBG","%%%") " %%% -> marker (talk about it during a daily for instance)
 augroup end
