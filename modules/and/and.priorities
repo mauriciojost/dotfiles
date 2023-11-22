@@ -39,7 +39,7 @@
 # File format reminder: user group job parent nice1 nice2 nice3
 # Default entry -- moderate renicing, priority always above screen savers.
 #
-*	*	*       *	4	8	12
+#*	*	*       *	4	8	12
 
 #
 # Jobs started by the Grid master process always run on 10. If someone
@@ -55,7 +55,7 @@
 # identified by the fact that her programs are started by the login
 # screen, kdm or xdm in this case.
 #
-*       *       *       ancestor=xfsettingsd   2       2       2
+#*       *       *       ancestor=xfsettingsd   2       2       2
 
 #
 # The hosts bar and baz are reserved for the foo group, so
@@ -77,7 +77,7 @@
 # Netscape -- more than 20 minutes probably means it's running berserk,
 # so we just kill it off.
 #
-*	*	.*netscape.*	*       2	-9	-9
+#*	*	.*netscape.*	*       2	-9	-9
 
 #
 # Compilers -- don't renice them the first 20 minutes, but then...
@@ -95,21 +95,21 @@
 # Screen savers -- low priority from the beginning, but enough to log in.
 # KDE screen savers all end with .kss.
 #
-*	*	xlock.*	        *	15	15	15
-*	*	.*\.kss	        *	15	15	15
+#*	*	xlock.*	        *	15	15	15
+#*	*	.*\.kss	        *	15	15	15
 
 #
 # System monitors -- don't monitor the system useless.
 #
-*	*	.*top	        *	15	15	15
-*	*	.*xosview.*     *	15	15	15
-*	*	.*xps	        *	15	15	15
-*	*	.*qps   	*	15	15	15
-*	*	.*ktop		*       15	15	15
-*	*	.*gtop		*       15	15	15
+#*	*	.*top	        *	15	15	15
+#*	*	.*xosview.*     *	15	15	15
+#*	*	.*xps	        *	15	15	15
+#*	*	.*qps   	*	15	15	15
+#*	*	.*ktop		*       15	15	15
+#*	*	.*gtop		*       15	15	15
 
 # system monitors, automatic updates, stop being annoying!
-landscape	*	*	*       20	20	20
+#landscape	*	*	*       20	20	20
 *	*	.*snap.*	*       19	19	19
 
 # teams, keep calm
@@ -123,4 +123,6 @@ landscape	*	*	*       20	20	20
 # criticals
 *	*	.*xfwm4.*	*       -1	-1	-1
 *	*	.*terminator.*	*       -1	-1	-1
+*	*	.*ulauncher.*	*       -1	-1	-1
+*	*	.*xfce.*	*       -1	-1	-1
 

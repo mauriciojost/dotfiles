@@ -46,3 +46,4 @@ module-shell/localrc.symlink
 /docs/nix/result
 /modules/autostart/autostart.configlink/teams.desktop
 /modules/avro/read-snippet.sc
+/modules/langchain/venv/

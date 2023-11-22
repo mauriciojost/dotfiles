@@ -69,6 +69,7 @@
   <action id="ReplaceInPath">
     <keyboard-shortcut first-keystroke="ctrl a" second-keystroke="shift ctrl r" />
   </action>
+  <action id="ResetIdeScaleAction" />
   <action id="Scala.ShowImplicits">
     <keyboard-shortcut first-keystroke="shift ctrl alt equals" />
     <keyboard-shortcut first-keystroke="shift ctrl alt add" />
@@ -100,4 +101,6 @@
   <action id="VimPluginToggle">
     <keyboard-shortcut first-keystroke="ctrl alt q" />
   </action>
+  <action id="ZoomInIdeAction" />
+  <action id="ZoomOutIdeAction" />
 </keymap>

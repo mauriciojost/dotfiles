@@ -11,6 +11,10 @@ function qtime-epoch() {
   date +%s
 }
 
+function qdate-week() {
+ date '+%V' "$@"
+}
+
 function qdate-time() {
   date '+%Y-%m-%d %H:%M:%S (epoch=%s) (month=%h)'
 }
