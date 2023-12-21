@@ -45,3 +45,13 @@ function qsbt-on-module-run-only-test(){
   sbt "project $MODULE" "test-only $CLASS"
 }
 
+function qsbt-generate-spec-files-matching-X() {
+  MATCH=$1
+  for i in $(find . -type f -name *.scala | grep -v tests | grep $MATCH)
+  do
+    n=$(echo $i | sed 's/main/test/g' | sed 's/\.scala/Spec.scala/g')
+    echo "mkdir -p $(dirname $n)"
+    echo "cp $i $n"
+  done
+}
+

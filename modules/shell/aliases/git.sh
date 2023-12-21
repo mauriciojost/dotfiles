@@ -24,6 +24,7 @@ function qgit-branch() {
 function qgit-branches() {
 git branch --sort='-authordate'
 }
+alias gb=qgit-branches
 
 function qgit-branch-delete-remote() {
   git push $1 --delete $2
