@@ -1,5 +1,6 @@
 _github_io_git_repo_name=mauriciojost.github.io
 _github_io_git_repo=https://github.com/mauriciojost/$_github_io_git_repo_name.git
+_topics_editor=code
 function qtopic-list() {
   #ls -laht "$TOPICS"
   find "$TOPICS" -name '*.md' -printf "%T@ %p\n" | sort -n
@@ -28,13 +29,13 @@ function qtopic-open-with-filename-x() {
   fi
   if [ -n "$match" ]
   then
-    vim $match
+    $_topics_editor $match
   fi
 }
 
 # Edit an alias that matches a given pattern
 function qtopic-open-with-content() {
-  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" "" $1
+  qopen-by-content-cmd-X-dir-Y-what-Z "$_topics_editor" "$TOPICS" "" $1
 }
 
 function qtopic-new-daily-name() {
@@ -55,21 +56,21 @@ function qtopic-new-monthly-name() {
 function qtopic-new-daily-file-x(){
   local topic="$1"
   local f=`qtopic-new-daily-name $topic`.md
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
 function qtopic-contextual-new-daily-file-x(){
   local topic="$1"
   local f=`qtopic-new-daily-name $(qworkspace-getname | sed 's/\//-/g')-$topic`.md
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
 function qtopic-new-weekly-file-x(){
   local topic="$1"
   local f=`qtopic-new-weekly-name $topic`.md
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
@@ -84,7 +85,7 @@ function qtopic-new-daily-file-x-with-template-y(){
   else
     echo "Ignoring template: $template (file already exists)"
   fi
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
@@ -99,7 +100,7 @@ function qtopic-new-weekly-file-x-with-template-y(){
   else
     echo "Ignoring template: $template (file already exists)"
   fi
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
@@ -114,7 +115,7 @@ function qtopic-new-monthly-file-x-with-template-y(){
   else
     echo "Ignoring template: $template (file already exists)"
   fi
-  vim "$f"
+  $_topics_editor "$f"
   echo "File: $f"
 }
 
@@ -272,6 +273,6 @@ function qtopic-as-presentation-file-x() {
 alias qtopic=qtopic-open-with-content
 
 function qtopic-todos-display-all(){
-  qopen-by-content-cmd-X-dir-Y-what-Z "vim" "$TOPICS" '-r' '' "'"'![\ ]'
+  qopen-by-content-cmd-X-dir-Y-what-Z "$_topics_editor" "$TOPICS" '-r' '' "'"'![\ ]'
 }
 
