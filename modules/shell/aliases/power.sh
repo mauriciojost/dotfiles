@@ -1,11 +1,17 @@
 function qpower-mode-save() {
-  sudo cpufreq-set -g powersave
+  for cpu in seq 0 7
+  do
+    sudo cpufreq-set --cpu $cpu -g powersave
+  done
 }
 
 function qpower-mode-performance() {
-  sudo cpufreq-set -g performance
+  for cpu in seq 0 7
+  do
+    sudo cpufreq-set --cpu $cpu -g performance
+  done
 }
 
 function qpower-mode() {
-  cpufreq-info | grep 'governor'
+  cpufreq-info | grep 'governor' | grep -v available
 }

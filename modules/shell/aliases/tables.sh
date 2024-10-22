@@ -11,5 +11,9 @@ function qsql-pretty(){
   q --tab-delimited-output --output-header --skip-header --delimiter='^' "$1" | vd
 }
 
+function qsqlc-pretty(){
+  q --tab-delimited-output --output-header --skip-header --delimiter=',' "$1" | vd
+}
+
 alias qsql-explore="dbeaver"
 

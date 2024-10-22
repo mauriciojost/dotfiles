@@ -1,32 +1,16 @@
 # databricks section
-function dgo() {
-  # ensure to create the environment and login to databricks first
-  cd $DOTFILES/modules/databricks
-  source venv/bin/activate
-  echo 'databricks fs ls dbfs:/'
-  databricks fs ls dbfs:/
+function dls() {
+  echo "Using profile: $profile (in profile variable)"
+  databricks fs ls --profile $profile $1
 }
 
-function dls() {
-  databricks fs ls -l dbfs:$1
+function dlsl() {
+  echo "Using profile: $profile (in profile variable)"
+  databricks fs ls --profile $profile -l $1
 }
 
 function dcat() {
-  databricks fs cat dbfs:$1
+  echo "Using profile: $profile (in profile variable)"
+  databricks fs cat --profile $profile $1
 }
 
-function dcsv() {
-  tmp=$(mktemp)
-  csvs=$(databricks fs ls dbfs:$1 | grep csv)
-  for i in $csvs; do databricks fs cat dbfs:$1/$i >> $tmp; done
-  mv $tmp $(basename $1)
-  echo $(basename $1)
-}
-
-
-function ddread() {
-  #set -x
-  databricks fs cat dbfs:$1/_delta_log/00000000000000000$2.json | jq --compact-output 'select (.add)    | .add    | {"path": .path, "sizeMb": (round(.size / 1024 / 1024)), "partition": .partitionValues, "action": "add"}'
-  databricks fs cat dbfs:$1/_delta_log/00000000000000000$2.json | jq --compact-output 'select (.remove) | .remove | {"path": .path, "sizeMb": (round(.size / 1024 / 1024)), "partition": .partitionValues, "action": "rem"}'
-  #set +x
-}
