@@ -114,7 +114,7 @@ function qfzf_typical_line_on_clipboard() {
 # Search on typical dirs by content (and by filename) and stdout vim command on choice (search is on typical dirs)
 function qfzf_typical_filename_stdout() {
   local header="$1"
-  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" "-maxdepth 1" "$header")
+  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" '-maxdepth 1 -name *.md' "$header")
   if [ -f "$f" ]
   then
     echo code "$f"

@@ -1,19 +1,24 @@
 {
+    "modif": "2025-01-01",
     "store": {
         "book": [
             {
+                "dep": "2025-01-01",
                 "category": "reference",
                 "price": 8.95
             },
             {
+                "dep": "2024-01-01",
                 "category": "fiction",
                 "price": 12.99
             },
             {
+                "dep": "2024-01-01",
                 "category": "fiction",
                 "price": 8.99
             },
             {
+                "dep": "2024-01-01",
                 "category": "fiction",
                 "price": 22.99
             }

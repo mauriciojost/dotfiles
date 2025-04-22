@@ -52,7 +52,7 @@ function qfind-by-name () {
 function qgrep-in-all-files() {
   local expr="$1"
   qassertnotempty "$expr" "Arguments: <pattern-to-look-for>"
-  grep --line-number -R --exclude-dir='*.git*' "$expr" .
+  grep --line-number -R --exclude-dir='*.git*' --exclude="*.class" "$expr" .
   echo "Will open files..."
   sleep 3
   $(which vim) "+/$expr" $(grep -R --exclude-dir='*.git*' --files-with-matches "$expr") # trick to avoid opening vim alias

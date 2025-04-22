@@ -24,15 +24,15 @@ function qdist-upgrade() {
   echo "- $fnafter"
   date &>> $fnbefore
   echo "installed before" &>> $fnbefore
-  apt list --installed | sort &>> $fnbefore
+  sudo apt list --installed | sort &>> $fnbefore
   echo "upgradable before" &>> $fnbefore
-  apt list --upgradeable | sort &>> $fnbefore
+  sudo apt list --upgradeable | sort &>> $fnbefore
 
   sudo apt-get dist-upgrade -y &>> $fnduring
 
   date &>> $fnafter
   echo "installed after" &>> $fnafter
-  apt list --installed | sort &>> $fnafter
+  sudo apt list --installed | sort &>> $fnafter
   echo "upgradable after" &>> $fnafter
-  apt list --upgradeable | sort &>> $fnafter
+  sudo apt list --upgradeable | sort &>> $fnafter
 }
