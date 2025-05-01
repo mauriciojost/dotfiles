@@ -64,7 +64,7 @@ function qjava-trust-pkix-server-port() {
   local jre_lib_security_cacerts_dir="$3"
   if [ -z "$jre_lib_security_cacerts_dir" ]
   then
-    echo "Must provide the cacerts directory (probably $(readlink -e $(which java) | sed 's#/bin/java#/jre/lib/security/cacerts#') to be created if does not exist)"
+    echo "Must provide the cacerts directory (probably $(realpath $(which java) | sed 's#/bin/java#/jre/lib/security/cacerts#') to be created if does not exist)"
   else
     echo "Getting certificate of $servername port $port..."
     f=$(qcertificate-get-server-port $servername $serverport)

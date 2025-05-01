@@ -5,8 +5,32 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-echo "Loading..."
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine_os=linux;;
+    Darwin*)    machine_os=macos;;
+    CYGWIN*)    machine_os=cygwin;;
+    *)          machine_os="UNKNOWN:${unameOut}"
+esac
+echo "Loading .dotfiles on: ${machine_os}"
 
+if [ "$machine_os" == "linux" ]; then
+  alias realpath='readlink -e'
+fi
+
+if [ "$machine_os" == "macos" ]; then
+  function highlight() {
+    cat -
+  }
+fi
+
+
+# Add this to .profile if in MacOS (otherwise this script won't be picked up)
+#if [ -n "$BASH_VERSION" ]; then
+#    if [ -f "$HOME/.bashrc" ]; then
+#    . "$HOME/.bashrc"
+#    fi
+#fi
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -178,11 +202,9 @@ fi
 
 _qset_bindings set
 
-
 # Welcome message
 date
 echo "Welcome "$USER"!!!"
 echo "- for help: qhelp"
-
 
 

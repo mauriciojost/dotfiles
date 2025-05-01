@@ -56,7 +56,7 @@ function qvideo-downsample-smaller-mp4input() {
 }
 
 function qvideo-downsample-mp4input() {
-	SOURCE=`readlink -e "$1"`
+	SOURCE=`realpath "$1"`
 	BASENAME=`basename "$SOURCE"`
 	FILE="/tmp/video-$BASENAME-$RANDOM-$RANDOM.mp4"
 	SCALE="$2"

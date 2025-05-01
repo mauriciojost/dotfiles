@@ -4,7 +4,6 @@ alias gop='exo-open'
 alias route='route -n'
 alias cal='cal -3'
 alias octave='octave --force-gui'
-alias grep='grep -a --color=always' # a for binary
 
 function vim() {
   local args=""
@@ -37,22 +36,28 @@ function _xmllint_xfce() {
 
 function _qhelp() {
   echo "### CONFIGURATION APPS" | highlight green '.*'
-  echo "Configure using the following applications"
-  echo "- keyboard: xfce4-keyboard-settings"
-  echo "- window manager: xfwm4-settings"
-  echo ""
-  echo "### XFCE SHORTCUTS" | highlight green '.*'
-  _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]'
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
-  _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
-  echo ""
-  echo "### GENERAL SHORTCUTS" | highlight green '.*'
-  echo " - $(cat $DOTFILES/modules/ulauncher/ulauncher.configlink/settings.json |  python2 -c 'import json,sys;print json.load(sys.stdin)["hotkey-show-app"]') ==> ulauncher"
-  dconf dump /apps/guake/keybindings/global/ | sed -E "s#show-hide='(.*)'#- \1 ==> guake#g" | grep -v '[/]'
-  echo ""
-  echo "### SHELL BINDINGS" | highlight green '.*'
-  _qset_bindings show
-  echo ""
+  if [ "$machine_os" == "linux" ]; then
+    echo "Configure using the following applications"
+    echo "- keyboard: xfce4-keyboard-settings"
+    echo "- window manager: xfwm4-settings"
+    echo ""
+    echo "### XFCE SHORTCUTS" | highlight green '.*'
+    _xmllint_xfce '/channel[@name="xfce4-keyboard-shortcuts"]/property[@name="commands"]/property[@name="default"]/property[@type!="empty"]'
+    _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"commands\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
+    _xmllint_xfce "/channel[@name=\"xfce4-keyboard-shortcuts\"]/property[@name=\"xfwm4\"]/property[@name=\"custom\"]/property/@*[name()='name' or name()='value']"
+    echo ""
+    echo "### GENERAL SHORTCUTS" | highlight green '.*'
+    echo " - $(cat $DOTFILES/modules/ulauncher/ulauncher.configlink/settings.json |  python2 -c 'import json,sys;print json.load(sys.stdin)["hotkey-show-app"]') ==> ulauncher"
+    dconf dump /apps/guake/keybindings/global/ | sed -E "s#show-hide='(.*)'#- \1 ==> guake#g" | grep -v '[/]'
+    echo ""
+    echo "### SHELL BINDINGS" | highlight green '.*'
+    _qset_bindings show
+    echo ""
+  fi
+  if [ "$machine_os" == "macos" ]; then
+    echo "### Helper in .profile: .dotfiles/modules/macos/*"
+    cat $DOTFILES/modules/macos/*
+  fi
 }
 
 function qhelp() {
@@ -66,7 +71,7 @@ alias qclip-from='xclip -selection clipboard -o'
 alias toclip='qclip-to'
 alias fromclip='qclip-from'
 
-alias r='readlink -e '
+alias r='realpath '
 
 function qopen-by-content-cmd-X-dir-Y-what-Z() {
   local cmd="$1"

@@ -1,6 +1,6 @@
 _github_io_git_repo_name=mauriciojost.github.io
 _github_io_git_repo=https://github.com/mauriciojost/$_github_io_git_repo_name.git
-_topics_editor=code
+_topics_editor=vim
 function qtopic-list() {
   #ls -laht "$TOPICS"
   find "$TOPICS" -name '*.md' -printf "%T@ %p\n" | sort -n
@@ -235,7 +235,7 @@ function qtopic-pull-from-keep-file-x() {
 }
 
 function qtopic-as-presentation-file-x() {
-  local file="$(readlink -e "$1")"
+  local file="$(realpath "$1")"
   local filename="$(basename "$file")"
   local directory=/tmp/github.io
   local day="$(date '+%d')"

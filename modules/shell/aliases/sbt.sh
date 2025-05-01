@@ -22,14 +22,6 @@ function qsbt-class(){
   find | grep $CLASS_PATTERN | grep '\.scala' | sed 's/\.\/src\/test\/scala\///g' | sed 's/\//./g' | sed 's/.scala//'
 }
 
-function qsbt-dependencies(){
-  REPORT=`find target/resolution-cache/ | grep compile-internal.xml`
-  echo "Found report at: $REPORT"
-  REPORT_URL=file://`readlink -e $REPORT`
-  echo "Opening $REPORT_URL (this may take a while)..."
-  firefox $REPORT_URL
-}
-
 function qsbt-scoverage(){
   REPORT=$(find * -name index.html | grep scoverage-report)
   REPORT_FULL=$(readlink -e $REPORT)

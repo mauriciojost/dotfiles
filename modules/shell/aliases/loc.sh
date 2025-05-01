@@ -11,7 +11,7 @@ function qloc-list-files-no-test() {
 
 function qloc() {
   sbt clean
-  proj=$(basename $(readlink -e .))
+  proj=$(basename $(realpath .))
   fcount=$(qloc-list-files | wc -l)
   lines=$(for i in $(qloc-list-files); do wc -l $i; done | qloc-sum-column 1)
   size=$(for i in $(qloc-list-files); do ls -la $i; done | qloc-sum-column 5)

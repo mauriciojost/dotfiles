@@ -28,25 +28,25 @@ function qexplore-gui () {
 }
 
 # Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-  alias ls='ls --color=auto'
-  alias grep='grep --color=auto -a'
-  alias fgrep='fgrep --color=auto -a'
-  alias egrep='egrep --color=auto -a'
+if [ "$machine_os" == "linux" ]; then
+  if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias grep='grep --color=auto -a'
+    alias fgrep='fgrep --color=auto -a'
+    alias egrep='egrep --color=auto -a'
+  fi
 fi
-
-# Some more ls aliases
-alias l='ls -lhtr --time-style="+%Y-%m-%d %H:%M"'
-alias ll='ls -lahtr --time-style="+%Y-%m-%d %H:%M"'
-alias la='ls -A'
+if [ "$machine_os" == "macos" ]; then
+  alias ls='ls -G'
+fi
 
 ##################### 
 ### FIND
 
 function qfind-by-name () {
   qassertnotempty "$1" "Arguments: <filename-pattern-to-look-for>"
-  find . -name "$1" | xargs -I% readlink -e % 
+  find . -name "$1" | xargs -I% realpath % 
 }
 
 function qgrep-in-all-files() {

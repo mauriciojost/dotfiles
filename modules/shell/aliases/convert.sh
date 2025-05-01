@@ -44,7 +44,7 @@ function qconvert-db() {
 }
 
 function qconvert-X() {
-  local file=$(readlink -e $1)
+  local file=$(realpath $1)
   local directory=$(dirname $file)
   local base=$(basename $1)
   local name="${base%.*}"
@@ -77,7 +77,7 @@ function qconvert-all-in-X() {
   local directory="$1"
   for f in $(find $directory -type f)
   do
-    local file_abs=$(readlink -e $f)
+    local file_abs=$(realpath $f)
     qconvert-X "$file_abs"
   done
 }

@@ -12,7 +12,7 @@ alias qmedia-server-xbmc='xbmc -fs'
 
 function qyoutube-dropbox-download() {
 	TARGET="$HOME/dropbox"
-	CURRDIR=`readlink -e $PWD`
+	CURRDIR=`realpath $PWD`
 	LOGSS="/tmp/youtube-dl-$RANDOM.log"
 	cd $TARGET
 	nohup youtube-dl $1 &> $LOGSS
