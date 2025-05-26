@@ -1,13 +1,20 @@
-# normally done only for linux, for macos can be installed with brew
-if [[ ! "$PATH" == *$HOME/.dotfiles/modules/fzf/fzf/bin* ]]; then
-  export PATH="${PATH:+${PATH}:}$HOME/.dotfiles/modules/fzf/fzf/bin"
+if [ "$machine_os" == "linux" ]; then
+  # normally done only for linux
+  if [[ ! "$PATH" == *$HOME/.dotfiles/modules/fzf/fzf/bin* ]]; then
+    export PATH="${PATH:+${PATH}:}$HOME/.dotfiles/modules/fzf/fzf/bin"
 
-  # Auto-completion
-  # ---------------
-  [[ $- == *i* ]] && source "$HOME/.dotfiles/modules/fzf/fzf/shell/completion.bash" 2> /dev/null
+    # Auto-completion
+    # ---------------
+    [[ $- == *i* ]] && source "$HOME/.dotfiles/modules/fzf/fzf/shell/completion.bash" 2> /dev/null
 
-  # Key bindings
-  # ------------
-  source "$HOME/.dotfiles/modules/fzf/fzf/shell/key-bindings.bash"
+    # Key bindings
+    # ------------
+    source "$HOME/.dotfiles/modules/fzf/fzf/shell/key-bindings.bash"
+  fi
 fi
-
+if [ "$machine_os" == "macos" ]; then
+  # for macos can be installed with brew
+  echo "fzf assumed to be installed with brew, then run:"
+  echo "fzf --bash > ~/.fzf-key-bindings.bash"
+  source "$HOME/.fzf-key-bindings.bash"
+fi

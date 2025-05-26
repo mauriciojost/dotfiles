@@ -1,22 +1,10 @@
-# Shortcuts
+# Word navigation selection
+https://superuser.com/questions/657724/how-to-remap-ctrlarrow-keys-to-move-word-to-word-for-mac
 
-## General 
-spotlight : cmd space
-screenshoot : ^ cmd shift 4
-terminal: cmd t
-notes : fn q
+Keyboard Shortcuts => Mission Control => remove Mission control shortcuts
 
-### Organize windows
-sort windows: fn ^ shift ->
-sort windows quarters: ^ shift q
+Then place provided file under:
 
-### Manipulate current windows
-minimize : cmd m
-fill     : ^ fn c
-restore  : ^ fn r
-
-# Terminal
-- new tab: cmd n
-- split : cmd d
-
-
+```
+/Users/mjost/Library/KeyBindings/DefaultKeyBinding.dict
+```

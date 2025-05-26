@@ -3,6 +3,7 @@
 ## Install IdeaVim 
 
 1. Install IdeaVim plugin on Intellij.
+2. Install plugin XWin Keymap (as it is the parent of the one you will be providing, not installing it will leave for instance Esc keyboard unassigned)
 3. After closing Intellij, copy the provided `keymaps/*.xml` into `$HOME/.IdeaXXX/config/keymaps/` or `$HOME/.config/JetBrains/IdeaICXXXX.Y/keymaps` or `~/Library/Application Support/JetBrains/<product><version>/keymaps` (as per [this](https://www.jetbrains.com/help/idea/configuring-keyboard-and-mouse-shortcuts.html#54eb49dd))
 4. Restart Intellij for the keymap to be available, and choose (Ctrl-Alt-S)
 

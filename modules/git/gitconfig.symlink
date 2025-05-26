@@ -24,7 +24,7 @@
 [core]
 	editor = vim
 [diff]
-	tool = diffuse
+	tool = meld
 
 [push]
 	default = current
@@ -60,9 +60,9 @@
 
 
 [gui]
-	editor = vim
+	editor = meld
 [merge]
-	tool = diffuse
+	tool = meld
 [cola]
 	tabwidth = 2
 	spellcheck = false
@@ -86,5 +86,4 @@
 	ff = only
 
 [credential "https://github.com"]
-	helper = 
-	helper = !/usr/bin/gh auth git-credential
+	helper = !/opt/homebrew/bin/gh auth git-credential

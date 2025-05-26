@@ -8,13 +8,7 @@ alias _fzf_editor="vim"
 find_args='! -name *.class ! -path *.git*'
 function _typical_dirs() {
   local pref="$1"
-  local output="$pref $TOPICS $pref $DOTFILES/docs $pref $HOME/.ssh/config"
-  if [ "$(pwd)" != "$HOME" ] 
-  then
-    output="$pref $(pwd) $output"
-  else
-    output="$output"
-  fi
+  local output="$pref $TOPICS"
   echo "$output"
 }
 
@@ -78,7 +72,7 @@ function qfzf_file_path_egrepargs_X_by_filenamecontent() {
   local find_extra_args="$2"
   local header="$3"
   local query="$4"
-  local f="$(find $from -type f $find_args $find_extra_args -printf "%T@:%p\n" | sort -n -r | awk -F: '{print $2}' | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf -q "$query" --header="$header" --tiebreak=index --preview='echo {} | cat $(awk -F: "{print \$1}")' --print-query | awk -F: '{print $1}')"
+  local f="$(find $from -type f $find_args $find_extra_args  | sort -n -r | while IFS= read -r f ; do echo "$f: $(head -$_FILE_CONTENT_MAX_FZF "$f" | tr -d '\n' | tr -d '\0')"; done | _fzf -q "$query" --header="$header" --tiebreak=index --preview='echo -e "FILENAME:{}\n" ; echo {} | cat $(awk -F: "{print \$1}")' --print-query | awk -F: '{print $1}')"
   local query_value=$(echo "$f" | head -1)
   local file_value=$(echo "$f" | tail -1)
   if [ "$file_value" != "" ]
@@ -114,7 +108,7 @@ function qfzf_typical_line_on_clipboard() {
 # Search on typical dirs by content (and by filename) and stdout vim command on choice (search is on typical dirs)
 function qfzf_typical_filename_stdout() {
   local header="$1"
-  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "$(_typical_dirs "")" '-maxdepth 1 -name *.md' "$header")
+  local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "-E $(_typical_dirs "")" '-maxdepth 1 -regex .+.md' "$header")
   if [ -f "$f" ]
   then
     echo vim "$f"

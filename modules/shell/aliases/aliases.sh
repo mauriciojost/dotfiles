@@ -56,6 +56,8 @@ function _qhelp() {
   fi
   if [ "$machine_os" == "macos" ]; then
     echo "### Helper in .profile: .dotfiles/modules/macos/*"
+    bind -P
+    bind -p
     cat $DOTFILES/modules/macos/*
   fi
 }
@@ -127,27 +129,37 @@ function _qbind() {
   fi
   if [ "$mode" == "set" ] || [ "$mode" == "showset" ]
   then
-    bind "$shortcut:$cmd"
+    if [ "$machine_os" == "macos" ]; then
+      bind -x "$shortcut:$cmd"
+    fi
+    if [ "$machine_os" == "linux" ]; then
+      bind "$shortcut:$cmd"
+    fi
+
   fi
 }
 
 function _qset_bindings() {
   local mode="$1"
-   # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
-  _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
-  _qbind "open by fileName on typ. dirs   qfzf_vim_with" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
-  _qbind "open by filename on local dir   qfzf_vim_local_with" '"\C-v"' ' "$(qfzf_vim_local_with)\e\C-e\er"' "$mode"
-  _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
-  _qbind "open by content (L)             qfzf_currdir_filename_stdout" '"\C-l"' '"$(qfzf_currdir_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
-  _qbind "open tOpics                     qtopic" '"\C-o"' '"qtopic\n"' "$mode"
-  _qbind "open todosX                     qtopic" '"\C-x"' '"qtopic-todos-display-all\n"' "$mode"
-  _qbind "copy snYppets                   qfzf_typical_line_on_clipboard" '"\C-y"' '"qfzf_typical_line_on_clipboard SNIPPETS\n"' "$mode"
-  _qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
-  _qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
-  _qbind "command line history (&local)   qfzf_history_light_local_with" '"\C-b"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
-  _qbind "history Web                     qfzf_chrome_history_with" '"\C-w"' '"$(qfzf_chrome_history_with)\e\C-e\er"' "$mode"
+  if [ "$machine_os" == "macos" ]; then
+    _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with"' "$mode"
+    _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)"' "$mode"
+    #_qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)"' "$mode"
+    #_qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)"' "$mode"
+  fi
+  if [ "$machine_os" == "linux" ]; then
+     # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history
+    _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with\n"' "$mode"
+    _qbind "open by fileName on typ. dirs   qfzf_vim_with" '"\C-n"' ' "$(qfzf_vim_with)\e\C-e\er"' "$mode"
+    _qbind "open by filename on local dir   qfzf_vim_local_with" '"\C-v"' ' "$(qfzf_vim_local_with)\e\C-e\er"' "$mode"
+    _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
+    _qbind "open by content (L)             qfzf_currdir_filename_stdout" '"\C-l"' '"$(qfzf_currdir_filename_stdout OPEN_FILE_BY_CONTENT)\e\C-e\er"' "$mode"
+    _qbind "open tOpics                     qtopic" '"\C-o"' '"qtopic\n"' "$mode"
+    _qbind "open todosX                     qtopic" '"\C-x"' '"qtopic-todos-display-all\n"' "$mode"
+    _qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)\e\C-e\er"' "$mode"
+    _qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)\e\C-e\er"' "$mode"
+    _qbind "command line history (&local)   qfzf_history_light_local_with" '"\C-b"' '"$(qfzf_history_light_local_with)\e\C-e\er"' "$mode"
   #C-j forbidden, causes strange behaviour
+  fi
 }
-
-
 
