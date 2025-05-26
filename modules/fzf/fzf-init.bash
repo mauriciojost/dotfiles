@@ -1,6 +1,5 @@
 if [ "$machine_os" == "linux" ]; then
-  # normally done only for linux
-  if [[ ! "$PATH" == *$HOME/.dotfiles/modules/fzf/fzf/bin* ]]; then
+  if [[ ! "$PATH" == *$HOME/.dotfiles/modules/fzf/fzf/bin* ]]; then # if installed
     export PATH="${PATH:+${PATH}:}$HOME/.dotfiles/modules/fzf/fzf/bin"
 
     # Auto-completion
@@ -13,8 +12,9 @@ if [ "$machine_os" == "linux" ]; then
   fi
 fi
 if [ "$machine_os" == "macos" ]; then
-  # for macos can be installed with brew
-  echo "fzf assumed to be installed with brew, then run:"
-  echo "fzf --bash > ~/.fzf-key-bindings.bash"
-  source "$HOME/.fzf-key-bindings.bash"
+  if [ -n "$(which fzf)" ]; then
+    echo "Found fzf"
+    source "$HOME/.fzf-key-bindings.bash"
+
+  fi
 fi

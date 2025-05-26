@@ -56,8 +56,10 @@ function _qhelp() {
   fi
   if [ "$machine_os" == "macos" ]; then
     echo "### Helper in .profile: .dotfiles/modules/macos/*"
-    bind -P
-    bind -p
+    echo "# Using shortcuts application"
+    # as per https://discussions.apple.com/thread/255008958?sortBy=rank
+    shortcuts list
+    echo "# Other stuff"
     cat $DOTFILES/modules/macos/*
   fi
 }
@@ -130,7 +132,8 @@ function _qbind() {
   if [ "$mode" == "set" ] || [ "$mode" == "showset" ]
   then
     if [ "$machine_os" == "macos" ]; then
-      bind -x "$shortcut:$cmd"
+      echo "Binding: $shortcut:$cmd"
+      bind -m emacs-standard "$shortcut:$cmd"
     fi
     if [ "$machine_os" == "linux" ]; then
       bind "$shortcut:$cmd"
@@ -144,8 +147,8 @@ function _qset_bindings() {
   if [ "$machine_os" == "macos" ]; then
     _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with"' "$mode"
     _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)"' "$mode"
-    #_qbind "command line History (light)    qfzf_history_light_with" '"\C-r"' '"$(qfzf_history_light_with)"' "$mode"
-    #_qbind "command line History            qfzf_history_with" '"\C-h"' '"$(qfzf_history_with)"' "$mode"
+    _qbind "command line History            qfzf_history_with" '"\C-h"' '"\C-e \C-u\C-y\ey\C-u`qfzf_history_with`\e\C-e\er"' "$mode"
+
   fi
   if [ "$machine_os" == "linux" ]; then
      # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history

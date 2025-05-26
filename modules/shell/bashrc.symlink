@@ -159,8 +159,7 @@ shopt -s histappend
 [ -f /usr/bin/pandoc ] && eval "$(pandoc --bash-completion)"
 
 # Load fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
+source $DOTFILES/modules/fzf/fzf-init.bash
 
 # Load highlighter module 'highlight red pattern'
 DEV_SHELL_ESSENTIALS_SCRIPT="$DOTFILES/modules/dev-shell-essentials/dev-shell-essentials.sh"

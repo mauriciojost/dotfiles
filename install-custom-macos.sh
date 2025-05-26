@@ -10,5 +10,8 @@ set -e
 
 cd $DOTFILES_ROOT
 
+brew install fzf
+fzf --bash > ~/.fzf-key-bindings.bash
+
 echo ''
 echo '  All installed!'

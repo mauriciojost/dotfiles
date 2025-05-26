@@ -1,0 +1,17 @@
+-## General 
+-spotlight : fn space
+-screenshoot : ^ cmd shift 4
+-terminal: op cmd t
+-
+-### Organize windows
+-sort windows: fn ^ shift ->
+-sort windows quarters: ^ shift q
+-
+-### Manipulate current windows
+-minimize : cmd m
+-fill     : ^ fn c
+-restore  : ^ fn r
+-
+-# Terminal (iterm2)
+-- new tab: cmd n
+-- split : cmd d
