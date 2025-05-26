@@ -61,6 +61,7 @@ function _qhelp() {
     shortcuts list
     echo "# Other stuff"
     cat $DOTFILES/modules/macos/*
+    _qset_bindings show
   fi
 }
 
@@ -134,6 +135,8 @@ function _qbind() {
     if [ "$machine_os" == "macos" ]; then
       echo "Binding: $shortcut:$cmd"
       bind -m emacs-standard "$shortcut:$cmd"
+      bind -m vi-command "$shortcut: \C-z$shortcut\C-z"
+      bind -m vi-insert "$shortcut: \C-z$shortcut\C-z"
     fi
     if [ "$machine_os" == "linux" ]; then
       bind "$shortcut:$cmd"
@@ -145,10 +148,9 @@ function _qbind() {
 function _qset_bindings() {
   local mode="$1"
   if [ "$machine_os" == "macos" ]; then
-    _qbind "change Folder (cd ./xx)         qfzf_cd_with" '"\C-f"' '"qfzf_cd_with"' "$mode"
-    _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"$(qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT)"' "$mode"
+    # many things already coming from fzf vanilla
     _qbind "command line History            qfzf_history_with" '"\C-h"' '"\C-e \C-u\C-y\ey\C-u`qfzf_history_with`\e\C-e\er"' "$mode"
-
+    _qbind "open by conTent                 qfzf_typical_filename_stdout" '"\C-t"' '"\C-e \C-u\C-y\ey\C-u`qfzf_typical_filename_stdout OPEN_FILE_BY_CONTENT`\e\C-e\er"' "$mode"
   fi
   if [ "$machine_os" == "linux" ]; then
      # The "$(cmd_with_stdout)\e\C-e\er" is a trick to write output into shell rather than executing it, so that it's stored in the history

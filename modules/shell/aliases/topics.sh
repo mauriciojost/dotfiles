@@ -1,6 +1,6 @@
 _github_io_git_repo_name=mauriciojost.github.io
 _github_io_git_repo=https://github.com/mauriciojost/$_github_io_git_repo_name.git
-_topics_editor=vim
+_topics_editor=code
 function qtopic-list() {
   #ls -laht "$TOPICS"
   find "$TOPICS" -name '*.md' -printf "%T@ %p\n" | sort -n

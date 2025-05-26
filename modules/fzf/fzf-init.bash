@@ -12,9 +12,8 @@ if [ "$machine_os" == "linux" ]; then
   fi
 fi
 if [ "$machine_os" == "macos" ]; then
-  if [ -n "$(which fzf)" ]; then
-    echo "Found fzf"
+  if [ -f /opt/homebrew/bin/fzf ]; then
+    echo "Found fzf!!!"
     source "$HOME/.fzf-key-bindings.bash"
-
   fi
 fi

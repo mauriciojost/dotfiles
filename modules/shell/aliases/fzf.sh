@@ -4,7 +4,7 @@ export _FILE_CONTENT_MAX_FZF=300
 
 export _FZF_HIGHLIGHT="--color='bg:#4B4B4B,bg+:#3F3F3F,info:#BDBB72,border:#6B6B6B,spinner:#98BC99' --color='hl:#44CC44,fg:#D9D9D9,header:#719872,fg+:#D9D9D9' --color='pointer:#E12672,marker:#E17899,header:#98BEDE,hl+:#22FF22'"
 alias _fzf="fzf -m $_FZF_HIGHLIGHT --border=sharp"
-alias _fzf_editor="vim"
+alias _fzf_editor="code"
 find_args='! -name *.class ! -path *.git*'
 function _typical_dirs() {
   local pref="$1"
@@ -111,7 +111,7 @@ function qfzf_typical_filename_stdout() {
   local f=$(qfzf_file_path_egrepargs_X_by_filenamecontent "-E $(_typical_dirs "")" '-maxdepth 1 -regex .+.md' "$header")
   if [ -f "$f" ]
   then
-    echo vim "$f"
+    echo code "$f"
   fi
 }
 
